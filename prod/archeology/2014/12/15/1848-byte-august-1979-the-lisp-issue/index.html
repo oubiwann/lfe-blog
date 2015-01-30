@@ -273,10 +273,10 @@ original:</p>
 REPL):</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">defun</span> <span class="nv">remblank</span>
+    <span class="p">((</span><span class="nb">=</span> <span class="p">(</span><span class="nb">cons</span> <span class="s">&quot;&quot;</span> <span class="nv">tail</span><span class="p">))</span>
+      <span class="p">(</span><span class="nv">remblank</span> <span class="nv">tail</span><span class="p">))</span>
     <span class="p">(((</span><span class="nb">=</span> <span class="p">(</span><span class="nb">cons</span> <span class="nv">head</span> <span class="nv">tail</span><span class="p">)</span> <span class="nb">string</span><span class="p">))</span>
-      <span class="p">(</span><span class="nb">cond</span> <span class="p">((</span><span class="nv">==</span> <span class="o">`</span><span class="p">(</span><span class="o">,</span><span class="nv">head</span><span class="p">)</span> <span class="s">&quot; &quot;</span><span class="p">)</span> <span class="p">(</span><span class="nv">remblank</span> <span class="nv">tail</span><span class="p">))</span>
-            <span class="p">(</span><span class="ss">&#39;true</span> <span class="p">(</span><span class="nb">cons</span> <span class="nv">head</span> <span class="p">(</span><span class="nv">remblank</span> <span class="nv">tail</span><span class="p">)))))</span>
-    <span class="p">((</span><span class="nb">string</span><span class="p">)</span> <span class="nb">string</span><span class="p">))</span>
+      <span class="p">(</span><span class="nb">cons</span> <span class="nv">head</span> <span class="p">(</span><span class="nv">remblank</span> <span class="nv">tail</span><span class="p">))))</span>
 <span class="nv">remblank</span>
 <span class="nb">&gt;</span> <span class="p">(</span><span class="nb">defun</span> <span class="nv">indt</span> <span class="p">(</span><span class="nv">n</span> <span class="nb">string</span><span class="p">)</span>
     <span class="p">(</span><span class="nv">lists:append</span> <span class="p">(</span><span class="nv">string:copies</span> <span class="s">&quot; &quot;</span> <span class="nv">n</span><span class="p">)</span>
