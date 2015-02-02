@@ -11,6 +11,7 @@ http://blog.lfe.io//tags.html
 http://blog.lfe.io//page2/index.html
 http://blog.lfe.io//page3/index.html
 
+http://blog.lfe.io//tutorials/2015/02/02/0111-lfe-friday---listsfilter2
 http://blog.lfe.io//tutorials/2015/01/22/2243-lfe-friday---httpcrequest1-and-httpcrequest4
 http://blog.lfe.io//tutorials/2015/01/16/2253-lfe-friday---erlangapply3
 http://blog.lfe.io//tutorials/2015/01/10/2201-lfe-friday---timertc3
