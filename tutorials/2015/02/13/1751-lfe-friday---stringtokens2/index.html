@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>
       
-        LFE Friday - timer:tc/3 -
+        LFE Friday - string:tokens/2 -
       
       LFE Tutorials, News, &amp; Updates
     </title>
@@ -179,7 +179,7 @@
 
 <div class="page-header">
   <h1>
-    LFE Friday - timer:tc/3 
+    LFE Friday - string:tokens/2 
     
   </h1>
 </div>
@@ -192,49 +192,56 @@
 series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
 <em>This week’s translator</em>: Robert Virding.</p>
 
-<p>Today’s LFE Friday is on <a href="http://www.erlang.org/doc/man/timer.html#tc-3">timer:tc/3</a>.</p>
+<p>Today’s LFE Friday is <a href="http://www.erlang.org/doc/man/string.html#tokens-2">string:tokens/2</a>.</p>
 
-<p>I am sure we have all written some timing code where we capture the current time, do something, capture the current time again and then find the difference to find out how long something took to execute. In Erlang, that generally looks something like the following:</p>
+<p><code>string:tokens/2</code> takes a string as the first argument, and a list of separators to split the string on, and returns a list of token strings.</p>
 
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">time1</span> <span class="p">(</span><span class="nv">now</span><span class="p">))</span>
-<span class="o">#(</span><span class="mi">1420</span> <span class="mi">910649</span> <span class="mi">803027</span><span class="p">)</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">timer:sleep</span> <span class="mi">4000</span><span class="p">)</span>    <span class="c1">;Do something</span>
-<span class="nv">ok</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">time2</span> <span class="p">(</span><span class="nv">now</span><span class="p">))</span>
-<span class="o">#(</span><span class="mi">1420</span> <span class="mi">910653</span> <span class="mi">804244</span><span class="p">)</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">timer:now_diff</span> <span class="nv">time2</span> <span class="nv">time1</span><span class="p">)</span>                                             
-<span class="mi">4001217</span></code></pre></div>
+<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;foo&quot;</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">)</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;banana&quot;</span> <span class="s">&quot;a&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="s">&quot;b&quot;</span> <span class="s">&quot;n&quot;</span> <span class="s">&quot;n&quot;</span><span class="p">)</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;It was the best of times, it was the worst of times&quot;</span> <span class="s">&quot; &quot;</span><span class="p">)</span> 
+<span class="p">(</span><span class="s">&quot;It&quot;</span> <span class="s">&quot;was&quot;</span> <span class="s">&quot;the&quot;</span> <span class="s">&quot;best&quot;</span> <span class="s">&quot;of&quot;</span> <span class="s">&quot;times,&quot;</span> <span class="s">&quot;it&quot;</span> <span class="s">&quot;was&quot;</span> <span class="s">&quot;the&quot;</span> <span class="s">&quot;worst&quot;</span> <span class="s">&quot;of&quot;</span> <span class="s">&quot;times&quot;</span><span class="p">)</span></code></pre></div>
 
-<p>Note that we have to use <a href="http://www.erlang.org/doc/man/timer.html#now_diff-2">timer:now_diff/2</a>, since the <code>now/0</code> function returns the timestamp as a tuple, and we can’t just do normal subtraction on that tuple like we might be able to in other languages.</p>
+<p>If consecutive separators appear in the string they will be treated as a single separator, and no empty strings will be returned.</p>
 
-<p>Of course as good “engineers”, we know that since we need to do timings in various places of the app we can just create our own function to do that, and have that live in just one place.</p>
+<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;Mississippi&quot;</span> <span class="s">&quot;s&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="s">&quot;Mi&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;ippi&quot;</span><span class="p">)</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;Mississippi&quot;</span> <span class="s">&quot;sp&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="s">&quot;Mi&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;i&quot;</span><span class="p">)</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;Mississippi&quot;</span> <span class="s">&quot;is&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="s">&quot;M&quot;</span> <span class="s">&quot;pp&quot;</span><span class="p">)</span></code></pre></div>
 
-<p>The downside is: the wise people on the Erlang language team have done that for us already and provided it in the form of <code>timer:tc/3</code>.</p>
+<p>The order of the separators in the separator list passed to <code>string:tokens/2</code> does not matter, and can be specified in any order.</p>
 
-<p><code>timer:tc/3</code> takes the module name, function name, and a list of the arguments to be passed to the function. And since we usually want the result of the function we are calling, in addition to the timing, the return value is a tuple of the time in microseconds, and the result of applying the function passed to <code>timer:tc/3</code>.</p>
+<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;Mississippi&quot;</span> <span class="s">&quot;ps&quot;</span><span class="p">)</span>                                       
+<span class="p">(</span><span class="s">&quot;Mi&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;i&quot;</span><span class="p">)</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;Mississippi&quot;</span> <span class="s">&quot;sp&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="s">&quot;Mi&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;i&quot;</span><span class="p">)</span></code></pre></div>
 
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">timer:tc</span> <span class="ss">&#39;timer</span> <span class="ss">&#39;sleep</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4000</span><span class="p">))</span>
-<span class="o">#(</span><span class="mi">4000480</span> <span class="nv">ok</span><span class="p">)</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">timer:tc</span> <span class="ss">&#39;lists</span> <span class="ss">&#39;foldl</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">x</span> <span class="nv">accum</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="nv">x</span> <span class="nv">accum</span><span class="p">))</span> <span class="mi">0</span> <span class="p">(</span><span class="nv">lists:seq</span> <span class="mi">1</span> <span class="mi">2000000</span><span class="p">)))</span>
-<span class="o">#(</span><span class="mi">3533603</span> <span class="mi">2000001000000</span><span class="p">)</span></code></pre></div>
+<p>And as the separator list is just simply a list of separators, instead of passing a string, the integer values for the characters to use as the separators can be passed as a list, as a list of the integers is the same as a string.</p>
 
-<p>There is also <code>timer:tc/1</code> which takes just a function and applies it, and <code>timer:tc/2</code> which takes a function and applies it with the given arguments.</p>
-
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">timer:tc</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nv">lists:foldl</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">x</span> <span class="nv">accum</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="nv">x</span> <span class="nv">accum</span><span class="p">))</span> <span class="mi">0</span> <span class="p">(</span><span class="nv">lists:seq</span> <span class="mi">1</span> <span class="mi">2000000</span><span class="p">))))</span>       
-<span class="o">#(</span><span class="mi">3693260</span> <span class="mi">2000001000000</span><span class="p">)</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">timer:tc</span> <span class="nf">#&#39;</span><span class="nv">lists:foldl/3</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">x</span> <span class="nv">accum</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="nv">x</span> <span class="nv">accum</span><span class="p">))</span> <span class="mi">0</span> <span class="p">(</span><span class="nv">lists:seq</span> <span class="mi">1</span> <span class="mi">2000000</span><span class="p">)))</span>
-<span class="o">#(</span><span class="mi">3529578</span> <span class="mi">2000001000000</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="sc">#\s</span>
+<span class="mi">115</span>
+<span class="nb">&gt;</span> <span class="sc">#\p</span>
+<span class="mi">112</span>
+<span class="nb">&gt;</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">115</span> <span class="mi">112</span><span class="p">)</span>
+<span class="s">&quot;sp&quot;</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;Mississippi&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">115</span><span class="p">))</span>
+<span class="p">(</span><span class="s">&quot;Mi&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;ippi&quot;</span><span class="p">)</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;Mississippi&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">115</span> <span class="mi">112</span><span class="p">))</span>
+<span class="p">(</span><span class="s">&quot;Mi&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;i&quot;</span><span class="p">)</span></code></pre></div>
 
 <p>–Proctor, Robert</p>
 
     <hr>
     <div class="pagination btn-group">
       
-        <a class="btn prev" href="/announcements/2015/01/09/1008-lfetool-150-preview-overriding-version-pinning" title="lfetool 1.5.0 Preview: Overriding Version Pinning">&larr; Previous</a>
+        <a class="btn prev" href="/tutorials/2015/02/10/0206-lfe-friday---listsdropwhile2" title="LFE Friday - lists:dropwhile/2">&larr; Previous</a>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next" href="/tutorials/2015/01/16/2253-lfe-friday---erlangapply3" title="LFE Friday - erlang:apply/3">Next &rarr;</a>
+        <a class="btn next disabled">Next &rarr;</a>
       
     </div>
     <hr>
@@ -248,7 +255,7 @@ series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
     </section>
     <section>
       <h4>Published</h4>
-      <div class="date"><span>10 January 2015</span></div>
+      <div class="date"><span>13 February 2015</span></div>
     </section>
     
       <section>
