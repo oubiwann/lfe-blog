@@ -12,6 +12,7 @@ http://blog.lfe.io//page2/index.html
 http://blog.lfe.io//page3/index.html
 http://blog.lfe.io//page4/index.html
 
+http://blog.lfe.io//tutorials/2015/02/20/1609-lfe-friday---stringjoin2
 http://blog.lfe.io//tutorials/2015/02/13/1751-lfe-friday---stringtokens2
 http://blog.lfe.io//tutorials/2015/02/10/0206-lfe-friday---listsdropwhile2
 http://blog.lfe.io//tutorials/2015/02/02/0111-lfe-friday---listsfilter2

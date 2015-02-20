@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>
       
-        LFE Friday - lists:filter/2 -
+        LFE Friday - string:join/2 -
       
       LFE Tutorials, News, &amp; Updates
     </title>
@@ -179,7 +179,7 @@
 
 <div class="page-header">
   <h1>
-    LFE Friday - lists:filter/2 
+    LFE Friday - string:join/2 
     
   </h1>
 </div>
@@ -192,33 +192,39 @@
 series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
 <em>This week’s translator</em>: Robert Virding.</p>
 
-<p>Today’s LFE Friday is on <a href="http://www.erlang.org/doc/man/lists.html#filter-2">lists:filter/2</a>.</p>
+<p>Today’s LFE Friday is on <a href="http://www.erlang.org/doc/man/string.html#join-2">string:join/2</a>.</p>
 
-<p><code>lists:filter/2</code> takes two arguments, a predicate function and a list to iterate over. The return value is a list of items for which the predicate function returns <code>true</code> for that item.</p>
+<p><code>string:join/2</code> takes a list of strings as its first argument, and a string separator used to join the strings together into a single string.</p>
 
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">lists:filter</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nv">=:=</span> <span class="p">(</span><span class="nb">rem</span> <span class="nv">x</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">1</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span>
-<span class="p">(</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span><span class="p">)</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">lists:filter</span> <span class="nf">#&#39;</span><span class="nv">erlang:is_atom/1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="nv">a</span> <span class="mi">3</span> <span class="o">#(</span><span class="nv">a</span> <span class="nv">b</span><span class="p">)</span> <span class="nv">World</span> <span class="nv">foo</span><span class="p">))</span>
-<span class="p">(</span><span class="nv">a</span> <span class="nv">World</span> <span class="nv">foo</span><span class="p">)</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">lists:filter</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="nv">x</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">-3</span> <span class="nv">foo</span> <span class="mi">-13</span> <span class="mi">43</span><span class="p">))</span>
-<span class="p">(</span><span class="mi">1</span> <span class="nv">foo</span> <span class="mi">43</span><span class="p">)</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">lists:filter</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="nv">x</span> <span class="mi">0</span><span class="p">))</span> <span class="p">())</span>
-<span class="p">()</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">lists:filter</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span> <span class="ss">&#39;false</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span>
-<span class="p">()</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">lists:filter</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span> <span class="ss">&#39;true</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span> 
-<span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:join</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;a&quot;</span> <span class="s">&quot;b&quot;</span> <span class="s">&quot;c&quot;</span><span class="p">)</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+<span class="s">&quot;abc&quot;</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:join</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;a&quot;</span> <span class="s">&quot;b&quot;</span> <span class="s">&quot;c&quot;</span><span class="p">)</span> <span class="s">&quot;-&quot;</span><span class="p">)</span>
+<span class="s">&quot;a-b-c&quot;</span></code></pre></div>
 
-<p>–Proctor, Robert</p>
+<p>The separator string can be a string of any length, and doesn’t just have to be a single character.</p>
+
+<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:join</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;a&quot;</span> <span class="s">&quot;b&quot;</span> <span class="s">&quot;c&quot;</span><span class="p">)</span> <span class="s">&quot;___&quot;</span><span class="p">)</span>
+<span class="s">&quot;a___b___c&quot;</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:join</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;a&quot;</span> <span class="s">&quot;b&quot;</span> <span class="s">&quot;c&quot;</span><span class="p">)</span> <span class="s">&quot; &quot;</span><span class="p">)</span>  
+<span class="s">&quot;a b c&quot;</span></code></pre></div>
+
+<p>And as with any string, a list of characters, or even integers, can be used as the separator string.</p>
+
+<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:join</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;a&quot;</span> <span class="s">&quot;b&quot;</span> <span class="s">&quot;c&quot;</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\A</span><span class="p">))</span>
+<span class="s">&quot;aAbAc&quot;</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:join</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;a&quot;</span> <span class="s">&quot;b&quot;</span> <span class="s">&quot;c&quot;</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">52</span><span class="p">))</span> 
+<span class="s">&quot;a4b4c&quot;</span></code></pre></div>
+
+<p>-Proctor, Robert</p>
 
     <hr>
     <div class="pagination btn-group">
       
-        <a class="btn prev" href="/tutorials/2015/01/22/2243-lfe-friday---httpcrequest1-and-httpcrequest4" title="LFE Friday - httpc:request/1 and httpc:request/4">&larr; Previous</a>
+        <a class="btn prev" href="/tutorials/2015/02/13/1751-lfe-friday---stringtokens2" title="LFE Friday - string:tokens/2">&larr; Previous</a>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next" href="/tutorials/2015/02/10/0206-lfe-friday---listsdropwhile2" title="LFE Friday - lists:dropwhile/2">Next &rarr;</a>
+        <a class="btn next disabled">Next &rarr;</a>
       
     </div>
     <hr>
@@ -232,7 +238,7 @@ series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
     </section>
     <section>
       <h4>Published</h4>
-      <div class="date"><span>02 February 2015</span></div>
+      <div class="date"><span>20 February 2015</span></div>
     </section>
     
       <section>
