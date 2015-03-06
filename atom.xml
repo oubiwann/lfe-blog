@@ -4,13 +4,97 @@
  <title>LFE Tutorials, News, &amp; Updates</title>
  <link href="http://blog.lfe.io//" rel="self"/>
  <link href="http://blog.lfe.io/"/>
- <updated>2015-03-01T19:34:27+01:00</updated>
+ <updated>2015-03-07T00:48:11+01:00</updated>
  <id>http://blog.lfe.io/</id>
  <author>
    <name>LFElluminati | Alien Alliance</name>
    <email>lisp-flavored-erlang@googlegroups.com</email>
  </author>
 
+ 
+ <entry>
+   <title>LFE Friday - calendar:local_time_to_universal_time_dst/1</title>
+   <link href="http://blog.lfe.io//tutorial/2015/03/06/0152-lfe-friday---calendarlocal_time_to_universal_time_dst1"/>
+   <updated>2015-03-06T00:00:00+01:00</updated>
+   <id>http://blog.lfe.io//tutorial/2015/03/06/0152-lfe-friday---calendarlocal_time_to_universal_time_dst1</id>
+   <content type="html">
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
+&lt;a href=&quot;http://www.proctor-it.com/category/erlang/erlang-thursday/&quot;&gt;Erlang Thursday&lt;/a&gt;
+series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Proctor&lt;/a&gt;.
+&lt;em&gt;This week’s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
+
+&lt;p&gt;In honor of the time change this weekend, today’s LFE Friday is on &lt;a href=&quot;http://www.erlang.org/doc/man/calendar.html#local_time_to_universal_time_dst-1&quot;&gt;calendar:local_time_to_universal_time_dst/1&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We here in the EU will have to wait 3 more weeks for our time change, but we will do this anyway. :-)&lt;/p&gt;
+
+&lt;p&gt;To better understand what &lt;code&gt;calendar:local_time_to_universal_time_dst/1&lt;/code&gt; is doing, it will be contrasted to &lt;a href=&quot;http://www.erlang.org/doc/man/calendar.html#local_time_to_universal_time-1&quot;&gt;calendar:local_time_to_universal_time/1&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This coming Sunday is we move the clock forward an hour at 2 AM, so let us see what the time is in UTC right at 1:59 AM.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:local_time_to_universal_time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now let’s see what &lt;code&gt;calendar:local_time_to_universal_time/1&lt;/code&gt; returns for 2 AM, which we never actually hit, since the time changes straight to 3 AM.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:local_time_to_universal_time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;  
+&lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;But as we dig into the library we see that there is also &lt;code&gt;calendar:local_time_to_universal_time_dst/1&lt;/code&gt; which returns a list of time tuples, and we start to see why this is important.&lt;/p&gt;
+
+&lt;p&gt;This time, let’s call &lt;code&gt;calendar:local_time_to_universal_time_dst/1&lt;/code&gt; with the 2 AM hour and see what is returned.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:local_time_to_universal_time_dst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;An empty list!&lt;/p&gt;
+
+&lt;p&gt;This makes sense if you take a moment to think about it, as 2 AM doesn’t ever happen so there is no UTC time that it would map to.&lt;/p&gt;
+
+&lt;p&gt;And if we look at what happens when we make the jump to 3 AM, we get 8 AM UTC, which is just a second later in UTC, then the time in UTC at 1:59:59 AM.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:local_time_to_universal_time_dst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;That covers the case for this coming weekend, so let is check out what is going to happen later this year on November 1st when the clocks move back an hour.&lt;/p&gt;
+
+&lt;p&gt;To start with a baseline, let’s see what time it is in UTC at 12:59:59 AM, as we know we only encounter that time once.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:local_time_to_universal_time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;    
+&lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:local_time_to_universal_time_dst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And even though the time change happens a 2 AM, we still only encounter that once, as we move straight to 1 AM the first time.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:local_time_to_universal_time_dst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;So at 12:59:59 AM, we are at 5:59:59 AM UTC, and at 2 AM we are at 8 AM UTC. Now comes the tricky part, 1 AM.&lt;/p&gt;
+
+&lt;p&gt;1 AM is an odd case, as we will live through 1 AM twice that night. So let’s see what Erlang does with that.&lt;/p&gt;
+
+&lt;p&gt;First, we see what time it is in UTC when we call calendar:local_time_to_universal_time with 1 AM.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:local_time_to_universal_time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;    
+&lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We get 6 AM UTC. We move from 5:59:59 AM UTC to 6 AM UTC; and that makes sense, until we start to wonder about the second time we encounter 1 AM.&lt;/p&gt;
+
+&lt;p&gt;Now, let’s see what time it is in UTC when we call &lt;code&gt;calendar:local_time_to_universal_time_dst/1&lt;/code&gt; with 1 AM.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:local_time_to_universal_time_dst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;    
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We get a list with two times in UTC, one for 6 AM UTC when we encounter 1 AM the first time, and one for 7 AM UTC for when we encounter 1 AM the second time around. This happens for every time in the 1 AM hour as well.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:local_time_to_universal_time_dst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;    
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;By returning a list of either no items, one item, or two items, Erlang gives you the most accurate information for you to use, and allow for you to make the informed decision for how you are expecting to handle the times, instead of making some of the decisions for you even if they don’t align with your system’s view of the world.&lt;/p&gt;
+
+&lt;p&gt;–Proctor, Robert&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>LFE Friday - dict:merge/3</title>

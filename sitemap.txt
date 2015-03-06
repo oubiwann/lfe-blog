@@ -12,6 +12,7 @@ http://blog.lfe.io//page2/index.html
 http://blog.lfe.io//page3/index.html
 http://blog.lfe.io//page4/index.html
 
+http://blog.lfe.io//tutorial/2015/03/06/0152-lfe-friday---calendarlocal_time_to_universal_time_dst1
 http://blog.lfe.io//tutorials/2015/03/01/1823-lfe-friday---dictmerge3
 http://blog.lfe.io//tutorials/2015/02/20/1609-lfe-friday---stringjoin2
 http://blog.lfe.io//tutorials/2015/02/13/1751-lfe-friday---stringtokens2
