@@ -5,10 +5,118 @@
         <description>LFE Tutorials, News, &amp; Updates - LFElluminati | Alien Alliance</description>
         <link>http://blog.lfe.io/</link>
         <link>http://blog.lfe.io/</link>
-        <lastBuildDate>2015-03-13T16:39:25+01:00</lastBuildDate>
-        <pubDate>2015-03-13T16:39:25+01:00</pubDate>
+        <lastBuildDate>2015-03-20T14:26:22-05:00</lastBuildDate>
+        <pubDate>2015-03-20T14:26:22-05:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>New LFE T-Shirt</title>
+                <description>
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/lfescars2-front-back.png&quot;&gt;&lt;img class=&quot;left thumb&quot; src=&quot;/assets/images/posts/lfescars2-front-back.png&quot; /&gt;&lt;/a&gt;The new LFE T-shirt is designed and awaiting more sign-ups! We’re about 1/4 of the way to the minimum pledges required. If you’d like to order one or ten, you may do so &lt;a href=&quot;http://www.customink.com/signup/96rbuknu&quot;&gt;here&lt;/a&gt;. For more information on the process, read on …&lt;/p&gt;
+
+&lt;p&gt;Even though the
+&lt;a href=&quot;https://twitter.com/oubiwann/status/493803591748968451&quot;&gt;tweet
+announcing the new T-shirt&lt;/a&gt; was back in July, you haven’t lost your chance
+to get the new shirt :-) A lot was going on during the summer and fall, and
+let’s face it, who’s going to do anything during the winter? But, it’s the
+first day of spring, so we have no excuses any more: it’s time to get this
+puppy re-started!&lt;/p&gt;
+
+&lt;h3 id=&quot;how-this-works&quot;&gt;How This Works&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/lfescars2-front.png&quot;&gt;&lt;img class=&quot;right medium&quot; src=&quot;/assets/images/posts/lfescars2-front.png&quot; /&gt;&lt;/a&gt;
+Step 1: In order to get the price offered by
+&lt;a href=&quot;http://www.customink.com/&quot;&gt;Custom Ink&lt;/a&gt; ($28),
+we need 40 t-shirt “pledges” in the &lt;a href=&quot;http://www.customink.com/signup/96rbuknu&quot;&gt;sign up form&lt;/a&gt;.
+And by pledges, we
+just mean listing your size(s) and how many you want; payment comes later.&lt;/p&gt;
+
+&lt;p&gt;Step 2: Once we’ve confirmed that enough T-shirts are desired, we’ll
+start emailing everyone who has pledged, letting you know it’s time to Pay the
+Pal :-)&lt;/p&gt;
+
+&lt;p&gt;Step 3: As soon as all shirts are paid for, we’ll place the order with CustomInk.&lt;/p&gt;
+
+&lt;p&gt;Step 4: When the shipment arrives, we’ll mail each of you your T-shirt orders.&lt;/p&gt;
+
+&lt;p&gt;At each step of the way, we’ll keep you posted on status. We used this approach
+last time, and it worked out well – we got lots of pictures of happy hackers
+with their LFE T-shirts :-)&lt;/p&gt;
+
+&lt;h3 id=&quot;more-about-the-t-shirt&quot;&gt;More About The T-Shirt&lt;/h3&gt;
+
+&lt;p&gt;The front of the shirt has the LFE logo (high-octane λ-amrita) over the left
+breast (keeping LFE close to your heart). The back of the shirt has a watermark
+of an LFE translation of the Erlang ring benchmark used on the
+&lt;a href=&quot;http://benchmarksgame.alioth.debian.org/u32/program.php?test=threadring&amp;amp;lang=hipe&amp;amp;id=1&quot;&gt;Computer
+Language Benchmarks Game&lt;/a&gt; site:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ring&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;roundtrip&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;apply&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;#&amp;#39;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;start-ring/2&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lists:map&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;#&amp;#39;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;list_to_integer/1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;start-ring&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;process-count&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;traversal-count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;batch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;make-processes&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;process-count&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;traversal-count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;batch&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;traversal-count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;roundtrip&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;make-processes&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;process-count&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;traversal-count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lists:foldl&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;#&amp;#39;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;make-process/2&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lists:seq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;process-count&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;-1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;make-process&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;spawn&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;ring&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;roundtrip&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;roundtrip&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;receive&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;io:fwrite&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Result: ~b~n&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;erlang:halt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pid&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;roundtrip&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, emblazoned across the shoulders is the
+classic “Erlang” script logo, and then a reference to the closing comments of
+“Mike Williams” in Garrett’s
+&lt;a href=&quot;https://www.youtube.com/watch?v=rRbY3TMUcgQ&quot;&gt;Erlang The Movie II: The Sequel&lt;/a&gt;.
+(The images in this post are linked to larger images of the T-shirt, should you
+want a closer look.)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/lfescars2-back.png&quot;&gt;&lt;img class=&quot;left medium&quot; src=&quot;/assets/images/posts/lfescars2-back.png&quot; /&gt;&lt;/a&gt;
+So, sign up now, and let us know you want a limited-edition LFE T-shirt (there
+are only about 20 of the first LFE T-shirts made … they’re so rare, they
+don’t even show up on Ebay!).&lt;/p&gt;
+
+&lt;h3 id=&quot;the-future-for-lfe-t-shirts&quot;&gt;The Future for LFE T-shirts?&lt;/h3&gt;
+
+&lt;p&gt;We have a ton of great ideas for LFE t-shirts, and we’d like to be able to
+iterate on these more quickly. CustomInk is amazing (brand-name shirts,
+long-lasting prints) but they are pretty expensive and require larger orders
+for higher color counts (and to get the price down so that we can cover the
+shipping costs).&lt;/p&gt;
+
+&lt;p&gt;As such, we’re going to look into various local venues which might be able to
+offer a better deal so that we can get these out to you in a more timely
+manner, without community members having to queue up around the world every six
+months ;-)&lt;/p&gt;
+
+&lt;p&gt;Stay tuned!&lt;/p&gt;
+
+</description>
+                <link>http://blog.lfe.io//formalwear/2015/03/20/1256-new-lfe-t-shirt</link>
+                <guid>http://blog.lfe.io//formalwear/2015/03/20/1256-new-lfe-t-shirt</guid>
+                <pubDate>2015-03-20T00:00:00-05:00</pubDate>
+        </item>
 
         <item>
                 <title>LFE Friday - lists:flatmap/2</title>
@@ -54,7 +162,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorial/2015/03/13/1559-lfe-friday---listsflatmap2</link>
                 <guid>http://blog.lfe.io//tutorial/2015/03/13/1559-lfe-friday---listsflatmap2</guid>
-                <pubDate>2015-03-13T00:00:00+01:00</pubDate>
+                <pubDate>2015-03-13T00:00:00-05:00</pubDate>
         </item>
 
         <item>
@@ -138,7 +246,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorial/2015/03/06/0152-lfe-friday---calendarlocal_time_to_universal_time_dst1</link>
                 <guid>http://blog.lfe.io//tutorial/2015/03/06/0152-lfe-friday---calendarlocal_time_to_universal_time_dst1</guid>
-                <pubDate>2015-03-06T00:00:00+01:00</pubDate>
+                <pubDate>2015-03-06T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -196,7 +304,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/03/01/1823-lfe-friday---dictmerge3</link>
                 <guid>http://blog.lfe.io//tutorials/2015/03/01/1823-lfe-friday---dictmerge3</guid>
-                <pubDate>2015-03-01T00:00:00+01:00</pubDate>
+                <pubDate>2015-03-01T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -234,7 +342,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/02/20/1609-lfe-friday---stringjoin2</link>
                 <guid>http://blog.lfe.io//tutorials/2015/02/20/1609-lfe-friday---stringjoin2</guid>
-                <pubDate>2015-02-20T00:00:00+01:00</pubDate>
+                <pubDate>2015-02-20T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -289,7 +397,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/02/13/1751-lfe-friday---stringtokens2</link>
                 <guid>http://blog.lfe.io//tutorials/2015/02/13/1751-lfe-friday---stringtokens2</guid>
-                <pubDate>2015-02-13T00:00:00+01:00</pubDate>
+                <pubDate>2015-02-13T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -334,7 +442,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/02/10/0206-lfe-friday---listsdropwhile2</link>
                 <guid>http://blog.lfe.io//tutorials/2015/02/10/0206-lfe-friday---listsdropwhile2</guid>
-                <pubDate>2015-02-10T00:00:00+01:00</pubDate>
+                <pubDate>2015-02-10T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -366,7 +474,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/02/02/0111-lfe-friday---listsfilter2</link>
                 <guid>http://blog.lfe.io//tutorials/2015/02/02/0111-lfe-friday---listsfilter2</guid>
-                <pubDate>2015-02-02T00:00:00+01:00</pubDate>
+                <pubDate>2015-02-02T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -485,7 +593,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/01/22/2243-lfe-friday---httpcrequest1-and-httpcrequest4</link>
                 <guid>http://blog.lfe.io//tutorials/2015/01/22/2243-lfe-friday---httpcrequest1-and-httpcrequest4</guid>
-                <pubDate>2015-01-22T00:00:00+01:00</pubDate>
+                <pubDate>2015-01-22T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -523,7 +631,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/01/16/2253-lfe-friday---erlangapply3</link>
                 <guid>http://blog.lfe.io//tutorials/2015/01/16/2253-lfe-friday---erlangapply3</guid>
-                <pubDate>2015-01-16T00:00:00+01:00</pubDate>
+                <pubDate>2015-01-16T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -571,7 +679,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/01/10/2201-lfe-friday---timertc3</link>
                 <guid>http://blog.lfe.io//tutorials/2015/01/10/2201-lfe-friday---timertc3</guid>
-                <pubDate>2015-01-10T00:00:00+01:00</pubDate>
+                <pubDate>2015-01-10T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -722,7 +830,7 @@ things are working on Linux.&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//announcements/2015/01/09/1008-lfetool-150-preview-overriding-version-pinning</link>
                 <guid>http://blog.lfe.io//announcements/2015/01/09/1008-lfetool-150-preview-overriding-version-pinning</guid>
-                <pubDate>2015-01-09T00:00:00+01:00</pubDate>
+                <pubDate>2015-01-09T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -773,7 +881,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/01/04/1931-lfe-friday---listsany2</link>
                 <guid>http://blog.lfe.io//tutorials/2015/01/04/1931-lfe-friday---listsany2</guid>
-                <pubDate>2015-01-04T00:00:00+01:00</pubDate>
+                <pubDate>2015-01-04T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -795,7 +903,7 @@ everyone will enjoy hearing from once a week :-)&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//announcements/2015/01/03/1244-coming-soon-lfe-fridays</link>
                 <guid>http://blog.lfe.io//announcements/2015/01/03/1244-coming-soon-lfe-fridays</guid>
-                <pubDate>2015-01-03T00:00:00+01:00</pubDate>
+                <pubDate>2015-01-03T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -1413,7 +1521,7 @@ hope it’s one that you not only get used to, but can’t live without :-)&lt;/
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/01/01/1215-scientific-computing-on-the-erlang-vm</link>
                 <guid>http://blog.lfe.io//tutorials/2015/01/01/1215-scientific-computing-on-the-erlang-vm</guid>
-                <pubDate>2015-01-01T00:00:00+01:00</pubDate>
+                <pubDate>2015-01-01T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -1644,7 +1752,7 @@ questions, make suggestions, etc.&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//announcements/2014/12/27/1641-easy-python-from-lfeerlang</link>
                 <guid>http://blog.lfe.io//announcements/2014/12/27/1641-easy-python-from-lfeerlang</guid>
-                <pubDate>2014-12-27T00:00:00+01:00</pubDate>
+                <pubDate>2014-12-27T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -1657,7 +1765,7 @@ happiest of new years!&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//holidays/2014/12/25/1221-happy-holidays-from-lfe</link>
                 <guid>http://blog.lfe.io//holidays/2014/12/25/1221-happy-holidays-from-lfe</guid>
-                <pubDate>2014-12-25T00:00:00+01:00</pubDate>
+                <pubDate>2014-12-25T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -1794,7 +1902,7 @@ publish to this group as soon as it reaches some level of stability.&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//reports/2014/12/17/1435-post-sprint-report-lfe-experience</link>
                 <guid>http://blog.lfe.io//reports/2014/12/17/1435-post-sprint-report-lfe-experience</guid>
-                <pubDate>2014-12-17T00:00:00+01:00</pubDate>
+                <pubDate>2014-12-17T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -1932,7 +2040,7 @@ using &lt;code&gt;subseq&lt;/code&gt; instead of &lt;code&gt;car&lt;/code&gt; an
 </description>
                 <link>http://blog.lfe.io//archeology/2014/12/15/1848-byte-august-1979-the-lisp-issue</link>
                 <guid>http://blog.lfe.io//archeology/2014/12/15/1848-byte-august-1979-the-lisp-issue</guid>
-                <pubDate>2014-12-15T00:00:00+01:00</pubDate>
+                <pubDate>2014-12-15T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -2298,7 +2406,7 @@ output of the previous call is the last argument in the next call.&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//announcements/2014/12/14/1645-lutil-050-composition-predicates-core</link>
                 <guid>http://blog.lfe.io//announcements/2014/12/14/1645-lutil-050-composition-predicates-core</guid>
-                <pubDate>2014-12-14T00:00:00+01:00</pubDate>
+                <pubDate>2014-12-14T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -2324,7 +2432,7 @@ which uses lfest for its routing and responses&lt;/li&gt;
 </description>
                 <link>http://blog.lfe.io//announcements/2014/12/08/1929-lfest-002-is-released</link>
                 <guid>http://blog.lfe.io//announcements/2014/12/08/1929-lfest-002-is-released</guid>
-                <pubDate>2014-12-08T00:00:00+01:00</pubDate>
+                <pubDate>2014-12-08T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -2684,7 +2792,7 @@ amazing tales to share, we want to hear there :-)&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//tutorials/2014/12/07/1837-running-lfe-in-docker</link>
                 <guid>http://blog.lfe.io//tutorials/2014/12/07/1837-running-lfe-in-docker</guid>
-                <pubDate>2014-12-07T00:00:00+01:00</pubDate>
+                <pubDate>2014-12-07T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -2768,7 +2876,7 @@ and others may also be used with IErlang :-)&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//announcements/2014/12/06/1244-ierlang-notebook-a-la-ipython</link>
                 <guid>http://blog.lfe.io//announcements/2014/12/06/1244-ierlang-notebook-a-la-ipython</guid>
-                <pubDate>2014-12-06T00:00:00+01:00</pubDate>
+                <pubDate>2014-12-06T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -3004,7 +3112,7 @@ which prints the error returned from Python as well as the stacktrace in LFE:&lt
 </description>
                 <link>http://blog.lfe.io//tutorials/2014/12/03/1828-erlport-and-python-making-more-calls-from-lfe</link>
                 <guid>http://blog.lfe.io//tutorials/2014/12/03/1828-erlport-and-python-making-more-calls-from-lfe</guid>
-                <pubDate>2014-12-03T00:00:00+01:00</pubDate>
+                <pubDate>2014-12-03T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -3026,7 +3134,7 @@ repository. This information is also supplied in the repo’s
 </description>
                 <link>http://blog.lfe.io//announcements/2014/12/03/1810-community-generated-content</link>
                 <guid>http://blog.lfe.io//announcements/2014/12/03/1810-community-generated-content</guid>
-                <pubDate>2014-12-03T00:00:00+01:00</pubDate>
+                <pubDate>2014-12-03T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -3147,7 +3255,7 @@ usage, approaching some of the functionality offered by such projects as
 </description>
                 <link>http://blog.lfe.io//tutorials/2014/11/21/1508-erlport-using-python-from-erlang-lfe</link>
                 <guid>http://blog.lfe.io//tutorials/2014/11/21/1508-erlport-using-python-from-erlang-lfe</guid>
-                <pubDate>2014-11-21T00:00:00+01:00</pubDate>
+                <pubDate>2014-11-21T00:00:00-06:00</pubDate>
         </item>
 
         <item>
@@ -3188,7 +3296,7 @@ experience for current users :-)&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//announcements/2014/08/31/2024-lfetool-v12-is-out</link>
                 <guid>http://blog.lfe.io//announcements/2014/08/31/2024-lfetool-v12-is-out</guid>
-                <pubDate>2014-08-31T00:00:00+02:00</pubDate>
+                <pubDate>2014-08-31T00:00:00-05:00</pubDate>
         </item>
 
         <item>
@@ -3234,7 +3342,7 @@ a Massively Scalable Web Server In Erlang&lt;/a&gt;.&lt;/li&gt;
 </description>
                 <link>http://blog.lfe.io//conferences/2014/07/23/0849-erlang--oscon-2014</link>
                 <guid>http://blog.lfe.io//conferences/2014/07/23/0849-erlang--oscon-2014</guid>
-                <pubDate>2014-07-23T00:00:00+02:00</pubDate>
+                <pubDate>2014-07-23T00:00:00-05:00</pubDate>
         </item>
 
         <item>
@@ -3277,7 +3385,7 @@ brings for LFE and how this casual approach scales :-)&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//update/2014/06/10/0929-lfe-language-summit-review</link>
                 <guid>http://blog.lfe.io//update/2014/06/10/0929-lfe-language-summit-review</guid>
-                <pubDate>2014-06-10T00:00:00+02:00</pubDate>
+                <pubDate>2014-06-10T00:00:00-05:00</pubDate>
         </item>
 
         <item>
@@ -3316,7 +3424,7 @@ There were a number of reasons why I started with LFE:
 </description>
                 <link>http://blog.lfe.io//history/2014/05/28/1516-the-secret-history-of-lfe</link>
                 <guid>http://blog.lfe.io//history/2014/05/28/1516-the-secret-history-of-lfe</guid>
-                <pubDate>2014-05-28T00:00:00+02:00</pubDate>
+                <pubDate>2014-05-28T00:00:00-05:00</pubDate>
         </item>
 
         <item>
@@ -3344,7 +3452,7 @@ has also been updated.&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//news/2014/05/25/1523-lfe-user-group-meeting-update</link>
                 <guid>http://blog.lfe.io//news/2014/05/25/1523-lfe-user-group-meeting-update</guid>
-                <pubDate>2014-05-25T00:00:00+02:00</pubDate>
+                <pubDate>2014-05-25T00:00:00-05:00</pubDate>
         </item>
 
         <item>
@@ -3366,7 +3474,7 @@ included!).&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//site/2014/05/25/1026-history-of-erlang</link>
                 <guid>http://blog.lfe.io//site/2014/05/25/1026-history-of-erlang</guid>
-                <pubDate>2014-05-25T00:00:00+02:00</pubDate>
+                <pubDate>2014-05-25T00:00:00-05:00</pubDate>
         </item>
 
         <item>
@@ -3385,7 +3493,7 @@ named “LFE Sunday Times”.&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//news/2014/05/23/1114-lfe-sunday-times</link>
                 <guid>http://blog.lfe.io//news/2014/05/23/1114-lfe-sunday-times</guid>
-                <pubDate>2014-05-23T00:00:00+02:00</pubDate>
+                <pubDate>2014-05-23T00:00:00-05:00</pubDate>
         </item>
 
         <item>
@@ -3424,7 +3532,7 @@ the site and allow folks to more quickly find what they are looking for.&lt;/p&g
 </description>
                 <link>http://blog.lfe.io//site/2014/05/23/0815-docs-site-overhaul</link>
                 <guid>http://blog.lfe.io//site/2014/05/23/0815-docs-site-overhaul</guid>
-                <pubDate>2014-05-23T00:00:00+02:00</pubDate>
+                <pubDate>2014-05-23T00:00:00-05:00</pubDate>
         </item>
 
         <item>
@@ -3437,7 +3545,7 @@ which have some relation – however tenuous – with LFE, Lisps, or Erlang.&lt;
 </description>
                 <link>http://blog.lfe.io//site/2014/05/22/2301-lfe-microblog-is-open-for-business-</link>
                 <guid>http://blog.lfe.io//site/2014/05/22/2301-lfe-microblog-is-open-for-business-</guid>
-                <pubDate>2014-05-22T00:00:00+02:00</pubDate>
+                <pubDate>2014-05-22T00:00:00-05:00</pubDate>
         </item>
 
         <item>
@@ -3460,7 +3568,7 @@ organized, now:&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//site/2014/05/22/1849-new-lfe-site</link>
                 <guid>http://blog.lfe.io//site/2014/05/22/1849-new-lfe-site</guid>
-                <pubDate>2014-05-22T00:00:00+02:00</pubDate>
+                <pubDate>2014-05-22T00:00:00-05:00</pubDate>
         </item>
 
 
