@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <title>
       
-        SICP: the LFE Edition - Update -
+        The Hidden Origins of Lisp: Introduction -
       
       LFE Tutorials, News, &amp; Updates
     </title>
-    <meta name="description" content="">
+    <meta name="description" content="An update on the LFE edition of SICP and the LFE preface">
     <meta name="author" content="LFEuminati | Alien Alliance">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- HTML5 shim, for IE6-8 support of HTML elements -->
@@ -179,7 +179,7 @@
 
 <div class="page-header">
   <h1>
-    SICP: the LFE Edition - Update 
+    The Hidden Origins of Lisp: Introduction 
     
   </h1>
 </div>
@@ -187,60 +187,109 @@
 <div class="row">
   <div class="span8">
     
-<p><a href="/assets/images/posts/sicp.jpg"><img class="right small" src="/assets/images/posts/sicp.jpg" /></a>
-The LFE Edition of the historic <em>Structure and Interpretation of Computer
-Programs</em> (<a href="http://lfe.gitbooks.io/sicp/content/index.html">book</a>,
-<a href="https://github.com/lfe/sicp">source</a>) continues to make steady progress,
-including getting a new preface. This post is a teaser for additional posts
-which will appear here in the coming days. But first, here’s how things stand
-so far:</p>
+<p><a href="/assets/images/posts/sicp.jpg"><img class="right medium" src="/assets/images/posts/sicp.jpg" /></a>
+As <a href="http://blog.lfe.io/update/2015/03/22/1342-sicp-the-lfe-edition-update/">mentioned earlier</a>,
+this post kicks off a blog series highlighting the new preface for the LFE
+edition of <em>Structure and Interpretation of Computer Programs</em>.
+(<a href="http://lfe.gitbooks.io/sicp/content/index.html">book</a>,
+<a href="https://github.com/lfe/sicp">source</a>) The posts will be comprised of the
+preface introduction and then a collection of short biographies as pertains to
+the foundation (laid by the given individual) which ended up being crucial to
+the development of Lisp, concluding with a section regarding Lisp&#8217;s important
+role in the future of computer science and related industries:</p>
 
 <ul>
-  <li>Chapter 1 is completed</li>
-  <li>Chapter 2 is about half-way done</li>
-  <li>There is a new (additional) preface for the LFE edition (more on that in
-the next post)</li>
-  <li>To date, there have been 17,100 views of LFE SICP</li>
-  <li>There have been 3,300 full reads of the book</li>
-  <li>There have been 500 downloads of the ebook versions <sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
+  <li><a href="/excerpts/2015/03/22/1445-the-hidden-origins-of-lisp-introduction/">Introduction</a></li>
+  <li>Giuseppe Peano</li>
+  <li>Bertrand Russell</li>
+  <li>Alonzo Church</li>
+  <li>John McCarthy</li>
+  <li>The Place of Lisp in the 21st Century</li>
 </ul>
 
-<p>As an LFE programmer, the most amazing thing to see is how extraordinarily
-well-suited LFE is to the task of teaching the material in SICP – more often
-than not, the LFE versions of the sample programs are more elegant, succinct,
-and expressive.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> For the most post, though, the text remains very much as
-it was in beauty of the original.</p>
+<p>The LFE preface in SICP also has a quick summary of the origins of Erlang
+and of LFE itself, discusses changes from the 2nd edition of SICP, then
+closes with instructions on how to obtain the source for the original, for the
+LFE edition, and for the code used in the LFE edition&#8217;s chapters. Those bits
+are available in the book and won&#8217;t be presented in this series of the LFE
+blog.</p>
 
-<p>One significant exception we’ve made to this is the addition of a third
-preface. Though explicitly for the third (LFE) edition, it only discusses
-Erlang and LFE briefly. Instead, we have taken the opportunity to provide a
-personal touch to the history of Lisp’s development via short biographies of a
-selection of mathematicians who made significant contributions to such
-developments as number and function theory, logic, the philosophy of
-mathematics, the λ-calculus, and the Lisp itself.</p>
+<p>If you find any issues or have questions, concerns, etc., you may provide
+feedback about the preface in the
+<a href="https://github.com/lfe/sicp/issues/6">dedicated ticket</a> created for tracking
+such things.</p>
 
-<p>Over the coming days, these will be posted in serial form on the LFE blog to
-share some of this information with a wider audience, and for the motivated and
-interested reader, to <a href="https://github.com/lfe/sicp/issues/6">receive feedback</a>
-on how we might make improvements to the LFE preface.</p>
+<p>Today we start with the preface introduction; look for the remaining sections
+in the coming days.</p>
 
-<p>More is on its way …</p>
+<h2 id="the-hidden-origins-of-lisp-introduction">The Hidden Origins of Lisp: Introduction</h2>
+
+<p>Beginnings are important. They may not fully dictate the trajectory of their
+antecedants, yet it does seem they do have a profound impact on the character
+of their effects. For the human observer, beginnings are also a source of
+inspiration: good beginnings lend a strength of purpose, the possibility of
+greater good. The story of Lisp has a good beginning &#8211; several of them, in
+fact &#8211; closely tied to the theories of numbers, mathematical logic, functions
+and types as well as that of computing itself.</p>
+
+<p>At their root, the histories of programming languages spring from, on one hand,
+the practical considerations of engineering and developer experience, and on
+the other hand, the principle of computability. This, in turn, ultimately
+traces its beginnings to the fundamental concepts of arithmetic and
+mathematical logic: what are numbers and how to we define them rigorously?
+These questions were asked and considered &#8211; sometimes from a fairly vague
+philosophical perspective &#8211; by great minds such as Leibniz (later 1600s;
+drafts published posthumously), Boole (1847), Grassmann (1861), Peirce (1881),
+Frege (1884), and Dedekind (1888). It was the Italian mathematician Giuseppe
+Peano, though, who in 1889 finally identified and distilled the essence of
+these explorations in terms that were more precisely formulated than those of
+his peers or intellectual forebearers. These were subsequently elaborated by
+successive generations of mathematicians prior to the advent of &#8220;high-level&#8221;
+programming languages in the 1950s.</p>
+
+<p>Histories are complicated; complete ones are impossible and readable ones are
+necessarily limited and lacking in details. In our particular case, there is a
+complex lineage of mathematics leading to Lisp. However, for the sake of
+clarity and due to this being a preface and not a book in its own right, the
+mathematical and computational history leading to Lisp has been greatly
+simplified below. The four dominant historical figures discussed provide
+distinct insights and represent corresponding themes as mathematics evolved
+unwittingly toward a support for computing. Due to the limitation of scope,
+however, it might be better to view these as archetypes of mathematical
+discovery rather than historical figures one might come to know when reading a
+full history. Of the many themes one could discern and extract from these great
+minds, we focus on the following:</p>
+
+<ul>
+  <li>Understanding and defining the underpinnings of arithmetic and logic (&#8220;What are
+numbers? What is counting?&#8221;)</li>
+  <li>Attempting to formally unifiy all of mathematics in a consistent framework of
+logic (&#8220;Can I express all of math in discrete logical assertions and
+statements?&#8221;)</li>
+  <li>Formally defining algorithms and computability (&#8220;Is there a procedure that can
+take any precise mathematical statement and decide whether the statement is
+true or false?&#8221;)</li>
+  <li>Creating the means by which symbolic computation and artificial reasoning could
+be made manifest (&#8220;Can we make machines solve problems that are usually
+considered to require intelligence?&#8221;) <sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
+</ul>
+
+<p>Each major topic above depended &#8211; in one form or another &#8211; upon the preceding
+topic, and the four famous mathematcians listed below embodied each of these
+themes. Small excerpts from their lives and work are shared as believed to have
+impacted the course of events that lead to Lisp&#8217;s inception.</p>
 
 <hr />
 
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>We don’t actually recommend the Gitbook ebook downloads for SICP yet,
-  as they do not have good support for LaTeX in the ebook versions; the
-  web version, though, presents all of the LaTeX in its eye-popping,
-  mathematical glory. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>The one exception of that, is of course, the fact that LFE is a Lisp-2
-  and not a Lisp-1 like Scheme; as such, function and lambda application is
-  not as elegant in LFE as it is in the code from the first and second
-  editions of SICP. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+      <p>This is an almost word-for-word quote from John McCarthy&#8217;s January 1962
+  submisstion in the quarterly progress report for MIT&#8217;s RLE, titled
+  <a href="http://dspace.mit.edu/bitstream/handle/1721.1/53661/RLE_QPR_064_XXI.pdf">XXI. ARTIFICIAL INTELLIGENCE</a>,
+  page 189 on the original hard copy. The table of contents for the
+  original is available
+  <a href="http://dspace.mit.edu/bitstream/handle/1721.1/53645/RLE_QPR_064_TOC.pdf">here</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -248,11 +297,11 @@ on how we might make improvements to the LFE preface.</p>
     <hr>
     <div class="pagination btn-group">
       
-        <a class="btn prev" href="/formalwear/2015/03/20/1256-new-lfe-t-shirt" title="New LFE T-Shirt">&larr; Previous</a>
+        <a class="btn prev" href="/update/2015/03/22/1342-sicp-the-lfe-edition-update" title="SICP: the LFE Edition - Update">&larr; Previous</a>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next" href="/excerpts/2015/03/22/1445-the-hidden-origins-of-lisp-introduction" title="The Hidden Origins of Lisp: Introduction">Next &rarr;</a>
+        <a class="btn next disabled">Next &rarr;</a>
       
     </div>
     <hr>
@@ -272,7 +321,7 @@ on how we might make improvements to the LFE preface.</p>
       <section>
         <h4>Category</h4>
         <span class="category">
-          update
+          excerpts
         </span>
       </section>
          
@@ -288,11 +337,15 @@ on how we might make improvements to the LFE preface.</p>
      
     	<li><a href="/tags.html#books-ref">books <span>2</span></a></li>
      
-    	<li><a href="/tags.html#news-ref">news <span>5</span></a></li>
-     
-    	<li><a href="/tags.html#docs-ref">docs <span>6</span></a></li>
+    	<li><a href="/tags.html#documentation-ref">documentation <span>1</span></a></li>
      
     	<li><a href="/tags.html#education-ref">education <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#history-ref">history <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#lisp-ref">lisp <span>4</span></a></li>
+     
+    	<li><a href="/tags.html#mathematics-ref">mathematics <span>1</span></a></li>
     
   
 
