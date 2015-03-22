@@ -4,13 +4,119 @@
  <title>LFE Tutorials, News, &amp; Updates</title>
  <link href="http://blog.lfe.io//" rel="self"/>
  <link href="http://blog.lfe.io/"/>
- <updated>2015-03-22T14:17:24-05:00</updated>
+ <updated>2015-03-22T14:56:49-05:00</updated>
  <id>http://blog.lfe.io/</id>
  <author>
    <name>LFElluminati | Alien Alliance</name>
    <email>lisp-flavored-erlang@googlegroups.com</email>
  </author>
 
+ 
+ <entry>
+   <title>The Hidden Origins of Lisp: Introduction</title>
+   <link href="http://blog.lfe.io//excerpts/2015/03/22/1445-the-hidden-origins-of-lisp-introduction"/>
+   <updated>2015-03-22T00:00:00-05:00</updated>
+   <id>http://blog.lfe.io//excerpts/2015/03/22/1445-the-hidden-origins-of-lisp-introduction</id>
+   <content type="html">
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/sicp.jpg&quot;&gt;&lt;img class=&quot;right medium&quot; src=&quot;/assets/images/posts/sicp.jpg&quot; /&gt;&lt;/a&gt;
+This post kicks off a blog series highlighting the new preface for the LFE
+edition of &lt;em&gt;Structure and Interpretation of Computer Programs&lt;/em&gt;.
+(&lt;a href=&quot;http://lfe.gitbooks.io/sicp/content/index.html&quot;&gt;book&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/lfe/sicp&quot;&gt;source&lt;/a&gt;) The posts will be comprised of the
+following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Introduction&lt;/li&gt;
+  &lt;li&gt;Giuseppe Peano&lt;/li&gt;
+  &lt;li&gt;Bertrand Russell&lt;/li&gt;
+  &lt;li&gt;Alonzo Church&lt;/li&gt;
+  &lt;li&gt;John McCarthy&lt;/li&gt;
+  &lt;li&gt;The Place of Lisp in the 21st Century&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This preface in SICP also has a quick summary of the origins of Erlang
+and of LFE itself, and discusses changes from the 2nd edition of SICP, then
+closes with instructions on how to obtain the source for the original, for the
+LFE edition, and for the code used in the LFE edition&amp;#8217;s chapters. Those bits
+are available in the book and won&amp;#8217;t be presented in this series of the LFE
+blog.&lt;/p&gt;
+
+&lt;p&gt;Today we start with the preface introduction; look for the remaining sections
+in the coming days.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-hidden-origins-of-lisp-introduction&quot;&gt;The Hidden Origins of Lisp: Introduction&lt;/h2&gt;
+
+&lt;p&gt;Beginnings are important. They may not fully dictate the trajectory of their
+antecedants, yet it does seem they do have a profound impact on the character
+of their effects. For the human observer, beginnings are also a source of
+inspiration: good beginnings lend a strength of purpose, the possibility of
+greater good. The story of Lisp has a good beginning &amp;#8211; several of them, in
+fact &amp;#8211; closely tied to the theories of numbers, mathematical logic, functions
+and types as well as that of computing itself.&lt;/p&gt;
+
+&lt;p&gt;At their root, the histories of programming languages spring from, on one hand,
+the practical considerations of engineering and developer experience, and on
+the other hand, the principle of computability. This, in turn, ultimately
+traces its beginnings to the fundamental concepts of arithmetic and
+mathematical logic: what are numbers and how to we define them rigorously?
+These questions were asked and considered &amp;#8211; sometimes from a fairly vague
+philosophical perspective &amp;#8211; by great minds such as Leibniz (later 1600s;
+drafts published posthumously), Boole (1847), Grassmann (1861), Peirce (1881),
+Frege (1884), and Dedekind (1888). It was the Italian mathematician Giuseppe
+Peano, though, who in 1889 finally identified and distilled the essence of
+these explorations in terms that were more precisely formulated than those of
+his peers or intellectual forebearers. These were subsequently elaborated by
+successive generations of mathematicians prior to the advent of &amp;#8220;high-level&amp;#8221;
+programming languages in the 1950s.&lt;/p&gt;
+
+&lt;p&gt;Histories are complicated; complete ones are impossible and readable ones are
+necessarily limited and lacking in details. In our particular case, there is a
+complex lineage of mathematics leading to Lisp. However, for the sake of
+clarity and due to this being a preface and not a book in its own right, the
+mathematical and computational history leading to Lisp has been greatly
+simplified below. The four dominant historical figures discussed provide
+distinct insights and represent corresponding themes as mathematics evolved
+unwittingly toward a support for computing. Due to the limitation of scope,
+however, it might be better to view these as archetypes of mathematical
+discovery rather than historical figures one might come to know when reading a
+full history. Of the many themes one could discern and extract from these great
+minds, we focus on the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Understanding and defining the underpinnings of arithmetic and logic (&amp;#8220;What are
+numbers? What is counting?&amp;#8221;)&lt;/li&gt;
+  &lt;li&gt;Attempting to formally unifiy all of mathematics in a consistent framework of
+logic (&amp;#8220;Can I express all of math in discrete logical assertions and
+statements?&amp;#8221;)&lt;/li&gt;
+  &lt;li&gt;Formally defining algorithms and computability (&amp;#8220;Is there a procedure that can
+take any precise mathematical statement and decide whether the statement is
+true or false?&amp;#8221;)&lt;/li&gt;
+  &lt;li&gt;Creating the means by which symbolic computation and artificial reasoning could
+be made manifest (&amp;#8220;Can we make machines solve problems that are usually
+considered to require intelligence?&amp;#8221;) &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Each major topic above depended &amp;#8211; in one form or another &amp;#8211; upon the preceding
+topic, and the four famous mathematcians listed below embodied each of these
+themes. Small excerpts from their lives and work are shared as believed to have
+impacted the course of events that lead to Lisp&amp;#8217;s inception.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;This is an almost word-for-word quote from John McCarthy&amp;#8217;s January 1962
+  submisstion in the quarterly progress report for MIT&amp;#8217;s RLE, titled
+  &lt;a href=&quot;http://dspace.mit.edu/bitstream/handle/1721.1/53661/RLE_QPR_064_XXI.pdf&quot;&gt;XXI. ARTIFICIAL INTELLIGENCE&lt;/a&gt;,
+  page 189 on the original hard copy. The table of contents for the
+  original is available
+  &lt;a href=&quot;http://dspace.mit.edu/bitstream/handle/1721.1/53645/RLE_QPR_064_TOC.pdf&quot;&gt;here&lt;/a&gt;. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</content>
+ </entry>
  
  <entry>
    <title>SICP: the LFE Edition - Update</title>
