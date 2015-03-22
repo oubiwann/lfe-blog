@@ -190,7 +190,7 @@
 <p><a href="/assets/images/posts/LispFlavoredErlang-medium-square.png"><img class="right small" src="/assets/images/posts/LispFlavoredErlang-medium-square.png" /></a>My
 team and I have just finished our first major sprint using LFE and I thought
 this would be a good time to report on our experience. Our stack is built around
-<a href="http://yaws.hyber.org/">YAWS</a> and we are using MySQL as the database. We&#8217;re not
+<a href="http://yaws.hyber.org/">YAWS</a> and we are using MySQL as the database. We’re not
 using any templating language, but instead relying on an API-based architecture
 with all front-end interactions in JavaScript + HTML.</p>
 
@@ -231,7 +231,7 @@ So far, I only had a little bit of trouble with Bit comprehensions on
 that front. But, I suspect that is more because I am new to Erlang.</p>
   </li>
   <li>
-    <p>The compiler seems fast enough, but I&#8217;ll know more as the number of
+    <p>The compiler seems fast enough, but I’ll know more as the number of
 source files grow.</p>
   </li>
 </ol>
@@ -240,7 +240,7 @@ source files grow.</p>
 
 <ol>
   <li>
-    <p><strong>Documentation</strong>: &#8230; It exists, but things are hard to find. I realize
+    <p><strong>Documentation</strong>: … It exists, but things are hard to find. I realize
 this is a work in progress and hopefully we will be able to help in some
 ways.</p>
   </li>
@@ -259,7 +259,7 @@ and the inability to isolate runs to specific tests was a little painful.</p>
 
 <p>Please bear with me on this. Not all of this relates to LFE entirely, but I
 feel it better to list it here in case LFE can have better solutions. The
-section is bigger because I&#8217;m trying to give all the gory details.</p>
+section is bigger because I’m trying to give all the gory details.</p>
 
 <h3 id="the-macro-system">The Macro System</h3>
 
@@ -270,8 +270,8 @@ painful experience.</p>
   <li>
     <p>The biggest problem is that the macro system does not report errors properly.
 If an expansion encounters an error, all that the compiler reports is
-something like &#8220;could not expand form&#8221;. Or, even more frustratingly
-&#8220;bad application&#8221;. No other information is provided about what the error
+something like “could not expand form”. Or, even more frustratingly
+“bad application”. No other information is provided about what the error
 was and where it arose. This was true in the LFE REPL as well. It would
 REALLY <em>REALLY</em> help if the underlying error is reported.</p>
   </li>
@@ -292,9 +292,9 @@ developers choose to always use Erlang binaries. We are
 <a href="https://groups.google.com/d/msg/lisp-flavoured-erlang/pF4retTadzw/bwmz6a6BNZYJ">currently discussing exactly this</a>
 on the mail list.</p>
 
-<h3 id="erlangs-formatted-io">Erlang&#8217;s Formatted I/O</h3>
+<h3 id="erlangs-formatted-io">Erlang’s Formatted I/O</h3>
 
-<p>Given my long exposure to Common Lisp&#8217;s format, I feel that <code>"~p"</code> is woefully
+<p>Given my long exposure to Common Lisp’s format, I feel that <code>"~p"</code> is woefully
 inadequate. One of my resolutions is to contribute a CL compatible format
 function to LFE. I would love to collaborate with anyone who is interested
 in this.</p>
@@ -312,7 +312,7 @@ alternatives.</p>
 <p>Anyhow, that is all for now. More as things develop. Congratulations on
 getting LFE this far.</p>
 
-<p>I am working on a document called &#8220;LFE for Erlang programmers&#8221;, which I will
+<p>I am working on a document called “LFE for Erlang programmers”, which I will
 publish to this group as soon as it reaches some level of stability.</p>
 
 
