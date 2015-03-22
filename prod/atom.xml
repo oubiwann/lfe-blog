@@ -4,7 +4,7 @@
  <title>LFE Tutorials, News, &amp; Updates</title>
  <link href="http://blog.lfe.io//" rel="self"/>
  <link href="http://blog.lfe.io/"/>
- <updated>2015-03-22T15:00:42-05:00</updated>
+ <updated>2015-03-22T15:18:09-05:00</updated>
  <id>http://blog.lfe.io/</id>
  <author>
    <name>LFEuminati | Alien Alliance</name>
@@ -19,14 +19,18 @@
    <id>http://blog.lfe.io//excerpts/2015/03/22/1445-the-hidden-origins-of-lisp-introduction</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/sicp.jpg&quot;&gt;&lt;img class=&quot;right medium&quot; src=&quot;/assets/images/posts/sicp.jpg&quot; /&gt;&lt;/a&gt;
-This post kicks off a blog series highlighting the new preface for the LFE
+As &lt;a href=&quot;http://blog.lfe.io/update/2015/03/22/1342-sicp-the-lfe-edition-update/&quot;&gt;mentioned earlier&lt;/a&gt;,
+this post kicks off a blog series highlighting the new preface for the LFE
 edition of &lt;em&gt;Structure and Interpretation of Computer Programs&lt;/em&gt;.
 (&lt;a href=&quot;http://lfe.gitbooks.io/sicp/content/index.html&quot;&gt;book&lt;/a&gt;,
 &lt;a href=&quot;https://github.com/lfe/sicp&quot;&gt;source&lt;/a&gt;) The posts will be comprised of the
-following:&lt;/p&gt;
+preface introduction and then a collection of short biographies as pertains to
+the foundation (laid by the given individual) which ended up being crucial to
+the development of Lisp, concluding with a section regarding Lisp&amp;#8217;s important
+role in the future of computer science and related industries:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Introduction&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/22/1445-the-hidden-origins-of-lisp-introduction/&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Giuseppe Peano&lt;/li&gt;
   &lt;li&gt;Bertrand Russell&lt;/li&gt;
   &lt;li&gt;Alonzo Church&lt;/li&gt;
@@ -34,12 +38,17 @@ following:&lt;/p&gt;
   &lt;li&gt;The Place of Lisp in the 21st Century&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;This preface in SICP also has a quick summary of the origins of Erlang
-and of LFE itself, and discusses changes from the 2nd edition of SICP, then
+&lt;p&gt;The LFE preface in SICP also has a quick summary of the origins of Erlang
+and of LFE itself, discusses changes from the 2nd edition of SICP, then
 closes with instructions on how to obtain the source for the original, for the
 LFE edition, and for the code used in the LFE edition&amp;#8217;s chapters. Those bits
 are available in the book and won&amp;#8217;t be presented in this series of the LFE
 blog.&lt;/p&gt;
+
+&lt;p&gt;If you find any issues or have questions, concerns, etc., you may provide
+feedback about the preface in the
+&lt;a href=&quot;https://github.com/lfe/sicp/issues/6&quot;&gt;dedicated ticket&lt;/a&gt; created for tracking
+such things.&lt;/p&gt;
 
 &lt;p&gt;Today we start with the preface introduction; look for the remaining sections
 in the coming days.&lt;/p&gt;
