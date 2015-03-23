@@ -2,6 +2,7 @@
 http://blog.lfe.io//404.html
 http://blog.lfe.io//archive.html
 http://blog.lfe.io//atom.xml
+http://blog.lfe.io//authors.html
 http://blog.lfe.io//categories.html
 http://blog.lfe.io//index.html
 http://blog.lfe.io//pages.html
