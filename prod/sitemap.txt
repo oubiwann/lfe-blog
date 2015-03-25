@@ -12,7 +12,9 @@ http://blog.lfe.io//tags.html
 http://blog.lfe.io//page2/index.html
 http://blog.lfe.io//page3/index.html
 http://blog.lfe.io//page4/index.html
+http://blog.lfe.io//page5/index.html
 
+http://blog.lfe.io//excerpts/2015/03/25/1108-the-hidden-origins-of-lisp-church
 http://blog.lfe.io//excerpts/2015/03/24/0111-the-hidden-origins-of-lisp-russell
 http://blog.lfe.io//excerpts/2015/03/23/1008-the-hidden-origins-of-lisp-peano
 http://blog.lfe.io//excerpts/2015/03/22/1445-the-hidden-origins-of-lisp-introduction
