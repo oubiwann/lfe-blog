@@ -4,7 +4,7 @@
  <title>LFE Tutorials, News, &amp; Updates</title>
  <link href="http://blog.lfe.io//" rel="self"/>
  <link href="http://blog.lfe.io/"/>
- <updated>2015-03-26T15:47:22-05:00</updated>
+ <updated>2015-03-26T15:50:39-05:00</updated>
  <id>http://blog.lfe.io/</id>
  <author>
    <name>LFEuminati | Alien Alliance</name>
@@ -109,7 +109,7 @@ Within a few months, these had also been checked by running the SAP on the IBM
       &lt;p&gt;See the section “The implementation of LISP” in McCarthy’s 1978 paper &lt;em&gt;History of Lisp&lt;/em&gt;. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:4&quot;&gt;
-      &lt;p&gt;See the Lisp Bulletin #3, Decmember 1979 in the article “Lisp History” by Herbert Stoyan, page 45. Stoyan’s article aimed to fill in the missing details of McCarthy’s earlier paper with the same name which he had presented at the SIGPLAN conference in June of 1979. &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;See the Lisp Bulletin #3, Decmember 1979 in the article “Lisp History” by Herbert Stoyan, page 45. Stoyan’s article aimed to fill in the missing details of McCarthy’s earlier paper – of the same name – which McCarthy had presented at the SIGPLAN conference in June of 1979. &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:5&quot;&gt;
       &lt;p&gt;Ibid., page 45. &lt;a href=&quot;#fnref:5&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
