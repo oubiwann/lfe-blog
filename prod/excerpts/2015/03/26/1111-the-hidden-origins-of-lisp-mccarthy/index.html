@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>
       
-        The Hidden Origins of Lisp: Alonzo Church -
+        The Hidden Origins of Lisp: John McCarthy -
       
       LFE Tutorials, News, &amp; Updates
     </title>
@@ -191,7 +191,7 @@
 
 <div class="page-header">
   <h1>
-    The Hidden Origins of Lisp: Alonzo Church
+    The Hidden Origins of Lisp: John McCarthy
     
   </h1>
 </div>
@@ -199,9 +199,7 @@
 <div class="row">
   <div class="span8">
     
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-<p><a href="/assets/images/posts/Alonzo-Church.jpg"><img class="right medium" src="/assets/images/posts/Alonzo-Church.jpg" /></a> Alonzo Church: Creator of the λ‑calculus and articulator of the Church–Turing thesis.</p>
+<p><a href="/assets/images/posts/John-McCarthy.jpg"><img class="right medium" src="/assets/images/posts/John-McCarthy.jpg" /></a> John McCarthy: Creator of the prefix-notation programming language Lisp and founder of AI.</p>
 
 <p>This is one of a series of posts tracing the origins of Lisp through four brief
 biographical vignettes of individuals whose contributions to mathematics
@@ -229,53 +227,76 @@ material, you may share these via the
 <a href="https://github.com/lfe/sicp/issues/6">ticket</a> which has been dedicated to
 tracking feedback.</p>
 
-<h2 id="the-hidden-origins-of-lisp-alonzo-church">The Hidden Origins of Lisp: Alonzo Church</h2>
+<h2 id="the-hidden-origins-of-lisp-john-mccarthy">The Hidden Origins of Lisp: John McCarthy</h2>
 
-<p>Alonzo Church was born in Washington, D.C. in 1903.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> His great-grandfather (originally from Vermont) was not only a professor of mathematics and astronomy at the University of Georgia, but later became its president.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> Church graduated from a Connecticut prep-school in 1920 and then enrolled in Princeton to study mathematics. He published his first paper as an undergraduate and then continued at Princeton, earning his Ph.D. in just three years.</p>
+<p>John McCarthy was born in 1927, in the city of Boston. Due to difficulties finding work during the Great Depression, the family moved to New York, then finally settled in Los Angeles. Having establised an early aptitude and proficieny in mathematics, McCarthy skipped two years of math upon his enrollment at Caltech. The year he received his undergraduate degree, he attended the 1948 Hixon Symposium on Cerebral Mechanisms in Behavior. The speakers at the symposium represented an intersection of mathematics, psychology, and the nascent field of computing science. They were as follows:</p>
 
-<p>While a graduate student, Church was hit by a trolley car and spent time in a hospital where he met Julia Kuczinski<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> – they were married a year later and remained inspearable until her death, 51 years later. Church had a reputation for being a bit quirky: he never drove a car or typed; he was extremely neat and fastidious; he walked everywhere and often hummed to himself while he did so; he loved reading science fiction magazines;<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> a nightowl, he often did his best work late at night. Though he had solitary work habits, his list of Ph.D. students is impressive, including the likes of Turing, Kleene, and Rosser.</p>
+<ul>
+  <li>Professor Ward C. Halstead, University of Chicago</li>
+  <li>Professor Heinrich Kluver, University of Chicago</li>
+  <li>Professor Wolfgang Kohler , Swarthmore College</li>
+  <li>Professor K. S. Lashley, Harvard University</li>
+  <li>Dr. R. Lorente de No, Rockefeller Institute for Medical Research</li>
+  <li>Professor Warren S. Mc Culloch, University of Illinois</li>
+  <li>Dr. John von Neumann, Institute for Advanced Study</li>
+</ul>
 
-<p>Perhaps one of Church’s more defining characteristics was his drive: he deliberately focusd on prominent problems in mathematics and attacked them with great force of will. A few of the problems he had focused on in the early 1930s were:</p>
+<p>At the symposium John von Neumann presented his paper “The General and Logical Theory of Automata”,<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> after which McCarthy became intrigued with the idea of developing machines that could think as people do. McCarthy remained at Caltech for one year of grad school, but then pursed the remainder of his Ph.D. at Princeton, considered by him to be the greater institution for the study of mathematics. In discussions with an enthusiastic von Neumann at Princeton, McCarthy shared his ideas about interacting finite automata – ideas inspired by von Neumann’s talk at the Hixon Symposium.</p>
 
-<ol>
-  <li>Known paradoxes entailed by Betrend Russell’s theory of types <sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup></li>
-  <li>David Hilbert’s <em>Entschiedungsproblem</em>, and</li>
-  <li>The implications of Gödel’s completeness theorem.</li>
-</ol>
+<p>After completing his Ph.D. dissertation, Claude Shannon invited McCarthy and his friend Marvin Minsky to work at Bell Labs in New Jersey for the summer. McCarthy and Shannon collaborated on assembling a volume of papers entitled “Automata Studies,” thought ultimately a bit of a disappointment to McCarthy since so few submissions concerned the topic of his primary interest: machine intelligence. A few years later, he had the opportunity to address this by proposing a summer research project which he and the head of IBM’s Information Research pitched to Shannon and Minsky. They agreed, and a year later held the first Artificial Intelligence workshop at the Dartmouth campus in New Hampshire.</p>
 
-<p>These were some of the most compelling challenges in mathematics at that time. All of them ended up meeting at the cross-roads of the λ‑calculus.</p>
+<p>It was here, thanks to Allen Newell and Herb Simon, that McCarthy was exposed to the idea of list processing for a “logical language” Newell and Simon were working on (later named IPL). McCarthy initially had high hopes for this effort but upon seeing that its implementation borrowed heavily from assembly, he gave up on it. That, in conjuntion with his inability to gain any traction with the maintainers of FORTRAN for the support of recursion or conditionals, finally pushed him to create a language that suited his goals of exploring machine intelligence.</p>
 
-<p>Church had started working on the λ‑calculus when attempting to address the Russell Parardox <sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>. However, it was not that goal toward which the λ‑calculus was ultimately applied. Instead, it became useful – essential, even – in his efforts to define what he called “calculability” and what is now more commonly referred to as <em>computability</em>.<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup> In this the λ‑calculus was an unparalleled success, allowing Church to solve the <em>Entschiedungsproblem</em> using the concept of recursive functions.</p>
+<p>With the seeds of Lisp sown in 1956, it was two more years before development
+of Lisp began in earnest. In 1958 a special project was established to carry
+out Lisp development and AI work under the auspices of the MIT Research
+Laboratory of Electronics – which granted McCarthy and his team one room, one
+secretary, two programmers, a key punch and six grad students.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> The MIT AI
+project was founded and the work of creating Lisp had begun.</p>
 
-<p>Syntacitcally, Church’s λ‑-notation made a significant improvement upon that found in the <em>Principia Mathematica</em> <sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup>. Given the <em>Principia</em> phrase <script type="math/tex">\phi x̂</script> and the λ‑calculus equivalent, <script type="math/tex">\lambda x \phi x</script>, one benefits from the use of the latter by virtue of the fact that it unambiguously states that the variable <script type="math/tex">x</script> is bound by the term-forming operator <script type="math/tex">\lambda</script>. This innovation was necessary for Church’s work and was a powerful tool put to use by John McCarthy when he built the first programming language which used the λ‑calculus: Lisp.</p>
+<p>By the end of the
+year, the group had hand-compiled various functions into SAP (<em>SHARE assembly
+program</em>) and had written subroutines for reading and printing list structures
+as well as to provide a Lisp environment.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup><sup>,</sup> <sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>
+Within a few months, these had also been checked by running the SAP on the IBM
+704 which had been made available to MIT. <sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup></p>
+
+<p>At the 1980 Lisp conference held at Standford, John McCathy humorously commented on the previous two decades of Lisp’s survival: <sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup></p>
+<blockquote>
+"On LISP's approximate 21st anniversary, no doubt something could be said about coming of age, but it seems doubtful that the normal life expectancy of a programming language is three score and ten. In fact, LISP seems to be the second oldest surviving programming language after Fortran, so maybe we should plan on holding one of these newspaper interviews in which grandpa is asked to what he attributes having lived to 100."
+</blockquote>
+
+<p>Lisp’s 50th aniversary was celebtrated in 2008, and despite the AI Winter of the 1990s, it shows no signs of disuse or senescence. Quite to the contrary, it continues to have a profound impact on multiple generations of computer programmers meeting all number and variation of needs.</p>
 
 <hr />
 
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>The majority of the material for this section has been adapted from the <a href="http://www.math.ucla.edu/~hbe/church.pdf">Introduction</a> to the Collected Works of Alonzo Church, MIT Press (not yet published). <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>A transcript of the talk is vailable in Volume V of John von Neumann “Collected Works”. The topics covered were as follows:<br />
+    <strong>1.</strong> Preliminary Considerations;<br />
+    <strong>2.</strong> Discussion of Certain Relevant Traits of Computing Machines;<br />
+    <strong>3.</strong> Comparisons Between Computing Machines And Living Organisms;<br />
+    <strong>4.</strong> The Future Logical Theory of Automata;<br />
+    <strong>5.</strong> Principles of Digitalization;<br />
+    <strong>6.</strong> Formal Neural Networks; and<br />
+    <strong>7.</strong> The Concept of Complication and Self-Reproduction.<br />
+  The talk concluded with an intensive period of question and answer, also recorded in the above-mentioned volume. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:2">
-      <p>This was when the Univerity of Georgia was still called Franklin College. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+      <p>Marvin Minsky and John McCarthy founded the MIT AI Lab together when McCarthy caught the acting head of the department, Jerome Weisner, in the hallway and asked him permission to do it. Weisner responded with “Well, what do you need?”. When McCarthy gave him the list, he asked “How about 6 graduate students?” as the deparment had agreed to support six mathematics students, but had yet to find work for them. See <a href="http://www-formal.stanford.edu/leora/hayes_morgenstern_birthday_mccarthy.pdf">On John McCarthy’s 80th Birthday, in Honor of his Contributions</a>, page 3. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:3">
-      <p>She was there in training to become a nurse. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+      <p>See the section “The implementation of LISP” in McCarthy’s 1978 paper <em>History of Lisp</em>. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:4">
-      <p>He would also write letters to the editors when the science fiction writers got their science wrong. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+      <p>See the Lisp Bulletin #3, Decmember 1979 in the article “Lisp History” by Herbert Stoyan, page 45. Stoyan’s article aimed to fill in the missing details of McCarthy’s earlier paper with the same name which he had presented at the SIGPLAN conference in June of 1979. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:5">
-      <p>These complications were known and discussed by Russell himself at the time of <em>Principia</em>’s publication. <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+      <p>Ibid., page 45. <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:6">
-      <p>See <a href="http://en.wikipedia.org/wiki/Russell%27s_paradox">Russell’s paradox</a>. <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:7">
-      <p>“Computability” was the term which Turing used. <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:8">
-      <p>See the discussion of “Propositional Functions” in the section “The Notation in Principia Mathematica”:  http://plato.stanford.edu/entries/pm-notation/#4. Note that the section of the <em>Principia Mathematica</em> which they reference in that linked discussion on the Standford site is at the beginning of “Section B: Theory of Apparent Variables” in the <em>Principia</em>. <a href="#fnref:8" class="reversefootnote">&#8617;</a></p>
+      <p>See <a href="http://www-formal.stanford.edu/jmc/lisp20th/lisp20th.html">Lisp: Notes on Its Past and Future</a> in the “Introduction.” <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -283,11 +304,11 @@ tracking feedback.</p>
     <hr>
     <div class="pagination btn-group">
       
-        <a class="btn prev" href="/excerpts/2015/03/24/0111-the-hidden-origins-of-lisp-russell" title="The Hidden Origins of Lisp: Bertrand Russell">&larr; Previous</a>
+        <a class="btn prev" href="/excerpts/2015/03/25/1108-the-hidden-origins-of-lisp-church" title="The Hidden Origins of Lisp: Alonzo Church">&larr; Previous</a>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next" href="/excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy" title="The Hidden Origins of Lisp: John McCarthy">Next &rarr;</a>
+        <a class="btn next disabled">Next &rarr;</a>
       
     </div>
     <hr>
@@ -301,7 +322,7 @@ tracking feedback.</p>
     </section>
     <section>
       <h4>Published</h4>
-      <div class="date"><span>25 March 2015</span></div>
+      <div class="date"><span>26 March 2015</span></div>
     </section>
     
       <section>

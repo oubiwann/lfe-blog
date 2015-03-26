@@ -4,13 +4,123 @@
  <title>LFE Tutorials, News, &amp; Updates</title>
  <link href="http://blog.lfe.io//" rel="self"/>
  <link href="http://blog.lfe.io/"/>
- <updated>2015-03-25T16:46:29-05:00</updated>
+ <updated>2015-03-26T15:47:22-05:00</updated>
  <id>http://blog.lfe.io/</id>
  <author>
    <name>LFEuminati | Alien Alliance</name>
    <email>lisp-flavored-erlang@googlegroups.com</email>
  </author>
 
+ 
+ <entry>
+   <title>The Hidden Origins of Lisp: John McCarthy</title>
+   <link href="http://blog.lfe.io//excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy"/>
+   <updated>2015-03-26T00:00:00-05:00</updated>
+   <id>http://blog.lfe.io//excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy</id>
+   <content type="html">
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/John-McCarthy.jpg&quot;&gt;&lt;img class=&quot;right medium&quot; src=&quot;/assets/images/posts/John-McCarthy.jpg&quot; /&gt;&lt;/a&gt; John McCarthy: Creator of the prefix-notation programming language Lisp and founder of AI.&lt;/p&gt;
+
+&lt;p&gt;This is one of a series of posts tracing the origins of Lisp through four brief
+biographical vignettes of individuals whose contributions to mathematics
+ultimately supported the creation of Lisp:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/22/1445-the-hidden-origins-of-lisp-introduction/&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/23/1008-the-hidden-origins-of-lisp-peano/&quot;&gt;Giuseppe Peano&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/24/0111-the-hidden-origins-of-lisp-russell/&quot;&gt;Bertrand Russell&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/25/1108-the-hidden-origins-of-lisp-church/&quot;&gt;Alonzo Church&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy/&quot;&gt;John McCarthy&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;The Place of Lisp in the 21st Century&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The material presented in these
+posts has been taken from early drafts of the new preface for the LFE edition
+of &lt;em&gt;Structure and Interpretation of Computer Programs&lt;/em&gt;
+(&lt;a href=&quot;http://lfe.gitbooks.io/sicp/content/index.html&quot;&gt;book&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/lfe/sicp&quot;&gt;source&lt;/a&gt;) and shared here for the purpose of
+community feedback and review – as well as to expose Lisp’s pre-history to a
+wider audience!&lt;/p&gt;
+
+&lt;p&gt;If you find any issues or have questions, concerns, etc., about this preface
+material, you may share these via the
+&lt;a href=&quot;https://github.com/lfe/sicp/issues/6&quot;&gt;ticket&lt;/a&gt; which has been dedicated to
+tracking feedback.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-hidden-origins-of-lisp-john-mccarthy&quot;&gt;The Hidden Origins of Lisp: John McCarthy&lt;/h2&gt;
+
+&lt;p&gt;John McCarthy was born in 1927, in the city of Boston. Due to difficulties finding work during the Great Depression, the family moved to New York, then finally settled in Los Angeles. Having establised an early aptitude and proficieny in mathematics, McCarthy skipped two years of math upon his enrollment at Caltech. The year he received his undergraduate degree, he attended the 1948 Hixon Symposium on Cerebral Mechanisms in Behavior. The speakers at the symposium represented an intersection of mathematics, psychology, and the nascent field of computing science. They were as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Professor Ward C. Halstead, University of Chicago&lt;/li&gt;
+  &lt;li&gt;Professor Heinrich Kluver, University of Chicago&lt;/li&gt;
+  &lt;li&gt;Professor Wolfgang Kohler , Swarthmore College&lt;/li&gt;
+  &lt;li&gt;Professor K. S. Lashley, Harvard University&lt;/li&gt;
+  &lt;li&gt;Dr. R. Lorente de No, Rockefeller Institute for Medical Research&lt;/li&gt;
+  &lt;li&gt;Professor Warren S. Mc Culloch, University of Illinois&lt;/li&gt;
+  &lt;li&gt;Dr. John von Neumann, Institute for Advanced Study&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;At the symposium John von Neumann presented his paper “The General and Logical Theory of Automata”,&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; after which McCarthy became intrigued with the idea of developing machines that could think as people do. McCarthy remained at Caltech for one year of grad school, but then pursed the remainder of his Ph.D. at Princeton, considered by him to be the greater institution for the study of mathematics. In discussions with an enthusiastic von Neumann at Princeton, McCarthy shared his ideas about interacting finite automata – ideas inspired by von Neumann’s talk at the Hixon Symposium.&lt;/p&gt;
+
+&lt;p&gt;After completing his Ph.D. dissertation, Claude Shannon invited McCarthy and his friend Marvin Minsky to work at Bell Labs in New Jersey for the summer. McCarthy and Shannon collaborated on assembling a volume of papers entitled “Automata Studies,” thought ultimately a bit of a disappointment to McCarthy since so few submissions concerned the topic of his primary interest: machine intelligence. A few years later, he had the opportunity to address this by proposing a summer research project which he and the head of IBM’s Information Research pitched to Shannon and Minsky. They agreed, and a year later held the first Artificial Intelligence workshop at the Dartmouth campus in New Hampshire.&lt;/p&gt;
+
+&lt;p&gt;It was here, thanks to Allen Newell and Herb Simon, that McCarthy was exposed to the idea of list processing for a “logical language” Newell and Simon were working on (later named IPL). McCarthy initially had high hopes for this effort but upon seeing that its implementation borrowed heavily from assembly, he gave up on it. That, in conjuntion with his inability to gain any traction with the maintainers of FORTRAN for the support of recursion or conditionals, finally pushed him to create a language that suited his goals of exploring machine intelligence.&lt;/p&gt;
+
+&lt;p&gt;With the seeds of Lisp sown in 1956, it was two more years before development
+of Lisp began in earnest. In 1958 a special project was established to carry
+out Lisp development and AI work under the auspices of the MIT Research
+Laboratory of Electronics – which granted McCarthy and his team one room, one
+secretary, two programmers, a key punch and six grad students.&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; The MIT AI
+project was founded and the work of creating Lisp had begun.&lt;/p&gt;
+
+&lt;p&gt;By the end of the
+year, the group had hand-compiled various functions into SAP (&lt;em&gt;SHARE assembly
+program&lt;/em&gt;) and had written subroutines for reading and printing list structures
+as well as to provide a Lisp environment.&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;sup&gt;,&lt;/sup&gt; &lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;
+Within a few months, these had also been checked by running the SAP on the IBM
+704 which had been made available to MIT. &lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;At the 1980 Lisp conference held at Standford, John McCathy humorously commented on the previous two decades of Lisp’s survival: &lt;sup id=&quot;fnref:6&quot;&gt;&lt;a href=&quot;#fn:6&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&quot;On LISP's approximate 21st anniversary, no doubt something could be said about coming of age, but it seems doubtful that the normal life expectancy of a programming language is three score and ten. In fact, LISP seems to be the second oldest surviving programming language after Fortran, so maybe we should plan on holding one of these newspaper interviews in which grandpa is asked to what he attributes having lived to 100.&quot;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Lisp’s 50th aniversary was celebtrated in 2008, and despite the AI Winter of the 1990s, it shows no signs of disuse or senescence. Quite to the contrary, it continues to have a profound impact on multiple generations of computer programmers meeting all number and variation of needs.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;A transcript of the talk is vailable in Volume V of John von Neumann “Collected Works”. The topics covered were as follows:&lt;br /&gt;
+    &lt;strong&gt;1.&lt;/strong&gt; Preliminary Considerations;&lt;br /&gt;
+    &lt;strong&gt;2.&lt;/strong&gt; Discussion of Certain Relevant Traits of Computing Machines;&lt;br /&gt;
+    &lt;strong&gt;3.&lt;/strong&gt; Comparisons Between Computing Machines And Living Organisms;&lt;br /&gt;
+    &lt;strong&gt;4.&lt;/strong&gt; The Future Logical Theory of Automata;&lt;br /&gt;
+    &lt;strong&gt;5.&lt;/strong&gt; Principles of Digitalization;&lt;br /&gt;
+    &lt;strong&gt;6.&lt;/strong&gt; Formal Neural Networks; and&lt;br /&gt;
+    &lt;strong&gt;7.&lt;/strong&gt; The Concept of Complication and Self-Reproduction.&lt;br /&gt;
+  The talk concluded with an intensive period of question and answer, also recorded in the above-mentioned volume. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;Marvin Minsky and John McCarthy founded the MIT AI Lab together when McCarthy caught the acting head of the department, Jerome Weisner, in the hallway and asked him permission to do it. Weisner responded with “Well, what do you need?”. When McCarthy gave him the list, he asked “How about 6 graduate students?” as the deparment had agreed to support six mathematics students, but had yet to find work for them. See &lt;a href=&quot;http://www-formal.stanford.edu/leora/hayes_morgenstern_birthday_mccarthy.pdf&quot;&gt;On John McCarthy’s 80th Birthday, in Honor of his Contributions&lt;/a&gt;, page 3. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+      &lt;p&gt;See the section “The implementation of LISP” in McCarthy’s 1978 paper &lt;em&gt;History of Lisp&lt;/em&gt;. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:4&quot;&gt;
+      &lt;p&gt;See the Lisp Bulletin #3, Decmember 1979 in the article “Lisp History” by Herbert Stoyan, page 45. Stoyan’s article aimed to fill in the missing details of McCarthy’s earlier paper with the same name which he had presented at the SIGPLAN conference in June of 1979. &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:5&quot;&gt;
+      &lt;p&gt;Ibid., page 45. &lt;a href=&quot;#fnref:5&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:6&quot;&gt;
+      &lt;p&gt;See &lt;a href=&quot;http://www-formal.stanford.edu/jmc/lisp20th/lisp20th.html&quot;&gt;Lisp: Notes on Its Past and Future&lt;/a&gt; in the “Introduction.” &lt;a href=&quot;#fnref:6&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</content>
+ </entry>
  
  <entry>
    <title>The Hidden Origins of Lisp: Alonzo Church</title>
@@ -31,7 +141,7 @@ ultimately supported the creation of Lisp:&lt;/p&gt;
   &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/23/1008-the-hidden-origins-of-lisp-peano/&quot;&gt;Giuseppe Peano&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/24/0111-the-hidden-origins-of-lisp-russell/&quot;&gt;Bertrand Russell&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/25/1108-the-hidden-origins-of-lisp-church/&quot;&gt;Alonzo Church&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;John McCarthy&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy/&quot;&gt;John McCarthy&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;The Place of Lisp in the 21st Century&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -119,7 +229,7 @@ ultimately supported the creation of Lisp:&lt;/p&gt;
   &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/23/1008-the-hidden-origins-of-lisp-peano/&quot;&gt;Giuseppe Peano&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/24/0111-the-hidden-origins-of-lisp-russell/&quot;&gt;Bertrand Russell&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/25/1108-the-hidden-origins-of-lisp-church/&quot;&gt;Alonzo Church&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;John McCarthy&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy/&quot;&gt;John McCarthy&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;The Place of Lisp in the 21st Century&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -188,7 +298,7 @@ ultimately supported the creation of Lisp:&lt;/p&gt;
   &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/23/1008-the-hidden-origins-of-lisp-peano/&quot;&gt;Giuseppe Peano&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/24/0111-the-hidden-origins-of-lisp-russell/&quot;&gt;Bertrand Russell&lt;/a&gt; &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/25/1108-the-hidden-origins-of-lisp-church/&quot;&gt;Alonzo Church&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;John McCarthy&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy/&quot;&gt;John McCarthy&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;The Place of Lisp in the 21st Century&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -263,7 +373,7 @@ role in the future of computer science and related industries:&lt;/p&gt;
   &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/23/1008-the-hidden-origins-of-lisp-peano/&quot;&gt;Giuseppe Peano&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/24/0111-the-hidden-origins-of-lisp-russell/&quot;&gt;Bertrand Russell&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/25/1108-the-hidden-origins-of-lisp-church/&quot;&gt;Alonzo Church&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;John McCarthy&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy/&quot;&gt;John McCarthy&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;The Place of Lisp in the 21st Century&lt;/li&gt;
 &lt;/ul&gt;
 
