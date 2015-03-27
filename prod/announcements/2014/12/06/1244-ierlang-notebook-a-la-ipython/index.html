@@ -201,19 +201,19 @@
     
 <p><a href="/assets/images/posts/screencapture-ierlang_demo.png"><img class="left thumb" src="/assets/images/posts/screencapture-ierlang_demo.png" /></a>Back in April, the Erlang community
 was stunned to hear that we had been given an answer to
-<a href="http://ipython.org/">IPython</a>, IHaskell, and IJulia &#8211;
+<a href="http://ipython.org/">IPython</a>, IHaskell, and IJulia –
 <a href="http://robl.co/ierlang-featured-on-hacker-news/">IErlang</a>. However, as
 <a href="https://twitter.com/lynchrobbie">Robbie</a> noted in the list of outstanding
 issues at the end of the IErlang demo notebook, not a lot of time had been set
 aside to develop a more standard project structure. Furthermore, the setup and
 installation of IErlang to get to the point where you could try it out was a
-rather arduous process. All of that has now changed &#8230;</p>
+rather arduous process. All of that has now changed …</p>
 
 <h2 id="running-the-new-demo">Running the New Demo</h2>
 
 <p>The IErlang project has a series of
 <a href="https://github.com/robbielynch/ierlang/pulls">open PRs</a> that address several
-of the organizational issues Robbie had lamented, but you don&#8217;t have to wait
+of the organizational issues Robbie had lamented, but you don’t have to wait
 until they get merged; you can
 <a href="https://github.com/oubiwann/ierlang">get it now</a>:</p>
 
@@ -221,12 +221,12 @@ until they get merged; you can
 <span class="nv">$ </span><span class="nb">cd </span>ierlang
 <span class="nv">$ </span>make demo</code></pre></div>
 
-<p>Yup. That&#8217;s it.</p>
+<p>Yup. That’s it.</p>
 
 <p>This will do the following for you:</p>
 
 <ul>
-  <li>Set up a Python virtual environment in the project&#8217;s working directory (in
+  <li>Set up a Python virtual environment in the project’s working directory (in
 <code>./.venv-py2</code>)</li>
   <li>Install IPython and its dependencies into that virtual environment</li>
   <li>Patch IPython to support Erlang</li>
@@ -251,11 +251,11 @@ installed in your <code>$PATH</code>:</p>
 <h2 id="outstanding-issues">Outstanding Issues</h2>
 
 <p>As you can see at the bottom of the IErlang notebook demo, many of the issues
-that Robbie identified earlier this year still remain. In particular, I&#8217;ve
+that Robbie identified earlier this year still remain. In particular, I’ve
 added another one to that list: high CPU usage for both <code>console</code> and
 <code>notebook</code> mode.</p>
 
-<p>A minor issue I didn&#8217;t add, but which I may take up (being the code janitor
+<p>A minor issue I didn’t add, but which I may take up (being the code janitor
 that I am) is function-level organization in the modules: most functions are
 too long and entail too much logic. They need to be split out (which will
 also make it easier for folks to contribute).</p>

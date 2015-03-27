@@ -14,6 +14,7 @@ http://blog.lfe.io//page3/index.html
 http://blog.lfe.io//page4/index.html
 http://blog.lfe.io//page5/index.html
 
+http://blog.lfe.io//excerpts/2015/03/27/1101-the-hidden-origins-of-lisp-future
 http://blog.lfe.io//excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy
 http://blog.lfe.io//excerpts/2015/03/25/1108-the-hidden-origins-of-lisp-church
 http://blog.lfe.io//excerpts/2015/03/24/0111-the-hidden-origins-of-lisp-russell
