@@ -4,7 +4,7 @@
  <title>LFE Tutorials, News, &amp; Updates</title>
  <link href="http://blog.lfe.io//" rel="self"/>
  <link href="http://blog.lfe.io/"/>
- <updated>2015-03-27T13:25:28-05:00</updated>
+ <updated>2015-03-30T15:10:17-07:00</updated>
  <id>http://blog.lfe.io/</id>
  <author>
    <name>LFEuminati | Alien Alliance</name>
@@ -15,7 +15,7 @@
  <entry>
    <title>The Hidden Origins of Lisp: The Place of Lisp in the 21st Century</title>
    <link href="http://blog.lfe.io//excerpts/2015/03/27/1101-the-hidden-origins-of-lisp-future"/>
-   <updated>2015-03-27T00:00:00-05:00</updated>
+   <updated>2015-03-27T00:00:00-07:00</updated>
    <id>http://blog.lfe.io//excerpts/2015/03/27/1101-the-hidden-origins-of-lisp-future</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/sicp.jpg&quot;&gt;&lt;img class=&quot;right medium&quot; src=&quot;/assets/images/posts/sicp.jpg&quot; /&gt;&lt;/a&gt;
@@ -147,7 +147,7 @@ well and will likely be with us for a long time to come.&lt;/p&gt;
  <entry>
    <title>The Hidden Origins of Lisp: John McCarthy</title>
    <link href="http://blog.lfe.io//excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy"/>
-   <updated>2015-03-26T00:00:00-05:00</updated>
+   <updated>2015-03-26T00:00:00-07:00</updated>
    <id>http://blog.lfe.io//excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/John-McCarthy.jpg&quot;&gt;&lt;img class=&quot;right medium&quot; src=&quot;/assets/images/posts/John-McCarthy.jpg&quot; /&gt;&lt;/a&gt; John McCarthy: Creator of the prefix-notation programming language Lisp and founder of AI.&lt;/p&gt;
@@ -312,7 +312,7 @@ programmers meeting all number and variation of needs.&lt;/p&gt;
  <entry>
    <title>The Hidden Origins of Lisp: Alonzo Church</title>
    <link href="http://blog.lfe.io//excerpts/2015/03/25/1108-the-hidden-origins-of-lisp-church"/>
-   <updated>2015-03-25T00:00:00-05:00</updated>
+   <updated>2015-03-25T00:00:00-07:00</updated>
    <id>http://blog.lfe.io//excerpts/2015/03/25/1108-the-hidden-origins-of-lisp-church</id>
    <content type="html">
 &lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;&lt;/script&gt;
@@ -401,7 +401,7 @@ tracking feedback.&lt;/p&gt;
  <entry>
    <title>The Hidden Origins of Lisp: Bertrand Russell</title>
    <link href="http://blog.lfe.io//excerpts/2015/03/24/0111-the-hidden-origins-of-lisp-russell"/>
-   <updated>2015-03-24T00:00:00-05:00</updated>
+   <updated>2015-03-24T00:00:00-07:00</updated>
    <id>http://blog.lfe.io//excerpts/2015/03/24/0111-the-hidden-origins-of-lisp-russell</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/Bertrand-Russell.jpg&quot;&gt;&lt;img class=&quot;right small&quot; src=&quot;/assets/images/posts/Bertrand-Russell.jpg&quot; /&gt;&lt;/a&gt;
@@ -475,7 +475,7 @@ tracking feedback.&lt;/p&gt;
  <entry>
    <title>The Hidden Origins of Lisp: Giuseppe Peano</title>
    <link href="http://blog.lfe.io//excerpts/2015/03/23/1008-the-hidden-origins-of-lisp-peano"/>
-   <updated>2015-03-23T00:00:00-05:00</updated>
+   <updated>2015-03-23T00:00:00-07:00</updated>
    <id>http://blog.lfe.io//excerpts/2015/03/23/1008-the-hidden-origins-of-lisp-peano</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/Giuseppe-Peano.jpg&quot;&gt;&lt;img class=&quot;right medium&quot; src=&quot;/assets/images/posts/Giuseppe-Peano.jpg&quot; /&gt;&lt;/a&gt;
@@ -544,9 +544,72 @@ tracking feedback.&lt;/p&gt;
  </entry>
  
  <entry>
+   <title>LFE Friday - ordsets:is_disjoint/2</title>
+   <link href="http://blog.lfe.io//tutorials/2015/03/22/2108-lfe-friday---ordsetsis_disjoint2"/>
+   <updated>2015-03-22T00:00:00-07:00</updated>
+   <id>http://blog.lfe.io//tutorials/2015/03/22/2108-lfe-friday---ordsetsis_disjoint2</id>
+   <content type="html">
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
+&lt;a href=&quot;http://www.proctor-it.com/category/erlang/erlang-thursday/&quot;&gt;Erlang Thursday&lt;/a&gt;
+series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Proctor&lt;/a&gt;.
+&lt;em&gt;This week’s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
+
+&lt;p&gt;Today’s LFE Friday covers &lt;a href=&quot;http://www.erlang.org/doc/man/ordsets.html#is_disjoint-2&quot;&gt;ordsets:is_disjoint/2&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;There are times in your in your coding day where you have problems where you need to know if given a list of items that none of those items appear in a secondary list.&lt;/p&gt;
+
+&lt;p&gt;Your first intuition might be to write out the code as described, like such:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lists:any&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lists:member&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And while that is accurate, if you redefine your problem in more mathematical terms, you can start to think in sets.  When you start to think in terms of sets, you realize that you can check to see if the intersection of the two sets is the empty set.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;=:=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ordsets:intersection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This is becoming not only more concise, but also more explicit about what you are trying to check.&lt;/p&gt;
+
+&lt;p&gt;We can do better still, by checking if the lists are disjoint sets.  Enter &lt;code&gt;ordsets:is_disjoint/2&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ordsets:is_disjoint/2&lt;/code&gt; takes two lists, and returns &lt;code&gt;true&lt;/code&gt; if no elements are in common.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ordsets:is_disjoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ordsets:is_disjoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;false&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Because &lt;code&gt;ordsets:is_disjoint/2&lt;/code&gt; operates against two lists, we do not have to make sure the elements are unique prior to calling &lt;code&gt;ordsets:is_disjoint/2&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ordsets:is_disjoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ordsets:is_disjoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;false&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And if either list passed to &lt;code&gt;ordsets:is_disjoint/2&lt;/code&gt; is an empty list, the result is that the lists are disjoint.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ordsets:is_disjoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;         
+&lt;span class=&quot;nv&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ordsets:is_disjoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;                 
+&lt;span class=&quot;nv&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ordsets:is_disjoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;     
+&lt;span class=&quot;nv&quot;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And if you are curious, by running &lt;code&gt;ordsets:is_disjoint/2&lt;/code&gt; through &lt;code&gt;timer:tc/3&lt;/code&gt;, we can see that as soon as Erlang knows that the sets are not disjoint, it returns &lt;code&gt;false&lt;/code&gt;.  And if you remember from the previous &lt;a href=&quot;http://blog.lfe.io/tutorials/2015/01/10/2201-lfe-friday---timertc3/&quot;&gt;LFE Friday on timer:tc/3&lt;/a&gt;, the return value is a tuple with the first element being the number of &lt;em&gt;micro&lt;/em&gt;seconds it took to complete.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;timer:tc&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;ordsets&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;is_disjoint&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lists:seq&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lists:seq&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2000000&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;         
+&lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;13627&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;timer:tc&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;ordsets&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;is_disjoint&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lists:seq&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lists:seq&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;      
+&lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;-Proctor, Robert&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>The Hidden Origins of Lisp: Introduction</title>
    <link href="http://blog.lfe.io//excerpts/2015/03/22/1445-the-hidden-origins-of-lisp-introduction"/>
-   <updated>2015-03-22T00:00:00-05:00</updated>
+   <updated>2015-03-22T00:00:00-07:00</updated>
    <id>http://blog.lfe.io//excerpts/2015/03/22/1445-the-hidden-origins-of-lisp-introduction</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/sicp.jpg&quot;&gt;&lt;img class=&quot;right medium&quot; src=&quot;/assets/images/posts/sicp.jpg&quot; /&gt;&lt;/a&gt;
@@ -662,7 +725,7 @@ inception.&lt;/p&gt;
  <entry>
    <title>SICP: the LFE Edition - Update</title>
    <link href="http://blog.lfe.io//update/2015/03/22/1342-sicp-the-lfe-edition-update"/>
-   <updated>2015-03-22T00:00:00-05:00</updated>
+   <updated>2015-03-22T00:00:00-07:00</updated>
    <id>http://blog.lfe.io//update/2015/03/22/1342-sicp-the-lfe-edition-update</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/sicp.jpg&quot;&gt;&lt;img class=&quot;right small&quot; src=&quot;/assets/images/posts/sicp.jpg&quot; /&gt;&lt;/a&gt;
@@ -728,7 +791,7 @@ on how we might make improvements to the LFE preface.&lt;/p&gt;
  <entry>
    <title>New LFE T-Shirt</title>
    <link href="http://blog.lfe.io//formalwear/2015/03/20/1256-new-lfe-t-shirt"/>
-   <updated>2015-03-20T00:00:00-05:00</updated>
+   <updated>2015-03-20T00:00:00-07:00</updated>
    <id>http://blog.lfe.io//formalwear/2015/03/20/1256-new-lfe-t-shirt</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/lfescars2-front-back.png&quot;&gt;&lt;img class=&quot;left thumb&quot; src=&quot;/assets/images/posts/lfescars2-front-back.png&quot; /&gt;&lt;/a&gt;The new LFE T-shirt is designed and awaiting more sign-ups! We’re about 1/4 of the way (&lt;strong&gt;Update&lt;/strong&gt;: now 1/2!) to the minimum pledges required. If you’d like to order one or ten, you may do so &lt;a href=&quot;http://www.customink.com/signup/96rbuknu&quot;&gt;here&lt;/a&gt;. For more information on the process, read on …&lt;/p&gt;
@@ -836,7 +899,7 @@ months ;-)&lt;/p&gt;
  <entry>
    <title>LFE Friday - lists:flatmap/2</title>
    <link href="http://blog.lfe.io//tutorial/2015/03/13/1559-lfe-friday---listsflatmap2"/>
-   <updated>2015-03-13T00:00:00-05:00</updated>
+   <updated>2015-03-13T00:00:00-07:00</updated>
    <id>http://blog.lfe.io//tutorial/2015/03/13/1559-lfe-friday---listsflatmap2</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
@@ -883,7 +946,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
  <entry>
    <title>LFE Friday - calendar:local_time_to_universal_time_dst/1</title>
    <link href="http://blog.lfe.io//tutorial/2015/03/06/0152-lfe-friday---calendarlocal_time_to_universal_time_dst1"/>
-   <updated>2015-03-06T00:00:00-06:00</updated>
+   <updated>2015-03-06T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//tutorial/2015/03/06/0152-lfe-friday---calendarlocal_time_to_universal_time_dst1</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
@@ -967,7 +1030,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
  <entry>
    <title>LFE Friday - dict:merge/3</title>
    <link href="http://blog.lfe.io//tutorials/2015/03/01/1823-lfe-friday---dictmerge3"/>
-   <updated>2015-03-01T00:00:00-06:00</updated>
+   <updated>2015-03-01T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/03/01/1823-lfe-friday---dictmerge3</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
@@ -1025,7 +1088,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
  <entry>
    <title>LFE Friday - string:join/2</title>
    <link href="http://blog.lfe.io//tutorials/2015/02/20/1609-lfe-friday---stringjoin2"/>
-   <updated>2015-02-20T00:00:00-06:00</updated>
+   <updated>2015-02-20T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/02/20/1609-lfe-friday---stringjoin2</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
@@ -1063,7 +1126,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
  <entry>
    <title>LFE Friday - string:tokens/2</title>
    <link href="http://blog.lfe.io//tutorials/2015/02/13/1751-lfe-friday---stringtokens2"/>
-   <updated>2015-02-13T00:00:00-06:00</updated>
+   <updated>2015-02-13T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/02/13/1751-lfe-friday---stringtokens2</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
@@ -1118,7 +1181,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
  <entry>
    <title>LFE Friday - lists:dropwhile/2</title>
    <link href="http://blog.lfe.io//tutorials/2015/02/10/0206-lfe-friday---listsdropwhile2"/>
-   <updated>2015-02-10T00:00:00-06:00</updated>
+   <updated>2015-02-10T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/02/10/0206-lfe-friday---listsdropwhile2</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
@@ -1163,7 +1226,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
  <entry>
    <title>LFE Friday - lists:filter/2</title>
    <link href="http://blog.lfe.io//tutorials/2015/02/02/0111-lfe-friday---listsfilter2"/>
-   <updated>2015-02-02T00:00:00-06:00</updated>
+   <updated>2015-02-02T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/02/02/0111-lfe-friday---listsfilter2</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
@@ -1195,7 +1258,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
  <entry>
    <title>LFE Friday - httpc:request/1 and httpc:request/4</title>
    <link href="http://blog.lfe.io//tutorials/2015/01/22/2243-lfe-friday---httpcrequest1-and-httpcrequest4"/>
-   <updated>2015-01-22T00:00:00-06:00</updated>
+   <updated>2015-01-22T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/01/22/2243-lfe-friday---httpcrequest1-and-httpcrequest4</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
@@ -1314,7 +1377,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
  <entry>
    <title>LFE Friday - erlang:apply/3</title>
    <link href="http://blog.lfe.io//tutorials/2015/01/16/2253-lfe-friday---erlangapply3"/>
-   <updated>2015-01-16T00:00:00-06:00</updated>
+   <updated>2015-01-16T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/01/16/2253-lfe-friday---erlangapply3</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
@@ -1352,7 +1415,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
  <entry>
    <title>LFE Friday - timer:tc/3</title>
    <link href="http://blog.lfe.io//tutorials/2015/01/10/2201-lfe-friday---timertc3"/>
-   <updated>2015-01-10T00:00:00-06:00</updated>
+   <updated>2015-01-10T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/01/10/2201-lfe-friday---timertc3</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
@@ -1400,7 +1463,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
  <entry>
    <title>lfetool 1.5.0 Preview: Overriding Version Pinning</title>
    <link href="http://blog.lfe.io//announcements/2015/01/09/1008-lfetool-150-preview-overriding-version-pinning"/>
-   <updated>2015-01-09T00:00:00-06:00</updated>
+   <updated>2015-01-09T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//announcements/2015/01/09/1008-lfetool-150-preview-overriding-version-pinning</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/lfetool-logo-large-grey.png&quot;&gt;&lt;img class=&quot;right smallplus&quot; src=&quot;/assets/images/posts/lfetool-logo-large-grey.png&quot; /&gt;&lt;/a&gt;The next version of lfetool will provide users with the flexibility
@@ -1551,7 +1614,7 @@ things are working on Linux.&lt;/p&gt;
  <entry>
    <title>LFE Friday - lists:any/2</title>
    <link href="http://blog.lfe.io//tutorials/2015/01/04/1931-lfe-friday---listsany2"/>
-   <updated>2015-01-04T00:00:00-06:00</updated>
+   <updated>2015-01-04T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/01/04/1931-lfe-friday---listsany2</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
@@ -1602,7 +1665,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
  <entry>
    <title>Coming Soon: LFE Friday!</title>
    <link href="http://blog.lfe.io//announcements/2015/01/03/1244-coming-soon-lfe-fridays"/>
-   <updated>2015-01-03T00:00:00-06:00</updated>
+   <updated>2015-01-03T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//announcements/2015/01/03/1244-coming-soon-lfe-fridays</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;
@@ -1624,7 +1687,7 @@ everyone will enjoy hearing from once a week :-)&lt;/p&gt;
  <entry>
    <title>Scientific Computing on the Erlang VM</title>
    <link href="http://blog.lfe.io//tutorials/2015/01/01/1215-scientific-computing-on-the-erlang-vm"/>
-   <updated>2015-01-01T00:00:00-06:00</updated>
+   <updated>2015-01-01T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/01/01/1215-scientific-computing-on-the-erlang-vm</id>
    <content type="html">
 &lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;&lt;/script&gt;
@@ -2242,7 +2305,7 @@ hope it’s one that you not only get used to, but can’t live without :-)&lt;/
  <entry>
    <title>Easy Python from LFE/Erlang</title>
    <link href="http://blog.lfe.io//announcements/2014/12/27/1641-easy-python-from-lfeerlang"/>
-   <updated>2014-12-27T00:00:00-06:00</updated>
+   <updated>2014-12-27T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//announcements/2014/12/27/1641-easy-python-from-lfeerlang</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/Python-logo.png&quot;&gt;&lt;img class=&quot;right small&quot; src=&quot;/assets/images/posts/Python-logo.png&quot; /&gt;&lt;/a&gt;Recently there has been a great deal of interest in running Python from
@@ -2473,7 +2536,7 @@ questions, make suggestions, etc.&lt;/p&gt;
  <entry>
    <title>Happy Holidays from LFE</title>
    <link href="http://blog.lfe.io//holidays/2014/12/25/1221-happy-holidays-from-lfe"/>
-   <updated>2014-12-25T00:00:00-06:00</updated>
+   <updated>2014-12-25T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//holidays/2014/12/25/1221-happy-holidays-from-lfe</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/LFE-Happy-Holidays.png&quot;&gt;&lt;img class=&quot;left medium&quot; src=&quot;/assets/images/posts/LFE-Happy-Holidays.png&quot; /&gt;&lt;/a&gt;
@@ -2486,7 +2549,7 @@ happiest of new years!&lt;/p&gt;
  <entry>
    <title>Post Sprint Report: LFE Experience</title>
    <link href="http://blog.lfe.io//reports/2014/12/17/1435-post-sprint-report-lfe-experience"/>
-   <updated>2014-12-17T00:00:00-06:00</updated>
+   <updated>2014-12-17T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//reports/2014/12/17/1435-post-sprint-report-lfe-experience</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;right small&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;My
@@ -2623,7 +2686,7 @@ publish to this group as soon as it reaches some level of stability.&lt;/p&gt;
  <entry>
    <title>BYTE, August 1979: The LISP Issue</title>
    <link href="http://blog.lfe.io//archeology/2014/12/15/1848-byte-august-1979-the-lisp-issue"/>
-   <updated>2014-12-15T00:00:00-06:00</updated>
+   <updated>2014-12-15T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//archeology/2014/12/15/1848-byte-august-1979-the-lisp-issue</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/byte_1979_08_The_LISP_Issue.jpg&quot;&gt;&lt;img class=&quot;left medium&quot; src=&quot;/assets/images/posts/byte_1979_08_The_LISP_Issue.jpg&quot; /&gt;&lt;/a&gt;The image from this post
@@ -2761,7 +2824,7 @@ using &lt;code&gt;subseq&lt;/code&gt; instead of &lt;code&gt;car&lt;/code&gt; an
  <entry>
    <title>lutil 0.5.0: Composition, Predicates and Core lutil</title>
    <link href="http://blog.lfe.io//announcements/2014/12/14/1645-lutil-050-composition-predicates-core"/>
-   <updated>2014-12-14T00:00:00-06:00</updated>
+   <updated>2014-12-14T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//announcements/2014/12/14/1645-lutil-050-composition-predicates-core</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/lutil-leonardo-gears-large.png&quot;&gt;&lt;img class=&quot;right thumb&quot; src=&quot;/assets/images/posts/lutil-leonardo-gears.png&quot; /&gt;&lt;/a&gt;With the
@@ -3127,7 +3190,7 @@ output of the previous call is the last argument in the next call.&lt;/p&gt;
  <entry>
    <title>lfest 0.0.2 Is Released</title>
    <link href="http://blog.lfe.io//announcements/2014/12/08/1929-lfest-002-is-released"/>
-   <updated>2014-12-08T00:00:00-06:00</updated>
+   <updated>2014-12-08T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//announcements/2014/12/08/1929-lfest-002-is-released</id>
    <content type="html">
 &lt;p&gt;lfest 0.0.2 includes the addition of text-only responses in addition to the
@@ -3153,7 +3216,7 @@ which uses lfest for its routing and responses&lt;/li&gt;
  <entry>
    <title>Running LFE in Docker</title>
    <link href="http://blog.lfe.io//tutorials/2014/12/07/1837-running-lfe-in-docker"/>
-   <updated>2014-12-07T00:00:00-06:00</updated>
+   <updated>2014-12-07T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//tutorials/2014/12/07/1837-running-lfe-in-docker</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/DockerLogo.png&quot;&gt;&lt;img class=&quot;left thumb&quot; src=&quot;/assets/images/posts/DockerLogo.png&quot; /&gt;&lt;/a&gt;With the growing prominence of
@@ -3513,7 +3576,7 @@ amazing tales to share, we want to hear there :-)&lt;/p&gt;
  <entry>
    <title>Usability Update: IErlang Notebook (a la IPython)</title>
    <link href="http://blog.lfe.io//announcements/2014/12/06/1244-ierlang-notebook-a-la-ipython"/>
-   <updated>2014-12-06T00:00:00-06:00</updated>
+   <updated>2014-12-06T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//announcements/2014/12/06/1244-ierlang-notebook-a-la-ipython</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/screencapture-ierlang_demo.png&quot;&gt;&lt;img class=&quot;left thumb&quot; src=&quot;/assets/images/posts/screencapture-ierlang_demo.png&quot; /&gt;&lt;/a&gt;Back in April, the Erlang community
@@ -3597,7 +3660,7 @@ and others may also be used with IErlang :-)&lt;/p&gt;
  <entry>
    <title>ErlPort and Python Part II: Making More Calls from LFE</title>
    <link href="http://blog.lfe.io//tutorials/2014/12/03/1828-erlport-and-python-making-more-calls-from-lfe"/>
-   <updated>2014-12-03T00:00:00-06:00</updated>
+   <updated>2014-12-03T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//tutorials/2014/12/03/1828-erlport-and-python-making-more-calls-from-lfe</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/Erlang-Python-Greats.png&quot;&gt;&lt;img class=&quot;right thumb&quot; src=&quot;/assets/images/posts/Erlang-Python-Greats.png&quot; /&gt;&lt;/a&gt;
@@ -3833,7 +3896,7 @@ which prints the error returned from Python as well as the stacktrace in LFE:&lt
  <entry>
    <title>Community Generated Content</title>
    <link href="http://blog.lfe.io//announcements/2014/12/03/1810-community-generated-content"/>
-   <updated>2014-12-03T00:00:00-06:00</updated>
+   <updated>2014-12-03T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//announcements/2014/12/03/1810-community-generated-content</id>
    <content type="html">
 &lt;p&gt;As was just mentioned on the
@@ -3855,7 +3918,7 @@ repository. This information is also supplied in the repo’s
  <entry>
    <title>ErlPort: Using Python from Erlang/LFE</title>
    <link href="http://blog.lfe.io//tutorials/2014/11/21/1508-erlport-using-python-from-erlang-lfe"/>
-   <updated>2014-11-21T00:00:00-06:00</updated>
+   <updated>2014-11-21T00:00:00-08:00</updated>
    <id>http://blog.lfe.io//tutorials/2014/11/21/1508-erlport-using-python-from-erlang-lfe</id>
    <content type="html">
 &lt;p&gt;This post was originally featured on
@@ -3976,7 +4039,7 @@ usage, approaching some of the functionality offered by such projects as
  <entry>
    <title>lfetool v1.2 Is Out!</title>
    <link href="http://blog.lfe.io//announcements/2014/08/31/2024-lfetool-v12-is-out"/>
-   <updated>2014-08-31T00:00:00-05:00</updated>
+   <updated>2014-08-31T00:00:00-07:00</updated>
    <id>http://blog.lfe.io//announcements/2014/08/31/2024-lfetool-v12-is-out</id>
    <content type="html">
 &lt;p&gt;We’ve just pushed out the latest version of lfetool in the v1.x series. This
@@ -4017,7 +4080,7 @@ experience for current users :-)&lt;/p&gt;
  <entry>
    <title>Erlang @ OSCON 2014</title>
    <link href="http://blog.lfe.io//conferences/2014/07/23/0849-erlang--oscon-2014"/>
-   <updated>2014-07-23T00:00:00-05:00</updated>
+   <updated>2014-07-23T00:00:00-07:00</updated>
    <id>http://blog.lfe.io//conferences/2014/07/23/0849-erlang--oscon-2014</id>
    <content type="html">
 &lt;p&gt;Even though there’s no Erlang-specific booth (or a booth by an Erlang company),
@@ -4063,7 +4126,7 @@ a Massively Scalable Web Server In Erlang&lt;/a&gt;.&lt;/li&gt;
  <entry>
    <title>LFE Language Summit Review</title>
    <link href="http://blog.lfe.io//update/2014/06/10/0929-lfe-language-summit-review"/>
-   <updated>2014-06-10T00:00:00-05:00</updated>
+   <updated>2014-06-10T00:00:00-07:00</updated>
    <id>http://blog.lfe.io//update/2014/06/10/0929-lfe-language-summit-review</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;http://www.erlang-factory.com/&quot;&gt;Erlang Factory&lt;/a&gt; was very kind to
@@ -4106,7 +4169,7 @@ brings for LFE and how this casual approach scales :-)&lt;/p&gt;
  <entry>
    <title>The Secret History of LFE</title>
    <link href="http://blog.lfe.io//history/2014/05/28/1516-the-secret-history-of-lfe"/>
-   <updated>2014-05-28T00:00:00-05:00</updated>
+   <updated>2014-05-28T00:00:00-07:00</updated>
    <id>http://blog.lfe.io//history/2014/05/28/1516-the-secret-history-of-lfe</id>
    <content type="html">
 &lt;p&gt;When asked recently about the history of LFE on the &lt;a href=&quot;https://groups.google.com/d/msg/lisp-flavoured-erlang/XA5HeLbQQDk/Jdbf0KJV7dUJ&quot;&gt;LFE mail list&lt;/a&gt;,
@@ -4145,7 +4208,7 @@ There were a number of reasons why I started with LFE:
  <entry>
    <title>LFE User Group Meeting: Update</title>
    <link href="http://blog.lfe.io//news/2014/05/25/1523-lfe-user-group-meeting-update"/>
-   <updated>2014-05-25T00:00:00-05:00</updated>
+   <updated>2014-05-25T00:00:00-07:00</updated>
    <id>http://blog.lfe.io//news/2014/05/25/1523-lfe-user-group-meeting-update</id>
    <content type="html">
 &lt;p&gt;As you may have heard, we’ll be hosting LFE’s first “Language Summit” at the
@@ -4173,7 +4236,7 @@ has also been updated.&lt;/p&gt;
  <entry>
    <title>History of Erlang</title>
    <link href="http://blog.lfe.io//site/2014/05/25/1026-history-of-erlang"/>
-   <updated>2014-05-25T00:00:00-05:00</updated>
+   <updated>2014-05-25T00:00:00-07:00</updated>
    <id>http://blog.lfe.io//site/2014/05/25/1026-history-of-erlang</id>
    <content type="html">
 &lt;p&gt;For a full understanding of one’s field, a thorough knowledge of that field’s
@@ -4195,7 +4258,7 @@ included!).&lt;/p&gt;
  <entry>
    <title>LFE Sunday Times</title>
    <link href="http://blog.lfe.io//news/2014/05/23/1114-lfe-sunday-times"/>
-   <updated>2014-05-23T00:00:00-05:00</updated>
+   <updated>2014-05-23T00:00:00-07:00</updated>
    <id>http://blog.lfe.io//news/2014/05/23/1114-lfe-sunday-times</id>
    <content type="html">
 &lt;p&gt;After watching the LFE Daily from &lt;a href=&quot;http://paper.li&quot;&gt;paper.li&lt;/a&gt; for a few weeks,
@@ -4214,7 +4277,7 @@ named “LFE Sunday Times”.&lt;/p&gt;
  <entry>
    <title>Docs Site Overhaul</title>
    <link href="http://blog.lfe.io//site/2014/05/23/0815-docs-site-overhaul"/>
-   <updated>2014-05-23T00:00:00-05:00</updated>
+   <updated>2014-05-23T00:00:00-07:00</updated>
    <id>http://blog.lfe.io//site/2014/05/23/0815-docs-site-overhaul</id>
    <content type="html">
 &lt;p&gt;Prior to the new site getting launched, the documentation pages had been
@@ -4253,7 +4316,7 @@ the site and allow folks to more quickly find what they are looking for.&lt;/p&g
  <entry>
    <title>LFE Microblog is Open for Business ...</title>
    <link href="http://blog.lfe.io//site/2014/05/22/2301-lfe-microblog-is-open-for-business-"/>
-   <updated>2014-05-22T00:00:00-05:00</updated>
+   <updated>2014-05-22T00:00:00-07:00</updated>
    <id>http://blog.lfe.io//site/2014/05/22/2301-lfe-microblog-is-open-for-business-</id>
    <content type="html">
 &lt;p&gt;The LFE micoblog site (powered by Jekyll and Bootsrap) is live and ready to go.&lt;/p&gt;
@@ -4266,7 +4329,7 @@ which have some relation – however tenuous – with LFE, Lisps, or Erlang.&lt;
  <entry>
    <title>New LFE Site!</title>
    <link href="http://blog.lfe.io//site/2014/05/22/1849-new-lfe-site"/>
-   <updated>2014-05-22T00:00:00-05:00</updated>
+   <updated>2014-05-22T00:00:00-07:00</updated>
    <id>http://blog.lfe.io//site/2014/05/22/1849-new-lfe-site</id>
    <content type="html">
 &lt;p&gt;Good news, everyone! Professor Farnsworth nodded off, and we’ve had some fun
