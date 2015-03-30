@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>
       
-        LFE Friday - erlang:apply/3 -
+        LFE Friday - erlang:list_to_atom/1 -
       
       LFE Tutorials, News, &amp; Updates
     </title>
@@ -191,7 +191,7 @@
 
 <div class="page-header">
   <h1>
-    LFE Friday - erlang:apply/3
+    LFE Friday - erlang:list_to_atom/1
     
   </h1>
 </div>
@@ -204,39 +204,67 @@
 series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
 <em>This week’s translator</em>: Robert Virding.</p>
 
-<p>Today’s LFE Friday is on <a href="http://www.erlang.org/doc/man/erlang.html#apply-3">erlang:apply/3</a>.</p>
+<p>Today’s LFE Friday covers <a href="http://www.erlang.org/doc/man/erlang.html#list_to_atom-1">erlang:list_to_atom/1</a>.</p>
 
-<p>With functional languages we love to pass functions around as the first class citizens that they are. But sometimes we don’t know which function it is that we will need to invoke, causing us to be unsure of the arguments the function takes up front. If we knew, we could just invoke it as <code>(funcall fun arg1 arg2 ... argn)</code>, but that doesn’t work if we could get different functions of varying arities. Enter <code>erlang:apply/3</code>.</p>
+<p><code>erlang:list_to_atom/1</code> takes a string, and returns an Erlang atom.</p>
 
-<p><code>erlang:apply/3</code> takes the module name, the function name, and a list of the arguments to be passed to the function. The function passed to <code>erlang:apply/3</code> must also have been exported, otherwise an error will be raised.</p>
+<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;foo&quot;</span><span class="p">)</span>
+<span class="nv">foo</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;Foo&quot;</span><span class="p">)</span>
+<span class="nv">Foo</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;foo-bar&quot;</span><span class="p">)</span>
+<span class="nv">foo-bar</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;foo bar&quot;</span><span class="p">)</span>
+<span class="nv">|foo bar|</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="p">(</span><span class="nv">++</span> <span class="s">&quot;foo&quot;</span> <span class="s">&quot;-&quot;</span> <span class="s">&quot;bar&quot;</span><span class="p">))</span>
+<span class="nv">foo-bar</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;Erlang&quot;</span><span class="p">)</span>
+<span class="nv">Erlang</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;the LFE way&quot;</span><span class="p">)</span>   
+<span class="nv">|the LFE way|</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;Erlang and Elixir&quot;</span><span class="p">)</span>
+<span class="nv">|Erlang and Elixir|</span></code></pre></div>
 
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">apply</span> <span class="ss">&#39;lists</span> <span class="ss">&#39;max</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">7</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">11</span> <span class="mi">1</span><span class="p">)))</span>
-<span class="mi">11</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">apply</span> <span class="ss">&#39;lists</span> <span class="ss">&#39;merge</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)))</span>
-<span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)</span></code></pre></div>
+<p>This can be useful if you are having to create keys or identifiers based off strings read in from outside the system, such as parsing a CSV style header.</p>
 
-<p>The Erlang documentation points out that this should be used <em>only</em> when the number of arguments is not known at compile time. Otherwise we could just do the a normal function invocation, even if passed an anonymous function.</p>
+<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">lists:map</span> <span class="nf">#&#39;</span><span class="nv">erlang:list_to_atom/1</span>
+             <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;firstName,lastName,age,gender,preferredName,dateOfBirth&quot;</span> <span class="s">&quot;,&quot;</span><span class="p">))</span>
+<span class="p">(</span><span class="nv">firstName</span> <span class="nv">lastName</span> <span class="nv">age</span> <span class="nv">gender</span> <span class="nv">preferredName</span> <span class="nv">dateOfBirth</span><span class="p">)</span></code></pre></div>
 
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">funcall</span> <span class="nf">#&#39;</span><span class="nv">lists:max/1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
-<span class="mi">4</span></code></pre></div>
+<p>You do need to be careful when using <code>erlang:list_to_atom/1</code> on strings acquired from the outside world of your program, as it only handles strings with character values under 256. But any character value<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> under 256 is fair game to be turned into an atom.</p>
 
-<p>The erlang module also includes a version <code>erlang:apply/2</code> that takes a function as it’s first argument, and a list of the arguments to be passed to the function as it’s second argument.</p>
+<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;Joe, Mike and Robert&quot;</span><span class="p">)</span>
+<span class="nv">|Joe, Mike and Robert|</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;it&#39;s&quot;</span><span class="p">)</span>
+<span class="nv">it</span><span class="ss">&#39;s</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;hey\n&quot;</span><span class="p">)</span>
+<span class="nv">|hey\n|</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="p">(</span><span class="nv">++</span> <span class="s">&quot;with-supported-char-&quot;</span> <span class="nv">[255]</span><span class="p">))</span>
+<span class="nv">with-supported-char-</span><span class="err">ÿ</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="p">(</span><span class="nv">++</span> <span class="s">&quot;with-supported-char-&quot;</span> <span class="nv">[256]</span><span class="p">))</span>
+<span class="nv">exception</span> <span class="nv">error:</span> <span class="nv">badarg</span>
+  <span class="nv">in</span> <span class="p">(</span><span class="err">:</span> <span class="nv">erlang</span> <span class="nv">list_to_atom</span> <span class="p">(</span><span class="mi">119</span> <span class="mi">105</span> <span class="mi">116</span> <span class="mi">104</span> <span class="mi">45</span> <span class="mi">115</span> <span class="mi">117</span> <span class="mi">112</span> <span class="mi">112</span> <span class="mi">111</span> <span class="o">...</span><span class="p">))</span></code></pre></div>
 
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">apply</span> <span class="nf">#&#39;</span><span class="nv">lists:merge/2</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)))</span>
-<span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)</span></code></pre></div>
+<p>-Proctor, Robert</p>
 
-<p>While <code>erlang:apply/2</code> and <code>erlang:apply/3</code> will not be part of your common usage, there are cases where it is needed, like last weeks <a href="http://blog.lfe.io/tutorials/2015/01/10/2201-lfe-friday---timertc3/">timer:tc</a>. And though your usage of it will likely be rare, it is still good to know that you have it handy.</p>
+<hr />
 
-<p>–Proctor, Robert</p>
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Remember that character values are non-negative integer values as well, 0-255 inclusive. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 
     <hr>
     <div class="pagination btn-group">
       
-        <a class="btn prev" href="/tutorials/2015/01/10/2201-lfe-friday---timertc3" title="LFE Friday - timer:tc/3">&larr; Previous</a>
+        <a class="btn prev" href="/excerpts/2015/03/27/1101-the-hidden-origins-of-lisp-future" title="The Hidden Origins of Lisp: The Place of Lisp in the 21st Century">&larr; Previous</a>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next" href="/tutorials/2015/01/22/2243-lfe-friday---httpcrequest1-and-httpcrequest4" title="LFE Friday - httpc:request/1 and httpc:request/4">Next &rarr;</a>
+        <a class="btn next disabled">Next &rarr;</a>
       
     </div>
     <hr>
@@ -250,7 +278,7 @@ series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
     </section>
     <section>
       <h4>Published</h4>
-      <div class="date"><span>16 January 2015</span></div>
+      <div class="date"><span>30 March 2015</span></div>
     </section>
     
       <section>
