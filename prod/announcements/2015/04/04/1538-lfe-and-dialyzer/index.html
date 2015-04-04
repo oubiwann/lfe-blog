@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <title>
       
-        LFE Friday - timer:tc/3 -
+        LFE and dialyzer -
       
       LFE Tutorials, News, &amp; Updates
     </title>
-    <meta name="description" content="">
+    <meta name="description" content="How we will be able to run dialyzer on LFE code">
     <meta name="author" content="LFEuminati | Alien Alliance">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- HTML5 shim, for IE6-8 support of HTML elements -->
@@ -191,7 +191,7 @@
 
 <div class="page-header">
   <h1>
-    LFE Friday - timer:tc/3
+    LFE and dialyzer
     
   </h1>
 </div>
@@ -199,54 +199,24 @@
 <div class="row">
   <div class="span8">
     
-<p><a href="/assets/images/posts/LispFlavoredErlang-medium-square.png"><img class="left tiny" src="/assets/images/posts/LispFlavoredErlang-medium-square.png" /></a>This week’s LFE Friday was translated with permission from the
-<a href="http://www.proctor-it.com/category/erlang/erlang-thursday/">Erlang Thursday</a>
-series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
-<em>This week’s translator</em>: Robert Virding.</p>
+<p>Dialyzer can be a useful tool but its implementation has a few idiosynchrasies which make it difficult to directly use with LFE. It can only use .erl files or .beam files. Unfortunately the .beam files must be compiled from erlang files using the ‘debug_info’ option. This option includes the full Erlang AST in the .beam file and it is this which is used by dialyzer.</p>
 
-<p>Today’s LFE Friday is on <a href="http://www.erlang.org/doc/man/timer.html#tc-3">timer:tc/3</a>.</p>
+<p>Unfortunately the LFE compiler does not generate an Erlang AST, it instead generates something called Core erlang which is used internally in the compiler. This is a much nicer language to compile to. Funnily enough dialyzer actually uses Core erlang internally, it just doesn’t provide any direct way of inputing it.</p>
 
-<p>I am sure we have all written some timing code where we capture the current time, do something, capture the current time again and then find the difference to find out how long something took to execute. In Erlang, that generally looks something like the following:</p>
+<p>I have been working on fixing this using some module loading trickery so that special versions of dialyzer files are used which can handle LFE and Core erlang. This does work but it needs a bit more work before it is released to an “unsuspecting public”.</p>
 
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">time1</span> <span class="p">(</span><span class="nv">now</span><span class="p">))</span>
-<span class="o">#(</span><span class="mi">1420</span> <span class="mi">910649</span> <span class="mi">803027</span><span class="p">)</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">timer:sleep</span> <span class="mi">4000</span><span class="p">)</span>    <span class="c1">;Do something</span>
-<span class="nv">ok</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">time2</span> <span class="p">(</span><span class="nv">now</span><span class="p">))</span>
-<span class="o">#(</span><span class="mi">1420</span> <span class="mi">910653</span> <span class="mi">804244</span><span class="p">)</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">timer:now_diff</span> <span class="nv">time2</span> <span class="nv">time1</span><span class="p">)</span>                                             
-<span class="mi">4001217</span></code></pre></div>
+<p>There will be a special dialyzer startup program, ldialyzer, which does the right thing.</p>
 
-<p>Note that we have to use <a href="http://www.erlang.org/doc/man/timer.html#now_diff-2">timer:now_diff/2</a>, since the <code>now/0</code> function returns the timestamp as a tuple, and we can’t just do normal subtraction on that tuple like we might be able to in other languages.</p>
-
-<p>Of course as good “engineers”, we know that since we need to do timings in various places of the app we can just create our own function to do that, and have that live in just one place.</p>
-
-<p>The downside is: the wise people on the Erlang language team have done that for us already and provided it in the form of <code>timer:tc/3</code>.</p>
-
-<p><code>timer:tc/3</code> takes the module name, function name, and a list of the arguments to be passed to the function. And since we usually want the result of the function we are calling, in addition to the timing, the return value is a tuple of the time in microseconds, and the result of applying the function passed to <code>timer:tc/3</code>.</p>
-
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">timer:tc</span> <span class="ss">&#39;timer</span> <span class="ss">&#39;sleep</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4000</span><span class="p">))</span>
-<span class="o">#(</span><span class="mi">4000480</span> <span class="nv">ok</span><span class="p">)</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">timer:tc</span> <span class="ss">&#39;lists</span> <span class="ss">&#39;foldl</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">x</span> <span class="nv">accum</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="nv">x</span> <span class="nv">accum</span><span class="p">))</span> <span class="mi">0</span> <span class="p">(</span><span class="nv">lists:seq</span> <span class="mi">1</span> <span class="mi">2000000</span><span class="p">)))</span>
-<span class="o">#(</span><span class="mi">3533603</span> <span class="mi">2000001000000</span><span class="p">)</span></code></pre></div>
-
-<p>There is also <code>timer:tc/1</code> which takes just a function and applies it, and <code>timer:tc/2</code> which takes a function and applies it with the given arguments.</p>
-
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">timer:tc</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nv">lists:foldl</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">x</span> <span class="nv">accum</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="nv">x</span> <span class="nv">accum</span><span class="p">))</span> <span class="mi">0</span> <span class="p">(</span><span class="nv">lists:seq</span> <span class="mi">1</span> <span class="mi">2000000</span><span class="p">))))</span>       
-<span class="o">#(</span><span class="mi">3693260</span> <span class="mi">2000001000000</span><span class="p">)</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">timer:tc</span> <span class="nf">#&#39;</span><span class="nv">lists:foldl/3</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">x</span> <span class="nv">accum</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="nv">x</span> <span class="nv">accum</span><span class="p">))</span> <span class="mi">0</span> <span class="p">(</span><span class="nv">lists:seq</span> <span class="mi">1</span> <span class="mi">2000000</span><span class="p">)))</span>
-<span class="o">#(</span><span class="mi">3529578</span> <span class="mi">2000001000000</span><span class="p">)</span></code></pre></div>
-
-<p>–Proctor, Robert</p>
+<p>Robert</p>
 
     <hr>
     <div class="pagination btn-group">
       
-        <a class="btn prev" href="/announcements/2015/01/09/1008-lfetool-150-preview-overriding-version-pinning" title="lfetool 1.5.0 Preview: Overriding Version Pinning">&larr; Previous</a>
+        <a class="btn prev" href="/tutorial/2015/04/04/0240-lfe-friday---listsdelete2" title="LFE Friday - lists:delete/2">&larr; Previous</a>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next" href="/tutorials/2015/01/16/2253-lfe-friday---erlangapply3" title="LFE Friday - erlang:apply/3">Next &rarr;</a>
+        <a class="btn next disabled">Next &rarr;</a>
       
     </div>
     <hr>
@@ -260,13 +230,13 @@ series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
     </section>
     <section>
       <h4>Published</h4>
-      <div class="date"><span>10 January 2015</span></div>
+      <div class="date"><span>04 April 2015</span></div>
     </section>
     
       <section>
         <h4>Category</h4>
         <span class="category">
-          tutorials
+          announcements
         </span>
       </section>
     
@@ -280,11 +250,9 @@ series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
 
   
      
-    	<li><a href="/tags.html#lfe friday-ref">lfe friday <span>15</span></a></li>
-     
     	<li><a href="/tags.html#lfe-ref">lfe <span>17</span></a></li>
      
-    	<li><a href="/tags.html#erlang-ref">erlang <span>18</span></a></li>
+    	<li><a href="/tags.html#dialyzer-ref">dialyzer <span>1</span></a></li>
     
   
 

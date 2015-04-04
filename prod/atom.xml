@@ -4,13 +4,31 @@
  <title>LFE Tutorials, News, &amp; Updates</title>
  <link href="http://blog.lfe.io//" rel="self"/>
  <link href="http://blog.lfe.io/"/>
- <updated>2015-04-04T04:06:28+02:00</updated>
+ <updated>2015-04-04T15:47:31+02:00</updated>
  <id>http://blog.lfe.io/</id>
  <author>
    <name>LFEuminati | Alien Alliance</name>
    <email>lisp-flavored-erlang@googlegroups.com</email>
  </author>
 
+ 
+ <entry>
+   <title>LFE and dialyzer</title>
+   <link href="http://blog.lfe.io//announcements/2015/04/04/1538-lfe-and-dialyzer"/>
+   <updated>2015-04-04T00:00:00+02:00</updated>
+   <id>http://blog.lfe.io//announcements/2015/04/04/1538-lfe-and-dialyzer</id>
+   <content type="html">
+&lt;p&gt;Dialyzer can be a useful tool but its implementation has a few idiosynchrasies which make it difficult to directly use with LFE. It can only use .erl files or .beam files. Unfortunately the .beam files must be compiled from erlang files using the ‘debug_info’ option. This option includes the full Erlang AST in the .beam file and it is this which is used by dialyzer.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately the LFE compiler does not generate an Erlang AST, it instead generates something called Core erlang which is used internally in the compiler. This is a much nicer language to compile to. Funnily enough dialyzer actually uses Core erlang internally, it just doesn’t provide any direct way of inputing it.&lt;/p&gt;
+
+&lt;p&gt;I have been working on fixing this using some module loading trickery so that special versions of dialyzer files are used which can handle LFE and Core erlang. This does work but it needs a bit more work before it is released to an “unsuspecting public”.&lt;/p&gt;
+
+&lt;p&gt;There will be a special dialyzer startup program, ldialyzer, which does the right thing.&lt;/p&gt;
+
+&lt;p&gt;Robert&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>LFE Friday - lists:delete/2</title>

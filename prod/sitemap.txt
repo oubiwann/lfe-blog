@@ -14,6 +14,7 @@ http://blog.lfe.io//page3/index.html
 http://blog.lfe.io//page4/index.html
 http://blog.lfe.io//page5/index.html
 
+http://blog.lfe.io//announcements/2015/04/04/1538-lfe-and-dialyzer
 http://blog.lfe.io//tutorial/2015/04/04/0240-lfe-friday---listsdelete2
 http://blog.lfe.io//tutorials/2015/03/30/1513-lfe-friday---erlanglist_to_atom1
 http://blog.lfe.io//excerpts/2015/03/27/1101-the-hidden-origins-of-lisp-future
