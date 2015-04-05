@@ -245,6 +245,16 @@ CLI, the LFE REPL is used in conjunction with the
         <h4>How we will be able to run dialyzer on LFE code</h4>
         <p>
           
+<p><a href="/assets/images/posts/ldialyzer.png"><img class="left medium" src="/assets/images/posts/ldialyzer.png" /></a>
+Dialyzer can be a useful tool but its implementation has a few idiosynchrasies which make it difficult to directly use with LFE. It can only use .erl files or .beam files. Unfortunately the .beam files must be compiled from erlang files using the ‘debug_info’ option. This option includes the full Erlang AST in the .beam file and it is this which is used by dialyzer.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>For this reason releasing a product with only .beam files but which have been compiled with the debug_info option is the same as including the source files. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 
           <br />
           <a href="/announcements/2015/04/04/1538-lfe-and-dialyzer">Read more</a>
