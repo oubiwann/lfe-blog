@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <title>
       
-        LFE Friday - erlang:list_to_atom/1 -
+        LFE and dialyzer -
       
       LFE Tutorials, News, &amp; Updates
     </title>
-    <meta name="description" content="">
+    <meta name="description" content="How we will be able to run dialyzer on LFE code">
     <meta name="author" content="LFEuminati | Alien Alliance">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- HTML5 shim, for IE6-8 support of HTML elements -->
@@ -191,7 +191,7 @@
 
 <div class="page-header">
   <h1>
-    LFE Friday - erlang:list_to_atom/1
+    LFE and dialyzer
     
   </h1>
 </div>
@@ -199,60 +199,20 @@
 <div class="row">
   <div class="span8">
     
-<p><a href="/assets/images/posts/LispFlavoredErlang-medium-square.png"><img class="left tiny" src="/assets/images/posts/LispFlavoredErlang-medium-square.png" /></a>This week’s LFE Friday was translated with permission from the
-<a href="http://www.proctor-it.com/category/erlang/erlang-thursday/">Erlang Thursday</a>
-series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
-<em>This week’s translator</em>: Robert Virding.</p>
+<p>Dialyzer can be a useful tool but its implementation has a few idiosynchrasies which make it difficult to directly use with LFE. It can only use .erl files or .beam files. Unfortunately the .beam files must be compiled from erlang files using the ‘debug_info’ option. This option includes the full Erlang AST in the .beam file and it is this which is used by dialyzer.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
 
-<p>Today’s LFE Friday covers <a href="http://www.erlang.org/doc/man/erlang.html#list_to_atom-1">erlang:list_to_atom/1</a>.</p>
+<p>Unfortunately the LFE compiler does not generate an Erlang AST, it instead generates something called Core erlang which is used internally in the compiler. This is a much nicer language to compile to. Funnily enough dialyzer actually uses Core erlang internally, it just doesn’t provide any direct way of inputing it.</p>
 
-<p><code>erlang:list_to_atom/1</code> takes a string, and returns an Erlang atom.</p>
+<p>I have been working on fixing this using some module loading trickery so that special versions of dialyzer files are used which can handle LFE and Core erlang. This does work but it needs a bit more work before it is released to an “unsuspecting public”.</p>
 
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;foo&quot;</span><span class="p">)</span>
-<span class="nv">foo</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;Foo&quot;</span><span class="p">)</span>
-<span class="nv">Foo</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;foo-bar&quot;</span><span class="p">)</span>
-<span class="nv">foo-bar</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;foo bar&quot;</span><span class="p">)</span>
-<span class="nv">|foo bar|</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="p">(</span><span class="nv">++</span> <span class="s">&quot;foo&quot;</span> <span class="s">&quot;-&quot;</span> <span class="s">&quot;bar&quot;</span><span class="p">))</span>
-<span class="nv">foo-bar</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;Erlang&quot;</span><span class="p">)</span>
-<span class="nv">Erlang</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;the LFE way&quot;</span><span class="p">)</span>   
-<span class="nv">|the LFE way|</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;Erlang and Elixir&quot;</span><span class="p">)</span>
-<span class="nv">|Erlang and Elixir|</span></code></pre></div>
+<p>There will be a special dialyzer startup program, ldialyzer, which does the right thing.</p>
 
-<p>This can be useful if you are having to create keys or identifiers based off strings read in from outside the system, such as parsing a CSV style header.</p>
-
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">lists:map</span> <span class="nf">#&#39;</span><span class="nv">erlang:list_to_atom/1</span>
-             <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;firstName,lastName,age,gender,preferredName,dateOfBirth&quot;</span> <span class="s">&quot;,&quot;</span><span class="p">))</span>
-<span class="p">(</span><span class="nv">firstName</span> <span class="nv">lastName</span> <span class="nv">age</span> <span class="nv">gender</span> <span class="nv">preferredName</span> <span class="nv">dateOfBirth</span><span class="p">)</span></code></pre></div>
-
-<p>You do need to be careful when using <code>erlang:list_to_atom/1</code> on strings acquired from the outside world of your program, as it only handles strings with character values under 256. But any character value<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> under 256 is fair game to be turned into an atom.</p>
-
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;Joe, Mike and Robert&quot;</span><span class="p">)</span>
-<span class="nv">|Joe, Mike and Robert|</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;it&#39;s&quot;</span><span class="p">)</span>
-<span class="nv">it</span><span class="ss">&#39;s</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="s">&quot;hey\n&quot;</span><span class="p">)</span>
-<span class="nv">|hey\n|</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="p">(</span><span class="nv">++</span> <span class="s">&quot;with-supported-char-&quot;</span> <span class="nv">[255]</span><span class="p">))</span>
-<span class="nv">with-supported-char-</span><span class="err">ÿ</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">list_to_atom</span> <span class="p">(</span><span class="nv">++</span> <span class="s">&quot;with-supported-char-&quot;</span> <span class="nv">[256]</span><span class="p">))</span>
-<span class="nv">exception</span> <span class="nv">error:</span> <span class="nv">badarg</span>
-  <span class="nv">in</span> <span class="p">(</span><span class="err">:</span> <span class="nv">erlang</span> <span class="nv">list_to_atom</span> <span class="p">(</span><span class="mi">119</span> <span class="mi">105</span> <span class="mi">116</span> <span class="mi">104</span> <span class="mi">45</span> <span class="mi">115</span> <span class="mi">117</span> <span class="mi">112</span> <span class="mi">112</span> <span class="mi">111</span> <span class="o">...</span><span class="p">))</span></code></pre></div>
-
-<p>-Proctor, Robert</p>
-
-<hr />
+<p>Robert</p>
 
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>Remember that character values are non-negative integer values as well, 0-255 inclusive. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>For this reason releasing a product with only .beam files but which have been compiled with the debug_info option is the same as including the source files. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -260,11 +220,11 @@ series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
     <hr>
     <div class="pagination btn-group">
       
-        <a class="btn prev" href="/excerpts/2015/03/27/1101-the-hidden-origins-of-lisp-future" title="The Hidden Origins of Lisp: The Place of Lisp in the 21st Century">&larr; Previous</a>
+        <a class="btn prev" href="/tutorials/2015/04/04/0240-lfe-friday---listsdelete2" title="LFE Friday - lists:delete/2">&larr; Previous</a>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next" href="/tutorials/2015/04/04/0240-lfe-friday---listsdelete2" title="LFE Friday - lists:delete/2">Next &rarr;</a>
+        <a class="btn next" href="/tutorial/2015/04/05/1332-ledis-using-redis-from-lfe" title="ledis: Using Redis from LFE">Next &rarr;</a>
       
     </div>
     <hr>
@@ -278,13 +238,13 @@ series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
     </section>
     <section>
       <h4>Published</h4>
-      <div class="date"><span>30 March 2015</span></div>
+      <div class="date"><span>04 April 2015</span></div>
     </section>
     
       <section>
         <h4>Category</h4>
         <span class="category">
-          tutorials
+          announcements
         </span>
       </section>
     
@@ -298,11 +258,9 @@ series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
 
   
      
-    	<li><a href="/tags.html#lfe friday-ref">lfe friday <span>15</span></a></li>
-     
     	<li><a href="/tags.html#lfe-ref">lfe <span>17</span></a></li>
      
-    	<li><a href="/tags.html#erlang-ref">erlang <span>18</span></a></li>
+    	<li><a href="/tags.html#dialyzer-ref">dialyzer <span>1</span></a></li>
     
   
 

@@ -15,6 +15,8 @@ http://blog.lfe.io//page4/index.html
 http://blog.lfe.io//page5/index.html
 
 http://blog.lfe.io//tutorial/2015/04/05/1332-ledis-using-redis-from-lfe
+http://blog.lfe.io//announcements/2015/04/04/1538-lfe-and-dialyzer
+http://blog.lfe.io//tutorials/2015/04/04/0240-lfe-friday---listsdelete2
 http://blog.lfe.io//tutorials/2015/03/30/1513-lfe-friday---erlanglist_to_atom1
 http://blog.lfe.io//excerpts/2015/03/27/1101-the-hidden-origins-of-lisp-future
 http://blog.lfe.io//excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy
@@ -25,8 +27,8 @@ http://blog.lfe.io//tutorials/2015/03/22/2108-lfe-friday---ordsetsis_disjoint2
 http://blog.lfe.io//excerpts/2015/03/22/1445-the-hidden-origins-of-lisp-introduction
 http://blog.lfe.io//update/2015/03/22/1342-sicp-the-lfe-edition-update
 http://blog.lfe.io//formalwear/2015/03/20/1256-new-lfe-t-shirt
-http://blog.lfe.io//tutorial/2015/03/13/1559-lfe-friday---listsflatmap2
-http://blog.lfe.io//tutorial/2015/03/06/0152-lfe-friday---calendarlocal_time_to_universal_time_dst1
+http://blog.lfe.io//tutorials/2015/03/13/1559-lfe-friday---listsflatmap2
+http://blog.lfe.io//tutorials/2015/03/06/0152-lfe-friday---calendarlocal_time_to_universal_time_dst1
 http://blog.lfe.io//tutorials/2015/03/01/1823-lfe-friday---dictmerge3
 http://blog.lfe.io//tutorials/2015/02/20/1609-lfe-friday---stringjoin2
 http://blog.lfe.io//tutorials/2015/02/13/1751-lfe-friday---stringtokens2
