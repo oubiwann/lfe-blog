@@ -5,15 +5,15 @@
         <description>LFE Tutorials, News, &amp; Updates - LFEuminati | Alien Alliance</description>
         <link>http://blog.lfe.io/</link>
         <link>http://blog.lfe.io/</link>
-        <lastBuildDate>2015-04-04T15:51:50+02:00</lastBuildDate>
-        <pubDate>2015-04-04T15:51:50+02:00</pubDate>
+        <lastBuildDate>2015-04-05T18:22:17+02:00</lastBuildDate>
+        <pubDate>2015-04-05T18:22:17+02:00</pubDate>
         <ttl>1800</ttl>
 
 
         <item>
                 <title>LFE and dialyzer</title>
                 <description>
-&lt;p&gt;Dialyzer can be a useful tool but its implementation has a few idiosynchrasies which make it difficult to directly use with LFE. It can only use .erl files or .beam files. Unfortunately the .beam files must be compiled from erlang files using the ‘debug_info’ option. This option includes the full Erlang AST in the .beam file and it is this which is used by dialyzer.&lt;/p&gt;
+&lt;p&gt;Dialyzer can be a useful tool but its implementation has a few idiosynchrasies which make it difficult to directly use with LFE. It can only use .erl files or .beam files. Unfortunately the .beam files must be compiled from erlang files using the ‘debug_info’ option. This option includes the full Erlang AST in the .beam file and it is this which is used by dialyzer.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;p&gt;Unfortunately the LFE compiler does not generate an Erlang AST, it instead generates something called Core erlang which is used internally in the compiler. This is a much nicer language to compile to. Funnily enough dialyzer actually uses Core erlang internally, it just doesn’t provide any direct way of inputing it.&lt;/p&gt;
 
@@ -22,6 +22,14 @@
 &lt;p&gt;There will be a special dialyzer startup program, ldialyzer, which does the right thing.&lt;/p&gt;
 
 &lt;p&gt;Robert&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;For this reason releasing a product with only .beam files but which have been compiled with the debug_info option is the same as including the source files. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
 </description>
                 <link>http://blog.lfe.io//announcements/2015/04/04/1538-lfe-and-dialyzer</link>
                 <guid>http://blog.lfe.io//announcements/2015/04/04/1538-lfe-and-dialyzer</guid>
