@@ -5,8 +5,8 @@
         <description>LFE Tutorials, News, &amp; Updates - LFEuminati | Alien Alliance</description>
         <link>http://blog.lfe.io/</link>
         <link>http://blog.lfe.io/</link>
-        <lastBuildDate>2015-04-05T22:54:29-05:00</lastBuildDate>
-        <pubDate>2015-04-05T22:54:29-05:00</pubDate>
+        <lastBuildDate>2015-04-05T22:55:35-05:00</lastBuildDate>
+        <pubDate>2015-04-05T22:55:35-05:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -215,8 +215,8 @@ value of “0” and reading the old value back.&lt;/p&gt;
 
 &lt;p&gt;The ability to set or retrieve the value of multiple keys in a single function
 is also useful for reduced latency. For this reason there are the
-&lt;code&gt;multi-set&lt;/code&gt; and &lt;code&gt;multi-get&lt;/code&gt; ledis functions (which map to the &lt;code&gt;MSET&lt;/code&gt;&lt;code&gt; and
-&lt;/code&gt;&lt;code&gt;MGET&lt;/code&gt;` Redis commands):&lt;/p&gt;
+&lt;code&gt;multi-set&lt;/code&gt; and &lt;code&gt;multi-get&lt;/code&gt; ledis functions (which map to the &lt;code&gt;MSET&lt;/code&gt; and
+&lt;code&gt;MGET&lt;/code&gt; Redis commands):&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ledis:multi-set&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;OK&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
