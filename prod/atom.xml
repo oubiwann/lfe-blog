@@ -4,7 +4,7 @@
  <title>LFE Tutorials, News, &amp; Updates</title>
  <link href="http://blog.lfe.io//" rel="self"/>
  <link href="http://blog.lfe.io/"/>
- <updated>2015-04-05T14:30:50-05:00</updated>
+ <updated>2015-04-05T22:54:29-05:00</updated>
  <id>http://blog.lfe.io/</id>
  <author>
    <name>LFEuminati | Alien Alliance</name>
@@ -24,8 +24,8 @@ types&lt;/a&gt;, where instead of the Redis
 CLI, the LFE REPL is used in conjunction with the
 &lt;a href=&quot;https://github.com/lfex/ledis&quot;&gt;ledis&lt;/a&gt; library.&lt;/p&gt;
 
-&lt;p&gt;The ledis library has defined the Redis commands most oten used; if we haven’t
-added one that you need, just
+&lt;p&gt;The ledis library has defined functions for the Redis commands most often used;
+if we haven’t added one that you need, just
 &lt;a href=&quot;https://github.com/lfex/ledis/issues/new&quot;&gt;open a ticket&lt;/a&gt; with your request, or
 even submit a pull request with your changes.&lt;/p&gt;
 
@@ -137,7 +137,7 @@ library.&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ledis:get&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;mykey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;somevalue&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;As you can see using the &lt;code&gt;set&lt;/code&gt; and the &lt;code&gt;get&lt;/code&gt; commands are the way we set
+&lt;p&gt;As you can see using the &lt;code&gt;set&lt;/code&gt; and the &lt;code&gt;get&lt;/code&gt; functions are the way we set
 and retrieve a string value. Note that &lt;code&gt;set&lt;/code&gt; will replace any existing value
 already stored into the key, in the case that the key already exists, even if
 the key is associated with a non-string value. So &lt;code&gt;set&lt;/code&gt; performs an
@@ -145,7 +145,7 @@ assignment.  Values can be strings (including binary data) of every kind, for
 instance you can store a jpeg image inside a key. A value can’t be bigger than
 512 MB.&lt;/p&gt;
 
-&lt;p&gt;The &lt;code&gt;set&lt;/code&gt; command has interesting options, that are provided as additional
+&lt;p&gt;The &lt;code&gt;set&lt;/code&gt; function has interesting options, that are provided as additional
 arguments. For example, you may ask &lt;code&gt;set&lt;/code&gt; to fail if the key already exists:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ledis:set&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;mykey&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;anothervalue&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;nx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
@@ -180,7 +180,7 @@ exists:&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;Set a value for &lt;code&gt;mykey&lt;/code&gt; – but only if it already existed – and set its
 expiration for 10,000 milliseconds.&lt;/li&gt;
-  &lt;li&gt;Checked the value, to show that our command worked.&lt;/li&gt;
+  &lt;li&gt;Checked the value, to show that our function all worked.&lt;/li&gt;
   &lt;li&gt;Set the timer for a time when the value would be expired.&lt;/li&gt;
   &lt;li&gt;Checked that the value did in fact expire.&lt;/li&gt;
 &lt;/ol&gt;
@@ -197,29 +197,31 @@ you can perform with them. For instance, one is atomic increment:&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ledis:incrby&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;counter&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;152&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;The &lt;code&gt;INCR&lt;/code&gt; command parses the string value as an integer, increments it by
+&lt;p&gt;The &lt;code&gt;incr&lt;/code&gt; function parses the string value as an integer, increments it by
 one, and finally sets the obtained value as the new value. There are other
-similar commands like &lt;code&gt;INCRBY&lt;/code&gt;, &lt;code&gt;DECR&lt;/code&gt; and &lt;code&gt;DECRBY&lt;/code&gt;. Internally it’s
-always the same command, acting in a slightly different way.&lt;/p&gt;
+similar functions like &lt;code&gt;incrby&lt;/code&gt;, &lt;code&gt;decr&lt;/code&gt; and &lt;code&gt;decrby&lt;/code&gt;. Internally it’s
+always the same Redis command, acting in a slightly different way.&lt;/p&gt;
 
-&lt;p&gt;What does it mean that &lt;code&gt;INCR&lt;/code&gt; is atomic? That even multiple clients issuing
-&lt;code&gt;INCR&lt;/code&gt; against the same key will never enter into a race condition. For
+&lt;p&gt;What does it mean that &lt;code&gt;incr&lt;/code&gt; is atomic? That even multiple clients issuing
+&lt;code&gt;incr&lt;/code&gt; against the same key will never enter into a race condition. For
 instance, it will never happen that client 1 reads “10”, client 2 reads “10” at
 the same time, both increment to 11, and set the new value to 11. The final
 value will always be 12 and the read-increment-set operation is performed while
-all the other clients are not executing a command at the same time.&lt;/p&gt;
+all the other clients are not executing a command against the Redis server at
+the same time.&lt;/p&gt;
 
-&lt;p&gt;There are a number of commands for operating on strings. For example the
-&lt;code&gt;GETSET&lt;/code&gt; command sets a key to a new value, returning the old value as the
-result. You can use this command, for example, if you have a system that
-increments a Redis key using &lt;code&gt;INCR&lt;/code&gt; every time your web site receives a new
+&lt;p&gt;There are a number of functions for operating on strings. For example the
+&lt;code&gt;getset&lt;/code&gt; function sets a key to a new value, returning the old value as the
+result. You can use this function, for example, if you have a system that
+increments a Redis key using &lt;code&gt;incr&lt;/code&gt; every time your web site receives a new
 visitor. You may want to collect this information once every hour, without
-losing a single increment.  You can &lt;code&gt;GETSET&lt;/code&gt; the key, assigning it the new
+losing a single increment.  You can &lt;code&gt;getset&lt;/code&gt; the key, assigning it the new
 value of “0” and reading the old value back.&lt;/p&gt;
 
-&lt;p&gt;The ability to set or retrieve the value of multiple keys in a single command
-is also useful for reduced latency. For this reason there are the &lt;code&gt;MSET&lt;/code&gt; and
-&lt;code&gt;MGET&lt;/code&gt; commands:&lt;/p&gt;
+&lt;p&gt;The ability to set or retrieve the value of multiple keys in a single function
+is also useful for reduced latency. For this reason there are the
+&lt;code&gt;multi-set&lt;/code&gt; and &lt;code&gt;multi-get&lt;/code&gt; ledis functions (which map to the &lt;code&gt;MSET&lt;/code&gt;&lt;code&gt; and
+&lt;/code&gt;&lt;code&gt;MGET&lt;/code&gt;` Redis commands):&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ledis:multi-set&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;OK&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -227,16 +229,16 @@ is also useful for reduced latency. For this reason there are the &lt;code&gt;MS
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;10&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;20&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;30&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Note that, since LFE already has built-in functions named &lt;code&gt;mset&lt;/code&gt; and &lt;code&gt;mget&lt;/code&gt;,
-the Redis functions had to be renamed.&lt;/p&gt;
+the Redis command names could not be used.&lt;/p&gt;
 
 &lt;h2 id=&quot;altering-and-querying-the-key-space&quot;&gt;Altering and Querying the Key Space&lt;/h2&gt;
 
-&lt;p&gt;There are commands that are not defined on particular types, but are useful in
+&lt;p&gt;There are functions that are not defined on particular types, but are useful in
 order to interact with the space of keys, and thus, can be used with keys of
 any type.&lt;/p&gt;
 
-&lt;p&gt;For example the &lt;code&gt;EXISTS&lt;/code&gt; command returns 1 or 0 to signal if a given key
-exists or not in the database, while the &lt;code&gt;DEL&lt;/code&gt; command deletes a key and
+&lt;p&gt;For example the &lt;code&gt;exists&lt;/code&gt; function returns 1 or 0 to signal if a given key
+exists or not in the database, while the &lt;code&gt;del&lt;/code&gt; function deletes a key and
 associated value, whatever the value is.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ledis:set&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;mykey&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Hello&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -248,7 +250,7 @@ associated value, whatever the value is.&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ledis:exists&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;mykey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;From the examples you can also see how &lt;code&gt;DEL&lt;/code&gt; itself returns 1 or 0 depending
+&lt;p&gt;From the examples you can also see how &lt;code&gt;del&lt;/code&gt; itself returns 1 or 0 depending
 on whether the key was removed (it existed) or not (there was no such key with
 that name). You may also delete multiple keys in one go:&lt;/p&gt;
 
@@ -259,13 +261,13 @@ that name). You may also delete multiple keys in one go:&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ledis:del&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;key1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;key2&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;key3&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;key4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;3&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;In this case, the return value for &lt;code&gt;DEL&lt;/code&gt; is the number of successful deletes:
+&lt;p&gt;In this case, the return value for &lt;code&gt;del&lt;/code&gt; is the number of successful deletes:
 we asked it to delete four keys, but the fourth doesn’t exist, so it only
 deleted three.&lt;/p&gt;
 
 &lt;p&gt;There are many key space related commands, but the above two are the essential
-ones together with the TYPE command, which returns the kind of value stored at
-the specified key:&lt;/p&gt;
+ones together with the &lt;code&gt;type&lt;/code&gt; function, which returns the kind of value
+stored at the specified key:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ledis:set&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;mykey&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;OK&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;

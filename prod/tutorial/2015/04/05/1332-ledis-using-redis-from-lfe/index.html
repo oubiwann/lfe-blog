@@ -205,8 +205,8 @@ types</a>, where instead of the Redis
 CLI, the LFE REPL is used in conjunction with the
 <a href="https://github.com/lfex/ledis">ledis</a> library.</p>
 
-<p>The ledis library has defined the Redis commands most oten used; if we haven’t
-added one that you need, just
+<p>The ledis library has defined functions for the Redis commands most often used;
+if we haven’t added one that you need, just
 <a href="https://github.com/lfex/ledis/issues/new">open a ticket</a> with your request, or
 even submit a pull request with your changes.</p>
 
@@ -318,7 +318,7 @@ library.</p>
 <span class="nb">&gt;</span> <span class="p">(</span><span class="nv">ledis:get</span> <span class="ss">&#39;mykey</span><span class="p">)</span>
 <span class="o">#(</span><span class="nv">ok</span> <span class="s">&quot;somevalue&quot;</span><span class="p">)</span></code></pre></div>
 
-<p>As you can see using the <code>set</code> and the <code>get</code> commands are the way we set
+<p>As you can see using the <code>set</code> and the <code>get</code> functions are the way we set
 and retrieve a string value. Note that <code>set</code> will replace any existing value
 already stored into the key, in the case that the key already exists, even if
 the key is associated with a non-string value. So <code>set</code> performs an
@@ -326,7 +326,7 @@ assignment.  Values can be strings (including binary data) of every kind, for
 instance you can store a jpeg image inside a key. A value can’t be bigger than
 512 MB.</p>
 
-<p>The <code>set</code> command has interesting options, that are provided as additional
+<p>The <code>set</code> function has interesting options, that are provided as additional
 arguments. For example, you may ask <code>set</code> to fail if the key already exists:</p>
 
 <div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">ledis:set</span> <span class="ss">&#39;mykey</span> <span class="s">&quot;anothervalue&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="o">#(</span><span class="nv">nx</span><span class="p">)))</span>
@@ -361,7 +361,7 @@ exists:</p>
 <ol>
   <li>Set a value for <code>mykey</code> – but only if it already existed – and set its
 expiration for 10,000 milliseconds.</li>
-  <li>Checked the value, to show that our command worked.</li>
+  <li>Checked the value, to show that our function all worked.</li>
   <li>Set the timer for a time when the value would be expired.</li>
   <li>Checked that the value did in fact expire.</li>
 </ol>
@@ -378,29 +378,31 @@ you can perform with them. For instance, one is atomic increment:</p>
 <span class="nb">&gt;</span> <span class="p">(</span><span class="nv">ledis:incrby</span> <span class="ss">&#39;counter</span> <span class="mi">50</span><span class="p">)</span>
 <span class="o">#(</span><span class="nv">ok</span> <span class="s">&quot;152&quot;</span><span class="p">)</span></code></pre></div>
 
-<p>The <code>INCR</code> command parses the string value as an integer, increments it by
+<p>The <code>incr</code> function parses the string value as an integer, increments it by
 one, and finally sets the obtained value as the new value. There are other
-similar commands like <code>INCRBY</code>, <code>DECR</code> and <code>DECRBY</code>. Internally it’s
-always the same command, acting in a slightly different way.</p>
+similar functions like <code>incrby</code>, <code>decr</code> and <code>decrby</code>. Internally it’s
+always the same Redis command, acting in a slightly different way.</p>
 
-<p>What does it mean that <code>INCR</code> is atomic? That even multiple clients issuing
-<code>INCR</code> against the same key will never enter into a race condition. For
+<p>What does it mean that <code>incr</code> is atomic? That even multiple clients issuing
+<code>incr</code> against the same key will never enter into a race condition. For
 instance, it will never happen that client 1 reads “10”, client 2 reads “10” at
 the same time, both increment to 11, and set the new value to 11. The final
 value will always be 12 and the read-increment-set operation is performed while
-all the other clients are not executing a command at the same time.</p>
+all the other clients are not executing a command against the Redis server at
+the same time.</p>
 
-<p>There are a number of commands for operating on strings. For example the
-<code>GETSET</code> command sets a key to a new value, returning the old value as the
-result. You can use this command, for example, if you have a system that
-increments a Redis key using <code>INCR</code> every time your web site receives a new
+<p>There are a number of functions for operating on strings. For example the
+<code>getset</code> function sets a key to a new value, returning the old value as the
+result. You can use this function, for example, if you have a system that
+increments a Redis key using <code>incr</code> every time your web site receives a new
 visitor. You may want to collect this information once every hour, without
-losing a single increment.  You can <code>GETSET</code> the key, assigning it the new
+losing a single increment.  You can <code>getset</code> the key, assigning it the new
 value of “0” and reading the old value back.</p>
 
-<p>The ability to set or retrieve the value of multiple keys in a single command
-is also useful for reduced latency. For this reason there are the <code>MSET</code> and
-<code>MGET</code> commands:</p>
+<p>The ability to set or retrieve the value of multiple keys in a single function
+is also useful for reduced latency. For this reason there are the
+<code>multi-set</code> and <code>multi-get</code> ledis functions (which map to the <code>MSET</code><code> and
+</code><code>MGET</code>` Redis commands):</p>
 
 <div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">ledis:multi-set</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="mi">10</span> <span class="nv">b</span> <span class="mi">20</span> <span class="nv">c</span> <span class="mi">30</span><span class="p">))</span>
 <span class="o">#(</span><span class="nv">ok</span> <span class="s">&quot;OK&quot;</span><span class="p">)</span>
@@ -408,16 +410,16 @@ is also useful for reduced latency. For this reason there are the <code>MSET</co
 <span class="o">#(</span><span class="nv">ok</span> <span class="p">(</span><span class="s">&quot;10&quot;</span> <span class="s">&quot;20&quot;</span> <span class="s">&quot;30&quot;</span><span class="p">))</span></code></pre></div>
 
 <p>Note that, since LFE already has built-in functions named <code>mset</code> and <code>mget</code>,
-the Redis functions had to be renamed.</p>
+the Redis command names could not be used.</p>
 
 <h2 id="altering-and-querying-the-key-space">Altering and Querying the Key Space</h2>
 
-<p>There are commands that are not defined on particular types, but are useful in
+<p>There are functions that are not defined on particular types, but are useful in
 order to interact with the space of keys, and thus, can be used with keys of
 any type.</p>
 
-<p>For example the <code>EXISTS</code> command returns 1 or 0 to signal if a given key
-exists or not in the database, while the <code>DEL</code> command deletes a key and
+<p>For example the <code>exists</code> function returns 1 or 0 to signal if a given key
+exists or not in the database, while the <code>del</code> function deletes a key and
 associated value, whatever the value is.</p>
 
 <div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">ledis:set</span> <span class="ss">&#39;mykey</span> <span class="s">&quot;Hello&quot;</span><span class="p">)</span>
@@ -429,7 +431,7 @@ associated value, whatever the value is.</p>
 <span class="nb">&gt;</span> <span class="p">(</span><span class="nv">ledis:exists</span> <span class="ss">&#39;mykey</span><span class="p">)</span>
 <span class="o">#(</span><span class="nv">ok</span> <span class="s">&quot;0&quot;</span><span class="p">)</span></code></pre></div>
 
-<p>From the examples you can also see how <code>DEL</code> itself returns 1 or 0 depending
+<p>From the examples you can also see how <code>del</code> itself returns 1 or 0 depending
 on whether the key was removed (it existed) or not (there was no such key with
 that name). You may also delete multiple keys in one go:</p>
 
@@ -440,13 +442,13 @@ that name). You may also delete multiple keys in one go:</p>
 <span class="nb">&gt;</span> <span class="p">(</span><span class="nv">ledis:del</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">key1</span> <span class="nv">key2</span> <span class="nv">key3</span> <span class="nv">key4</span><span class="p">))</span>
 <span class="o">#(</span><span class="nv">ok</span> <span class="s">&quot;3&quot;</span><span class="p">)</span></code></pre></div>
 
-<p>In this case, the return value for <code>DEL</code> is the number of successful deletes:
+<p>In this case, the return value for <code>del</code> is the number of successful deletes:
 we asked it to delete four keys, but the fourth doesn’t exist, so it only
 deleted three.</p>
 
 <p>There are many key space related commands, but the above two are the essential
-ones together with the TYPE command, which returns the kind of value stored at
-the specified key:</p>
+ones together with the <code>type</code> function, which returns the kind of value
+stored at the specified key:</p>
 
 <div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">ledis:set</span> <span class="ss">&#39;mykey</span> <span class="mi">1</span><span class="p">)</span>
 <span class="o">#(</span><span class="nv">ok</span> <span class="s">&quot;OK&quot;</span><span class="p">)</span>
