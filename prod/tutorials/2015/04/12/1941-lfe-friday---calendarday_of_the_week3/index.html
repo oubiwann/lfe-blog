@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>
       
-        LFE Friday - string:join/2 -
+        LFE Friday - calendar:day_of_the_week/3 -
       
       LFE Tutorials, News, &amp; Updates
     </title>
@@ -191,7 +191,7 @@
 
 <div class="page-header">
   <h1>
-    LFE Friday - string:join/2
+    LFE Friday - calendar:day_of_the_week/3
     
   </h1>
 </div>
@@ -204,39 +204,73 @@
 series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
 <em>This week’s translator</em>: Robert Virding.</p>
 
-<p>Today’s LFE Friday is on <a href="http://www.erlang.org/doc/man/string.html#join-2">string:join/2</a>.</p>
+<p>Today’s LFE Friday is covers <a href="http://www.erlang.org/doc/man/calendar.html#day_of_the_week-3">calendar:day_of_the_week/3</a></p>
 
-<p><code>string:join/2</code> takes a list of strings as its first argument, and a string separator used to join the strings together into a single string.</p>
+<p><code>calendar:day_of_the_week/3</code> allows you to get the day of the week a day occurred on when passed a year, a month and a day.</p>
 
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:join</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;a&quot;</span> <span class="s">&quot;b&quot;</span> <span class="s">&quot;c&quot;</span><span class="p">)</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
-<span class="s">&quot;abc&quot;</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:join</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;a&quot;</span> <span class="s">&quot;b&quot;</span> <span class="s">&quot;c&quot;</span><span class="p">)</span> <span class="s">&quot;-&quot;</span><span class="p">)</span>
-<span class="s">&quot;a-b-c&quot;</span></code></pre></div>
+<p>The first argument represents the year and must be a non-negative integer. The second argument is the month and must be an integer value between 1 and 12 inclusive, representing the 12 months of the Gregorian Calendar, with January being month one. The final argument to <code>calendar:day_of_the_week/3</code> is the date, and is expected to be a integer between 1 and 31 inclusive.</p>
 
-<p>The separator string can be a string of any length, and doesn’t just have to be a single character.</p>
+<p><code>calendar:day_of_the_week/3</code> returns an integer value in between 1 and 7 inclusive, with a return value of 1 representing Monday, and a 7 being Sunday.</p>
 
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:join</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;a&quot;</span> <span class="s">&quot;b&quot;</span> <span class="s">&quot;c&quot;</span><span class="p">)</span> <span class="s">&quot;___&quot;</span><span class="p">)</span>
-<span class="s">&quot;a___b___c&quot;</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:join</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;a&quot;</span> <span class="s">&quot;b&quot;</span> <span class="s">&quot;c&quot;</span><span class="p">)</span> <span class="s">&quot; &quot;</span><span class="p">)</span>  
-<span class="s">&quot;a b c&quot;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:day_of_the_week</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:day_of_the_week</span> <span class="mi">1970</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span>
+<span class="mi">4</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:day_of_the_week</span> <span class="mi">1999</span> <span class="mi">12</span> <span class="mi">31</span><span class="p">)</span>
+<span class="mi">5</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:day_of_the_week</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span>     
+<span class="mi">6</span></code></pre></div>
 
-<p>And as with any string, a list of characters, or even integers, can be used as the separator string.</p>
+<p>As you can see that the publish date of this LFE Friday post<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, 2015-04-10, returns a 5, which is in fact a Friday according to Erlang.</p>
 
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:join</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;a&quot;</span> <span class="s">&quot;b&quot;</span> <span class="s">&quot;c&quot;</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\A</span><span class="p">))</span>
-<span class="s">&quot;aAbAc&quot;</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:join</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;a&quot;</span> <span class="s">&quot;b&quot;</span> <span class="s">&quot;c&quot;</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">52</span><span class="p">))</span> 
-<span class="s">&quot;a4b4c&quot;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:day_of_the_week</span> <span class="mi">2015</span> <span class="mi">4</span> <span class="mi">10</span><span class="p">)</span>
+<span class="mi">5</span></code></pre></div>
 
-<p>-Proctor, Robert</p>
+<p>There is also a <code>calendar:day_of_the_week/1</code> function which has all the same constraints but instead of taking three arguments, takes one argument that is a three-tuple of the year, month, and day.</p>
+
+<div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:day_of_the_week</span> <span class="o">#(</span><span class="mi">2015</span> <span class="mi">4</span> <span class="mi">10</span><span class="p">))</span>
+<span class="mi">5</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:day_of_the_week</span> <span class="o">#(</span><span class="mi">1970</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span> 
+<span class="mi">4</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:day_of_the_week</span> <span class="o">#(</span><span class="mi">1999</span> <span class="mi">12</span> <span class="mi">31</span><span class="p">))</span>
+<span class="mi">5</span></code></pre></div>
+
+<p>And in the spirit of helping to recognize error messages when we see them, let’s take a look at what we get when we pass some invalid inputs to <code>calendar:day_of_the_week/3</code>.</p>
+
+<div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:day_of_the_week</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">)</span>        
+<span class="nv">exception</span> <span class="nv">error:</span> <span class="nv">function_clause</span>
+  <span class="nv">in</span> <span class="p">(</span><span class="err">:</span> <span class="nv">calendar</span> <span class="nv">date_to_gregorian_days</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="nv">in</span> <span class="nv">calendar:day_of_the_week/3</span> <span class="p">(</span><span class="nv">calendar.erl,</span> <span class="nv">line</span> <span class="mi">151</span><span class="p">)</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:day_of_the_week</span> <span class="mi">1970</span> <span class="mi">2</span> <span class="mi">31</span><span class="p">)</span>   
+<span class="nv">exception</span> <span class="nv">error:</span> <span class="nv">if_clause</span>
+  <span class="nv">in</span> <span class="nv">calendar:date_to_gregorian_days/3</span> <span class="p">(</span><span class="nv">calendar.erl,</span> <span class="nv">line</span> <span class="mi">116</span><span class="p">)</span>
+  <span class="nv">in</span> <span class="nv">calendar:day_of_the_week/3</span> <span class="p">(</span><span class="nv">calendar.erl,</span> <span class="nv">line</span> <span class="mi">151</span><span class="p">)</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:day_of_the_week</span> <span class="mi">1970</span> <span class="mi">13</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nv">exception</span> <span class="nv">error:</span> <span class="nv">function_clause</span>
+  <span class="nv">in</span> <span class="p">(</span><span class="err">:</span> <span class="nv">calendar</span> <span class="nv">last_day_of_the_month1</span> <span class="mi">1970</span> <span class="mi">13</span><span class="p">)</span>
+  <span class="nv">in</span> <span class="nv">calendar:date_to_gregorian_days/3</span> <span class="p">(</span><span class="nv">calendar.erl,</span> <span class="nv">line</span> <span class="mi">115</span><span class="p">)</span>
+  <span class="nv">in</span> <span class="nv">calendar:day_of_the_week/3</span> <span class="p">(</span><span class="nv">calendar.erl,</span> <span class="nv">line</span> <span class="mi">151</span><span class="p">)</span></code></pre></div>
+
+<p>If you look at the error messages you see that <code>calendar:day_of_the_week/3</code> calls <code>calendar:date_to_gregorian_days/3</code>, which we will cover in next week’s LFE Friday.</p>
+
+<p>–Proctor, Robert</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>At least the day which should be the publish day. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 
     <hr>
     <div class="pagination btn-group">
       
-        <a class="btn prev" href="/tutorials/2015/02/13/1751-lfe-friday---stringtokens2" title="LFE Friday - string:tokens/2">&larr; Previous</a>
+        <a class="btn prev" href="/tutorial/2015/04/05/1332-ledis-using-redis-from-lfe" title="ledis: Using Redis from LFE">&larr; Previous</a>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next" href="/tutorials/2015/03/01/1823-lfe-friday---dictmerge3" title="LFE Friday - dict:merge/3">Next &rarr;</a>
+        <a class="btn next disabled">Next &rarr;</a>
       
     </div>
     <hr>
@@ -250,7 +284,7 @@ series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
     </section>
     <section>
       <h4>Published</h4>
-      <div class="date"><span>20 February 2015</span></div>
+      <div class="date"><span>12 April 2015</span></div>
     </section>
     
       <section>

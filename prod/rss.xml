@@ -5,10 +5,82 @@
         <description>LFE Tutorials, News, &amp; Updates - LFEuminati | Alien Alliance</description>
         <link>http://blog.lfe.io/</link>
         <link>http://blog.lfe.io/</link>
-        <lastBuildDate>2015-04-05T22:55:35-05:00</lastBuildDate>
-        <pubDate>2015-04-05T22:55:35-05:00</pubDate>
+        <lastBuildDate>2015-04-12T19:46:03+02:00</lastBuildDate>
+        <pubDate>2015-04-12T19:46:03+02:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>LFE Friday - calendar:day_of_the_week/3</title>
+                <description>
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
+&lt;a href=&quot;http://www.proctor-it.com/category/erlang/erlang-thursday/&quot;&gt;Erlang Thursday&lt;/a&gt;
+series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Proctor&lt;/a&gt;.
+&lt;em&gt;This week’s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
+
+&lt;p&gt;Today’s LFE Friday is covers &lt;a href=&quot;http://www.erlang.org/doc/man/calendar.html#day_of_the_week-3&quot;&gt;calendar:day_of_the_week/3&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;calendar:day_of_the_week/3&lt;/code&gt; allows you to get the day of the week a day occurred on when passed a year, a month and a day.&lt;/p&gt;
+
+&lt;p&gt;The first argument represents the year and must be a non-negative integer. The second argument is the month and must be an integer value between 1 and 12 inclusive, representing the 12 months of the Gregorian Calendar, with January being month one. The final argument to &lt;code&gt;calendar:day_of_the_week/3&lt;/code&gt; is the date, and is expected to be a integer between 1 and 31 inclusive.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;calendar:day_of_the_week/3&lt;/code&gt; returns an integer value in between 1 and 7 inclusive, with a return value of 1 representing Monday, and a 7 being Sunday.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:day_of_the_week&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:day_of_the_week&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1970&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:day_of_the_week&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1999&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:day_of_the_week&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;     
+&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;As you can see that the publish date of this LFE Friday post&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, 2015-04-10, returns a 5, which is in fact a Friday according to Erlang.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:day_of_the_week&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;There is also a &lt;code&gt;calendar:day_of_the_week/1&lt;/code&gt; function which has all the same constraints but instead of taking three arguments, takes one argument that is a three-tuple of the year, month, and day.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:day_of_the_week&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:day_of_the_week&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1970&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; 
+&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:day_of_the_week&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1999&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And in the spirit of helping to recognize error messages when we see them, let’s take a look at what we get when we pass some invalid inputs to &lt;code&gt;calendar:day_of_the_week/3&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:day_of_the_week&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;        
+&lt;span class=&quot;nv&quot;&gt;exception&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;error:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;function_clause&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;calendar&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;date_to_gregorian_days&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;calendar:day_of_the_week/3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar.erl,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;151&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:day_of_the_week&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1970&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   
+&lt;span class=&quot;nv&quot;&gt;exception&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;error:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;if_clause&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;calendar:date_to_gregorian_days/3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar.erl,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;116&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;calendar:day_of_the_week/3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar.erl,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;151&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:day_of_the_week&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1970&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;exception&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;error:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;function_clause&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;calendar&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;last_day_of_the_month1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1970&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;calendar:date_to_gregorian_days/3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar.erl,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;115&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;calendar:day_of_the_week/3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar.erl,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;151&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If you look at the error messages you see that &lt;code&gt;calendar:day_of_the_week/3&lt;/code&gt; calls &lt;code&gt;calendar:date_to_gregorian_days/3&lt;/code&gt;, which we will cover in next week’s LFE Friday.&lt;/p&gt;
+
+&lt;p&gt;–Proctor, Robert&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;At least the day which should be the publish day. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+                <link>http://blog.lfe.io//tutorials/2015/04/12/1941-lfe-friday---calendarday_of_the_week3</link>
+                <guid>http://blog.lfe.io//tutorials/2015/04/12/1941-lfe-friday---calendarday_of_the_week3</guid>
+                <pubDate>2015-04-12T00:00:00+02:00</pubDate>
+        </item>
 
         <item>
                 <title>ledis: Using Redis from LFE</title>
@@ -290,7 +362,7 @@ see the following in the coming weeks and months:&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//tutorial/2015/04/05/1332-ledis-using-redis-from-lfe</link>
                 <guid>http://blog.lfe.io//tutorial/2015/04/05/1332-ledis-using-redis-from-lfe</guid>
-                <pubDate>2015-04-05T00:00:00-05:00</pubDate>
+                <pubDate>2015-04-05T00:00:00+02:00</pubDate>
         </item>
 
         <item>
@@ -317,7 +389,7 @@ Dialyzer can be a useful tool but its implementation has a few idiosynchrasies w
 </description>
                 <link>http://blog.lfe.io//announcements/2015/04/04/1538-lfe-and-dialyzer</link>
                 <guid>http://blog.lfe.io//announcements/2015/04/04/1538-lfe-and-dialyzer</guid>
-                <pubDate>2015-04-04T00:00:00-05:00</pubDate>
+                <pubDate>2015-04-04T00:00:00+02:00</pubDate>
         </item>
 
         <item>
@@ -428,7 +500,7 @@ showing a how you might write a very naive&lt;sup id=&quot;fnref:1&quot;&gt;&lt;
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/04/04/0240-lfe-friday---listsdelete2</link>
                 <guid>http://blog.lfe.io//tutorials/2015/04/04/0240-lfe-friday---listsdelete2</guid>
-                <pubDate>2015-04-04T00:00:00-05:00</pubDate>
+                <pubDate>2015-04-04T00:00:00+02:00</pubDate>
         </item>
 
         <item>
@@ -494,7 +566,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/03/30/1513-lfe-friday---erlanglist_to_atom1</link>
                 <guid>http://blog.lfe.io//tutorials/2015/03/30/1513-lfe-friday---erlanglist_to_atom1</guid>
-                <pubDate>2015-03-30T00:00:00-05:00</pubDate>
+                <pubDate>2015-03-30T00:00:00+02:00</pubDate>
         </item>
 
         <item>
@@ -626,7 +698,7 @@ well and will likely be with us for a long time to come.&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//excerpts/2015/03/27/1101-the-hidden-origins-of-lisp-future</link>
                 <guid>http://blog.lfe.io//excerpts/2015/03/27/1101-the-hidden-origins-of-lisp-future</guid>
-                <pubDate>2015-03-27T00:00:00-05:00</pubDate>
+                <pubDate>2015-03-27T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -791,7 +863,7 @@ programmers meeting all number and variation of needs.&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy</link>
                 <guid>http://blog.lfe.io//excerpts/2015/03/26/1111-the-hidden-origins-of-lisp-mccarthy</guid>
-                <pubDate>2015-03-26T00:00:00-05:00</pubDate>
+                <pubDate>2015-03-26T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -880,7 +952,7 @@ tracking feedback.&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//excerpts/2015/03/25/1108-the-hidden-origins-of-lisp-church</link>
                 <guid>http://blog.lfe.io//excerpts/2015/03/25/1108-the-hidden-origins-of-lisp-church</guid>
-                <pubDate>2015-03-25T00:00:00-05:00</pubDate>
+                <pubDate>2015-03-25T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -954,7 +1026,7 @@ tracking feedback.&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//excerpts/2015/03/24/0111-the-hidden-origins-of-lisp-russell</link>
                 <guid>http://blog.lfe.io//excerpts/2015/03/24/0111-the-hidden-origins-of-lisp-russell</guid>
-                <pubDate>2015-03-24T00:00:00-05:00</pubDate>
+                <pubDate>2015-03-24T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -1025,7 +1097,7 @@ tracking feedback.&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//excerpts/2015/03/23/1008-the-hidden-origins-of-lisp-peano</link>
                 <guid>http://blog.lfe.io//excerpts/2015/03/23/1008-the-hidden-origins-of-lisp-peano</guid>
-                <pubDate>2015-03-23T00:00:00-05:00</pubDate>
+                <pubDate>2015-03-23T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -1088,7 +1160,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/03/22/2108-lfe-friday---ordsetsis_disjoint2</link>
                 <guid>http://blog.lfe.io//tutorials/2015/03/22/2108-lfe-friday---ordsetsis_disjoint2</guid>
-                <pubDate>2015-03-22T00:00:00-05:00</pubDate>
+                <pubDate>2015-03-22T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -1204,7 +1276,7 @@ inception.&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//excerpts/2015/03/22/1445-the-hidden-origins-of-lisp-introduction</link>
                 <guid>http://blog.lfe.io//excerpts/2015/03/22/1445-the-hidden-origins-of-lisp-introduction</guid>
-                <pubDate>2015-03-22T00:00:00-05:00</pubDate>
+                <pubDate>2015-03-22T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -1270,7 +1342,7 @@ on how we might make improvements to the LFE preface.&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//update/2015/03/22/1342-sicp-the-lfe-edition-update</link>
                 <guid>http://blog.lfe.io//update/2015/03/22/1342-sicp-the-lfe-edition-update</guid>
-                <pubDate>2015-03-22T00:00:00-05:00</pubDate>
+                <pubDate>2015-03-22T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -1378,7 +1450,7 @@ months ;-)&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//formalwear/2015/03/20/1256-new-lfe-t-shirt</link>
                 <guid>http://blog.lfe.io//formalwear/2015/03/20/1256-new-lfe-t-shirt</guid>
-                <pubDate>2015-03-20T00:00:00-05:00</pubDate>
+                <pubDate>2015-03-20T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -1425,7 +1497,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/03/13/1559-lfe-friday---listsflatmap2</link>
                 <guid>http://blog.lfe.io//tutorials/2015/03/13/1559-lfe-friday---listsflatmap2</guid>
-                <pubDate>2015-03-13T00:00:00-05:00</pubDate>
+                <pubDate>2015-03-13T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -1509,7 +1581,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/03/06/0152-lfe-friday---calendarlocal_time_to_universal_time_dst1</link>
                 <guid>http://blog.lfe.io//tutorials/2015/03/06/0152-lfe-friday---calendarlocal_time_to_universal_time_dst1</guid>
-                <pubDate>2015-03-06T00:00:00-06:00</pubDate>
+                <pubDate>2015-03-06T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -1567,7 +1639,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/03/01/1823-lfe-friday---dictmerge3</link>
                 <guid>http://blog.lfe.io//tutorials/2015/03/01/1823-lfe-friday---dictmerge3</guid>
-                <pubDate>2015-03-01T00:00:00-06:00</pubDate>
+                <pubDate>2015-03-01T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -1605,7 +1677,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/02/20/1609-lfe-friday---stringjoin2</link>
                 <guid>http://blog.lfe.io//tutorials/2015/02/20/1609-lfe-friday---stringjoin2</guid>
-                <pubDate>2015-02-20T00:00:00-06:00</pubDate>
+                <pubDate>2015-02-20T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -1660,7 +1732,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/02/13/1751-lfe-friday---stringtokens2</link>
                 <guid>http://blog.lfe.io//tutorials/2015/02/13/1751-lfe-friday---stringtokens2</guid>
-                <pubDate>2015-02-13T00:00:00-06:00</pubDate>
+                <pubDate>2015-02-13T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -1705,7 +1777,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/02/10/0206-lfe-friday---listsdropwhile2</link>
                 <guid>http://blog.lfe.io//tutorials/2015/02/10/0206-lfe-friday---listsdropwhile2</guid>
-                <pubDate>2015-02-10T00:00:00-06:00</pubDate>
+                <pubDate>2015-02-10T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -1737,7 +1809,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/02/02/0111-lfe-friday---listsfilter2</link>
                 <guid>http://blog.lfe.io//tutorials/2015/02/02/0111-lfe-friday---listsfilter2</guid>
-                <pubDate>2015-02-02T00:00:00-06:00</pubDate>
+                <pubDate>2015-02-02T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -1856,7 +1928,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/01/22/2243-lfe-friday---httpcrequest1-and-httpcrequest4</link>
                 <guid>http://blog.lfe.io//tutorials/2015/01/22/2243-lfe-friday---httpcrequest1-and-httpcrequest4</guid>
-                <pubDate>2015-01-22T00:00:00-06:00</pubDate>
+                <pubDate>2015-01-22T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -1894,7 +1966,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/01/16/2253-lfe-friday---erlangapply3</link>
                 <guid>http://blog.lfe.io//tutorials/2015/01/16/2253-lfe-friday---erlangapply3</guid>
-                <pubDate>2015-01-16T00:00:00-06:00</pubDate>
+                <pubDate>2015-01-16T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -1942,7 +2014,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/01/10/2201-lfe-friday---timertc3</link>
                 <guid>http://blog.lfe.io//tutorials/2015/01/10/2201-lfe-friday---timertc3</guid>
-                <pubDate>2015-01-10T00:00:00-06:00</pubDate>
+                <pubDate>2015-01-10T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -2093,7 +2165,7 @@ things are working on Linux.&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//announcements/2015/01/09/1008-lfetool-150-preview-overriding-version-pinning</link>
                 <guid>http://blog.lfe.io//announcements/2015/01/09/1008-lfetool-150-preview-overriding-version-pinning</guid>
-                <pubDate>2015-01-09T00:00:00-06:00</pubDate>
+                <pubDate>2015-01-09T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -2144,7 +2216,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/01/04/1931-lfe-friday---listsany2</link>
                 <guid>http://blog.lfe.io//tutorials/2015/01/04/1931-lfe-friday---listsany2</guid>
-                <pubDate>2015-01-04T00:00:00-06:00</pubDate>
+                <pubDate>2015-01-04T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -2166,7 +2238,7 @@ everyone will enjoy hearing from once a week :-)&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//announcements/2015/01/03/1244-coming-soon-lfe-fridays</link>
                 <guid>http://blog.lfe.io//announcements/2015/01/03/1244-coming-soon-lfe-fridays</guid>
-                <pubDate>2015-01-03T00:00:00-06:00</pubDate>
+                <pubDate>2015-01-03T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -2784,7 +2856,7 @@ hope it’s one that you not only get used to, but can’t live without :-)&lt;/
 </description>
                 <link>http://blog.lfe.io//tutorials/2015/01/01/1215-scientific-computing-on-the-erlang-vm</link>
                 <guid>http://blog.lfe.io//tutorials/2015/01/01/1215-scientific-computing-on-the-erlang-vm</guid>
-                <pubDate>2015-01-01T00:00:00-06:00</pubDate>
+                <pubDate>2015-01-01T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -3015,7 +3087,7 @@ questions, make suggestions, etc.&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//announcements/2014/12/27/1641-easy-python-from-lfeerlang</link>
                 <guid>http://blog.lfe.io//announcements/2014/12/27/1641-easy-python-from-lfeerlang</guid>
-                <pubDate>2014-12-27T00:00:00-06:00</pubDate>
+                <pubDate>2014-12-27T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -3028,7 +3100,7 @@ happiest of new years!&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//holidays/2014/12/25/1221-happy-holidays-from-lfe</link>
                 <guid>http://blog.lfe.io//holidays/2014/12/25/1221-happy-holidays-from-lfe</guid>
-                <pubDate>2014-12-25T00:00:00-06:00</pubDate>
+                <pubDate>2014-12-25T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -3165,7 +3237,7 @@ publish to this group as soon as it reaches some level of stability.&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//reports/2014/12/17/1435-post-sprint-report-lfe-experience</link>
                 <guid>http://blog.lfe.io//reports/2014/12/17/1435-post-sprint-report-lfe-experience</guid>
-                <pubDate>2014-12-17T00:00:00-06:00</pubDate>
+                <pubDate>2014-12-17T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -3303,7 +3375,7 @@ using &lt;code&gt;subseq&lt;/code&gt; instead of &lt;code&gt;car&lt;/code&gt; an
 </description>
                 <link>http://blog.lfe.io//archeology/2014/12/15/1848-byte-august-1979-the-lisp-issue</link>
                 <guid>http://blog.lfe.io//archeology/2014/12/15/1848-byte-august-1979-the-lisp-issue</guid>
-                <pubDate>2014-12-15T00:00:00-06:00</pubDate>
+                <pubDate>2014-12-15T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -3669,7 +3741,7 @@ output of the previous call is the last argument in the next call.&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//announcements/2014/12/14/1645-lutil-050-composition-predicates-core</link>
                 <guid>http://blog.lfe.io//announcements/2014/12/14/1645-lutil-050-composition-predicates-core</guid>
-                <pubDate>2014-12-14T00:00:00-06:00</pubDate>
+                <pubDate>2014-12-14T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -3695,7 +3767,7 @@ which uses lfest for its routing and responses&lt;/li&gt;
 </description>
                 <link>http://blog.lfe.io//announcements/2014/12/08/1929-lfest-002-is-released</link>
                 <guid>http://blog.lfe.io//announcements/2014/12/08/1929-lfest-002-is-released</guid>
-                <pubDate>2014-12-08T00:00:00-06:00</pubDate>
+                <pubDate>2014-12-08T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -4055,7 +4127,7 @@ amazing tales to share, we want to hear there :-)&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//tutorials/2014/12/07/1837-running-lfe-in-docker</link>
                 <guid>http://blog.lfe.io//tutorials/2014/12/07/1837-running-lfe-in-docker</guid>
-                <pubDate>2014-12-07T00:00:00-06:00</pubDate>
+                <pubDate>2014-12-07T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -4139,7 +4211,7 @@ and others may also be used with IErlang :-)&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//announcements/2014/12/06/1244-ierlang-notebook-a-la-ipython</link>
                 <guid>http://blog.lfe.io//announcements/2014/12/06/1244-ierlang-notebook-a-la-ipython</guid>
-                <pubDate>2014-12-06T00:00:00-06:00</pubDate>
+                <pubDate>2014-12-06T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -4375,7 +4447,7 @@ which prints the error returned from Python as well as the stacktrace in LFE:&lt
 </description>
                 <link>http://blog.lfe.io//tutorials/2014/12/03/1828-erlport-and-python-making-more-calls-from-lfe</link>
                 <guid>http://blog.lfe.io//tutorials/2014/12/03/1828-erlport-and-python-making-more-calls-from-lfe</guid>
-                <pubDate>2014-12-03T00:00:00-06:00</pubDate>
+                <pubDate>2014-12-03T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -4397,7 +4469,7 @@ repository. This information is also supplied in the repo’s
 </description>
                 <link>http://blog.lfe.io//announcements/2014/12/03/1810-community-generated-content</link>
                 <guid>http://blog.lfe.io//announcements/2014/12/03/1810-community-generated-content</guid>
-                <pubDate>2014-12-03T00:00:00-06:00</pubDate>
+                <pubDate>2014-12-03T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -4518,7 +4590,7 @@ usage, approaching some of the functionality offered by such projects as
 </description>
                 <link>http://blog.lfe.io//tutorials/2014/11/21/1508-erlport-using-python-from-erlang-lfe</link>
                 <guid>http://blog.lfe.io//tutorials/2014/11/21/1508-erlport-using-python-from-erlang-lfe</guid>
-                <pubDate>2014-11-21T00:00:00-06:00</pubDate>
+                <pubDate>2014-11-21T00:00:00+01:00</pubDate>
         </item>
 
         <item>
@@ -4559,7 +4631,7 @@ experience for current users :-)&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//announcements/2014/08/31/2024-lfetool-v12-is-out</link>
                 <guid>http://blog.lfe.io//announcements/2014/08/31/2024-lfetool-v12-is-out</guid>
-                <pubDate>2014-08-31T00:00:00-05:00</pubDate>
+                <pubDate>2014-08-31T00:00:00+02:00</pubDate>
         </item>
 
         <item>
@@ -4605,7 +4677,7 @@ a Massively Scalable Web Server In Erlang&lt;/a&gt;.&lt;/li&gt;
 </description>
                 <link>http://blog.lfe.io//conferences/2014/07/23/0849-erlang--oscon-2014</link>
                 <guid>http://blog.lfe.io//conferences/2014/07/23/0849-erlang--oscon-2014</guid>
-                <pubDate>2014-07-23T00:00:00-05:00</pubDate>
+                <pubDate>2014-07-23T00:00:00+02:00</pubDate>
         </item>
 
         <item>
@@ -4648,7 +4720,7 @@ brings for LFE and how this casual approach scales :-)&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//update/2014/06/10/0929-lfe-language-summit-review</link>
                 <guid>http://blog.lfe.io//update/2014/06/10/0929-lfe-language-summit-review</guid>
-                <pubDate>2014-06-10T00:00:00-05:00</pubDate>
+                <pubDate>2014-06-10T00:00:00+02:00</pubDate>
         </item>
 
         <item>
@@ -4687,7 +4759,7 @@ There were a number of reasons why I started with LFE:
 </description>
                 <link>http://blog.lfe.io//history/2014/05/28/1516-the-secret-history-of-lfe</link>
                 <guid>http://blog.lfe.io//history/2014/05/28/1516-the-secret-history-of-lfe</guid>
-                <pubDate>2014-05-28T00:00:00-05:00</pubDate>
+                <pubDate>2014-05-28T00:00:00+02:00</pubDate>
         </item>
 
         <item>
@@ -4715,7 +4787,7 @@ has also been updated.&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//news/2014/05/25/1523-lfe-user-group-meeting-update</link>
                 <guid>http://blog.lfe.io//news/2014/05/25/1523-lfe-user-group-meeting-update</guid>
-                <pubDate>2014-05-25T00:00:00-05:00</pubDate>
+                <pubDate>2014-05-25T00:00:00+02:00</pubDate>
         </item>
 
         <item>
@@ -4737,7 +4809,7 @@ included!).&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//site/2014/05/25/1026-history-of-erlang</link>
                 <guid>http://blog.lfe.io//site/2014/05/25/1026-history-of-erlang</guid>
-                <pubDate>2014-05-25T00:00:00-05:00</pubDate>
+                <pubDate>2014-05-25T00:00:00+02:00</pubDate>
         </item>
 
         <item>
@@ -4756,7 +4828,7 @@ named “LFE Sunday Times”.&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//news/2014/05/23/1114-lfe-sunday-times</link>
                 <guid>http://blog.lfe.io//news/2014/05/23/1114-lfe-sunday-times</guid>
-                <pubDate>2014-05-23T00:00:00-05:00</pubDate>
+                <pubDate>2014-05-23T00:00:00+02:00</pubDate>
         </item>
 
         <item>
@@ -4795,7 +4867,7 @@ the site and allow folks to more quickly find what they are looking for.&lt;/p&g
 </description>
                 <link>http://blog.lfe.io//site/2014/05/23/0815-docs-site-overhaul</link>
                 <guid>http://blog.lfe.io//site/2014/05/23/0815-docs-site-overhaul</guid>
-                <pubDate>2014-05-23T00:00:00-05:00</pubDate>
+                <pubDate>2014-05-23T00:00:00+02:00</pubDate>
         </item>
 
         <item>
@@ -4808,7 +4880,7 @@ which have some relation – however tenuous – with LFE, Lisps, or Erlang.&lt;
 </description>
                 <link>http://blog.lfe.io//site/2014/05/22/2301-lfe-microblog-is-open-for-business-</link>
                 <guid>http://blog.lfe.io//site/2014/05/22/2301-lfe-microblog-is-open-for-business-</guid>
-                <pubDate>2014-05-22T00:00:00-05:00</pubDate>
+                <pubDate>2014-05-22T00:00:00+02:00</pubDate>
         </item>
 
         <item>
@@ -4831,7 +4903,7 @@ organized, now:&lt;/p&gt;
 </description>
                 <link>http://blog.lfe.io//site/2014/05/22/1849-new-lfe-site</link>
                 <guid>http://blog.lfe.io//site/2014/05/22/1849-new-lfe-site</guid>
-                <pubDate>2014-05-22T00:00:00-05:00</pubDate>
+                <pubDate>2014-05-22T00:00:00+02:00</pubDate>
         </item>
 
 
