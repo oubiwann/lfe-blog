@@ -14,8 +14,9 @@ http://blog.lfe.io//page3/index.html
 http://blog.lfe.io//page4/index.html
 http://blog.lfe.io//page5/index.html
 
+http://blog.lfe.io//tutorials/2015/04/20/1707-lfe-friday---calendardate_to_gregorian_days3
 http://blog.lfe.io//tutorials/2015/04/12/1941-lfe-friday---calendarday_of_the_week3
-http://blog.lfe.io//tutorial/2015/04/05/1332-ledis-using-redis-from-lfe
+http://blog.lfe.io//tutorials/2015/04/05/1332-ledis-using-redis-from-lfe
 http://blog.lfe.io//announcements/2015/04/04/1538-lfe-and-dialyzer
 http://blog.lfe.io//tutorials/2015/04/04/0240-lfe-friday---listsdelete2
 http://blog.lfe.io//tutorials/2015/03/30/1513-lfe-friday---erlanglist_to_atom1

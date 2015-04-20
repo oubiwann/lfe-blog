@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>
       
-        LFE Friday - string:tokens/2 -
+        LFE Friday - calendar:date_to_gregorian_days/3 -
       
       LFE Tutorials, News, &amp; Updates
     </title>
@@ -191,7 +191,7 @@
 
 <div class="page-header">
   <h1>
-    LFE Friday - string:tokens/2
+    LFE Friday - calendar:date_to_gregorian_days/3
     
   </h1>
 </div>
@@ -204,56 +204,64 @@
 series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
 <em>This week’s translator</em>: Robert Virding.</p>
 
-<p>Today’s LFE Friday is <a href="http://www.erlang.org/doc/man/string.html#tokens-2">string:tokens/2</a>.</p>
+<p>Today’s LFE Friday covers <a href="http://www.erlang.org/doc/man/calendar.html#date_to_gregorian_days-3">calendar:date_to_gregorian_days/3</a>.</p>
 
-<p><code>string:tokens/2</code> takes a string as the first argument, and a list of separators to split the string on, and returns a list of token strings.</p>
+<p>As we saw in last week’s <a href="http://blog.lfe.io/tutorials/2015/04/12/1941-lfe-friday---calendarday_of_the_week3/">LFE Friday on calendar:day_of_the_week/3</a> when we were looking at some error messages, we saw that the errors were coming from <code>calendar:date_to_gregorian_days/3</code>.</p>
 
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;foo&quot;</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
-<span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">)</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;banana&quot;</span> <span class="s">&quot;a&quot;</span><span class="p">)</span>
-<span class="p">(</span><span class="s">&quot;b&quot;</span> <span class="s">&quot;n&quot;</span> <span class="s">&quot;n&quot;</span><span class="p">)</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;It was the best of times, it was the worst of times&quot;</span> <span class="s">&quot; &quot;</span><span class="p">)</span> 
-<span class="p">(</span><span class="s">&quot;It&quot;</span> <span class="s">&quot;was&quot;</span> <span class="s">&quot;the&quot;</span> <span class="s">&quot;best&quot;</span> <span class="s">&quot;of&quot;</span> <span class="s">&quot;times,&quot;</span> <span class="s">&quot;it&quot;</span> <span class="s">&quot;was&quot;</span> <span class="s">&quot;the&quot;</span> <span class="s">&quot;worst&quot;</span> <span class="s">&quot;of&quot;</span> <span class="s">&quot;times&quot;</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:day_of_the_week</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">)</span>        
+<span class="nv">exception</span> <span class="nv">error:</span> <span class="nv">function_clause</span>
+  <span class="nv">in</span> <span class="p">(</span><span class="err">:</span> <span class="nv">calendar</span> <span class="nv">date_to_gregorian_days</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="nv">in</span> <span class="nv">calendar:day_of_the_week/3</span> <span class="p">(</span><span class="nv">calendar.erl,</span> <span class="nv">line</span> <span class="mi">151</span><span class="p">)</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:day_of_the_week</span> <span class="mi">1970</span> <span class="mi">2</span> <span class="mi">31</span><span class="p">)</span>   
+<span class="nv">exception</span> <span class="nv">error:</span> <span class="nv">if_clause</span>
+  <span class="nv">in</span> <span class="nv">calendar:date_to_gregorian_days/3</span> <span class="p">(</span><span class="nv">calendar.erl,</span> <span class="nv">line</span> <span class="mi">116</span><span class="p">)</span>
+  <span class="nv">in</span> <span class="nv">calendar:day_of_the_week/3</span> <span class="p">(</span><span class="nv">calendar.erl,</span> <span class="nv">line</span> <span class="mi">151</span><span class="p">)</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:day_of_the_week</span> <span class="mi">1970</span> <span class="mi">13</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nv">exception</span> <span class="nv">error:</span> <span class="nv">function_clause</span>
+  <span class="nv">in</span> <span class="p">(</span><span class="err">:</span> <span class="nv">calendar</span> <span class="nv">last_day_of_the_month1</span> <span class="mi">1970</span> <span class="mi">13</span><span class="p">)</span>
+  <span class="nv">in</span> <span class="nv">calendar:date_to_gregorian_days/3</span> <span class="p">(</span><span class="nv">calendar.erl,</span> <span class="nv">line</span> <span class="mi">115</span><span class="p">)</span>
+  <span class="nv">in</span> <span class="nv">calendar:day_of_the_week/3</span> <span class="p">(</span><span class="nv">calendar.erl,</span> <span class="nv">line</span> <span class="mi">151</span><span class="p">)</span></code></pre></div>
 
-<p>If consecutive separators appear in the string they will be treated as a single separator, and no empty strings will be returned.</p>
+<p>I promised you at the end of that post we would take a deeper look at <code>calendar:date_to_gregorian_days/3</code> next time, so let’s fulfill that promise.</p>
 
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;Mississippi&quot;</span> <span class="s">&quot;s&quot;</span><span class="p">)</span>
-<span class="p">(</span><span class="s">&quot;Mi&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;ippi&quot;</span><span class="p">)</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;Mississippi&quot;</span> <span class="s">&quot;sp&quot;</span><span class="p">)</span>
-<span class="p">(</span><span class="s">&quot;Mi&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;i&quot;</span><span class="p">)</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;Mississippi&quot;</span> <span class="s">&quot;is&quot;</span><span class="p">)</span>
-<span class="p">(</span><span class="s">&quot;M&quot;</span> <span class="s">&quot;pp&quot;</span><span class="p">)</span></code></pre></div>
+<p><code>calendar:date_to_gregorian_days/3</code> takes three arguments, a non-negative integer for the year, an integer between 1 and 12 (inclusive) for the month, and an integer between 1 and 31 (inclusive) for the day of the month, and returns the number of days since <code>0000-01-01</code> in the Gregorian calendar.</p>
 
-<p>The order of the separators in the separator list passed to <code>string:tokens/2</code> does not matter, and can be specified in any order.</p>
+<div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:date_to_gregorian_days</span> <span class="mi">2015</span> <span class="mi">4</span> <span class="mi">19</span><span class="p">)</span>
+<span class="mi">736072</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:date_to_gregorian_days</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span>    
+<span class="mi">0</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:date_to_gregorian_days</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span>
+<span class="mi">366</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:date_to_gregorian_days</span> <span class="mi">1970</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span>
+<span class="mi">719528</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:date_to_gregorian_days</span> <span class="mi">1999</span> <span class="mi">12</span> <span class="mi">31</span><span class="p">)</span>
+<span class="mi">730484</span></code></pre></div>
 
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;Mississippi&quot;</span> <span class="s">&quot;ps&quot;</span><span class="p">)</span>                                       
-<span class="p">(</span><span class="s">&quot;Mi&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;i&quot;</span><span class="p">)</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;Mississippi&quot;</span> <span class="s">&quot;sp&quot;</span><span class="p">)</span>
-<span class="p">(</span><span class="s">&quot;Mi&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;i&quot;</span><span class="p">)</span></code></pre></div>
+<p>There is also a version <code>calendar:date_to_gregorian_days/1</code>, that takes a tuple of year, month, and day available if your code already has the date in tuple format.</p>
 
-<p>And as the separator list is just simply a list of separators, instead of passing a string, the integer values for the characters to use as the separators can be passed as a list, as a list of the integers is the same as a string.</p>
+<div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:date_to_gregorian_days</span> <span class="o">#(</span><span class="mi">2015</span> <span class="mi">4</span> <span class="mi">19</span><span class="p">))</span>
+<span class="mi">736072</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:date_to_gregorian_days</span> <span class="o">#(</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span>    
+<span class="mi">0</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:date_to_gregorian_days</span> <span class="o">#(</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span>
+<span class="mi">366</span></code></pre></div>
 
-<div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="sc">#\s</span>
-<span class="mi">115</span>
-<span class="nb">&gt;</span> <span class="sc">#\p</span>
-<span class="mi">112</span>
-<span class="nb">&gt;</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">115</span> <span class="mi">112</span><span class="p">)</span>
-<span class="s">&quot;sp&quot;</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;Mississippi&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">115</span><span class="p">))</span>
-<span class="p">(</span><span class="s">&quot;Mi&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;ippi&quot;</span><span class="p">)</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">string:tokens</span> <span class="s">&quot;Mississippi&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">115</span> <span class="mi">112</span><span class="p">))</span>
-<span class="p">(</span><span class="s">&quot;Mi&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;i&quot;</span> <span class="s">&quot;i&quot;</span><span class="p">)</span></code></pre></div>
+<p>And if we pass something invalid to <code>calendar:date_to_gregorian_days/1</code>, we see that it is calling <code>calendar:date_to_gregorian_days/3</code>.  So it is just a nice helper function that does the pattern match destructing for us.</p>
 
-<p>–Proctor, Robert</p>
+<div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:date_to_gregorian_days</span> <span class="o">#(</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nv">exception</span> <span class="nv">error:</span> <span class="nv">function_clause</span>
+  <span class="nv">in</span> <span class="p">(</span><span class="err">:</span> <span class="nv">calendar</span> <span class="nv">date_to_gregorian_days</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">)</span></code></pre></div>
+
+<p>-Proctor, Robert</p>
 
     <hr>
     <div class="pagination btn-group">
       
-        <a class="btn prev" href="/tutorials/2015/02/10/0206-lfe-friday---listsdropwhile2" title="LFE Friday - lists:dropwhile/2">&larr; Previous</a>
+        <a class="btn prev" href="/tutorials/2015/04/12/1941-lfe-friday---calendarday_of_the_week3" title="LFE Friday - calendar:day_of_the_week/3">&larr; Previous</a>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next" href="/tutorials/2015/02/20/1609-lfe-friday---stringjoin2" title="LFE Friday - string:join/2">Next &rarr;</a>
+        <a class="btn next disabled">Next &rarr;</a>
       
     </div>
     <hr>
@@ -267,7 +275,7 @@ series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
     </section>
     <section>
       <h4>Published</h4>
-      <div class="date"><span>13 February 2015</span></div>
+      <div class="date"><span>20 April 2015</span></div>
     </section>
     
       <section>
