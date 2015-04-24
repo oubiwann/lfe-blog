@@ -13,7 +13,9 @@ http://blog.lfe.io//page2/index.html
 http://blog.lfe.io//page3/index.html
 http://blog.lfe.io//page4/index.html
 http://blog.lfe.io//page5/index.html
+http://blog.lfe.io//page6/index.html
 
+http://blog.lfe.io//tutorials/2015/04/24/1716-lfe-friday---calendarvalid_date3
 http://blog.lfe.io//tutorials/2015/04/20/1707-lfe-friday---calendardate_to_gregorian_days3
 http://blog.lfe.io//tutorials/2015/04/12/1941-lfe-friday---calendarday_of_the_week3
 http://blog.lfe.io//tutorials/2015/04/05/1332-ledis-using-redis-from-lfe
