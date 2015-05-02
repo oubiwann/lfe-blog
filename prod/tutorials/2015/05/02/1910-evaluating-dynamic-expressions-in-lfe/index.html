@@ -203,12 +203,11 @@
 <div class="row">
   <div class="span8">
     
-<p><a href="/assets/images/posts/LispFlavoredErlang-medium-square.png"><img class="left tiny" src="/assets/images/posts/LispFlavoredErlang-medium-square.png" /></a>
-Sometimes you need to evaluate a dynamic expression in LFE, one that has been created during the execution of the program. For example we have been sent an expression to evaluate.</p>
+<p><a href="/assets/images/posts/LispFlavoredErlang-medium-square.png"><img class="right small" src="/assets/images/posts/LispFlavoredErlang-medium-square.png" /></a>Sometimes you need to evaluate a dynamic expression in LFE, one that has been created during the execution of the program. For example we have been sent an expression to evaluate.</p>
 
 <p>This can be done with the function <code>eval/1</code> evaluates its argument as an expression:</p>
 
-<div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>                   
+<div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
 <span class="mi">6</span>
 <span class="nb">&gt;</span> <span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">calendar:is_leap_year</span> <span class="mi">1200</span><span class="p">))</span>
 <span class="nv">true</span></code></pre></div>
@@ -217,7 +216,7 @@ Sometimes you need to evaluate a dynamic expression in LFE, one that has been cr
 
 <div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">x</span> <span class="mi">42</span><span class="p">)</span>
 <span class="mi">42</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="nv">x</span><span class="p">))</span>                 
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="nv">x</span><span class="p">))</span>
 <span class="nv">exception</span> <span class="nv">error:</span> <span class="o">#(</span><span class="nv">unbound_symb</span> <span class="nv">x</span><span class="p">)</span></code></pre></div>
 
 <p>which is not quite what we had hoped. The solution is to build a <code>let</code> form where we can import values for the variables which need binding:</p>
@@ -231,9 +230,9 @@ Sometimes you need to evaluate a dynamic expression in LFE, one that has been cr
 <span class="mi">42</span>
 <span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">expr</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="nv">x</span><span class="p">))</span>
 <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="nv">x</span><span class="p">)</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">list</span> <span class="ss">&#39;let</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">list</span> <span class="ss">&#39;x</span> <span class="nv">x</span><span class="p">))</span> <span class="nv">expr</span><span class="p">)</span>               
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">list</span> <span class="ss">&#39;let</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">list</span> <span class="ss">&#39;x</span> <span class="nv">x</span><span class="p">))</span> <span class="nv">expr</span><span class="p">)</span>
 <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">x</span> <span class="mi">42</span><span class="p">))</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="nv">x</span><span class="p">))</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">eval</span> <span class="p">(</span><span class="nb">list</span> <span class="ss">&#39;let</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">list</span> <span class="ss">&#39;x</span> <span class="nv">x</span><span class="p">))</span> <span class="nv">expr</span><span class="p">))</span>        
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">eval</span> <span class="p">(</span><span class="nb">list</span> <span class="ss">&#39;let</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">list</span> <span class="ss">&#39;x</span> <span class="nv">x</span><span class="p">))</span> <span class="nv">expr</span><span class="p">))</span>
 <span class="mi">48</span></code></pre></div>
 
 <p>Problem solved, now we can build expressions and import values into them. However, even with an expression as simple as this one building the structure can be quite complex. Fortunately, to the rescue comes the backquote <code>`</code> macro<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> which quotes <em>and</em> lets us import values:</p>
