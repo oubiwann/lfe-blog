@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>
       
-        LFE Friday - calendar:is_leap_year/1 -
+        Evaluating dynamic expressions in LFE -
       
       LFE Tutorials, News, &amp; Updates
     </title>
@@ -195,7 +195,7 @@
 
 <div class="page-header">
   <h1>
-    LFE Friday - calendar:is_leap_year/1
+    Evaluating dynamic expressions in LFE
     
   </h1>
 </div>
@@ -203,49 +203,66 @@
 <div class="row">
   <div class="span8">
     
-<p><a href="/assets/images/posts/LispFlavoredErlang-medium-square.png"><img class="left tiny" src="/assets/images/posts/LispFlavoredErlang-medium-square.png" /></a>This week’s LFE Friday was translated with permission from the
-<a href="http://www.proctor-it.com/category/erlang/erlang-thursday/">Erlang Thursday</a>
-series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
-<em>This week’s translator</em>: Robert Virding.</p>
+<p><a href="/assets/images/posts/LispFlavoredErlang-medium-square.png"><img class="left tiny" src="/assets/images/posts/LispFlavoredErlang-medium-square.png" /></a>
+Sometimes you need to evaluate a dynamic expression in LFE, one that has been created during the execution of the program. For example we have been sent an expression to evaluate.</p>
 
-<p>Today’s LFE Friday is on <a href="http://www.erlang.org/doc/man/calendar.html#is_leap_year-1">calendar:is_leap_year/1</a>.</p>
+<p>This can be done with the function <code>eval/1</code> evaluates its argument as an expression:</p>
 
-<p><code>calendar:is_leap_year/1</code> takes a non-negative integer value representing a year, and will return <code>true</code> if that year is a leap year, or <code>false</code> otherwise.</p>
-
-<div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:is_leap_year</span> <span class="mi">2015</span><span class="p">)</span>
-<span class="nv">false</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:is_leap_year</span> <span class="mi">2012</span><span class="p">)</span>
-<span class="nv">true</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:is_leap_year</span> <span class="mi">2017</span><span class="p">)</span>
-<span class="nv">false</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:is_leap_year</span> <span class="mi">2000</span><span class="p">)</span>
-<span class="nv">true</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:is_leap_year</span> <span class="mi">1900</span><span class="p">)</span>
-<span class="nv">false</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:is_leap_year</span> <span class="mi">0</span><span class="p">)</span>   
+<div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>                   
+<span class="mi">6</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">calendar:is_leap_year</span> <span class="mi">1200</span><span class="p">))</span>
 <span class="nv">true</span></code></pre></div>
 
-<p>By having a built in function as part of the core Erlang libraries, it means you don’t have to code up the rules, or even go lookup the rules to remember how the century years are determined to be leap years or not.</p>
+<p>This works well if the expression is a literal value, but what if the expression has free variables for which we want to import values. For example we want get the value of <code>x</code> into <code>(+ 1 2 3 x)</code>:</p>
 
-<p>And if you do pass in a negative number for the year, Erlang will raise an exception, as there are no clauses which match a negative number for the year.</p>
+<div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">x</span> <span class="mi">42</span><span class="p">)</span>
+<span class="mi">42</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="nv">x</span><span class="p">))</span>                 
+<span class="nv">exception</span> <span class="nv">error:</span> <span class="o">#(</span><span class="nv">unbound_symb</span> <span class="nv">x</span><span class="p">)</span></code></pre></div>
 
-<div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:is_leap_year</span> <span class="mi">-1</span><span class="p">)</span>
-<span class="nv">exception</span> <span class="nv">error:</span> <span class="nv">function_clause</span>
-  <span class="nv">in</span> <span class="p">(</span><span class="err">:</span> <span class="nv">calendar</span> <span class="nv">is_leap_year</span> <span class="mi">-1</span><span class="p">)</span>
-<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:is_leap_year</span> <span class="mi">-4</span><span class="p">)</span>
-<span class="nv">exception</span> <span class="nv">error:</span> <span class="nv">function_clause</span>
-  <span class="nv">in</span> <span class="p">(</span><span class="err">:</span> <span class="nv">calendar</span> <span class="nv">is_leap_year</span> <span class="mi">-4</span><span class="p">)</span></code></pre></div>
+<p>which is not quite what we had hoped. The solution is to build a <code>let</code> form where we can import values for the variables which need binding:</p>
 
-<p>-Proctor, Robert</p>
+<div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">x</span> <span class="mi">42</span><span class="p">))</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="nv">x</span><span class="p">)))</span>
+<span class="mi">48</span></code></pre></div>
+
+<p>However, if the expression and values are not static then we must build the whole <code>let</code> expression to evaluate:</p>
+
+<div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">x</span> <span class="mi">42</span><span class="p">)</span>
+<span class="mi">42</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">expr</span> <span class="o">&#39;</span><span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="nv">x</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="nv">x</span><span class="p">)</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">list</span> <span class="ss">&#39;let</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">list</span> <span class="ss">&#39;x</span> <span class="nv">x</span><span class="p">))</span> <span class="nv">expr</span><span class="p">)</span>               
+<span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">x</span> <span class="mi">42</span><span class="p">))</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="nv">x</span><span class="p">))</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">eval</span> <span class="p">(</span><span class="nb">list</span> <span class="ss">&#39;let</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">list</span> <span class="ss">&#39;x</span> <span class="nv">x</span><span class="p">))</span> <span class="nv">expr</span><span class="p">))</span>        
+<span class="mi">48</span></code></pre></div>
+
+<p>Problem solved, now we can build expressions and import values into them. However, even with an expression as simple as this one building the structure can be quite complex. Fortunately, to the rescue comes the backquote <code>`</code> macro<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> which quotes <em>and</em> lets us import values:</p>
+
+<div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="o">`</span><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">x</span> <span class="o">,</span><span class="nv">x</span><span class="p">))</span> <span class="o">,</span><span class="nv">expr</span><span class="p">)</span>
+<span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">x</span> <span class="mi">42</span><span class="p">))</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="nv">x</span><span class="p">))</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nb">eval</span> <span class="o">`</span><span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">x</span> <span class="o">,</span><span class="nv">x</span><span class="p">))</span> <span class="o">,</span><span class="nv">expr</span><span class="p">))</span>
+<span class="mi">48</span></code></pre></div>
+
+<p>You can read more about the backquote macro in the <a href="http://lfe.gitbooks.io/tutorial/content/macros/backquote.html">LFE Tutorial: The Backquote Macro</a>.</p>
+
+<p>Robert</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>This basically the same backquote as is in Common Lisp. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 
     <hr>
     <div class="pagination btn-group">
       
-        <a class="btn prev" href="/tutorials/2015/04/24/1716-lfe-friday---calendarvalid_date3" title="LFE Friday - calendar:valid_date/3">&larr; Previous</a>
+        <a class="btn prev" href="/tutorials/2015/05/02/1744-lfe-friday---calendaris_leap_year1" title="LFE Friday - calendar:is_leap_year/1">&larr; Previous</a>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next" href="/tutorials/2015/05/02/1910-evaluating-dynamic-expressions-in-lfe" title="Evaluating dynamic expressions in LFE">Next &rarr;</a>
+        <a class="btn next disabled">Next &rarr;</a>
       
     </div>
     <hr>
@@ -279,11 +296,9 @@ series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
 
   
      
-    	<li><a href="/tags.html#lfe friday-ref">lfe friday <span>19</span></a></li>
-     
     	<li><a href="/tags.html#lfe-ref">lfe <span>22</span></a></li>
      
-    	<li><a href="/tags.html#erlang-ref">erlang <span>22</span></a></li>
+    	<li><a href="/tags.html#backquote-ref">backquote <span>1</span></a></li>
     
   
 

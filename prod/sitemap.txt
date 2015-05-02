@@ -15,6 +15,7 @@ http://blog.lfe.io//page4/index.html
 http://blog.lfe.io//page5/index.html
 http://blog.lfe.io//page6/index.html
 
+http://blog.lfe.io//tutorials/2015/05/02/1910-evaluating-dynamic-expressions-in-lfe
 http://blog.lfe.io//tutorials/2015/05/02/1744-lfe-friday---calendaris_leap_year1
 http://blog.lfe.io//tutorials/2015/04/24/1716-lfe-friday---calendarvalid_date3
 http://blog.lfe.io//tutorials/2015/04/20/1707-lfe-friday---calendardate_to_gregorian_days3
