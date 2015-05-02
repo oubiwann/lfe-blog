@@ -5,10 +5,53 @@
         <description>LFE Tutorials, News, &amp; Updates - LFEuminati | Alien Alliance</description>
         <link>http://blog.lfe.io/</link>
         <link>http://blog.lfe.io/</link>
-        <lastBuildDate>2015-04-24T17:55:52+02:00</lastBuildDate>
-        <pubDate>2015-04-24T17:55:52+02:00</pubDate>
+        <lastBuildDate>2015-05-02T17:54:21+02:00</lastBuildDate>
+        <pubDate>2015-05-02T17:54:21+02:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>LFE Friday - calendar:is_leap_year/1</title>
+                <description>
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
+&lt;a href=&quot;http://www.proctor-it.com/category/erlang/erlang-thursday/&quot;&gt;Erlang Thursday&lt;/a&gt;
+series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Proctor&lt;/a&gt;.
+&lt;em&gt;This week’s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
+
+&lt;p&gt;Today’s LFE Friday is on &lt;a href=&quot;http://www.erlang.org/doc/man/calendar.html#is_leap_year-1&quot;&gt;calendar:is_leap_year/1&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;calendar:is_leap_year/1&lt;/code&gt; takes a non-negative integer value representing a year, and will return &lt;code&gt;true&lt;/code&gt; if that year is a leap year, or &lt;code&gt;false&lt;/code&gt; otherwise.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:is_leap_year&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;false&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:is_leap_year&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2012&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:is_leap_year&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2017&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;false&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:is_leap_year&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:is_leap_year&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1900&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;false&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:is_leap_year&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   
+&lt;span class=&quot;nv&quot;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;By having a built in function as part of the core Erlang libraries, it means you don’t have to code up the rules, or even go lookup the rules to remember how the century years are determined to be leap years or not.&lt;/p&gt;
+
+&lt;p&gt;And if you do pass in a negative number for the year, Erlang will raise an exception, as there are no clauses which match a negative number for the year.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:is_leap_year&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;-1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;exception&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;error:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;function_clause&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;calendar&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;is_leap_year&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;-1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:is_leap_year&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;-4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;exception&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;error:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;function_clause&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;calendar&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;is_leap_year&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;-4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;-Proctor, Robert&lt;/p&gt;
+</description>
+                <link>http://blog.lfe.io//tutorials/2015/05/02/1744-lfe-friday---calendaris_leap_year1</link>
+                <guid>http://blog.lfe.io//tutorials/2015/05/02/1744-lfe-friday---calendaris_leap_year1</guid>
+                <pubDate>2015-05-02T00:00:00+02:00</pubDate>
+        </item>
 
         <item>
                 <title>LFE Friday - calendar:valid_date/3</title>
