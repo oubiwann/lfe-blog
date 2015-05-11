@@ -207,7 +207,7 @@
 
 <p><a href="/assets/images/posts/lsci-erlang-ecosystem.png"><img class="right thumb" src="/assets/images/posts/lsci-erlang-ecosystem.png" /></a>This tutorial brings in the New Year by introducing the Erlang/LFE
 scientific computing library <a href="https://github.com/lfex/lsci">lsci</a>
-&#8211; a ports wrapper of NumPy and SciPy (among others) for the Erlang ecosystem.
+– a ports wrapper of NumPy and SciPy (among others) for the Erlang ecosystem.
 The topic of the tutorial is polynomial curve-fitting for a given data set.
 Additionally, this post further demonstrates <a href="https://github.com/lfex/py/">py</a>
 usage, the
@@ -229,7 +229,7 @@ on the same subject, by David Edgar Liebke.</p>
 
 <h2 id="introduction">Introduction</h2>
 
-<p>The lsci library (pronounced &#8220;Elsie&#8221;) provides access to the fast numerical
+<p>The lsci library (pronounced “Elsie”) provides access to the fast numerical
 processing libraries that have become so popular in the scientific computing
 community. lsci is written in LFE but can be used just as easily from Erlang.</p>
 
@@ -274,7 +274,7 @@ perform tasks like polynomial curve-fitting and statistical regression.</p>
   <li>git</li>
 </ul>
 
-<p>With those in place, let&#8217;s get you ready:</p>
+<p>With those in place, let’s get you ready:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nv">$</span> <span class="nv">git</span> <span class="nv">clone</span> <span class="nv">git@github.com:lfex/lsci.git</span>
 <span class="nv">$</span> <span class="nv">cd</span> <span class="nv">lsci</span>
@@ -292,7 +292,7 @@ use the Python virtualenv, with all the libraries you just downloaded.</p>
 
 <h2 id="loading-data">Loading Data</h2>
 
-<p>The &#8220;observed data&#8221; we&#8217;re going to use is the same data set as
+<p>The “observed data” we’re going to use is the same data set as
 that used in the
 <a href="http://data-sorcery.org/2009/06/04/linear-regression-with-higher-order-terms/">Incanter linear regression tutorial</a>,
 the
@@ -300,7 +300,7 @@ the
 file. The data file we will use is a conversion of the original NIST file to
 CSV.</p>
 
-<p>Let&#8217;s load our experimental data:</p>
+<p>Let’s load our experimental data:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">data</span> <span class="p">(</span><span class="nv">lsci-np:genfromtxt</span>
               <span class="s">&quot;examples/polyfit/filip.csv&quot;</span>
@@ -347,9 +347,9 @@ a list:</p>
 
 <h2 id="a-note-about-values">A Note about Values</h2>
 
-<p>If you haven&#8217;t noticed yet, you certainly will as you run through these
+<p>If you haven’t noticed yet, you certainly will as you run through these
 examples in the LFE REPL: we keep getting opaque binary data back from NumPy.
-Why can&#8217;t lsci just convert that?</p>
+Why can’t lsci just convert that?</p>
 
 <p>While it would be nice to have that data presented to us in the REPL in such
 a way that we could <em>actually tell</em> what is was, this would run counter to the
@@ -362,7 +362,7 @@ first place. It would do several things:</p>
 first to Python native types and then to Erlang data types)</li>
   <li>Bring only Erlang-native data types into the REPL, thus requiring us to
 create new NumPy data types to pass <em>back</em> to Python if we wanted to benefit
-from NumPy&#8217;s speed, or another way of saying this,</li>
+from NumPy’s speed, or another way of saying this,</li>
   <li>Make it difficult to pass results back into NumPy for further processing</li>
 </ul>
 
@@ -375,7 +375,7 @@ purpose.</p>
 
 <p>Because our CSV file had headers and we told <code>genfromtxt</code> to use them with the
 <code>#(names true)</code> option, we can easily extrac the <script type="math/tex">x</script> and <script type="math/tex">y</script> axis data.
-Let&#8217;s look at their values separately:</p>
+Let’s look at their values separately:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">xs</span> <span class="p">(</span><span class="nv">lsci-np:get</span> <span class="nv">data</span> <span class="ss">&#39;x</span><span class="p">))</span>
 <span class="o">#(</span><span class="nv">$erlport.opaque</span> <span class="nv">python</span> <span class="o">...</span><span class="p">)</span>
@@ -394,7 +394,7 @@ Let&#8217;s look at their values separately:</p>
  <span class="mf">0.9021</span> <span class="mf">0.909</span> <span class="mf">0.9139</span> <span class="mf">0.9199</span> <span class="mf">0.8692</span> <span class="mf">0.8872</span> <span class="mf">0.89</span> <span class="mf">0.891</span> <span class="mf">0.8977</span> <span class="mf">0.9035</span>
  <span class="mf">0.9078</span> <span class="mf">0.7675</span> <span class="o">...</span><span class="p">)</span></code></pre></div>
 
-<p>Now let&#8217;s plot our data in the terminal:</p>
+<p>Now let’s plot our data in the terminal:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">lsci-asciiplot:scatter</span> <span class="nv">xs</span> <span class="nv">ys</span><span class="p">)</span></code></pre></div>
 
@@ -447,7 +447,7 @@ provided a polynomial describing this data:</p>
 <p>Or, if you prefer LaTeX:</p>
 
 <p>\begin{equation}
-y = B_0 + B_1{x} + B_2{x^2} + &#8230; + B_9{x^9} + B_{10}{x^{10}} + e
+y = B_0 + B_1{x} + B_2{x^2} + … + B_9{x^9} + B_{10}{x^{10}} + e
 \end{equation}</p>
 
 <p>Using NumPy, we can easily fit a 10th-degree polynomial curve to this data.
@@ -458,7 +458,7 @@ of our polynomial:</p>
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">coeffs</span> <span class="p">(</span><span class="nv">lsci-np:polyfit</span> <span class="nv">xs</span> <span class="nv">ys</span> <span class="mi">10</span><span class="p">))</span>
 <span class="o">#(</span><span class="nv">$erlport.opaque</span> <span class="nv">python</span> <span class="o">...</span><span class="p">)</span></code></pre></div>
 
-<p>Let&#8217;s peek at the data:</p>
+<p>Let’s peek at the data:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">lsci-np:-&gt;list</span> <span class="nv">coeffs</span><span class="p">)</span>
 <span class="p">(</span><span class="mf">-4.029625205186532e-5</span> <span class="mf">-0.0024678107546401437</span> <span class="mf">-0.06701911469215643</span>
@@ -493,13 +493,13 @@ of our polynomial:</p>
 <span class="mf">1.8207657603852567e-14</span></code></pre></div>
 
 <p>There is a conveience class in NumPy <code>numpy.poly1d</code> that, once instantiated
-with our fit data, we can use to evaluate at any given point. Let&#8217;s try it
+with our fit data, we can use to evaluate at any given point. Let’s try it
 out:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">model</span> <span class="p">(</span><span class="nv">lsci-np:poly1d</span> <span class="nv">coeffs</span><span class="p">))</span>
 <span class="o">#(</span><span class="nv">$erlport.opaque</span> <span class="nv">python</span> <span class="o">...</span><span class="p">)</span></code></pre></div>
 
-<p>Let&#8217;s call this function against several values as a sanity check:</p>
+<p>Let’s call this function against several values as a sanity check:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">lsci-np:-&gt;list</span> <span class="p">(</span><span class="nv">py:func</span> <span class="nv">model</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">-9</span><span class="p">)))</span>
 <span class="mf">0.7766886098502255</span>
@@ -518,11 +518,11 @@ out:</p>
 
 <h2 id="polynomial-linear-regression">Polynomial Linear Regression</h2>
 
-<p>Next let&#8217;s see if our linear model matches up with what NIST provided. We&#8217;re
+<p>Next let’s see if our linear model matches up with what NIST provided. We’re
 going to need to calculate the
 <a href="http://en.wikipedia.org/wiki/Coefficient_of_determination">coefficient of determination</a>,
-or <script type="math/tex">R^2</script> &#8211; a value that indicates how well a statistical model fits with
-measured data. We&#8217;ll start by feeding our <script type="math/tex">x</script> values into our model:</p>
+or <script type="math/tex">R^2</script> – a value that indicates how well a statistical model fits with
+measured data. We’ll start by feeding our <script type="math/tex">x</script> values into our model:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">y-predicted</span> <span class="p">(</span><span class="nv">py:func</span> <span class="nv">model</span> <span class="o">`</span><span class="p">(</span><span class="o">,</span><span class="nv">xs</span><span class="p">)))</span>
 <span class="o">#(</span><span class="nv">$erlport.opaque</span> <span class="nv">python</span> <span class="o">...</span><span class="p">)</span>
@@ -592,7 +592,7 @@ prefer, e.g.:</p>
 <span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">ss-res</span> <span class="p">(</span><span class="nv">lsci-np:sum</span> <span class="p">(</span><span class="nv">lsci-np:power</span> <span class="p">(</span><span class="nv">lsci-np:subtract</span> <span class="nv">ys</span> <span class="nv">y-predicted</span><span class="p">)</span> <span class="mi">2</span><span class="p">)))</span>
 <span class="o">#(</span><span class="nv">$erlport.opaque</span> <span class="nv">python</span> <span class="o">...</span><span class="p">)</span></code></pre></div>
 
-<p>Let&#8217;s sanity-check the results:</p>
+<p>Let’s sanity-check the results:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">lsci-np:-&gt;float</span> <span class="nv">y-mean</span><span class="p">)</span>
 <span class="mf">0.8495756097560976</span>
@@ -603,7 +603,7 @@ prefer, e.g.:</p>
 <span class="nb">&gt;</span> <span class="p">(</span><span class="nv">lsci-np:-&gt;float</span> <span class="nv">ss-res</span><span class="p">)</span>
 <span class="mf">7.958513853880548e-4</span></code></pre></div>
 
-<p>Now we&#8217;re ready to get the <script type="math/tex">R^2</script> value for our model:</p>
+<p>Now we’re ready to get the <script type="math/tex">R^2</script> value for our model:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">r-squared</span> <span class="p">(</span><span class="nv">lsci-np:-</span> <span class="mi">1</span> <span class="p">(</span><span class="nv">lsci-np:/</span> <span class="nv">ss-res</span> <span class="nv">ss-tot</span><span class="p">)))</span>
 <span class="o">#(</span><span class="nv">$erlport.opaque</span> <span class="nv">python</span> <span class="o">...</span><span class="p">)</span>
@@ -616,13 +616,13 @@ prefer, e.g.:</p>
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">lsci-np:-&gt;float</span> <span class="p">(</span><span class="nv">lsci-np:-</span> <span class="nv">r-squared</span> <span class="mf">0.996727416185620</span><span class="p">))</span>
 <span class="mf">-1.3220535777236364e-11</span></code></pre></div>
 
-<p>That&#8217;s a pretty tiny difference!</p>
+<p>That’s a pretty tiny difference!</p>
 
 <h2 id="a-linear-model-class">A Linear Model Class</h2>
 
 <p>The linear model code above is a bit cumbersome; it would be much more
 convenient for multiple-use if there was a Python class that did all the
-arithmetic for us, and we could just get attribute values &#8230; So that&#8217;s
+arithmetic for us, and we could just get attribute values … So that’s
 what we created:</p>
 
 <div class="highlight"><pre><code class="language-python"><span class="k">class</span> <span class="nc">PolynomialLinearModel</span><span class="p">:</span>
@@ -723,7 +723,7 @@ easily create a linear model which provides everything needed in one go:</p>
 
 <p>When we created our first model, we ran it against several values to see if
 the outputs fit our measured data. One of those was the value <code>-9</code> which
-returned <code>0.77668860985022548</code>. Let&#8217;s try that again with our new object:</p>
+returned <code>0.77668860985022548</code>. Let’s try that again with our new object:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">lsci-np:-&gt;float</span> <span class="p">(</span><span class="nv">py:method</span> <span class="nv">model</span> <span class="ss">&#39;predict</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">-9</span><span class="p">)))</span>
 <span class="mf">0.7766886098502255</span></code></pre></div>
@@ -732,10 +732,10 @@ returned <code>0.77668860985022548</code>. Let&#8217;s try that again with our n
 
 <h2 id="plotting-the-model-with-the-observed-data">Plotting the Model with the Observed Data</h2>
 
-<p>We&#8217;re going to need some data to feed to our fitted-poly function so that it
+<p>We’re going to need some data to feed to our fitted-poly function so that it
 can create the smooth polynomial curve that we will overlay on our scatter
-plot. Let&#8217;s create a linear space between our minimum and maximum x values
-(200 points should give us a nice, smooth curve). Then let&#8217;s use fitted-poly
+plot. Let’s create a linear space between our minimum and maximum x values
+(200 points should give us a nice, smooth curve). Then let’s use fitted-poly
 to generate the y values:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">xs-fitted</span>
@@ -747,7 +747,7 @@ to generate the y values:</p>
 <span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">ys-fitted</span>
     <span class="p">(</span><span class="nv">py:method</span> <span class="nv">model</span> <span class="ss">&#39;predict</span> <span class="o">`</span><span class="p">(</span><span class="o">,</span><span class="nv">xs-fitted</span><span class="p">)))</span></code></pre></div>
 
-<p>Now we&#8217;re ready to put them together:</p>
+<p>Now we’re ready to put them together:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">defun</span> <span class="nv">plot-both</span> <span class="p">()</span>
     <span class="p">(</span><span class="nv">lsci-asciiplot:scatter</span> <span class="nv">xs</span> <span class="nv">ys</span><span class="p">)</span>
@@ -807,11 +807,11 @@ thing floats your boat, be sure to take a look at
 <a href="https://github.com/lfex/lsci/issues">some of the development tasks</a> and
 come give us a hand!</p>
 
-<p>Even though there&#8217;s a lot to do, there&#8217;s a lot of reward :-) Every little
+<p>Even though there’s a lot to do, there’s a lot of reward :-) Every little
 function that gets converted
 brings enormous satisfaction: the ability to perform these sorts of computing
 tasks without having to leave the Erlang ecosystem is a wonderful change. We
-hope it&#8217;s one that you not only get used to, but can&#8217;t live without :-)</p>
+hope it’s one that you not only get used to, but can’t live without :-)</p>
 
     <hr>
     <div class="pagination btn-group">
@@ -854,7 +854,7 @@ hope it&#8217;s one that you not only get used to, but can&#8217;t live without 
 
   
      
-    	<li><a href="/tags.html#erlang-ref">erlang <span>22</span></a></li>
+    	<li><a href="/tags.html#erlang-ref">erlang <span>23</span></a></li>
      
     	<li><a href="/tags.html#python-ref">python <span>4</span></a></li>
      

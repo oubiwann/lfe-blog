@@ -205,13 +205,13 @@
     
 <p><a href="/assets/images/posts/lutil-leonardo-gears-large.png"><img class="right thumb" src="/assets/images/posts/lutil-leonardo-gears.png" /></a>With the
 <a href="https://github.com/lfex/lutil/releases/tag/0.5.0">release of lutil 0.5.0</a>,
-there are new &#8220;compose&#8221; functions accompanying the
+there are new “compose” functions accompanying the
 <a href="https://github.com/lfex/lutil/commits/master/include/compose-macros.lfe?author=dysinger">previously-merged</a>
 thrushing macros as well as a new convenience include file which contains all
-of lutil&#8217;s predicate functions defined for easy use in the REPL or in modules.
+of lutil’s predicate functions defined for easy use in the REPL or in modules.
 Additionally there is a new, experimental include file that is beginning to
-define functions and marcos considered &#8220;core&#8221; to the LFE experience but which
-aren&#8217;t yet (and may never be) included in LFE-proper. Some of these may wrap
+define functions and marcos considered “core” to the LFE experience but which
+aren’t yet (and may never be) included in LFE-proper. Some of these may wrap
 Erlang functions with more options, others may provide new syntax, etc. See
 below for usage examples.</p>
 
@@ -222,9 +222,9 @@ remaining here in perpetuity.</p>
 
 <p>This is a new include file while is the home for any functions that feel like
 they should be part of the language. They might wrap Erlang functions or
-provide basic functionality that&#8217;s not in Erlang or LFE proper.</p>
+provide basic functionality that’s not in Erlang or LFE proper.</p>
 
-<p>For now, it&#8217;s just the following:</p>
+<p>For now, it’s just the following:</p>
 
 <ul>
   <li><code>seq</code></li>
@@ -235,26 +235,26 @@ provide basic functionality that&#8217;s not in Erlang or LFE proper.</p>
 
 <h3 id="seq-functions"><code>seq</code> Functions</h3>
 
-<p>Let&#8217;s start with pulling in the <code>core</code> inlude in the LFE REPL:</p>
+<p>Let’s start with pulling in the <code>core</code> inlude in the LFE REPL:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">include-lib</span> <span class="s">&quot;lutil/include/core.lfe&quot;</span><span class="p">)</span>
 <span class="nv">loaded</span></code></pre></div>
 
-<p>Erlang doesn&#8217;t have a <code>lists:seq/1</code>, so we made one:</p>
+<p>Erlang doesn’t have a <code>lists:seq/1</code>, so we made one:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">seq</span> <span class="mi">10</span><span class="p">)</span>
 <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span> <span class="mi">9</span> <span class="mi">10</span><span class="p">)</span></code></pre></div>
 
-<p>Having done that, we also provided wrappers for Erlang&#8217;s <code>lists:seq/2</code>
+<p>Having done that, we also provided wrappers for Erlang’s <code>lists:seq/2</code>
 and <code>lists:seq/3</code>.</p>
 
 <p>As you can see, we opted for 1 as the default starting element. This follows in
-the tradition of many of Erlang&#8217;s <code>lists</code> functions. 0-based sequences can
+the tradition of many of Erlang’s <code>lists</code> functions. 0-based sequences can
 just use <code>seq/2</code>, e.g. <code>(seq 0 10)</code>.</p>
 
 <h3 id="range-functions"><code>range</code> Functions</h3>
 
-<p>These functions were inspired by Clojure&#8217;s
+<p>These functions were inspired by Clojure’s
 <a href="https://github.com/clojure/clojure/blob/clojure-1.6.0/src/clj/clojure/core.clj#L2725">range</a>
 function as well as
 <a href="https://docs.python.org/3/glossary.html#term-generator">Python generators</a>.
@@ -262,11 +262,11 @@ Our <code>range</code> provides us with the ability to generate an endless serie
 integers or floating point numbers without using more memory that what is
 required to create a few functions.</p>
 
-<p>Unlike Python and Clojure, <code>range</code> is based upon Erlang&#8217;s capacity for its
+<p>Unlike Python and Clojure, <code>range</code> is based upon Erlang’s capacity for its
 own brand of lazy evaluation as demonstrated in
 <a href="http://erlangraymondtay.blogspot.com/2009/08/example-of-lazy-evaluation-for.html">this blog post</a>.
-In particular, <code>(range)</code> returns a function (and so is more akin to Python&#8217;s
-generators that Clojure&#8217;s <code>range</code> function). When called, it will return a
+In particular, <code>(range)</code> returns a function (and so is more akin to Python’s
+generators that Clojure’s <code>range</code> function). When called, it will return a
 <code>cons</code> of:</p>
 
 <ul>
@@ -298,7 +298,7 @@ function in lutil <code>core</code>. More on that below.</p>
 <h3 id="take-functions"><code>take</code> Functions</h3>
 
 <p>For <code>range</code> to be very useful, we need be able to pull values from it.
-Otherwise, we&#8217;re left with usage like the following:</p>
+Otherwise, we’re left with usage like the following:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">funcall</span> <span class="p">(</span><span class="nv">range</span><span class="p">))</span>
 <span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="err">#</span><span class="nv">Fun&lt;lfe_eval.23.86468545&gt;</span><span class="p">)</span>
@@ -311,18 +311,18 @@ Otherwise, we&#8217;re left with usage like the following:</p>
 <span class="nb">&gt;</span></code></pre></div>
 
 <p>That certainly has its own <em>peculiar</em> charm, but does not rate too highly in
-convenience. As such, a function like Clojure&#8217;s <code>take</code> has been added to
+convenience. As such, a function like Clojure’s <code>take</code> has been added to
 lutil <code>core</code>. It does just what is says: takes a certain number of elements
 from our infinite series.</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">take</span> <span class="mi">4</span> <span class="p">(</span><span class="nv">range</span><span class="p">))</span>
 <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span></code></pre></div>
 
-<p>Hej! That&#8217;s much nicer than the above :-)</p>
+<p>Hej! That’s much nicer than the above :-)</p>
 
-<p>Sometimes one&#8217;s code will be using both infinite series as well as definite
+<p>Sometimes one’s code will be using both infinite series as well as definite
 lists and it would be nice to not have to change functions if the source
-of the data changes. As such, we&#8217;ve modified <code>take</code> to provide a wrapper
+of the data changes. As such, we’ve modified <code>take</code> to provide a wrapper
 for <code>lists:sublist/2</code>:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">take</span> <span class="mi">5</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span> <span class="mi">9</span> <span class="mi">10</span> <span class="mi">11</span> <span class="mi">12</span><span class="p">))</span>
@@ -378,7 +378,7 @@ to provide the increasingly-more-used predicates in include-form (thus
 alleviating developers having to use the full <code>mod:fun</code> syntax or from
 complicated and hard-to-maintain special imports).</p>
 
-<p>Here&#8217;s a quick way of seeing which predicates are supported:</p>
+<p>Here’s a quick way of seeing which predicates are supported:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">before</span> <span class="p">(</span><span class="nv">sets:from_list</span> <span class="p">(</span><span class="nv">lutil:get-env-funcs</span> <span class="nv">$ENV</span><span class="p">)))</span>
 <span class="o">#(</span><span class="nb">set</span> <span class="mi">11</span> <span class="mi">16</span> <span class="mi">16</span> <span class="mi">8</span> <span class="mi">80</span> <span class="mi">48</span>
@@ -422,7 +422,7 @@ brought in from <code>include-lib</code>:</p>
 
 <p>All of the 0.5.0 changes detailed above were actually yak-shavings in support of
 the <code>compose</code> functions. These new functions have been added as companions to
-the threshing macros (see below). These are similar to Clojure&#8217;s <code>compose</code>
+the threshing macros (see below). These are similar to Clojure’s <code>compose</code>
 function, but with some syntactic sugar to assist with the fact that LFE is a
 Lisp-2.</p>
 
@@ -431,13 +431,13 @@ Lisp-2.</p>
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">include-lib</span> <span class="s">&quot;lutil/include/compose.lfe&quot;</span><span class="p">)</span>
 <span class="nv">loaded</span></code></pre></div>
 
-<p>Let&#8217;s call <code>compose/2</code> on two math functions:</p>
+<p>Let’s call <code>compose/2</code> on two math functions:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">funcall</span> <span class="p">(</span><span class="nv">compose</span> <span class="nf">#&#39;</span><span class="nv">math:sin/1</span> <span class="nf">#&#39;</span><span class="nv">math:asin/1</span><span class="p">)</span>
            <span class="mf">0.5</span><span class="p">)</span>
 <span class="mf">0.49999999999999994</span></code></pre></div>
 
-<p>Now let&#8217;s use <code>compose/1</code> on a list of functions:</p>
+<p>Now let’s use <code>compose/1</code> on a list of functions:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">funcall</span> <span class="p">(</span><span class="nv">compose</span> <span class="o">`</span><span class="p">(</span><span class="o">,</span><span class="nf">#&#39;</span><span class="nv">math:sin/1</span>
                       <span class="o">,</span><span class="nf">#&#39;</span><span class="nv">math:asin/1</span>
@@ -453,8 +453,8 @@ Lisp-2.</p>
                 <span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">3</span> <span class="mi">0</span> <span class="mi">4</span><span class="p">))</span>
 <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span></code></pre></div>
 
-<p>Unlike schemes and Clojure, when calling <code>compose</code> directly, we can&#8217;t just
-wrap parens around our function &#8211; we need to call <code>funcall</code> on it. But we can
+<p>Unlike schemes and Clojure, when calling <code>compose</code> directly, we can’t just
+wrap parens around our function – we need to call <code>funcall</code> on it. But we can
 cheat, with a little help from Erlang arities :-)</p>
 
 <p>The following are provided as conveniences when using compose by itself (in
@@ -471,13 +471,13 @@ etc.):</p>
 
 <h2 id="thrushing-macros">Thrushing Macros</h2>
 
-<p>And now we&#8217;ve reached dessert :-)</p>
+<p>And now we’ve reached dessert :-)</p>
 
 <p>The following examples are for functionality that was previously added to
 lutil, authored originally by
 <a href="https://github.com/dysinger/lfesl/blob/master/include/thread.lfe">Tim Dysinger</a>.
 Though not part of this release, these bonus usage examples are provided since
-it&#8217;s such a cool set of macros, inspired by their
+it’s such a cool set of macros, inspired by their
 Clojure analogs <a href="http://clojuredocs.org/clojure.core/-%3E">-&gt;</a>
 and <a href="http://clojuredocs.org/clojure.core/-%3E%3E">-&gt; &gt;</a>.</p>
 
@@ -506,7 +506,7 @@ stacks of nested functions.</p>
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">include-lib</span> <span class="s">&quot;lutil/include/compose.lfe&quot;</span><span class="p">)</span>
 <span class="nv">loaded</span></code></pre></div>
 
-<p>Here&#8217;s how the first thrushing macro can help the previous example:</p>
+<p>Here’s how the first thrushing macro can help the previous example:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">-&gt;</span> <span class="s">&quot;a b c d e&quot;</span>
       <span class="p">(</span><span class="nv">string:to_upper</span><span class="p">)</span>
@@ -517,21 +517,21 @@ stacks of nested functions.</p>
       <span class="p">(</span><span class="nv">lists:sublist</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
 <span class="p">(</span><span class="s">&quot;L&quot;</span> <span class="s">&quot;F&quot;</span> <span class="s">&quot;E&quot;</span><span class="p">)</span></code></pre></div>
 
-<p>What&#8217;s happening here is that the output from one function is passed as
+<p>What’s happening here is that the output from one function is passed as
 (inserted, really) the first argument in the next fucntion.</p>
 
-<p>The next macro does the opposeite &#8230;</p>
+<p>The next macro does the opposeite …</p>
 
 <h3 id="the---macro-1">The <code>-&gt;&gt;</code> Macro</h3>
 
-<p>Let&#8217;s get some includes:</p>
+<p>Let’s get some includes:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">include-lib</span> <span class="s">&quot;lutil/include/predicates.lfe&quot;</span><span class="p">)</span>
 <span class="nv">loaded</span>
 <span class="nb">&gt;</span> <span class="p">(</span><span class="nv">include-lib</span> <span class="s">&quot;lutil/include/core.lfe&quot;</span><span class="p">)</span>
 <span class="nv">loaded</span></code></pre></div>
 
-<p>Next let&#8217;s make a bunch of nested calls:</p>
+<p>Next let’s make a bunch of nested calls:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">lists:foldl</span> <span class="nf">#&#39;</span><span class="nv">+/2</span> <span class="mi">0</span>
     <span class="p">(</span><span class="nv">take</span> <span class="mi">10</span>
@@ -548,7 +548,7 @@ stacks of nested functions.</p>
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">include-lib</span> <span class="s">&quot;lutil/include/compose.lfe&quot;</span><span class="p">)</span>
 <span class="nv">loaded</span></code></pre></div>
 
-<p>And now let&#8217;s rewrite the nested functions using the <code>-&gt;&gt;</code> macro:</p>
+<p>And now let’s rewrite the nested functions using the <code>-&gt;&gt;</code> macro:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">-&gt;&gt;</span> <span class="p">(</span><span class="nv">seq</span> <span class="mi">42</span><span class="p">)</span>
        <span class="p">(</span><span class="nv">lists:map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nv">math:pow</span> <span class="nv">x</span> <span class="mi">2</span><span class="p">)))</span>

@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <title>
       
-        LFE Sunday Times -
+        spell1 - LL(1) parser generator -
       
       LFE Tutorials, News, &amp; Updates
     </title>
-    <meta name="description" content="LFE Daily moved to weekly release">
+    <meta name="description" content="">
     <meta name="author" content="LFEuminati | Alien Alliance">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- HTML5 shim, for IE6-8 support of HTML elements -->
@@ -195,7 +195,7 @@
 
 <div class="page-header">
   <h1>
-    LFE Sunday Times
+    spell1 - LL(1) parser generator
     
   </h1>
 </div>
@@ -203,25 +203,33 @@
 <div class="row">
   <div class="span8">
     
-<p>After watching the LFE Daily from <a href="http://paper.li">paper.li</a> for a few weeks,
-it became clear that more interesting material accumulates over the course of a week
-rather than 24 hours.</p>
+<p><a href="/assets/images/posts/lutil-leonardo-gears.png"><img class="right small" src="/assets/images/posts/lutil-leonardo-gears.png" /></a>I have been working on an LL(1) grammar parser generator for Erlang/LFE. While we have yecc for LALR(1) grammars this isn’t suitable for everything. I think there are 2 main problems:</p>
 
-<p>As such, we’ve updated both the release schedule as well as the name: “LFE Daily” is now
-named “LFE Sunday Times”.</p>
+<ul>
+  <li>
+    <p>The generated yecc parsers must be given the exact number of tokens, neither too many nor too few. While this is no problem with Erlang code because of the <code>.</code> it is difficult with LFE. This could be fixed by writing a new yecc include file.</p>
+  </li>
+  <li>
+    <p>You tend to need some <em>extra</em> end token, usually written as <code>$</code>, after the ones needed for parsing to drive the actual parsing. This would make giving too many tokens problematic.</p>
+  </li>
+</ul>
 
-<p>You can access the paper at any time <a href="https://paper.li/ErlangLisp/1397422779">here</a>.</p>
+<p>You don’t have these problems with an LL(1) parser. The current LFE has been handwritten following the same rules as would a parser generator. So now I have taken the final step to finnish a generator I started long-ago.</p>
 
-<p>Enjoy your weekend reading!</p>
+<p>It works but needs a bit of cleaning up to be generally useful. It can now handle the full LFE syntax, which isn’t complex, and is almost a useful tool. While it is written in Erlang it will be easy to fix it so that it uses either Erlang or LFE for both the grammar file and the output file.</p>
+
+<p>The hardest part has been coming up with a good name, suggestions welcome.</p>
+
+<p>Robert</p>
 
     <hr>
     <div class="pagination btn-group">
       
-        <a class="btn prev" href="/site/2014/05/23/0815-docs-site-overhaul" title="Docs Site Overhaul">&larr; Previous</a>
+        <a class="btn prev" href="/tutorials/2015/05/02/1910-evaluating-dynamic-expressions-in-lfe" title="Evaluating dynamic expressions in LFE">&larr; Previous</a>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next" href="/site/2014/05/25/1026-history-of-erlang" title="History of Erlang">Next &rarr;</a>
+        <a class="btn next disabled">Next &rarr;</a>
       
     </div>
     <hr>
@@ -231,17 +239,17 @@ named “LFE Sunday Times”.</p>
   <div class="span4">
     <section>
       <h4>Author</h4>
-      <div class="author"><span><a href="/authors.html#Duncan McGreggor">Duncan McGreggor</a></span></div>
+      <div class="author"><span><a href="/authors.html#Robert Virding">Robert Virding</a></span></div>
     </section>
     <section>
       <h4>Published</h4>
-      <div class="date"><span>23 May 2014</span></div>
+      <div class="date"><span>11 May 2015</span></div>
     </section>
     
       <section>
         <h4>Category</h4>
         <span class="category">
-          news
+          tutorials
         </span>
       </section>
     
@@ -255,7 +263,11 @@ named “LFE Sunday Times”.</p>
 
   
      
-    	<li><a href="/tags.html#news-ref">news <span>5</span></a></li>
+    	<li><a href="/tags.html#lfe-ref">lfe <span>23</span></a></li>
+     
+    	<li><a href="/tags.html#erlang-ref">erlang <span>23</span></a></li>
+     
+    	<li><a href="/tags.html#tools-ref">tools <span>5</span></a></li>
     
   
 
