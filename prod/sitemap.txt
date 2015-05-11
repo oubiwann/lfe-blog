@@ -15,6 +15,7 @@ http://blog.lfe.io//page4/index.html
 http://blog.lfe.io//page5/index.html
 http://blog.lfe.io//page6/index.html
 
+http://blog.lfe.io//tutorials/2015/05/11/2333-lfe-friday---calendariso_week_number1
 http://blog.lfe.io//tutorials/2015/05/11/2251-spell1---ll1-parser-generator
 http://blog.lfe.io//tutorials/2015/05/02/1910-evaluating-dynamic-expressions-in-lfe
 http://blog.lfe.io//tutorials/2015/05/02/1744-lfe-friday---calendaris_leap_year1

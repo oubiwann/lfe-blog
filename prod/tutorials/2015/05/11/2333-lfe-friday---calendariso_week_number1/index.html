@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <title>
       
-        Usability Update: IErlang Notebook (a la IPython) -
+        LFE Friday - calendar:iso_week_number/1 -
       
       LFE Tutorials, News, &amp; Updates
     </title>
-    <meta name="description" content="Updated project source for IErlang makes it easier to use">
+    <meta name="description" content="">
     <meta name="author" content="LFEuminati | Alien Alliance">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- HTML5 shim, for IE6-8 support of HTML elements -->
@@ -195,7 +195,7 @@
 
 <div class="page-header">
   <h1>
-    Usability Update: IErlang Notebook (a la IPython)
+    LFE Friday - calendar:iso_week_number/1
     
   </h1>
 </div>
@@ -203,90 +203,49 @@
 <div class="row">
   <div class="span8">
     
-<p><a href="/assets/images/posts/screencapture-ierlang_demo.png"><img class="left thumb" src="/assets/images/posts/screencapture-ierlang_demo.png" /></a>Back in April, the Erlang community
-was stunned to hear that we had been given an answer to
-<a href="http://ipython.org/">IPython</a>, IHaskell, and IJulia –
-<a href="http://robl.co/ierlang-featured-on-hacker-news/">IErlang</a>. However, as
-<a href="https://twitter.com/lynchrobbie">Robbie</a> noted in the list of outstanding
-issues at the end of the IErlang demo notebook, not a lot of time had been set
-aside to develop a more standard project structure. Furthermore, the setup and
-installation of IErlang to get to the point where you could try it out was a
-rather arduous process. All of that has now changed …</p>
+<p><a href="/assets/images/posts/LispFlavoredErlang-medium-square.png"><img class="left tiny" src="/assets/images/posts/LispFlavoredErlang-medium-square.png" /></a>This week’s LFE Friday was translated with permission from the
+<a href="http://www.proctor-it.com/category/erlang/erlang-thursday/">Erlang Thursday</a>
+series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
+<em>This week’s translator</em>: Robert Virding.</p>
 
-<h2 id="running-the-new-demo">Running the New Demo</h2>
+<p>Today’s LFE Friday<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> is on <a href="http://www.erlang.org/doc/man/calendar.html#iso_week_number-1">calendar:iso_week_number/1</a></p>
 
-<p>The IErlang project has a series of
-<a href="https://github.com/robbielynch/ierlang/pulls">open PRs</a> that address several
-of the organizational issues Robbie had lamented, but you don’t have to wait
-until they get merged; you can
-<a href="https://github.com/oubiwann/ierlang">get it now</a>:</p>
+<p><code>calendar:iso_week_number/1</code> takes a date tuple as an argument, and returns a tuple of the year and week number.  The year is the year passed as the date tuple, and the week number is an integer between 1 and 53.</p>
 
-<div class="highlight"><pre><code class="language-bash"><span class="nv">$ </span>git clone git@github.com:oubiwann/ierlang.git
-<span class="nv">$ </span><span class="nb">cd </span>ierlang
-<span class="nv">$ </span>make demo</code></pre></div>
+<div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:iso_week_number</span> <span class="o">#(</span><span class="mi">2015</span> <span class="mi">05</span> <span class="mi">11</span><span class="p">))</span>
+<span class="o">#(</span><span class="mi">2015</span> <span class="mi">20</span><span class="p">)</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:iso_week_number</span> <span class="o">#(</span><span class="mi">2015</span> <span class="mi">05</span> <span class="mi">10</span><span class="p">))</span>
+<span class="o">#(</span><span class="mi">2015</span> <span class="mi">19</span><span class="p">)</span></code></pre></div>
 
-<p>Yup. That’s it.</p>
+<p>If we use this week as an example, we can see that a week starts on Monday (the 11th of May), where the Sunday before (10th of May) was the previous week.</p>
 
-<p>This will do the following for you:</p>
+<p>We see that January 1st falls on the first week of the year, no surprise there, and that the 31st of December for 2015, is on the 53rd week of the year.</p>
 
-<ul>
-  <li>Set up a Python virtual environment in the project’s working directory (in
-<code>./.venv-py2</code>)</li>
-  <li>Install IPython and its dependencies into that virtual environment</li>
-  <li>Patch IPython to support Erlang</li>
-  <li>Download the Erlang project dependencies</li>
-  <li>Compile the Erlang dependency modules</li>
-  <li>Compile the <code>ierl_*</code> modules</li>
-  <li>Start up the demo notebook in your browser</li>
-</ul>
+<div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:iso_week_number</span> <span class="o">#(</span><span class="mi">2015</span> <span class="mi">01</span> <span class="mi">01</span><span class="p">))</span>
+<span class="o">#(</span><span class="mi">2015</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:iso_week_number</span> <span class="o">#(</span><span class="mi">2015</span> <span class="mi">12</span> <span class="mi">31</span><span class="p">))</span>
+<span class="o">#(</span><span class="mi">2015</span> <span class="mi">53</span><span class="p">)</span></code></pre></div>
 
-<h2 id="requirements">Requirements</h2>
+<p>Having a 53rd week of the year sounds surprising at first, because everyone talks about 52 weeks in a year, until you realize that sometimes December 31st sometimes falls at the very beginning of a week, causing it to be the 53rd week, since it is only a partial week.</p>
 
-<p>As you might have guessed, this requires that you have the following
-installed in your <code>$PATH</code>:</p>
+<p>-Proctor, Robert</p>
 
-<ul>
-  <li><code>erl</code> and <code>erlscript</code></li>
-  <li><code>rebar</code></li>
-  <li>Python 2.7 (Python 3.4 support is in the works; see
-<a href="https://github.com/robbielynch/ierlang/issues/6">the ticket</a>)</li>
-</ul>
-
-<h2 id="outstanding-issues">Outstanding Issues</h2>
-
-<p>As you can see at the bottom of the IErlang notebook demo, many of the issues
-that Robbie identified earlier this year still remain. In particular, I’ve
-added another one to that list: high CPU usage for both <code>console</code> and
-<code>notebook</code> mode.</p>
-
-<p>A minor issue I didn’t add, but which I may take up (being the code janitor
-that I am) is function-level organization in the modules: most functions are
-too long and entail too much logic. They need to be split out (which will
-also make it easier for folks to contribute).</p>
-
-<p>As referenced above, currently only Python 2.7 is supported. Python 3.4 support
-is in-progress, but requires cleaning up <code>str</code> and <code>bytes</code> handling.</p>
-
-<h2 id="future-work">Future Work</h2>
-
-<p>The next logical step is to generalize this work (through refactoring!) so that
-<a href="http://lfe.io/">LFE</a>,
-<a href="http://elixir-lang.org/">Elixir</a>,
-<a href="http://joxa.org/">Joxa</a>,
-<a href="https://github.com/rvirding/luerl">Luerl</a>,
-<a href="https://github.com/rvirding/erlog">Erlog</a>,
-<a href="https://github.com/etnt/Haskerl">Haskerl</a>,
-and others may also be used with IErlang :-)</p>
-
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Slightly late again, this time because of work on my parser generator. See the previous blog posting. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 
     <hr>
     <div class="pagination btn-group">
       
-        <a class="btn prev" href="/tutorials/2014/12/03/1828-erlport-and-python-making-more-calls-from-lfe" title="ErlPort and Python Part II: Making More Calls from LFE">&larr; Previous</a>
+        <a class="btn prev" href="/tutorials/2015/05/11/2251-spell1---ll1-parser-generator" title="spell1 - LL(1) parser generator">&larr; Previous</a>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next" href="/tutorials/2014/12/07/1837-running-lfe-in-docker" title="Running LFE in Docker">Next &rarr;</a>
+        <a class="btn next disabled">Next &rarr;</a>
       
     </div>
     <hr>
@@ -296,17 +255,17 @@ and others may also be used with IErlang :-)</p>
   <div class="span4">
     <section>
       <h4>Author</h4>
-      <div class="author"><span><a href="/authors.html#Duncan McGreggor">Duncan McGreggor</a></span></div>
+      <div class="author"><span><a href="/authors.html#Robert Virding">Robert Virding</a></span></div>
     </section>
     <section>
       <h4>Published</h4>
-      <div class="date"><span>06 December 2014</span></div>
+      <div class="date"><span>11 May 2015</span></div>
     </section>
     
       <section>
         <h4>Category</h4>
         <span class="category">
-          announcements
+          tutorials
         </span>
       </section>
     
@@ -320,13 +279,11 @@ and others may also be used with IErlang :-)</p>
 
   
      
+    	<li><a href="/tags.html#lfe friday-ref">lfe friday <span>20</span></a></li>
+     
+    	<li><a href="/tags.html#lfe-ref">lfe <span>24</span></a></li>
+     
     	<li><a href="/tags.html#erlang-ref">erlang <span>24</span></a></li>
-     
-    	<li><a href="/tags.html#tools-ref">tools <span>5</span></a></li>
-     
-    	<li><a href="/tags.html#web-ref">web <span>6</span></a></li>
-     
-    	<li><a href="/tags.html#shells-ref">shells <span>1</span></a></li>
     
   
 
