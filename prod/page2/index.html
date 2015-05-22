@@ -214,6 +214,40 @@
     <div class="row">
       <div class="span5">
         <h2>
+          <strong><a href="/announcements/2015/04/04/1538-lfe-and-dialyzer">LFE and dialyzer</a></strong>
+        </h2>
+        <h4>How we will be able to run dialyzer on LFE code</h4>
+        <p>
+          
+<p><a href="/assets/images/posts/ldialyzer.png"><img class="left medium" src="/assets/images/posts/ldialyzer.png" /></a>
+Dialyzer can be a useful tool but its implementation has a few idiosynchrasies which make it difficult to directly use with LFE. It can only use .erl files or .beam files. Unfortunately the .beam files must be compiled from erlang files using the ‘debug_info’ option. This option includes the full Erlang AST in the .beam file and it is this which is used by dialyzer.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>For this reason releasing a product with only .beam files but which have been compiled with the debug_info option is the same as including the source files. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+          <br />
+          <a href="/announcements/2015/04/04/1538-lfe-and-dialyzer">Read more</a>
+        </p>
+        <p>
+          <i class="icon-user"></i><span><a href="/authors.html#Robert Virding">Robert Virding</a></span> | <i class="icon-calendar"></i> April  4, 2015
+          | <i class="icon-tags"></i> Tags : <a href="/tags.html#lfe-ref" rel="tooltip" title="View posts tagged with &quot;lfe&quot;"><span class="tags badge label">lfe</span></a>     <a href="/tags.html#dialyzer-ref" rel="tooltip" title="View posts tagged with &quot;dialyzer&quot;"><span class="tags badge label">dialyzer</span></a>   
+        </p>
+      </div>
+    </div>
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span7">
+    <div class="row">
+      <div class="span5">
+        <h2>
           <strong><a href="/tutorials/2015/04/04/0240-lfe-friday---listsdelete2">LFE Friday - lists:delete/2</a></strong>
         </h2>
         <h4></h4>
@@ -468,38 +502,6 @@ role in the future of computer science and related industries:</p>
         <p>
           <i class="icon-user"></i><span><a href="/authors.html#Duncan McGreggor">Duncan McGreggor</a></span> | <i class="icon-calendar"></i> March 22, 2015
           | <i class="icon-tags"></i> Tags : <a href="/tags.html#books-ref" rel="tooltip" title="View posts tagged with &quot;books&quot;"><span class="tags badge label">books</span></a>     <a href="/tags.html#documentation-ref" rel="tooltip" title="View posts tagged with &quot;documentation&quot;"><span class="tags badge label">documentation</span></a>     <a href="/tags.html#education-ref" rel="tooltip" title="View posts tagged with &quot;education&quot;"><span class="tags badge label">education</span></a>     <a href="/tags.html#history-ref" rel="tooltip" title="View posts tagged with &quot;history&quot;"><span class="tags badge label">history</span></a>     <a href="/tags.html#lisp-ref" rel="tooltip" title="View posts tagged with &quot;lisp&quot;"><span class="tags badge label">lisp</span></a>     <a href="/tags.html#mathematics-ref" rel="tooltip" title="View posts tagged with &quot;mathematics&quot;"><span class="tags badge label">mathematics</span></a>     <a href="/tags.html#sicp-ref" rel="tooltip" title="View posts tagged with &quot;sicp&quot;"><span class="tags badge label">sicp</span></a>   
-        </p>
-      </div>
-    </div>
-    <hr>
-  </div>
-</div>
-
-<div class="row">
-  <div class="span7">
-    <div class="row">
-      <div class="span5">
-        <h2>
-          <strong><a href="/update/2015/03/22/1342-sicp-the-lfe-edition-update">SICP: the LFE Edition - Update</a></strong>
-        </h2>
-        <h4>An update on the LFE edition of SICP and a note about the new preface</h4>
-        <p>
-          
-<p><a href="/assets/images/posts/sicp.jpg"><img class="right small" src="/assets/images/posts/sicp.jpg" /></a>
-The LFE Edition of the historic <em>Structure and Interpretation of Computer
-Programs</em> (<a href="http://lfe.gitbooks.io/sicp/content/index.html">book</a>,
-<a href="https://github.com/lfe/sicp">source</a>) continues to make steady progress,
-including getting a new preface. This post is a teaser for additional posts
-which will appear here in the coming days. But first, here’s how things stand
-so far:</p>
-
-
-          <br />
-          <a href="/update/2015/03/22/1342-sicp-the-lfe-edition-update">Read more</a>
-        </p>
-        <p>
-          <i class="icon-user"></i><span><a href="/authors.html#Duncan McGreggor">Duncan McGreggor</a></span> | <i class="icon-calendar"></i> March 22, 2015
-          | <i class="icon-tags"></i> Tags : <a href="/tags.html#books-ref" rel="tooltip" title="View posts tagged with &quot;books&quot;"><span class="tags badge label">books</span></a>     <a href="/tags.html#news-ref" rel="tooltip" title="View posts tagged with &quot;news&quot;"><span class="tags badge label">news</span></a>     <a href="/tags.html#docs-ref" rel="tooltip" title="View posts tagged with &quot;docs&quot;"><span class="tags badge label">docs</span></a>     <a href="/tags.html#education-ref" rel="tooltip" title="View posts tagged with &quot;education&quot;"><span class="tags badge label">education</span></a>     <a href="/tags.html#sicp-ref" rel="tooltip" title="View posts tagged with &quot;sicp&quot;"><span class="tags badge label">sicp</span></a>   
         </p>
       </div>
     </div>

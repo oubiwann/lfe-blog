@@ -15,6 +15,7 @@ http://blog.lfe.io//page4/index.html
 http://blog.lfe.io//page5/index.html
 http://blog.lfe.io//page6/index.html
 
+http://blog.lfe.io//tutorials/2015/05/22/0224-lfe-friday---queuecons2
 http://blog.lfe.io//tutorials/2015/05/15/2306-lfe-friday---filelibis_file1
 http://blog.lfe.io//tutorials/2015/05/11/2333-lfe-friday---calendariso_week_number1
 http://blog.lfe.io//tutorials/2015/05/11/2251-spell1---ll1-parser-generator
