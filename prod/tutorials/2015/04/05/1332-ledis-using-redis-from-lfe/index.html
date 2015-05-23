@@ -210,12 +210,12 @@ CLI, the LFE REPL is used in conjunction with the
 <a href="https://github.com/lfex/ledis">ledis</a> library.</p>
 
 <p>The ledis library has defined functions for the Redis commands most often used;
-if we haven’t added one that you need, just
+if we haven&#8217;t added one that you need, just
 <a href="https://github.com/lfex/ledis/issues/new">open a ticket</a> with your request, or
 even submit a pull request with your changes.</p>
 
 <p>The original tutorial on Redis data types is a bit long for a blog post, so
-we’ll be splitting it up across multiple installments; this post covers the
+we&#8217;ll be splitting it up across multiple installments; this post covers the
 following topics:</p>
 
 <ul>
@@ -225,7 +225,7 @@ following topics:</p>
   <li>Altering and Querying the Key Space</li>
 </ul>
 
-<p>Be sure to checkout the original tutorial for the full introduction; we’re
+<p>Be sure to checkout the original tutorial for the full introduction; we&#8217;re
 going to skip that in this tutorial and jump right into the data types.</p>
 
 <h2 id="preparation">Preparation</h2>
@@ -239,7 +239,7 @@ going to skip that in this tutorial and jump right into the data types.</p>
   <li>The <a href="https://github.com/lfex/ledis">ledis project</a></li>
 </ul>
 
-<p>LFE and ledis’ dependencies will all be downloaded for you automatically when
+<p>LFE and ledis&#8217; dependencies will all be downloaded for you automatically when
 you start up the project REPL for the first time (see below). This tutorial
 will not cover the installation of Redis or Erlang. To instll the development
 version of <code>lfetool</code>, simply do the following:</p>
@@ -250,12 +250,12 @@ version of <code>lfetool</code>, simply do the following:</p>
 <p>This will create an executable <code>lfetool</code> in your <code>/usr/local/bin</code>
 directory.</p>
 
-<p>Next you’ll need to get ledis itself:</p>
+<p>Next you&#8217;ll need to get ledis itself:</p>
 
 <div class="highlight"><pre><code class="language-bash"><span class="nv">$ </span>git clone https://github.com/lfex/ledis.git
 <span class="nv">$ </span><span class="nb">cd </span>ledis</code></pre></div>
 
-<p>We’re going to edit the <code>lfe.config</code> file
+<p>We&#8217;re going to edit the <code>lfe.config</code> file
 so that all results are automatically converted from binary to strings (just
 for the purpose of this tutorial). Open up the file, and change this line:</p>
 
@@ -266,8 +266,8 @@ for the purpose of this tutorial). Open up the file, and change this line:</p>
 <div class="highlight"><pre><code class="language-lisp"><span class="o">#(</span><span class="nv">return-type</span> <span class="nb">string</span><span class="p">)))</span></code></pre></div>
 
 <p>Now go ahead and start the LFE REPL. The first time you run this, all the
-dependencies will be downloaded and compiled. Note that the project’s <code>make</code>
-targets automatically start the ledis application, so there’s no need to type
+dependencies will be downloaded and compiled. Note that the project&#8217;s <code>make</code>
+targets automatically start the ledis application, so there&#8217;s no need to type
 <code>(ledis:start)</code>:</p>
 
 <div class="highlight"><pre><code class="language-bash"><span class="nv">$ </span>make repl</code></pre></div>
@@ -276,12 +276,12 @@ targets automatically start the ledis application, so there’s no need to type
 <span class="nv">LFE</span> <span class="nv">Shell</span> <span class="nv">V6.3</span> <span class="p">(</span><span class="nb">abort</span> <span class="nv">with</span> <span class="nv">^G</span><span class="p">)</span>
 <span class="nb">&gt;</span></code></pre></div>
 
-<p>At this point, we’re ready to start the tutorial!</p>
+<p>At this point, we&#8217;re ready to start the tutorial!</p>
 
 <h2 id="redis-keys">Redis Keys</h2>
 
 <p>Redis keys are binary safe, this means that you can use any binary sequence as
-a key, from a string like “foo” to the content of a JPEG file. The empty string
+a key, from a string like &#8220;foo&#8221; to the content of a JPEG file. The empty string
 is also a valid key.</p>
 
 <p>A few other rules about keys:</p>
@@ -294,13 +294,13 @@ hand is to match the existence of a large value, to resort to hashing it (for
 example with SHA1) is a better idea, especially from the point of view of
 memory and bandwidth.</li>
   <li>Very short keys are often not a good idea. There is little point in writing
-“u1000flw” as a key if you can instead write “user:1000:followers”. The
+&#8220;u1000flw&#8221; as a key if you can instead write &#8220;user:1000:followers&#8221;. The
 latter is more readable and the added space is minor compared to the space
 used by the key object itself and the value object. While short keys will
 obviously consume a bit less memory, your job is to find the right balance.</li>
-  <li>Try to stick with a schema. For instance “object-type:id” is a good idea, as
-in “user:1000”. Dots or dashes are often used for multi-word fields, as in
-“comment:1234:reply.to” or “comment:1234:reply-to”.</li>
+  <li>Try to stick with a schema. For instance &#8220;object-type:id&#8221; is a good idea, as
+in &#8220;user:1000&#8221;. Dots or dashes are often used for multi-word fields, as in
+&#8220;comment:1234:reply.to&#8221; or &#8220;comment:1234:reply-to&#8221;.</li>
   <li>The maximum allowed key size is 512 MB.</li>
 </ul>
 
@@ -314,7 +314,7 @@ for newcomers to use it in Redis.</p>
 are mapping a string to another string. The string data type is useful for a
 number of use cases, like caching HTML fragments or pages.</p>
 
-<p>Let’s play a bit with the string type, using the LFE REPL and the ledis
+<p>Let&#8217;s play a bit with the string type, using the LFE REPL and the ledis
 library.</p>
 
 <div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">ledis:set</span> <span class="ss">&#39;mykey</span> <span class="s">&quot;somevalue&quot;</span><span class="p">)</span>
@@ -327,7 +327,7 @@ and retrieve a string value. Note that <code>set</code> will replace any existin
 already stored into the key, in the case that the key already exists, even if
 the key is associated with a non-string value. So <code>set</code> performs an
 assignment.  Values can be strings (including binary data) of every kind, for
-instance you can store a jpeg image inside a key. A value can’t be bigger than
+instance you can store a jpeg image inside a key. A value can&#8217;t be bigger than
 512 MB.</p>
 
 <p>The <code>set</code> function has interesting options, that are provided as additional
@@ -338,7 +338,7 @@ arguments. For example, you may ask <code>set</code> to fail if the key already 
 <span class="nb">&gt;</span> <span class="p">(</span><span class="nv">ledis:get</span> <span class="ss">&#39;mykey</span><span class="p">)</span>
 <span class="o">#(</span><span class="nv">ok</span> <span class="s">&quot;somevalue&quot;</span><span class="p">)</span></code></pre></div>
 
-<p>Note that when <code>undefined</code> is returned, this is a translation of Redis’
+<p>Note that when <code>undefined</code> is returned, this is a translation of Redis&#8217;
 <code>nil</code> response (for a command that had no results or made no changes). Also,
 it still has the old value (as expected).</p>
 
@@ -363,7 +363,7 @@ exists:</p>
 <p>In that example, we did the following:</p>
 
 <ol>
-  <li>Set a value for <code>mykey</code> – but only if it already existed – and set its
+  <li>Set a value for <code>mykey</code> &#8211; but only if it already existed &#8211; and set its
 expiration for 10,000 milliseconds.</li>
   <li>Checked the value, to show that our function all worked.</li>
   <li>Set the timer for a time when the value would be expired.</li>
@@ -384,12 +384,12 @@ you can perform with them. For instance, one is atomic increment:</p>
 
 <p>The <code>incr</code> function parses the string value as an integer, increments it by
 one, and finally sets the obtained value as the new value. There are other
-similar functions like <code>incrby</code>, <code>decr</code> and <code>decrby</code>. Internally it’s
+similar functions like <code>incrby</code>, <code>decr</code> and <code>decrby</code>. Internally it&#8217;s
 always the same Redis command, acting in a slightly different way.</p>
 
 <p>What does it mean that <code>incr</code> is atomic? That even multiple clients issuing
 <code>incr</code> against the same key will never enter into a race condition. For
-instance, it will never happen that client 1 reads “10”, client 2 reads “10” at
+instance, it will never happen that client 1 reads &#8220;10&#8221;, client 2 reads &#8220;10&#8221; at
 the same time, both increment to 11, and set the new value to 11. The final
 value will always be 12 and the read-increment-set operation is performed while
 all the other clients are not executing a command against the Redis server at
@@ -401,7 +401,7 @@ result. You can use this function, for example, if you have a system that
 increments a Redis key using <code>incr</code> every time your web site receives a new
 visitor. You may want to collect this information once every hour, without
 losing a single increment.  You can <code>getset</code> the key, assigning it the new
-value of “0” and reading the old value back.</p>
+value of &#8220;0&#8221; and reading the old value back.</p>
 
 <p>The ability to set or retrieve the value of multiple keys in a single function
 is also useful for reduced latency. For this reason there are the
@@ -447,7 +447,7 @@ that name). You may also delete multiple keys in one go:</p>
 <span class="o">#(</span><span class="nv">ok</span> <span class="s">&quot;3&quot;</span><span class="p">)</span></code></pre></div>
 
 <p>In this case, the return value for <code>del</code> is the number of successful deletes:
-we asked it to delete four keys, but the fourth doesn’t exist, so it only
+we asked it to delete four keys, but the fourth doesn&#8217;t exist, so it only
 deleted three.</p>
 
 <p>There are many key space related commands, but the above two are the essential
@@ -465,7 +465,7 @@ stored at the specified key:</p>
 
 <h2 id="more-redis">More Redis</h2>
 
-<p>As progres is made on the LFE library, we’ll be posting more installments of
+<p>As progres is made on the LFE library, we&#8217;ll be posting more installments of
 the <a href="http://redis.io/topics/data-types-intro">Redis tutorial</a> here. Expect to
 see the following in the coming weeks and months:</p>
 
