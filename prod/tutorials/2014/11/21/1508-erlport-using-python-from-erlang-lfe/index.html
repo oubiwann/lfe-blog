@@ -207,7 +207,7 @@
 <a href="http://technicae.cogitat.io/2014/11/erlport-using-python-from-erlanglfe.html">cogitat.io</a>
 and is being reblogged here as an expeiment. This repost is an adventure into
 github pages as a blogging platform for code-heavy posts. For year, I have found
-Google&#8217;s blogger.com cumbersome as a medium for sharing code. The burden has
+Google’s blogger.com cumbersome as a medium for sharing code. The burden has
 finally grown too great. It makes sense to use the same platform to share the
 prose description of code as that which shares the code itself (i.e.,
 repositories and <code>README</code> files). I can only imagine this will be much less
@@ -217,17 +217,17 @@ bonus, code should now appear in RSS/Atom feeds :-)</p>
 <h2 id="intro">Intro</h2>
 <p><a href="/assets/images/posts/Erlang-Python-Greats.png"><img class="right thumb" src="/assets/images/posts/Erlang-Python-Greats.png" /></a></p>
 
-<p>This blog post is one I&#8217;ve been wanting to get out there ever since
-I ran across <a href="http://erlport.org/">the erlport project</a> a few years ago. I&#8217;m
+<p>This blog post is one I’ve been wanting to get out there ever since
+I ran across <a href="http://erlport.org/">the erlport project</a> a few years ago. I’m
 glad to finally have the chance to sit down and get it out there. I hope that
-more people who need to take advantage of Python&#8217;s strengths from Erlang/LFE
+more people who need to take advantage of Python’s strengths from Erlang/LFE
 find out about this project.</p>
 
 <h2 id="strengths-and-weaknesses">Strengths and Weaknesses</h2>
 
 <p>Erlang was built for fault-tolerance. It had a goal of unprecedented uptimes,
-and these have been achieved. It powers 40% of our world&#8217;s telecommunications
-traffic. It&#8217;s capable of supporting amazing levels of concurrency
+and these have been achieved. It powers 40% of our world’s telecommunications
+traffic. It’s capable of supporting amazing levels of concurrency
 (remember the <a href="https://www.sics.se/~joe/apachevsyaws.html">2007 announcement</a>
 about the performance of YAWS vs. Apache?).</p>
 
@@ -235,13 +235,13 @@ about the performance of YAWS vs. Apache?).</p>
 is to think these performance characteristics will be applicable to their own
 particular domain. This has often resulted in failure, disappointment, and the
 unjust blaming of Erlang. If you want to process huge files, do lots of string
-manipulation, or crunch tons of numbers, Erlang&#8217;s not your bag, baby. Try
+manipulation, or crunch tons of numbers, Erlang’s not your bag, baby. Try
 <a href="https://www.python.org/">Python</a> or <a href="http://julialang.org/">Julia</a>.</p>
 
 <p>But then, you may be thinking: I like supervision trees. I have long-running
 processes that I want to be managed per the rules I establish. I want to run
 lots of jobs in parallel on my 64-core box. I want to run jobs in parallel
-over the network on 64 of my 64-core boxes. Python&#8217;s the right tool for the
+over the network on 64 of my 64-core boxes. Python’s the right tool for the
 jobs, but I wish I could manage them with Erlang.</p>
 
 <p>(There are sooo many other options for the use cases above, many of them
@@ -250,7 +250,7 @@ really excellent. But this post is about Erlang/LFE :-)).</p>
 <h2 id="erlang-ports">Erlang Ports</h2>
 
 <p>Traditionally, if you want to run other languages with Erlang in a reliable
-way that doesn&#8217;t bring your Erlang nodes down with badly behaved code, you
+way that doesn’t bring your Erlang nodes down with badly behaved code, you
 use <a href="http://erlang.org/doc/reference_manual/ports.html">Ports</a>.
 (more info is available in the
 <a href="http://www.erlang.org/doc/tutorial/overview.html">Interoperability Guide</a>).
@@ -268,10 +268,10 @@ data types are not that big a deal).</p>
 <a href="https://twitter.com/hdima">Dmitry Vasiliev</a> in 2009 in an effort to solve just this
 problem, making it easier to use of and integrate between Erlang and more common
 languages like Python and Ruby. The project is maintained, and in fact has just
-received a few updates. Below, we&#8217;ll demonstrate some usage in
+received a few updates. Below, we’ll demonstrate some usage in
 <a href="http://lfe.io/">LFE</a> with <a href="https://docs.python.org/3/">Python 3</a>.</p>
 
-<p>If you want to follow along, there&#8217;s a demo repo you can check out:</p>
+<p>If you want to follow along, there’s a demo repo you can check out:</p>
 
 <div class="highlight"><pre><code class="language-bash"><span class="nv">$ </span>git clone git@github.com:oubiwann/erlport-demo.git
 <span class="nv">$ </span><span class="nb">cd </span>erlport-demo</code></pre></div>
@@ -297,9 +297,9 @@ LFE Shell V6.2 <span class="o">(</span>abort with ^G<span class="o">)</span>
 &gt;</code></pre></div>
 
 <p>Note that this will first download the necessary dependencies and compile them
-(that&#8217;s what the <code>[snip]</code> is eliding).</p>
+(that’s what the <code>[snip]</code> is eliding).</p>
 
-<p>Now we&#8217;re ready to take erlport for a quick trip down to the local:</p>
+<p>Now we’re ready to take erlport for a quick trip down to the local:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="o">`#(</span><span class="nv">ok</span> <span class="o">,</span><span class="nv">pid</span><span class="p">)</span> <span class="p">(</span><span class="nv">python:start</span><span class="p">))</span>
 <span class="o">#(</span><span class="nv">ok</span> <span class="nv">&lt;0.32.0&gt;</span><span class="p">)</span>
@@ -307,7 +307,7 @@ LFE Shell V6.2 <span class="o">(</span>abort with ^G<span class="o">)</span>
 <span class="s">&quot;3.4.2 (v3.4.2:ab2c023a9432, Oct  5 2014, 20:42:22) ...&quot;</span>
 <span class="nb">&gt;</span></code></pre></div>
 
-<p>And that&#8217;s all there is to it :-)</p>
+<p>And that’s all there is to it :-)</p>
 
 <p>Perhaps in a future post we can dive into the internals, showing you more of the
 glory that is erlport. Even better, we could look at more compelling example

@@ -4,7 +4,7 @@
  <title>LFE Tutorials, News, &amp; Updates</title>
  <link href="http://blog.lfe.io//" rel="self"/>
  <link href="http://blog.lfe.io/"/>
- <updated>2015-05-23T18:32:20-05:00</updated>
+ <updated>2015-05-24T18:29:56-05:00</updated>
  <id>http://blog.lfe.io/</id>
  <author>
    <name>LFEuminati | Alien Alliance</name>
@@ -13,25 +13,124 @@
 
  
  <entry>
+   <title>What is OTP?</title>
+   <link href="http://blog.lfe.io//tutorials/2015/05/24/1808-what-is-otp"/>
+   <updated>2015-05-24T00:00:00-05:00</updated>
+   <id>http://blog.lfe.io//tutorials/2015/05/24/1808-what-is-otp</id>
+   <content type="html">
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LFE-signal.jpg&quot;&gt;&lt;img class=&quot;left small&quot; src=&quot;/assets/images/posts/LFE-signal.jpg&quot; /&gt;&lt;/a&gt;This post is a prelude to the LFE OTP tutorial series which attempts to clarify the role of OTP as something above and beyond a programming language, a set of libraries, or a framework.&lt;/p&gt;
+
+&lt;h2 id=&quot;lfe-otp-tutorial-series&quot;&gt;LFE OTP Tutorial Series&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/23/1720-new-series-lfe-otp-tutorials/&quot;&gt;Introducing the LFE OTP Tutorials&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/24/1808-what-is-otp/&quot;&gt;What is OTP?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;pattern-languages&quot;&gt;Pattern Languages&lt;/h2&gt;
+
+&lt;p&gt;The term &lt;em&gt;pattern language&lt;/em&gt; was coined by architect
+&lt;a href=&quot;http://en.wikipedia.org/wiki/Christopher_Alexander&quot;&gt;Christopher Alexander&lt;/a&gt;,
+covered in detail in his 1977 book
+&lt;a href=&quot;http://www.amazon.com/dp/0195019199&quot;&gt;A Pattern Language&lt;/a&gt;,
+where he wove together themes of architecture, urban design, and community
+livability. The idea of a &lt;em&gt;pattern language&lt;/em&gt; was applied to software and
+entered the collective consciousness of the programming world the in the book
+&lt;a href=&quot;http://www.amazon.com/dp/0201633612&quot;&gt;Design Patterns: Elements of Reusable Object-Oriented Software&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A pattern language is a method of describing good design practices within a
+field of expertise.  What brings a sense of wholeness, spirit, or grace to this
+field? What precise and empirically verifiable generalizations can be made with
+regard to recurring themes in this field? A pattern language is an attempt to
+express the deeper wisdom underlying the answers to these questions through a
+set of interconnected expressions arising from that wisdom.&lt;/p&gt;
+
+&lt;h2 id=&quot;otp-as-a-pattern-language&quot;&gt;OTP as a Pattern Language&lt;/h2&gt;
+
+&lt;p&gt;In essence, OTP is a pattern language: one for building fault-tolerant,
+distributed systems. That’s easy enough to say, and many languages or
+frameworks say similar things about their own work. But what does this really
+mean? What is &lt;em&gt;wholeness&lt;/em&gt; from the perspective of OTP? What is the &lt;em&gt;spirit&lt;/em&gt; of
+OTP?  What makes an OTP application &lt;em&gt;graceful&lt;/em&gt;? What &lt;em&gt;wisdom&lt;/em&gt; has been
+extracted from these? What &lt;em&gt;interconnected expression&lt;/em&gt; arose from that wisdom?&lt;/p&gt;
+
+&lt;p&gt;Though we could point to various behaviours, ways of managing state, excellent
+uses of pattern matching and LFE records, macros, etc., or share stories of the
+accumulated hard-won experiences of Erlang engineers – all in an effort to
+answer these questions, it would actually be more meaningful for you to
+discover this yourself in the coming posts.&lt;/p&gt;
+
+&lt;p&gt;Note that we are not shirking our tutorial responsibilities in making that
+statement. Quite the contrary! In the course of working through these
+tutorials, you will gain the actual joys of OTP’s elegance. By the time you
+have finished these LFE exercises, giving them due time and consideration, you
+will be able to answer all of these questions from your own direct experience.&lt;/p&gt;
+
+&lt;p&gt;Lest we leave you adrift in too much poetry and promises, we will say the
+following right now: OTP as a pattern language attempts to provide encoded
+wisdom for the programmer who wishes to create stable, highly-concurrent,
+fault-tolerant distributed systems. The OTP pattern language is a combination
+of such things as:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Behaviours&lt;/strong&gt; - these are the core patterns in the OTP pattern language,
+embodying lessons-learned in building concurrent systems&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Programming Style&lt;/strong&gt; - common idioms shared across a community of
+developers&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Best practices&lt;/strong&gt; - how to connect one or many behaviour implementations in
+one or more deployable applications.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;OTP behaviours include the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Workers&lt;/strong&gt; (&lt;code&gt;gen_server&lt;/code&gt;, &lt;code&gt;gen_fsm&lt;/code&gt;, &lt;code&gt;gen_event&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Supervisors&lt;/strong&gt; (used for building supervision trees)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Applications&lt;/strong&gt; (collections of supervisors and workers and their
+subsequent supervision trees in combination with the means to effectively
+manage them)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We will cover programming style and best practices in each LFE example we go
+over.&lt;/p&gt;
+
+&lt;h2 id=&quot;up-next&quot;&gt;Up Next&lt;/h2&gt;
+
+&lt;p&gt;The next post will start with some example code from the LFE edition of Casting
+SPELs in Lisp, where we wrote a simple looking server which accepted messages.
+We will then convert this to OTP using the &lt;code&gt;gen_server&lt;/code&gt;  behaviour.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
    <title>New Series: LFE OTP Tutorials</title>
    <link href="http://blog.lfe.io//tutorials/2015/05/23/1720-new-series-lfe-otp-tutorials"/>
    <updated>2015-05-23T00:00:00-05:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/05/23/1720-new-series-lfe-otp-tutorials</id>
    <content type="html">
-&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LFE-signal.jpg&quot;&gt;&lt;img class=&quot;right tiny&quot; src=&quot;/assets/images/posts/LFE-signal.jpg&quot; /&gt;&lt;/a&gt;
-There aren&amp;#8217;t a lot of OTP tutorials online. One really good one
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LFE-signal.jpg&quot;&gt;&lt;img class=&quot;right tiny&quot; src=&quot;/assets/images/posts/LFE-signal.jpg&quot; /&gt;&lt;/a&gt;This post introduces an new series of tutorials on the LFE blog which will step LFE users through OTP in the style of Lisp Flavoured Erlang.&lt;/p&gt;
+
+&lt;h2 id=&quot;lfe-otp-tutorial-series&quot;&gt;LFE OTP Tutorial Series&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/23/1720-new-series-lfe-otp-tutorials/&quot;&gt;Introducing the LFE OTP Tutorials&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/24/1808-what-is-otp/&quot;&gt;What is OTP?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There aren’t a lot of OTP tutorials online. One really good one
 (&lt;a href=&quot;http://learnyousomeerlang.com/what-is-otp#its-the-open-telecom-platform&quot;&gt;starts here&lt;/a&gt;)
-is in Fred&amp;#8217;s most execllent book
+is in Fred’s most execllent book
 &lt;a href=&quot;http://learnyousomeerlang.com/&quot;&gt;Learn You Some Erlang for great good!&lt;/a&gt;. Other
 resources include:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Joe Armstrong&amp;#8217;s &lt;a href=&quot;https://pragprog.com/book/jaerlang2/programming-erlang&quot;&gt;Programming Erlang&lt;/a&gt;
-including the chapters &amp;#8220;Introducing OTP&amp;#8221; and &amp;#8220;Making a System with OTP&amp;#8221;&lt;/li&gt;
-  &lt;li&gt;Francesco and Simon&amp;#8217;s &lt;a href=&quot;http://shop.oreilly.com/product/9780596518189.do&quot;&gt;Erlang Programming&lt;/a&gt;,
+  &lt;li&gt;Joe Armstrong’s &lt;a href=&quot;https://pragprog.com/book/jaerlang2/programming-erlang&quot;&gt;Programming Erlang&lt;/a&gt;
+including the chapters “Introducing OTP” and “Making a System with OTP”&lt;/li&gt;
+  &lt;li&gt;Francesco and Simon’s &lt;a href=&quot;http://shop.oreilly.com/product/9780596518189.do&quot;&gt;Erlang Programming&lt;/a&gt;,
 Chapter 12&lt;/li&gt;
-  &lt;li&gt;All of Francesco and Steve&amp;#8217;s &lt;a href=&quot;http://shop.oreilly.com/product/0636920024149.do&quot;&gt;Designing for Scalability with Erlang/OTP&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Martin, Eric, and Richard&amp;#8217;s &lt;a href=&quot;http://www.manning.com/logan/&quot;&gt;Erlang and OTP in Action&lt;/a&gt;,
+  &lt;li&gt;All of Francesco and Steve’s &lt;a href=&quot;http://shop.oreilly.com/product/0636920024149.do&quot;&gt;Designing for Scalability with Erlang/OTP&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Martin, Eric, and Richard’s &lt;a href=&quot;http://www.manning.com/logan/&quot;&gt;Erlang and OTP in Action&lt;/a&gt;,
 including Chapter 4 and Chapter 8 (among others)&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -51,7 +150,7 @@ please &lt;a href=&quot;https://github.com/lfe/blog/issues/7&quot;&gt;leave feed
 on how to do that.&lt;/p&gt;
 
 &lt;p&gt;The plan as it stands right now is to cover the following, with super-explicit
-code (no &amp;#8220;magical&amp;#8221; implicit parameters):&lt;/p&gt;
+code (no “magical” implicit parameters):&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Creating services with the &lt;code&gt;gen_server&lt;/code&gt; behaviour&lt;/li&gt;
@@ -59,10 +158,10 @@ code (no &amp;#8220;magical&amp;#8221; implicit parameters):&lt;/p&gt;
   &lt;li&gt;Working with &lt;code&gt;gen_event&lt;/code&gt; and notifications&lt;/li&gt;
   &lt;li&gt;Using &lt;code&gt;supervisor&lt;/code&gt; to create supervision trees&lt;/li&gt;
   &lt;li&gt;Creating applications with the &lt;code&gt;application&lt;/code&gt; behaviour&lt;/li&gt;
-  &lt;li&gt;Making a &amp;#8220;release&amp;#8221; with &lt;code&gt;relx&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Making a “release” with &lt;code&gt;relx&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Depending upon content covered and the size of any give post&amp;#8217;s draft, these may
+&lt;p&gt;Depending upon content covered and the size of any give post’s draft, these may
 get split into more than just those six. Watch the skies! Wait for the signal!
 LFE OTP tutorials are on their way!&lt;/p&gt;
 
@@ -75,7 +174,7 @@ LFE OTP tutorials are on their way!&lt;/p&gt;
    <updated>2015-05-23T00:00:00-05:00</updated>
    <id>http://blog.lfe.io//formalwear/2015/05/23/1314-lfe-t-shirts-the-great-unboxing</id>
    <content type="html">
-&lt;p&gt;&lt;a href=&quot;/assets/images/posts/t-shirt2-unbox-1.jpg&quot;&gt;&lt;img class=&quot;right thumb&quot; src=&quot;/assets/images/posts/t-shirt2-unbox-1.jpg&quot; /&gt;&lt;/a&gt;The LFE community&amp;#8217;s latest T-shirt bonanza is drawing to a close, the conclusion of which will result in the perfect summer-wear for the discerning hacker. This is a fun little post that shares a bit of the T-shirt&amp;#8217;s unboxing :-)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/t-shirt2-unbox-1.jpg&quot;&gt;&lt;img class=&quot;right thumb&quot; src=&quot;/assets/images/posts/t-shirt2-unbox-1.jpg&quot; /&gt;&lt;/a&gt;The LFE community’s latest T-shirt bonanza is drawing to a close, the conclusion of which will result in the perfect summer-wear for the discerning hacker. This is a fun little post that shares a bit of the T-shirt’s unboxing :-)&lt;/p&gt;
 
 &lt;p&gt;As posted &lt;a href=&quot;/formalwear/2015/03/20/1256-new-lfe-t-shirt/&quot;&gt;here&lt;/a&gt;,
 we had been working on getting community members signed up for the next T-shirt
@@ -85,29 +184,29 @@ screen printed. I ended up working with CustomInk on several iterations in order
 to get the color count down while still having a good looking logo.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/t-shirt2-unbox-2.jpg&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/t-shirt2-unbox-2.jpg&quot; /&gt;&lt;/a&gt;&lt;a href=&quot;/assets/images/posts/t-shirt2-unbox-3.jpg&quot;&gt;&lt;img class=&quot;right tiny&quot; src=&quot;/assets/images/posts/t-shirt2-unbox-3.jpg&quot; /&gt;&lt;/a&gt;In
-my excitement of the shipment arriving, I&amp;#8217;d forgotten to
+my excitement of the shipment arriving, I’d forgotten to
 document the whole process and cut open the box before remembering to take
 pictures :-) We had 67 T-shirts ordered in this batch; it was quite amazing to
 see so much LFE in physical, manifested reality! A box full of soft,
-silky-smooth American Apparel LFEness &amp;#8230; mmmm.&lt;/p&gt;
+silky-smooth American Apparel LFEness … mmmm.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/t-shirt2-unbox-4.jpg&quot;&gt;&lt;img class=&quot;left thumb&quot; src=&quot;/assets/images/posts/t-shirt2-unbox-4.jpg&quot; /&gt;&lt;/a&gt;&lt;a href=&quot;/assets/images/posts/t-shirt2-unbox-5.jpg&quot;&gt;&lt;img class=&quot;right thumb&quot; src=&quot;/assets/images/posts/t-shirt2-unbox-5.jpg&quot; /&gt;&lt;/a&gt;&lt;br /&gt;Even
 before checking the manifest and ensuring that the counts were correct, I went
 looking for my two shirts! These were quickly found and even more quickly
 donned. Not too far behind came the unboxing selfies (I had to get some help
-for the back-shot, though &amp;#8230;) As you can see, the darker red of the lambda got
+for the back-shot, though …) As you can see, the darker red of the lambda got
 lost in the brown of the T-shirt. Perhaps this grants the wearer of this
-T-shirt entry into the Society of the Secret Lambda &amp;#8230;&lt;/p&gt;
+T-shirt entry into the Society of the Secret Lambda …&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/t-shirt2-unbox-6.jpg&quot;&gt;&lt;img class=&quot;left thumb&quot; src=&quot;/assets/images/posts/t-shirt2-unbox-6.jpg&quot; /&gt;&lt;/a&gt;&lt;a href=&quot;/assets/images/posts/t-shirt2-unbox-7.jpg&quot;&gt;&lt;img class=&quot;right thumb&quot; src=&quot;/assets/images/posts/t-shirt2-unbox-7.jpg&quot; /&gt;&lt;/a&gt;&lt;br /&gt;Grin
 firmly in place, I proceeded to sort by size, check the spreadsheet, and label
-each person&amp;#8217;s order. I also managed to get the international orders packed up
+each person’s order. I also managed to get the international orders packed up
 with their customs forms filled out and ready to go. After this last picture
 was taken, the domestic shipments also went out. A few days ago we started
 getting tweets from folks whose T-shirts are already arriving!&lt;/p&gt;
 
 &lt;p&gt;This batch was a lot of work, so I hope folks enjoy their LFE T-shirts for
-while before working up an appetite for another &amp;#8230; :-)&lt;/p&gt;
+while before working up an appetite for another … :-)&lt;/p&gt;
 </content>
  </entry>
  
@@ -117,12 +216,12 @@ while before working up an appetite for another &amp;#8230; :-)&lt;/p&gt;
    <updated>2015-05-22T00:00:00-05:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/05/22/0224-lfe-friday---queuecons2</id>
    <content type="html">
-&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week&amp;#8217;s LFE Friday was translated with permission from the
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
 &lt;a href=&quot;http://www.proctor-it.com/category/erlang/erlang-thursday/&quot;&gt;Erlang Thursday&lt;/a&gt;
 series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Proctor&lt;/a&gt;.
-&lt;em&gt;This week&amp;#8217;s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
+&lt;em&gt;This week’s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
 
-&lt;p&gt;Today&amp;#8217;s LFE Friday digs a little into the &lt;code&gt;queue&lt;/code&gt; module, and we cover &lt;a href=&quot;http://www.erlang.org/doc/man/queue.html#cons-2&quot;&gt;queue:cons/2&lt;/a&gt; from the Okasaki API.&lt;/p&gt;
+&lt;p&gt;Today’s LFE Friday digs a little into the &lt;code&gt;queue&lt;/code&gt; module, and we cover &lt;a href=&quot;http://www.erlang.org/doc/man/queue.html#cons-2&quot;&gt;queue:cons/2&lt;/a&gt; from the Okasaki API.&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;queue:cons/2&lt;/code&gt; takes a item and a queue, and will return a new queue with the item at the head of the queue.&lt;/p&gt;
 
@@ -162,12 +261,12 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
    <updated>2015-05-15T00:00:00-05:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/05/15/2306-lfe-friday---filelibis_file1</id>
    <content type="html">
-&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week&amp;#8217;s LFE Friday was translated with permission from the
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
 &lt;a href=&quot;http://www.proctor-it.com/category/erlang/erlang-thursday/&quot;&gt;Erlang Thursday&lt;/a&gt;
 series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Proctor&lt;/a&gt;.
-&lt;em&gt;This week&amp;#8217;s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
+&lt;em&gt;This week’s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
 
-&lt;p&gt;Today&amp;#8217;s LFE Friday is &lt;a href=&quot;http://www.erlang.org/doc/man/filelib.html#is_file-1&quot;&gt;filelib:is_file/1&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today’s LFE Friday is &lt;a href=&quot;http://www.erlang.org/doc/man/filelib.html#is_file-1&quot;&gt;filelib:is_file/1&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;filelib:is_file/1&lt;/code&gt; takes a string representing a filename, and returns a &lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt; depending on if the name refers to a file or directory.&lt;/p&gt;
 
@@ -207,12 +306,12 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
    <updated>2015-05-11T00:00:00-05:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/05/11/2333-lfe-friday---calendariso_week_number1</id>
    <content type="html">
-&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week&amp;#8217;s LFE Friday was translated with permission from the
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
 &lt;a href=&quot;http://www.proctor-it.com/category/erlang/erlang-thursday/&quot;&gt;Erlang Thursday&lt;/a&gt;
 series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Proctor&lt;/a&gt;.
-&lt;em&gt;This week&amp;#8217;s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
+&lt;em&gt;This week’s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
 
-&lt;p&gt;Today&amp;#8217;s LFE Friday&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; is on &lt;a href=&quot;http://www.erlang.org/doc/man/calendar.html#iso_week_number-1&quot;&gt;calendar:iso_week_number/1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Today’s LFE Friday&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; is on &lt;a href=&quot;http://www.erlang.org/doc/man/calendar.html#iso_week_number-1&quot;&gt;calendar:iso_week_number/1&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;calendar:iso_week_number/1&lt;/code&gt; takes a date tuple as an argument, and returns a tuple of the year and week number.  The year is the year passed as the date tuple, and the week number is an integer between 1 and 53.&lt;/p&gt;
 
@@ -250,7 +349,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
    <updated>2015-05-11T00:00:00-05:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/05/11/2251-spell1---ll1-parser-generator</id>
    <content type="html">
-&lt;p&gt;&lt;a href=&quot;/assets/images/posts/lfe-tooling-leonardo-gears-2.png&quot;&gt;&lt;img class=&quot;right small&quot; src=&quot;/assets/images/posts/lfe-tooling-leonardo-gears-2.png&quot; /&gt;&lt;/a&gt;I have been working on an LL(1) grammar parser generator for Erlang/LFE. While we have yecc for LALR(1) grammars this isn&amp;#8217;t suitable for everything. I think there are 2 main problems:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/lfe-tooling-leonardo-gears-2.png&quot;&gt;&lt;img class=&quot;right small&quot; src=&quot;/assets/images/posts/lfe-tooling-leonardo-gears-2.png&quot; /&gt;&lt;/a&gt;I have been working on an LL(1) grammar parser generator for Erlang/LFE. While we have yecc for LALR(1) grammars this isn’t suitable for everything. I think there are 2 main problems:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -261,9 +360,9 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;You don&amp;#8217;t have these problems with an LL(1) parser. The current LFE has been handwritten following the same rules as would a parser generator. So now I have taken the final step to finnish a generator I started long-ago.&lt;/p&gt;
+&lt;p&gt;You don’t have these problems with an LL(1) parser. The current LFE has been handwritten following the same rules as would a parser generator. So now I have taken the final step to finnish a generator I started long-ago.&lt;/p&gt;
 
-&lt;p&gt;It works but needs a bit of cleaning up to be generally useful. It can now handle the full LFE syntax, which isn&amp;#8217;t complex, and is almost a useful tool. While it is written in Erlang it will be easy to fix it so that it uses either Erlang or LFE for both the grammar file and the output file.&lt;/p&gt;
+&lt;p&gt;It works but needs a bit of cleaning up to be generally useful. It can now handle the full LFE syntax, which isn’t complex, and is almost a useful tool. While it is written in Erlang it will be easy to fix it so that it uses either Erlang or LFE for both the grammar file and the output file.&lt;/p&gt;
 
 &lt;p&gt;The hardest part has been coming up with a good name, suggestions welcome.&lt;/p&gt;
 
@@ -338,12 +437,12 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
    <updated>2015-05-02T00:00:00-05:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/05/02/1744-lfe-friday---calendaris_leap_year1</id>
    <content type="html">
-&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week&amp;#8217;s LFE Friday was translated with permission from the
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
 &lt;a href=&quot;http://www.proctor-it.com/category/erlang/erlang-thursday/&quot;&gt;Erlang Thursday&lt;/a&gt;
 series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Proctor&lt;/a&gt;.
-&lt;em&gt;This week&amp;#8217;s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
+&lt;em&gt;This week’s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
 
-&lt;p&gt;Today&amp;#8217;s LFE Friday is on &lt;a href=&quot;http://www.erlang.org/doc/man/calendar.html#is_leap_year-1&quot;&gt;calendar:is_leap_year/1&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today’s LFE Friday is on &lt;a href=&quot;http://www.erlang.org/doc/man/calendar.html#is_leap_year-1&quot;&gt;calendar:is_leap_year/1&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;calendar:is_leap_year/1&lt;/code&gt; takes a non-negative integer value representing a year, and will return &lt;code&gt;true&lt;/code&gt; if that year is a leap year, or &lt;code&gt;false&lt;/code&gt; otherwise.&lt;/p&gt;
 
@@ -360,7 +459,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 &lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:is_leap_year&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   
 &lt;span class=&quot;nv&quot;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;By having a built in function as part of the core Erlang libraries, it means you don&amp;#8217;t have to code up the rules, or even go lookup the rules to remember how the century years are determined to be leap years or not.&lt;/p&gt;
+&lt;p&gt;By having a built in function as part of the core Erlang libraries, it means you don’t have to code up the rules, or even go lookup the rules to remember how the century years are determined to be leap years or not.&lt;/p&gt;
 
 &lt;p&gt;And if you do pass in a negative number for the year, Erlang will raise an exception, as there are no clauses which match a negative number for the year.&lt;/p&gt;
 
@@ -381,12 +480,12 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
    <updated>2015-04-24T00:00:00-05:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/04/24/1716-lfe-friday---calendarvalid_date3</id>
    <content type="html">
-&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week&amp;#8217;s LFE Friday was translated with permission from the
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
 &lt;a href=&quot;http://www.proctor-it.com/category/erlang/erlang-thursday/&quot;&gt;Erlang Thursday&lt;/a&gt;
 series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Proctor&lt;/a&gt;.
-&lt;em&gt;This week&amp;#8217;s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
+&lt;em&gt;This week’s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
 
-&lt;p&gt;Today&amp;#8217;s LFE Friday is &lt;a href=&quot;http://www.erlang.org/doc/man/calendar.html#valid_date-3&quot;&gt;calendar:valid_date/3&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today’s LFE Friday is &lt;a href=&quot;http://www.erlang.org/doc/man/calendar.html#valid_date-3&quot;&gt;calendar:valid_date/3&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Originally, I was thinking it was going to be &lt;code&gt;calendar:time_difference/3&lt;/code&gt;, but then I looked into the Erlang documentation for the &lt;a href=&quot;http://www.erlang.org/doc/man/calendar.html&quot;&gt;calendar module&lt;/a&gt; and saw that it was marked as obsolete, so today I present &lt;code&gt;calendar:valid_date/3&lt;/code&gt;.&lt;/p&gt;
 
@@ -412,7 +511,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:valid_date&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;04&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Now let&amp;#8217;s try to break this a bit and test to see how it can handle &lt;code&gt;0&lt;/code&gt;&amp;#8217;s and negative integer values.&lt;/p&gt;
+&lt;p&gt;Now let’s try to break this a bit and test to see how it can handle &lt;code&gt;0&lt;/code&gt;’s and negative integer values.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;calendar:valid_date&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;-1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;04&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  
 &lt;span class=&quot;nv&quot;&gt;false&lt;/span&gt;
@@ -584,12 +683,12 @@ CLI, the LFE REPL is used in conjunction with the
 &lt;a href=&quot;https://github.com/lfex/ledis&quot;&gt;ledis&lt;/a&gt; library.&lt;/p&gt;
 
 &lt;p&gt;The ledis library has defined functions for the Redis commands most often used;
-if we haven&amp;#8217;t added one that you need, just
+if we haven’t added one that you need, just
 &lt;a href=&quot;https://github.com/lfex/ledis/issues/new&quot;&gt;open a ticket&lt;/a&gt; with your request, or
 even submit a pull request with your changes.&lt;/p&gt;
 
 &lt;p&gt;The original tutorial on Redis data types is a bit long for a blog post, so
-we&amp;#8217;ll be splitting it up across multiple installments; this post covers the
+we’ll be splitting it up across multiple installments; this post covers the
 following topics:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -599,7 +698,7 @@ following topics:&lt;/p&gt;
   &lt;li&gt;Altering and Querying the Key Space&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Be sure to checkout the original tutorial for the full introduction; we&amp;#8217;re
+&lt;p&gt;Be sure to checkout the original tutorial for the full introduction; we’re
 going to skip that in this tutorial and jump right into the data types.&lt;/p&gt;
 
 &lt;h2 id=&quot;preparation&quot;&gt;Preparation&lt;/h2&gt;
@@ -613,7 +712,7 @@ going to skip that in this tutorial and jump right into the data types.&lt;/p&gt
   &lt;li&gt;The &lt;a href=&quot;https://github.com/lfex/ledis&quot;&gt;ledis project&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;LFE and ledis&amp;#8217; dependencies will all be downloaded for you automatically when
+&lt;p&gt;LFE and ledis’ dependencies will all be downloaded for you automatically when
 you start up the project REPL for the first time (see below). This tutorial
 will not cover the installation of Redis or Erlang. To instll the development
 version of &lt;code&gt;lfetool&lt;/code&gt;, simply do the following:&lt;/p&gt;
@@ -624,12 +723,12 @@ version of &lt;code&gt;lfetool&lt;/code&gt;, simply do the following:&lt;/p&gt;
 &lt;p&gt;This will create an executable &lt;code&gt;lfetool&lt;/code&gt; in your &lt;code&gt;/usr/local/bin&lt;/code&gt;
 directory.&lt;/p&gt;
 
-&lt;p&gt;Next you&amp;#8217;ll need to get ledis itself:&lt;/p&gt;
+&lt;p&gt;Next you’ll need to get ledis itself:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git clone https://github.com/lfex/ledis.git
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;ledis&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;We&amp;#8217;re going to edit the &lt;code&gt;lfe.config&lt;/code&gt; file
+&lt;p&gt;We’re going to edit the &lt;code&gt;lfe.config&lt;/code&gt; file
 so that all results are automatically converted from binary to strings (just
 for the purpose of this tutorial). Open up the file, and change this line:&lt;/p&gt;
 
@@ -640,8 +739,8 @@ for the purpose of this tutorial). Open up the file, and change this line:&lt;/p
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;return-type&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Now go ahead and start the LFE REPL. The first time you run this, all the
-dependencies will be downloaded and compiled. Note that the project&amp;#8217;s &lt;code&gt;make&lt;/code&gt;
-targets automatically start the ledis application, so there&amp;#8217;s no need to type
+dependencies will be downloaded and compiled. Note that the project’s &lt;code&gt;make&lt;/code&gt;
+targets automatically start the ledis application, so there’s no need to type
 &lt;code&gt;(ledis:start)&lt;/code&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make repl&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -650,12 +749,12 @@ targets automatically start the ledis application, so there&amp;#8217;s no need 
 &lt;span class=&quot;nv&quot;&gt;LFE&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Shell&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;V6.3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;abort&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;^G&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;At this point, we&amp;#8217;re ready to start the tutorial!&lt;/p&gt;
+&lt;p&gt;At this point, we’re ready to start the tutorial!&lt;/p&gt;
 
 &lt;h2 id=&quot;redis-keys&quot;&gt;Redis Keys&lt;/h2&gt;
 
 &lt;p&gt;Redis keys are binary safe, this means that you can use any binary sequence as
-a key, from a string like &amp;#8220;foo&amp;#8221; to the content of a JPEG file. The empty string
+a key, from a string like “foo” to the content of a JPEG file. The empty string
 is also a valid key.&lt;/p&gt;
 
 &lt;p&gt;A few other rules about keys:&lt;/p&gt;
@@ -668,13 +767,13 @@ hand is to match the existence of a large value, to resort to hashing it (for
 example with SHA1) is a better idea, especially from the point of view of
 memory and bandwidth.&lt;/li&gt;
   &lt;li&gt;Very short keys are often not a good idea. There is little point in writing
-&amp;#8220;u1000flw&amp;#8221; as a key if you can instead write &amp;#8220;user:1000:followers&amp;#8221;. The
+“u1000flw” as a key if you can instead write “user:1000:followers”. The
 latter is more readable and the added space is minor compared to the space
 used by the key object itself and the value object. While short keys will
 obviously consume a bit less memory, your job is to find the right balance.&lt;/li&gt;
-  &lt;li&gt;Try to stick with a schema. For instance &amp;#8220;object-type:id&amp;#8221; is a good idea, as
-in &amp;#8220;user:1000&amp;#8221;. Dots or dashes are often used for multi-word fields, as in
-&amp;#8220;comment:1234:reply.to&amp;#8221; or &amp;#8220;comment:1234:reply-to&amp;#8221;.&lt;/li&gt;
+  &lt;li&gt;Try to stick with a schema. For instance “object-type:id” is a good idea, as
+in “user:1000”. Dots or dashes are often used for multi-word fields, as in
+“comment:1234:reply.to” or “comment:1234:reply-to”.&lt;/li&gt;
   &lt;li&gt;The maximum allowed key size is 512 MB.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -688,7 +787,7 @@ for newcomers to use it in Redis.&lt;/p&gt;
 are mapping a string to another string. The string data type is useful for a
 number of use cases, like caching HTML fragments or pages.&lt;/p&gt;
 
-&lt;p&gt;Let&amp;#8217;s play a bit with the string type, using the LFE REPL and the ledis
+&lt;p&gt;Let’s play a bit with the string type, using the LFE REPL and the ledis
 library.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ledis:set&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;mykey&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;somevalue&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -701,7 +800,7 @@ and retrieve a string value. Note that &lt;code&gt;set&lt;/code&gt; will replace
 already stored into the key, in the case that the key already exists, even if
 the key is associated with a non-string value. So &lt;code&gt;set&lt;/code&gt; performs an
 assignment.  Values can be strings (including binary data) of every kind, for
-instance you can store a jpeg image inside a key. A value can&amp;#8217;t be bigger than
+instance you can store a jpeg image inside a key. A value can’t be bigger than
 512 MB.&lt;/p&gt;
 
 &lt;p&gt;The &lt;code&gt;set&lt;/code&gt; function has interesting options, that are provided as additional
@@ -712,7 +811,7 @@ arguments. For example, you may ask &lt;code&gt;set&lt;/code&gt; to fail if the 
 &lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ledis:get&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;mykey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;somevalue&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Note that when &lt;code&gt;undefined&lt;/code&gt; is returned, this is a translation of Redis&amp;#8217;
+&lt;p&gt;Note that when &lt;code&gt;undefined&lt;/code&gt; is returned, this is a translation of Redis’
 &lt;code&gt;nil&lt;/code&gt; response (for a command that had no results or made no changes). Also,
 it still has the old value (as expected).&lt;/p&gt;
 
@@ -737,7 +836,7 @@ exists:&lt;/p&gt;
 &lt;p&gt;In that example, we did the following:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Set a value for &lt;code&gt;mykey&lt;/code&gt; &amp;#8211; but only if it already existed &amp;#8211; and set its
+  &lt;li&gt;Set a value for &lt;code&gt;mykey&lt;/code&gt; – but only if it already existed – and set its
 expiration for 10,000 milliseconds.&lt;/li&gt;
   &lt;li&gt;Checked the value, to show that our function all worked.&lt;/li&gt;
   &lt;li&gt;Set the timer for a time when the value would be expired.&lt;/li&gt;
@@ -758,12 +857,12 @@ you can perform with them. For instance, one is atomic increment:&lt;/p&gt;
 
 &lt;p&gt;The &lt;code&gt;incr&lt;/code&gt; function parses the string value as an integer, increments it by
 one, and finally sets the obtained value as the new value. There are other
-similar functions like &lt;code&gt;incrby&lt;/code&gt;, &lt;code&gt;decr&lt;/code&gt; and &lt;code&gt;decrby&lt;/code&gt;. Internally it&amp;#8217;s
+similar functions like &lt;code&gt;incrby&lt;/code&gt;, &lt;code&gt;decr&lt;/code&gt; and &lt;code&gt;decrby&lt;/code&gt;. Internally it’s
 always the same Redis command, acting in a slightly different way.&lt;/p&gt;
 
 &lt;p&gt;What does it mean that &lt;code&gt;incr&lt;/code&gt; is atomic? That even multiple clients issuing
 &lt;code&gt;incr&lt;/code&gt; against the same key will never enter into a race condition. For
-instance, it will never happen that client 1 reads &amp;#8220;10&amp;#8221;, client 2 reads &amp;#8220;10&amp;#8221; at
+instance, it will never happen that client 1 reads “10”, client 2 reads “10” at
 the same time, both increment to 11, and set the new value to 11. The final
 value will always be 12 and the read-increment-set operation is performed while
 all the other clients are not executing a command against the Redis server at
@@ -775,7 +874,7 @@ result. You can use this function, for example, if you have a system that
 increments a Redis key using &lt;code&gt;incr&lt;/code&gt; every time your web site receives a new
 visitor. You may want to collect this information once every hour, without
 losing a single increment.  You can &lt;code&gt;getset&lt;/code&gt; the key, assigning it the new
-value of &amp;#8220;0&amp;#8221; and reading the old value back.&lt;/p&gt;
+value of “0” and reading the old value back.&lt;/p&gt;
 
 &lt;p&gt;The ability to set or retrieve the value of multiple keys in a single function
 is also useful for reduced latency. For this reason there are the
@@ -821,7 +920,7 @@ that name). You may also delete multiple keys in one go:&lt;/p&gt;
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;3&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;In this case, the return value for &lt;code&gt;del&lt;/code&gt; is the number of successful deletes:
-we asked it to delete four keys, but the fourth doesn&amp;#8217;t exist, so it only
+we asked it to delete four keys, but the fourth doesn’t exist, so it only
 deleted three.&lt;/p&gt;
 
 &lt;p&gt;There are many key space related commands, but the above two are the essential
@@ -839,7 +938,7 @@ stored at the specified key:&lt;/p&gt;
 
 &lt;h2 id=&quot;more-redis&quot;&gt;More Redis&lt;/h2&gt;
 
-&lt;p&gt;As progres is made on the LFE library, we&amp;#8217;ll be posting more installments of
+&lt;p&gt;As progres is made on the LFE library, we’ll be posting more installments of
 the &lt;a href=&quot;http://redis.io/topics/data-types-intro&quot;&gt;Redis tutorial&lt;/a&gt; here. Expect to
 see the following in the coming weeks and months:&lt;/p&gt;
 
@@ -861,11 +960,11 @@ see the following in the coming weeks and months:&lt;/p&gt;
    <id>http://blog.lfe.io//announcements/2015/04/04/1538-lfe-and-dialyzer</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/ldialyzer.png&quot;&gt;&lt;img class=&quot;left medium&quot; src=&quot;/assets/images/posts/ldialyzer.png&quot; /&gt;&lt;/a&gt;
-Dialyzer can be a useful tool but its implementation has a few idiosynchrasies which make it difficult to directly use with LFE. It can only use .erl files or .beam files. Unfortunately the .beam files must be compiled from erlang files using the &amp;#8216;debug_info&amp;#8217; option. This option includes the full Erlang AST in the .beam file and it is this which is used by dialyzer.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+Dialyzer can be a useful tool but its implementation has a few idiosynchrasies which make it difficult to directly use with LFE. It can only use .erl files or .beam files. Unfortunately the .beam files must be compiled from erlang files using the ‘debug_info’ option. This option includes the full Erlang AST in the .beam file and it is this which is used by dialyzer.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
-&lt;p&gt;Unfortunately the LFE compiler does not generate an Erlang AST, it instead generates something called Core erlang which is used internally in the compiler. This is a much nicer language to compile to. Funnily enough dialyzer actually uses Core erlang internally, it just doesn&amp;#8217;t provide any direct way of inputing it.&lt;/p&gt;
+&lt;p&gt;Unfortunately the LFE compiler does not generate an Erlang AST, it instead generates something called Core erlang which is used internally in the compiler. This is a much nicer language to compile to. Funnily enough dialyzer actually uses Core erlang internally, it just doesn’t provide any direct way of inputing it.&lt;/p&gt;
 
-&lt;p&gt;I have been working on fixing this using some module loading trickery so that special versions of dialyzer files are used which can handle LFE and Core erlang. This does work but it needs a bit more work before it is released to an &amp;#8220;unsuspecting public&amp;#8221;.&lt;/p&gt;
+&lt;p&gt;I have been working on fixing this using some module loading trickery so that special versions of dialyzer files are used which can handle LFE and Core erlang. This does work but it needs a bit more work before it is released to an “unsuspecting public”.&lt;/p&gt;
 
 &lt;p&gt;There will be a special dialyzer startup program, ldialyzer, which does the right thing.&lt;/p&gt;
 
@@ -1303,7 +1402,7 @@ of the language.&lt;/p&gt;
 &lt;p&gt;At the 1980 Lisp conference held at Standford, John McCathy humorously
 commented on the previous two decades of Lisp’s survival: &lt;sup id=&quot;fnref:7&quot;&gt;&lt;a href=&quot;#fn:7&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&quot;On LISP's approximate 21st anniversary, no doubt something could be said about
+&quot;On LISP&#39;s approximate 21st anniversary, no doubt something could be said about
 coming of age, but it seems doubtful that the normal life expectancy of a
 programming language is three score and ten. In fact, LISP seems to be the
 second oldest surviving programming language after Fortran, so maybe we should
@@ -1489,7 +1588,7 @@ tracking feedback.&lt;/p&gt;
 
 &lt;p&gt;Russell continues in his biography, sharing how this time also provided the initial impetus toward the &lt;em&gt;Principia Mathematica&lt;/em&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
-&quot;I had been told that Euclid proved things, and was much disappointed that he started with axioms. At first I refused to accept them unless my brother could offer me some reason for doing so, but he said: 'If you don't acept them we cannot go on', and as I wished to go on, I reluctantly admitted them &lt;em&gt;pro tem&lt;/em&gt;. The doubt as to the premisses of mathematics which I felt at that moment remained with me, and determined the course of my subsequent work.&quot;
+&quot;I had been told that Euclid proved things, and was much disappointed that he started with axioms. At first I refused to accept them unless my brother could offer me some reason for doing so, but he said: &#39;If you don&#39;t acept them we cannot go on&#39;, and as I wished to go on, I reluctantly admitted them &lt;em&gt;pro tem&lt;/em&gt;. The doubt as to the premisses of mathematics which I felt at that moment remained with me, and determined the course of my subsequent work.&quot;
 &lt;/blockquote&gt;
 
 &lt;p&gt;In 1900, Russell attended the First International Conference of Philosophy where he had been invited to read a paper. In his autobiography, he describes this fateful event: &lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
@@ -1545,7 +1644,7 @@ posts has been taken from early drafts of the new preface for the LFE edition
 of &lt;em&gt;Structure and Interpretation of Computer Programs&lt;/em&gt;
 (&lt;a href=&quot;http://lfe.gitbooks.io/sicp/content/index.html&quot;&gt;book&lt;/a&gt;,
 &lt;a href=&quot;https://github.com/lfe/sicp&quot;&gt;source&lt;/a&gt;) and shared here for the purpose of
-community feedback and review &amp;#8211; as well as to expose Lisp&amp;#8217;s pre-history to a
+community feedback and review – as well as to expose Lisp’s pre-history to a
 wider audience!&lt;/p&gt;
 
 &lt;p&gt;If you find any issues or have questions, concerns, etc., about this preface
@@ -1555,34 +1654,34 @@ tracking feedback.&lt;/p&gt;
 
 &lt;h2 id=&quot;the-hidden-origins-of-lisp-giuseppe-peano&quot;&gt;The Hidden Origins of Lisp: Giuseppe Peano&lt;/h2&gt;
 
-&lt;p&gt;Giuseppe Peano was born 100 years before Lisp, in August of 1858 at his family&amp;#8217;s farmhouse in the north of Italy. At a young age he was recognized as having an exceptionally quick mind and, through the favour of an uncle, obtained a good early education in Turin where he not only stayed for university, but for the entirety of his career.&lt;/p&gt;
+&lt;p&gt;Giuseppe Peano was born 100 years before Lisp, in August of 1858 at his family’s farmhouse in the north of Italy. At a young age he was recognized as having an exceptionally quick mind and, through the favour of an uncle, obtained a good early education in Turin where he not only stayed for university, but for the entirety of his career.&lt;/p&gt;
 
 &lt;p&gt;After graduating from the University of Turin with high honors, Peano was asked to stay on, providing assistance with the teaching responsibilities of the mathematics department. Within a few years, he began tackling problems in logic and exploring the foundations of the formal philosophy of mathematics. During this time, Peano introduced the world to his now-famous axioms.&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;sup&gt;,&lt;/sup&gt; &lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; In particular, the fifth axiom is considered the first definition of primitive recursive functions.&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; In this same work Peano described the function of a variable with explicit recursive substituion.&lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; Both of these served as a great source of inspiration and insight to later generations.&lt;/p&gt;
 
-&lt;p&gt;From this point into the beginning of the 20th century, Peano was considered one of the leading figures in mathematical logic, alongside Frege and Russell. This was due to Peano&amp;#8217;s work on and advocacy for a unified formulation of mathematics cast in logic. Entitled &lt;em&gt;Formulario Mathematico&lt;/em&gt;, it was first published in 1895, with multiple editions released between then and the last edition in 1908. Each subsequent edition was essentially a new work in its own right, with more finely honed formulas, presentation, and explanation wherein he also shared his symbols for logic, a new mathematical syntax.&lt;/p&gt;
+&lt;p&gt;From this point into the beginning of the 20th century, Peano was considered one of the leading figures in mathematical logic, alongside Frege and Russell. This was due to Peano’s work on and advocacy for a unified formulation of mathematics cast in logic. Entitled &lt;em&gt;Formulario Mathematico&lt;/em&gt;, it was first published in 1895, with multiple editions released between then and the last edition in 1908. Each subsequent edition was essentially a new work in its own right, with more finely honed formulas, presentation, and explanation wherein he also shared his symbols for logic, a new mathematical syntax.&lt;/p&gt;
 
-&lt;p&gt;In 1897 at the First International Congress of Mathematicians in Zurich, Peano co-chaired the track on &amp;#8220;Arithmetic and Algebra&amp;#8221; and was invited to deliver a keynote on logic. Between that event and its successor in 1900, he published more of his work on the &lt;em&gt;Formulario&lt;/em&gt;. By these and other activities, when Peano arrived in Paris for the international congresses of both mathematics and philosopy, he was at the peak of his career in general, and the height of his development of mathematical logic in particular. At this event Peano along with Burali-Forti, Padoa, Pieri, Vailati, and Vacca were said to have been &amp;#8220;supreme&amp;#8221; and to have &amp;#8220;absolutely dominated&amp;#8221; the discussions in the field of the philosophy of sciences.&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;In 1897 at the First International Congress of Mathematicians in Zurich, Peano co-chaired the track on “Arithmetic and Algebra” and was invited to deliver a keynote on logic. Between that event and its successor in 1900, he published more of his work on the &lt;em&gt;Formulario&lt;/em&gt;. By these and other activities, when Peano arrived in Paris for the international congresses of both mathematics and philosopy, he was at the peak of his career in general, and the height of his development of mathematical logic in particular. At this event Peano along with Burali-Forti, Padoa, Pieri, Vailati, and Vacca were said to have been “supreme” and to have “absolutely dominated” the discussions in the field of the philosophy of sciences.&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
-&lt;p&gt;Bertrand Russell was present at the first of these congresses and was so completely taken with the efficacy of Peano&amp;#8217;s approach to logic that upon receiving from Peano his collected works, he returned home to study them instead of remaining in Paris for the Mathematical Congress. A few months later he wrote to Peano, attaching a manuscript detailing the assessments he had been able to make, thanks to his recent and thorough study of Peano&amp;#8217;s works. Peano responded to him the following March congratulating Russell on &amp;#8220;the facility and precision&amp;#8221; with which he managed Peano&amp;#8217;s logical symbols; Peano published Russell&amp;#8217;s paper that July. However, this was only the beginning for Russell: the baton had been firmly passed to him and the advance towards a theory of computation had taken its next step.&lt;/p&gt;
+&lt;p&gt;Bertrand Russell was present at the first of these congresses and was so completely taken with the efficacy of Peano’s approach to logic that upon receiving from Peano his collected works, he returned home to study them instead of remaining in Paris for the Mathematical Congress. A few months later he wrote to Peano, attaching a manuscript detailing the assessments he had been able to make, thanks to his recent and thorough study of Peano’s works. Peano responded to him the following March congratulating Russell on “the facility and precision” with which he managed Peano’s logical symbols; Peano published Russell’s paper that July. However, this was only the beginning for Russell: the baton had been firmly passed to him and the advance towards a theory of computation had taken its next step.&lt;/p&gt;
 
 &lt;hr /&gt;
 
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
     &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;This was in Peano&amp;#8217;s book of 1889 &amp;#8220;Arithmetices principia, nova methodo exposita&amp;#8221; (in English, &lt;em&gt;The principles of arithmetic, presented by a new method&lt;/em&gt;). &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;This was in Peano’s book of 1889 “Arithmetices principia, nova methodo exposita” (in English, &lt;em&gt;The principles of arithmetic, presented by a new method&lt;/em&gt;). &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:2&quot;&gt;
       &lt;p&gt;Furthermore, it was in this same period of time that Peano started creating various logic and set notations that are still in use today. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:3&quot;&gt;
-      &lt;p&gt;See Robert I. Soare&amp;#8217;s 1995 paper entitled &amp;#8220;Computability and Recursion&amp;#8221;, page 5. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;See Robert I. Soare’s 1995 paper entitled “Computability and Recursion”, page 5. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:4&quot;&gt;
-      &lt;p&gt;See the 2006 paper &amp;#8220;History of Lambda-calculus and Combinatory Logic&amp;#8221; by Felice Cardone and J. Roger Hindley, page 2. &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;See the 2006 paper “History of Lambda-calculus and Combinatory Logic” by Felice Cardone and J. Roger Hindley, page 2. &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:5&quot;&gt;
-      &lt;p&gt;See page 91 of Hubert C. Kennedy&amp;#8217;s 1980 hardcover edition of &amp;#8220;Peano: Life and Works of Giuseppe Peano&amp;#8221;, Volume 4 of the &amp;#8220;Studies in the History of Modern Science.&amp;#8221; &lt;a href=&quot;#fnref:5&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;See page 91 of Hubert C. Kennedy’s 1980 hardcover edition of “Peano: Life and Works of Giuseppe Peano”, Volume 4 of the “Studies in the History of Modern Science.” &lt;a href=&quot;#fnref:5&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;
@@ -1595,12 +1694,12 @@ tracking feedback.&lt;/p&gt;
    <updated>2015-03-22T00:00:00-05:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/03/22/2108-lfe-friday---ordsetsis_disjoint2</id>
    <content type="html">
-&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week&amp;#8217;s LFE Friday was translated with permission from the
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
 &lt;a href=&quot;http://www.proctor-it.com/category/erlang/erlang-thursday/&quot;&gt;Erlang Thursday&lt;/a&gt;
 series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Proctor&lt;/a&gt;.
-&lt;em&gt;This week&amp;#8217;s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
+&lt;em&gt;This week’s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
 
-&lt;p&gt;Today&amp;#8217;s LFE Friday covers &lt;a href=&quot;http://www.erlang.org/doc/man/ordsets.html#is_disjoint-2&quot;&gt;ordsets:is_disjoint/2&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today’s LFE Friday covers &lt;a href=&quot;http://www.erlang.org/doc/man/ordsets.html#is_disjoint-2&quot;&gt;ordsets:is_disjoint/2&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;There are times in your in your coding day where you have problems where you need to know if given a list of items that none of those items appear in a secondary list.&lt;/p&gt;
 
@@ -1666,7 +1765,7 @@ edition of &lt;em&gt;Structure and Interpretation of Computer Programs&lt;/em&gt
 &lt;a href=&quot;https://github.com/lfe/sicp&quot;&gt;source&lt;/a&gt;) The posts will be comprised of the
 preface introduction and then a collection of short biographies as pertains to
 the foundation (laid by the given individual) which ended up being crucial to
-the development of Lisp, concluding with a section regarding Lisp&amp;#8217;s important
+the development of Lisp, concluding with a section regarding Lisp’s important
 role in the future of computer science and related industries:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -1681,8 +1780,8 @@ role in the future of computer science and related industries:&lt;/p&gt;
 &lt;p&gt;The LFE preface in SICP also has a quick summary of the origins of Erlang
 and of LFE itself, discusses changes from the 2nd edition of SICP, then
 closes with instructions on how to obtain the source for the original, for the
-LFE edition, and for the code used in the LFE edition&amp;#8217;s chapters. Those bits
-are available in the book and won&amp;#8217;t be presented in this series of the LFE
+LFE edition, and for the code used in the LFE edition’s chapters. Those bits
+are available in the book and won’t be presented in this series of the LFE
 blog.&lt;/p&gt;
 
 &lt;p&gt;If you find any issues or have questions, concerns, etc., you may provide
@@ -1699,8 +1798,8 @@ in the coming days.&lt;/p&gt;
 antecedents, yet it does seem they do have a profound impact on the character
 of their effects. For the human observer, beginnings are also a source of
 inspiration: good beginnings lend a strength of purpose, the possibility of
-greater good. The story of Lisp has a good beginning &amp;#8211; several of them, in
-fact &amp;#8211; closely tied to the theories of numbers, mathematical logic, functions
+greater good. The story of Lisp has a good beginning – several of them, in
+fact – closely tied to the theories of numbers, mathematical logic, functions
 and types as well as that of computing itself.&lt;/p&gt;
 
 &lt;p&gt;At their root, the histories of programming languages spring from, on one hand,
@@ -1708,14 +1807,14 @@ the practical considerations of engineering and developer experience, and on
 the other hand, the principle of computability. This, in turn, ultimately
 traces its beginnings to the fundamental concepts of arithmetic and
 mathematical logic: what are numbers and how to we define them rigorously?
-These questions were asked and considered &amp;#8211; sometimes from a fairly vague
-philosophical perspective &amp;#8211; by great minds such as Leibniz (later 1600s;
+These questions were asked and considered – sometimes from a fairly vague
+philosophical perspective – by great minds such as Leibniz (later 1600s;
 drafts published posthumously), Boole (1847), Grassmann (1861), Peirce (1881),
 Frege (1884), and Dedekind (1888). It was the Italian mathematician Giuseppe
 Peano, though, who in 1889 finally identified and distilled the essence of
 these explorations in terms that were more precisely formulated than those of
 his peers or intellectual fore bearers. These were subsequently elaborated by
-successive generations of mathematicians prior to the advent of &amp;#8220;high-level&amp;#8221;
+successive generations of mathematicians prior to the advent of “high-level”
 programming languages in the 1950s.&lt;/p&gt;
 
 &lt;p&gt;Histories are complicated; complete ones are impossible and readable ones are
@@ -1732,23 +1831,23 @@ full history. Of the many themes one could discern and extract from these great
 minds, we focus on the following:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Understanding and defining the underpinnings of arithmetic and logic (&amp;#8220;What are
-numbers? What is counting?&amp;#8221;)&lt;/li&gt;
+  &lt;li&gt;Understanding and defining the underpinnings of arithmetic and logic (“What are
+numbers? What is counting?”)&lt;/li&gt;
   &lt;li&gt;Attempting to formally unify all of mathematics in a consistent framework of
-logic (&amp;#8220;Can I express all of math in discrete logical assertions and
-statements?&amp;#8221;)&lt;/li&gt;
-  &lt;li&gt;Formally defining algorithms and computability (&amp;#8220;Is there a procedure that can
+logic (“Can I express all of math in discrete logical assertions and
+statements?”)&lt;/li&gt;
+  &lt;li&gt;Formally defining algorithms and computability (“Is there a procedure that can
 take any precise mathematical statement and decide whether the statement is
-true or false?&amp;#8221;)&lt;/li&gt;
+true or false?”)&lt;/li&gt;
   &lt;li&gt;Creating the means by which symbolic computation and artificial reasoning could
-be made manifest (&amp;#8220;Can we make machines solve problems that are usually
-considered to require intelligence?&amp;#8221;) &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+be made manifest (“Can we make machines solve problems that are usually
+considered to require intelligence?”) &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Each major topic above depended &amp;#8211; in one form or another &amp;#8211; upon the preceding
+&lt;p&gt;Each major topic above depended – in one form or another – upon the preceding
 topic, and the four famous mathematicians listed in the subsequent sections
 embodied each of these themes. Small excerpts from their lives and work are
-shared as believed to have impacted the course of events that lead to Lisp&amp;#8217;s
+shared as believed to have impacted the course of events that lead to Lisp’s
 inception.&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -1756,8 +1855,8 @@ inception.&lt;/p&gt;
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
     &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;This is an almost word-for-word quote from John McCarthy&amp;#8217;s January 1962
-  submission in the quarterly progress report for MIT&amp;#8217;s RLE, titled
+      &lt;p&gt;This is an almost word-for-word quote from John McCarthy’s January 1962
+  submission in the quarterly progress report for MIT’s RLE, titled
   &lt;a href=&quot;http://dspace.mit.edu/bitstream/handle/1721.1/53661/RLE_QPR_064_XXI.pdf&quot;&gt;XXI. ARTIFICIAL INTELLIGENCE&lt;/a&gt;,
   page 189 on the original hard copy. The table of contents for the
   original is available
@@ -2079,12 +2178,12 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
    <updated>2015-03-01T00:00:00-06:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/03/01/1823-lfe-friday---dictmerge3</id>
    <content type="html">
-&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week&amp;#8217;s LFE Friday was translated with permission from the
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
 &lt;a href=&quot;http://www.proctor-it.com/category/erlang/erlang-thursday/&quot;&gt;Erlang Thursday&lt;/a&gt;
 series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Proctor&lt;/a&gt;.
-&lt;em&gt;This week&amp;#8217;s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
+&lt;em&gt;This week’s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
 
-&lt;p&gt;Today&amp;#8217;s LFE Friday is on &lt;a href=&quot;http://www.erlang.org/doc/man/dict.html#merge-3&quot;&gt;dict:merge/3&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today’s LFE Friday is on &lt;a href=&quot;http://www.erlang.org/doc/man/dict.html#merge-3&quot;&gt;dict:merge/3&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;dict:merge/3&lt;/code&gt; takes 3 arguments, the first argument is a merge function to be called when there is a key collision, and the second and third arguments are dictionaries.&lt;/p&gt;
 
@@ -2137,12 +2236,12 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
    <updated>2015-02-20T00:00:00-06:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/02/20/1609-lfe-friday---stringjoin2</id>
    <content type="html">
-&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week&amp;#8217;s LFE Friday was translated with permission from the
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;left tiny&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;This week’s LFE Friday was translated with permission from the
 &lt;a href=&quot;http://www.proctor-it.com/category/erlang/erlang-thursday/&quot;&gt;Erlang Thursday&lt;/a&gt;
 series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Proctor&lt;/a&gt;.
-&lt;em&gt;This week&amp;#8217;s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
+&lt;em&gt;This week’s translator&lt;/em&gt;: Robert Virding.&lt;/p&gt;
 
-&lt;p&gt;Today&amp;#8217;s LFE Friday is on &lt;a href=&quot;http://www.erlang.org/doc/man/string.html#join-2&quot;&gt;string:join/2&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today’s LFE Friday is on &lt;a href=&quot;http://www.erlang.org/doc/man/string.html#join-2&quot;&gt;string:join/2&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;string:join/2&lt;/code&gt; takes a list of strings as its first argument, and a string separator used to join the strings together into a single string.&lt;/p&gt;
 
@@ -2151,7 +2250,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
 &lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string:join&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;a&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;b&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;c&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;-&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;s&quot;&gt;&amp;quot;a-b-c&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;The separator string can be a string of any length, and doesn&amp;#8217;t just have to be a single character.&lt;/p&gt;
+&lt;p&gt;The separator string can be a string of any length, and doesn’t just have to be a single character.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string:join&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;a&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;b&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;c&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;___&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;s&quot;&gt;&amp;quot;a___b___c&amp;quot;&lt;/span&gt;
@@ -2337,7 +2436,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
      &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;x-ec-custom-error&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
     &lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;lt;!doctype html&amp;gt;\n&amp;lt;html&amp;gt;\n&amp;lt;head&amp;gt;\n    &amp;lt;title&amp;gt;Example Domain&amp;lt;/title&amp;gt;\n\n    &amp;lt;meta charset=\&amp;quot;utf-8\&amp;quot; /&amp;gt;\n    &amp;lt;meta http-equiv=\&amp;quot;Content-type\&amp;quot; content=\&amp;quot;text/html; charset=utf-8\&amp;quot; /&amp;gt;\n    &amp;lt;meta name ...&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;code&gt;httpc:request/1&lt;/code&gt; is the equivalent of the &lt;code&gt;httpc:request/4&lt;/code&gt; function called as &lt;code&gt;(httpc:request 'get (tuple url ()) () ())&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;httpc:request/1&lt;/code&gt; is the equivalent of the &lt;code&gt;httpc:request/4&lt;/code&gt; function called as &lt;code&gt;(httpc:request &#39;get (tuple url ()) () ())&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;httpc:request&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;get&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://www.example.com&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt;
@@ -2513,7 +2612,7 @@ series by &lt;a href=&quot;https://twitter.com/stevenproctor&quot;&gt;Steven Pro
    <id>http://blog.lfe.io//announcements/2015/01/09/1008-lfetool-150-preview-overriding-version-pinning</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/lfetool-logo-large-grey.png&quot;&gt;&lt;img class=&quot;right smallplus&quot; src=&quot;/assets/images/posts/lfetool-logo-large-grey.png&quot; /&gt;&lt;/a&gt;The next version of lfetool will provide users with the flexibility
-to override dependencies with pinned versions in their project&amp;#8217;s
+to override dependencies with pinned versions in their project’s
 &lt;code&gt;rebar.config&lt;/code&gt; file. This post is aimed at folks on the LFE mail list who
 may be interested in using this right away or helping to do QA. Of course,
 if others find themselves compelled to use and test the pre-release code,
@@ -2527,7 +2626,7 @@ they are quite welcome (with open arms, even)!&lt;/p&gt;
   &lt;li&gt;Bootstrapping dependent libraries&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Here&amp;#8217;s how you can try this new feature out &amp;#8230;&lt;/p&gt;
+&lt;p&gt;Here’s how you can try this new feature out …&lt;/p&gt;
 
 &lt;h2 id=&quot;override-dependencies&quot;&gt;Override Dependencies&lt;/h2&gt;
 
@@ -2546,7 +2645,7 @@ versions with either &lt;code&gt;HEAD&lt;/code&gt; or a named branch.&lt;/p&gt;
  ./lfetool https://raw.github.com/lfe/lfetool/dev-v1/lfetool
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bash ./lfetool install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;/li&gt;
-  &lt;li&gt;An LFE project (if you don&amp;#8217;t have one, you can create one with the command
+  &lt;li&gt;An LFE project (if you don’t have one, you can create one with the command
 &lt;code&gt;lfetool new library my-lib&lt;/code&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -2647,7 +2746,7 @@ A few points where made, and then the conversation was moved to
 &lt;a href=&quot;https://github.com/lfe/lfetool/issues/135&quot;&gt;this ticket&lt;/a&gt;. In some ways there
 was less work than expected, and in others, more. You know, the usual ;-)&lt;/p&gt;
 
-&lt;p&gt;That last ticket is fairly long, so we&amp;#8217;d like to point to you
+&lt;p&gt;That last ticket is fairly long, so we’d like to point to you
 &lt;a href=&quot;https://github.com/lfe/lfetool/issues/135#issuecomment-68797570&quot;&gt;this comment&lt;/a&gt;,
 which details the testing plan undertaken on multiple Docker containers. This
 section provides a set-by-step approach for most of what you need to ensure
@@ -2719,10 +2818,10 @@ By all accounts,
 &lt;a href=&quot;http://www.proctor-it.com/category/erlang/erlang-thursday/&quot;&gt;Erlang Thursday&lt;/a&gt;
 is a smash hit! We love the work that
 &lt;a href=&quot;http://www.proctor-it.com/&quot;&gt;Steven Proctor&lt;/a&gt; is doing for the Erlang community
-&amp;#8230; so much so, that we&amp;#8217;ve asked him if we can translate his weekly posts into
-LFE for &amp;#8220;LFE Friday&amp;#8221;. We were quite delighted when he said &amp;#8220;Yes!&amp;#8221; :-)&lt;/p&gt;
+… so much so, that we’ve asked him if we can translate his weekly posts into
+LFE for “LFE Friday”. We were quite delighted when he said “Yes!” :-)&lt;/p&gt;
 
-&lt;p&gt;We&amp;#8217;ve discussed this on the mail list and we have a volunteer &amp;#8230; someone
+&lt;p&gt;We’ve discussed this on the mail list and we have a volunteer … someone
 everyone will enjoy hearing from once a week :-)&lt;/p&gt;
 
 &lt;p&gt;More soon!&lt;/p&gt;
@@ -2740,7 +2839,7 @@ everyone will enjoy hearing from once a week :-)&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/lsci-erlang-ecosystem.png&quot;&gt;&lt;img class=&quot;right thumb&quot; src=&quot;/assets/images/posts/lsci-erlang-ecosystem.png&quot; /&gt;&lt;/a&gt;This tutorial brings in the New Year by introducing the Erlang/LFE
 scientific computing library &lt;a href=&quot;https://github.com/lfex/lsci&quot;&gt;lsci&lt;/a&gt;
-&amp;#8211; a ports wrapper of NumPy and SciPy (among others) for the Erlang ecosystem.
+– a ports wrapper of NumPy and SciPy (among others) for the Erlang ecosystem.
 The topic of the tutorial is polynomial curve-fitting for a given data set.
 Additionally, this post further demonstrates &lt;a href=&quot;https://github.com/lfex/py/&quot;&gt;py&lt;/a&gt;
 usage, the
@@ -2762,7 +2861,7 @@ on the same subject, by David Edgar Liebke.&lt;/p&gt;
 
 &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
-&lt;p&gt;The lsci library (pronounced &amp;#8220;Elsie&amp;#8221;) provides access to the fast numerical
+&lt;p&gt;The lsci library (pronounced “Elsie”) provides access to the fast numerical
 processing libraries that have become so popular in the scientific computing
 community. lsci is written in LFE but can be used just as easily from Erlang.&lt;/p&gt;
 
@@ -2807,7 +2906,7 @@ perform tasks like polynomial curve-fitting and statistical regression.&lt;/p&gt
   &lt;li&gt;git&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;With those in place, let&amp;#8217;s get you ready:&lt;/p&gt;
+&lt;p&gt;With those in place, let’s get you ready:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;clone&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;git@github.com:lfex/lsci.git&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;lsci&lt;/span&gt;
@@ -2825,7 +2924,7 @@ use the Python virtualenv, with all the libraries you just downloaded.&lt;/p&gt;
 
 &lt;h2 id=&quot;loading-data&quot;&gt;Loading Data&lt;/h2&gt;
 
-&lt;p&gt;The &amp;#8220;observed data&amp;#8221; we&amp;#8217;re going to use is the same data set as
+&lt;p&gt;The “observed data” we’re going to use is the same data set as
 that used in the
 &lt;a href=&quot;http://data-sorcery.org/2009/06/04/linear-regression-with-higher-order-terms/&quot;&gt;Incanter linear regression tutorial&lt;/a&gt;,
 the
@@ -2833,7 +2932,7 @@ the
 file. The data file we will use is a conversion of the original NIST file to
 CSV.&lt;/p&gt;
 
-&lt;p&gt;Let&amp;#8217;s load our experimental data:&lt;/p&gt;
+&lt;p&gt;Let’s load our experimental data:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lsci-np:genfromtxt&lt;/span&gt;
               &lt;span class=&quot;s&quot;&gt;&amp;quot;examples/polyfit/filip.csv&amp;quot;&lt;/span&gt;
@@ -2880,9 +2979,9 @@ a list:&lt;/p&gt;
 
 &lt;h2 id=&quot;a-note-about-values&quot;&gt;A Note about Values&lt;/h2&gt;
 
-&lt;p&gt;If you haven&amp;#8217;t noticed yet, you certainly will as you run through these
+&lt;p&gt;If you haven’t noticed yet, you certainly will as you run through these
 examples in the LFE REPL: we keep getting opaque binary data back from NumPy.
-Why can&amp;#8217;t lsci just convert that?&lt;/p&gt;
+Why can’t lsci just convert that?&lt;/p&gt;
 
 &lt;p&gt;While it would be nice to have that data presented to us in the REPL in such
 a way that we could &lt;em&gt;actually tell&lt;/em&gt; what is was, this would run counter to the
@@ -2895,7 +2994,7 @@ first place. It would do several things:&lt;/p&gt;
 first to Python native types and then to Erlang data types)&lt;/li&gt;
   &lt;li&gt;Bring only Erlang-native data types into the REPL, thus requiring us to
 create new NumPy data types to pass &lt;em&gt;back&lt;/em&gt; to Python if we wanted to benefit
-from NumPy&amp;#8217;s speed, or another way of saying this,&lt;/li&gt;
+from NumPy’s speed, or another way of saying this,&lt;/li&gt;
   &lt;li&gt;Make it difficult to pass results back into NumPy for further processing&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -2908,7 +3007,7 @@ purpose.&lt;/p&gt;
 
 &lt;p&gt;Because our CSV file had headers and we told &lt;code&gt;genfromtxt&lt;/code&gt; to use them with the
 &lt;code&gt;#(names true)&lt;/code&gt; option, we can easily extrac the &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt; axis data.
-Let&amp;#8217;s look at their values separately:&lt;/p&gt;
+Let’s look at their values separately:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;xs&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lsci-np:get&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$erlport.opaque&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -2927,7 +3026,7 @@ Let&amp;#8217;s look at their values separately:&lt;/p&gt;
  &lt;span class=&quot;mf&quot;&gt;0.9021&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.909&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.9139&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.9199&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.8692&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.8872&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.89&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.891&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.8977&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.9035&lt;/span&gt;
  &lt;span class=&quot;mf&quot;&gt;0.9078&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.7675&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Now let&amp;#8217;s plot our data in the terminal:&lt;/p&gt;
+&lt;p&gt;Now let’s plot our data in the terminal:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lsci-asciiplot:scatter&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;xs&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -2980,7 +3079,7 @@ provided a polynomial describing this data:&lt;/p&gt;
 &lt;p&gt;Or, if you prefer LaTeX:&lt;/p&gt;
 
 &lt;p&gt;\begin{equation}
-y = B_0 + B_1{x} + B_2{x^2} + &amp;#8230; + B_9{x^9} + B_{10}{x^{10}} + e
+y = B_0 + B_1{x} + B_2{x^2} + … + B_9{x^9} + B_{10}{x^{10}} + e
 \end{equation}&lt;/p&gt;
 
 &lt;p&gt;Using NumPy, we can easily fit a 10th-degree polynomial curve to this data.
@@ -2991,7 +3090,7 @@ of our polynomial:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;coeffs&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lsci-np:polyfit&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;xs&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ys&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$erlport.opaque&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Let&amp;#8217;s peek at the data:&lt;/p&gt;
+&lt;p&gt;Let’s peek at the data:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lsci-np:-&amp;gt;list&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;coeffs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;-4.029625205186532e-5&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;-0.0024678107546401437&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;-0.06701911469215643&lt;/span&gt;
@@ -3026,13 +3125,13 @@ of our polynomial:&lt;/p&gt;
 &lt;span class=&quot;mf&quot;&gt;1.8207657603852567e-14&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;There is a conveience class in NumPy &lt;code&gt;numpy.poly1d&lt;/code&gt; that, once instantiated
-with our fit data, we can use to evaluate at any given point. Let&amp;#8217;s try it
+with our fit data, we can use to evaluate at any given point. Let’s try it
 out:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lsci-np:poly1d&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;coeffs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$erlport.opaque&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Let&amp;#8217;s call this function against several values as a sanity check:&lt;/p&gt;
+&lt;p&gt;Let’s call this function against several values as a sanity check:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lsci-np:-&amp;gt;list&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;py:func&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;-9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
 &lt;span class=&quot;mf&quot;&gt;0.7766886098502255&lt;/span&gt;
@@ -3051,11 +3150,11 @@ out:&lt;/p&gt;
 
 &lt;h2 id=&quot;polynomial-linear-regression&quot;&gt;Polynomial Linear Regression&lt;/h2&gt;
 
-&lt;p&gt;Next let&amp;#8217;s see if our linear model matches up with what NIST provided. We&amp;#8217;re
+&lt;p&gt;Next let’s see if our linear model matches up with what NIST provided. We’re
 going to need to calculate the
 &lt;a href=&quot;http://en.wikipedia.org/wiki/Coefficient_of_determination&quot;&gt;coefficient of determination&lt;/a&gt;,
-or &lt;script type=&quot;math/tex&quot;&gt;R^2&lt;/script&gt; &amp;#8211; a value that indicates how well a statistical model fits with
-measured data. We&amp;#8217;ll start by feeding our &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; values into our model:&lt;/p&gt;
+or &lt;script type=&quot;math/tex&quot;&gt;R^2&lt;/script&gt; – a value that indicates how well a statistical model fits with
+measured data. We’ll start by feeding our &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; values into our model:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;y-predicted&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;py:func&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;xs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$erlport.opaque&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -3125,7 +3224,7 @@ prefer, e.g.:&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ss-res&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lsci-np:sum&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lsci-np:power&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lsci-np:subtract&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ys&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;y-predicted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$erlport.opaque&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Let&amp;#8217;s sanity-check the results:&lt;/p&gt;
+&lt;p&gt;Let’s sanity-check the results:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lsci-np:-&amp;gt;float&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;y-mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;mf&quot;&gt;0.8495756097560976&lt;/span&gt;
@@ -3136,7 +3235,7 @@ prefer, e.g.:&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lsci-np:-&amp;gt;float&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ss-res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;mf&quot;&gt;7.958513853880548e-4&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Now we&amp;#8217;re ready to get the &lt;script type=&quot;math/tex&quot;&gt;R^2&lt;/script&gt; value for our model:&lt;/p&gt;
+&lt;p&gt;Now we’re ready to get the &lt;script type=&quot;math/tex&quot;&gt;R^2&lt;/script&gt; value for our model:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;r-squared&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lsci-np:-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lsci-np:/&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ss-res&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ss-tot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$erlport.opaque&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -3149,13 +3248,13 @@ prefer, e.g.:&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lsci-np:-&amp;gt;float&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lsci-np:-&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;r-squared&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.996727416185620&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;mf&quot;&gt;-1.3220535777236364e-11&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;That&amp;#8217;s a pretty tiny difference!&lt;/p&gt;
+&lt;p&gt;That’s a pretty tiny difference!&lt;/p&gt;
 
 &lt;h2 id=&quot;a-linear-model-class&quot;&gt;A Linear Model Class&lt;/h2&gt;
 
 &lt;p&gt;The linear model code above is a bit cumbersome; it would be much more
 convenient for multiple-use if there was a Python class that did all the
-arithmetic for us, and we could just get attribute values &amp;#8230; So that&amp;#8217;s
+arithmetic for us, and we could just get attribute values … So that’s
 what we created:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PolynomialLinearModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
@@ -3256,7 +3355,7 @@ easily create a linear model which provides everything needed in one go:&lt;/p&g
 
 &lt;p&gt;When we created our first model, we ran it against several values to see if
 the outputs fit our measured data. One of those was the value &lt;code&gt;-9&lt;/code&gt; which
-returned &lt;code&gt;0.77668860985022548&lt;/code&gt;. Let&amp;#8217;s try that again with our new object:&lt;/p&gt;
+returned &lt;code&gt;0.77668860985022548&lt;/code&gt;. Let’s try that again with our new object:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lsci-np:-&amp;gt;float&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;py:method&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;predict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;-9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
 &lt;span class=&quot;mf&quot;&gt;0.7766886098502255&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -3265,10 +3364,10 @@ returned &lt;code&gt;0.77668860985022548&lt;/code&gt;. Let&amp;#8217;s try that 
 
 &lt;h2 id=&quot;plotting-the-model-with-the-observed-data&quot;&gt;Plotting the Model with the Observed Data&lt;/h2&gt;
 
-&lt;p&gt;We&amp;#8217;re going to need some data to feed to our fitted-poly function so that it
+&lt;p&gt;We’re going to need some data to feed to our fitted-poly function so that it
 can create the smooth polynomial curve that we will overlay on our scatter
-plot. Let&amp;#8217;s create a linear space between our minimum and maximum x values
-(200 points should give us a nice, smooth curve). Then let&amp;#8217;s use fitted-poly
+plot. Let’s create a linear space between our minimum and maximum x values
+(200 points should give us a nice, smooth curve). Then let’s use fitted-poly
 to generate the y values:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;xs-fitted&lt;/span&gt;
@@ -3280,7 +3379,7 @@ to generate the y values:&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ys-fitted&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;py:method&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;predict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;xs-fitted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Now we&amp;#8217;re ready to put them together:&lt;/p&gt;
+&lt;p&gt;Now we’re ready to put them together:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;plot-both&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lsci-asciiplot:scatter&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;xs&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -3340,11 +3439,11 @@ thing floats your boat, be sure to take a look at
 &lt;a href=&quot;https://github.com/lfex/lsci/issues&quot;&gt;some of the development tasks&lt;/a&gt; and
 come give us a hand!&lt;/p&gt;
 
-&lt;p&gt;Even though there&amp;#8217;s a lot to do, there&amp;#8217;s a lot of reward :-) Every little
+&lt;p&gt;Even though there’s a lot to do, there’s a lot of reward :-) Every little
 function that gets converted
 brings enormous satisfaction: the ability to perform these sorts of computing
 tasks without having to leave the Erlang ecosystem is a wonderful change. We
-hope it&amp;#8217;s one that you not only get used to, but can&amp;#8217;t live without :-)&lt;/p&gt;
+hope it’s one that you not only get used to, but can’t live without :-)&lt;/p&gt;
 </content>
  </entry>
  
@@ -3360,13 +3459,13 @@ Erlang/LFE. In particular,
 &lt;a href=&quot;http://blog.lfe.io/tutorials/2014/12/03/1828-erlport-and-python-making-more-calls-from-lfe/&quot;&gt;two&lt;/a&gt;
 posts have gotten a lot of attention. This post introduces a new library for
 LFE and Erlang that builds upon the work demonstrated in those posts, and
-furthermore, points towards a future of distributed Python &amp;#8230; a future that is
+furthermore, points towards a future of distributed Python … a future that is
 just a few days away.&lt;/p&gt;
 
 &lt;p&gt;The library is &lt;a href=&quot;https://github.com/lfex/py&quot;&gt;py&lt;/a&gt;. It has an extensive README
-which is, in essence, a tutorial. As such this post won&amp;#8217;t cover all the
-material provided there &amp;#8211; we&amp;#8217;ll take a look at some samples and show some
-new features that haven&amp;#8217;t been added to the README yet :-)&lt;/p&gt;
+which is, in essence, a tutorial. As such this post won’t cover all the
+material provided there – we’ll take a look at some samples and show some
+new features that haven’t been added to the README yet :-)&lt;/p&gt;
 
 &lt;h2 id=&quot;getting-the-code&quot;&gt;Getting the Code&lt;/h2&gt;
 
@@ -3385,7 +3484,7 @@ execute some Python.&lt;/p&gt;
 
 &lt;h2 id=&quot;using-py&quot;&gt;Using &lt;code&gt;py&lt;/code&gt;&lt;/h2&gt;
 
-&lt;p&gt;Let&amp;#8217;s start off simple by taking a look at all the versions you have:&lt;/p&gt;
+&lt;p&gt;Let’s start off simple by taking a look at all the versions you have:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;py-util:get-versions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;erlang&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;17&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -3496,11 +3595,11 @@ execute some Python.&lt;/p&gt;
 
 &lt;h2 id=&quot;erlang&quot;&gt;Erlang?&lt;/h2&gt;
 
-&lt;p&gt;Yes, all of this is easily available to Erlang too :-) That&amp;#8217;s the beauty of
-LFE &amp;#8211; 100% Erlang Core compatiable :-)&lt;/p&gt;
+&lt;p&gt;Yes, all of this is easily available to Erlang too :-) That’s the beauty of
+LFE – 100% Erlang Core compatiable :-)&lt;/p&gt;
 
-&lt;p&gt;There is a link in the project&amp;#8217;s README file that points to
-&lt;a href=&quot;https://github.com/lfex/py#erlang-&quot;&gt;example Erlang usage&lt;/a&gt; &amp;#8211; be sure to
+&lt;p&gt;There is a link in the project’s README file that points to
+&lt;a href=&quot;https://github.com/lfex/py#erlang-&quot;&gt;example Erlang usage&lt;/a&gt; – be sure to
 check that out!&lt;/p&gt;
 
 &lt;h2 id=&quot;the-py-sup-lfe-supervisor&quot;&gt;The &lt;code&gt;py-sup&lt;/code&gt; LFE Supervisor&lt;/h2&gt;
@@ -3538,7 +3637,7 @@ see this in action with the following:&lt;/p&gt;
 &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&amp;lt;0.38.0&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The default restart policy for &lt;code&gt;py&lt;/code&gt; is to only restart if the Python server
-hasn&amp;#8217;t crashed more than 3 times in 1 second. This prevents run-away restarts
+hasn’t crashed more than 3 times in 1 second. This prevents run-away restarts
 in the cases of bad code, pathologically configured Python environment, etc.&lt;/p&gt;
 
 &lt;p&gt;Try killing the child Python server process rapidly several times in a row:&lt;/p&gt;
@@ -3557,9 +3656,9 @@ in the cases of bad code, pathologically configured Python environment, etc.&lt;
     &lt;span class=&quot;nv&quot;&gt;exited:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;shutdown&lt;/span&gt;
     &lt;span class=&quot;nv&quot;&gt;type:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;temporary&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Three was okay &amp;#8211; but not four!&lt;/p&gt;
+&lt;p&gt;Three was okay – but not four!&lt;/p&gt;
 
-&lt;p&gt;Support for a supervision tree is just the beginning, though &amp;#8230;&lt;/p&gt;
+&lt;p&gt;Support for a supervision tree is just the beginning, though …&lt;/p&gt;
 
 &lt;h2 id=&quot;the-future&quot;&gt;The Future&lt;/h2&gt;
 
@@ -3586,7 +3685,7 @@ questions, make suggestions, etc.&lt;/p&gt;
    <id>http://blog.lfe.io//holidays/2014/12/25/1221-happy-holidays-from-lfe</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/LFE-Happy-Holidays.png&quot;&gt;&lt;img class=&quot;left medium&quot; src=&quot;/assets/images/posts/LFE-Happy-Holidays.png&quot; /&gt;&lt;/a&gt;
-To all you Erlangers, Lispers, FP&amp;#8217;ers, Hackers, and Open-Sorcerers &amp;#8211; we wish
+To all you Erlangers, Lispers, FP’ers, Hackers, and Open-Sorcerers – we wish
 you the very best of holidays, a wonderful finishing of the year, and the
 happiest of new years!&lt;/p&gt;
 </content>
@@ -3601,7 +3700,7 @@ happiest of new years!&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot;&gt;&lt;img class=&quot;right small&quot; src=&quot;/assets/images/posts/LispFlavoredErlang-medium-square.png&quot; /&gt;&lt;/a&gt;My
 team and I have just finished our first major sprint using LFE and I thought
 this would be a good time to report on our experience. Our stack is built around
-&lt;a href=&quot;http://yaws.hyber.org/&quot;&gt;YAWS&lt;/a&gt; and we are using MySQL as the database. We&amp;#8217;re not
+&lt;a href=&quot;http://yaws.hyber.org/&quot;&gt;YAWS&lt;/a&gt; and we are using MySQL as the database. We’re not
 using any templating language, but instead relying on an API-based architecture
 with all front-end interactions in JavaScript + HTML.&lt;/p&gt;
 
@@ -3642,7 +3741,7 @@ So far, I only had a little bit of trouble with Bit comprehensions on
 that front. But, I suspect that is more because I am new to Erlang.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;The compiler seems fast enough, but I&amp;#8217;ll know more as the number of
+    &lt;p&gt;The compiler seems fast enough, but I’ll know more as the number of
 source files grow.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
@@ -3651,7 +3750,7 @@ source files grow.&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Documentation&lt;/strong&gt;: &amp;#8230; It exists, but things are hard to find. I realize
+    &lt;p&gt;&lt;strong&gt;Documentation&lt;/strong&gt;: … It exists, but things are hard to find. I realize
 this is a work in progress and hopefully we will be able to help in some
 ways.&lt;/p&gt;
   &lt;/li&gt;
@@ -3670,7 +3769,7 @@ and the inability to isolate runs to specific tests was a little painful.&lt;/p&
 
 &lt;p&gt;Please bear with me on this. Not all of this relates to LFE entirely, but I
 feel it better to list it here in case LFE can have better solutions. The
-section is bigger because I&amp;#8217;m trying to give all the gory details.&lt;/p&gt;
+section is bigger because I’m trying to give all the gory details.&lt;/p&gt;
 
 &lt;h3 id=&quot;the-macro-system&quot;&gt;The Macro System&lt;/h3&gt;
 
@@ -3681,8 +3780,8 @@ painful experience.&lt;/p&gt;
   &lt;li&gt;
     &lt;p&gt;The biggest problem is that the macro system does not report errors properly.
 If an expansion encounters an error, all that the compiler reports is
-something like &amp;#8220;could not expand form&amp;#8221;. Or, even more frustratingly
-&amp;#8220;bad application&amp;#8221;. No other information is provided about what the error
+something like “could not expand form”. Or, even more frustratingly
+“bad application”. No other information is provided about what the error
 was and where it arose. This was true in the LFE REPL as well. It would
 REALLY &lt;em&gt;REALLY&lt;/em&gt; help if the underlying error is reported.&lt;/p&gt;
   &lt;/li&gt;
@@ -3703,9 +3802,9 @@ developers choose to always use Erlang binaries. We are
 &lt;a href=&quot;https://groups.google.com/d/msg/lisp-flavoured-erlang/pF4retTadzw/bwmz6a6BNZYJ&quot;&gt;currently discussing exactly this&lt;/a&gt;
 on the mail list.&lt;/p&gt;
 
-&lt;h3 id=&quot;erlangs-formatted-io&quot;&gt;Erlang&amp;#8217;s Formatted I/O&lt;/h3&gt;
+&lt;h3 id=&quot;erlangs-formatted-io&quot;&gt;Erlang’s Formatted I/O&lt;/h3&gt;
 
-&lt;p&gt;Given my long exposure to Common Lisp&amp;#8217;s format, I feel that &lt;code&gt;&quot;~p&quot;&lt;/code&gt; is woefully
+&lt;p&gt;Given my long exposure to Common Lisp’s format, I feel that &lt;code&gt;&quot;~p&quot;&lt;/code&gt; is woefully
 inadequate. One of my resolutions is to contribute a CL compatible format
 function to LFE. I would love to collaborate with anyone who is interested
 in this.&lt;/p&gt;
@@ -3723,7 +3822,7 @@ alternatives.&lt;/p&gt;
 &lt;p&gt;Anyhow, that is all for now. More as things develop. Congratulations on
 getting LFE this far.&lt;/p&gt;
 
-&lt;p&gt;I am working on a document called &amp;#8220;LFE for Erlang programmers&amp;#8221;, which I will
+&lt;p&gt;I am working on a document called “LFE for Erlang programmers”, which I will
 publish to this group as soon as it reaches some level of stability.&lt;/p&gt;
 
 </content>
@@ -3739,7 +3838,7 @@ publish to this group as soon as it reaches some level of stability.&lt;/p&gt;
 is from
 &lt;a href=&quot;https://twitter.com/DynamicWebPaige/status/544609553422106625&quot;&gt;a tweet&lt;/a&gt;
 by Paige Bailey (&lt;a href=&quot;https://twitter.com/DynamicWebPaige&quot;&gt;@DynamicWebPaige&lt;/a&gt;).
-It&amp;#8217;s from the August 1979 issue of Byte which was focused on Lisp.
+It’s from the August 1979 issue of Byte which was focused on Lisp.
 The table of contents is
 &lt;a href=&quot;http://pichon.emmanuel.perso.neuf.fr/revues/byte/byte_1979.php&quot;&gt;here&lt;/a&gt; and includes such artciles as:&lt;/p&gt;
 
@@ -3748,7 +3847,7 @@ The table of contents is
   &lt;li&gt;LISP APPLICATIONS IN BOOLEAN LOGIC&lt;/li&gt;
   &lt;li&gt;AN OVERVIEW OF LISP&lt;/li&gt;
   &lt;li&gt;LISP BASED SYSTEMS FOR EDUCATION&lt;/li&gt;
-  &lt;li&gt;A MATHEMATICIAN&amp;#8217;S VIEW OF LISP&lt;/li&gt;
+  &lt;li&gt;A MATHEMATICIAN’S VIEW OF LISP&lt;/li&gt;
   &lt;li&gt;LISP BASED SYMBOLIC MATH SYSTEMS&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -3757,7 +3856,7 @@ The table of contents is
 
 &lt;p&gt;After finding a
 &lt;a href=&quot;http://pichon.emmanuel.perso.neuf.fr/revues/byte/grand/1979/byte_1979_08.jpg&quot;&gt;larger resolution image&lt;/a&gt;,
-I couldn&amp;#8217;t resist doing a little Lisp archeaology :-) Here&amp;#8217;s a transcript of
+I couldn’t resist doing a little Lisp archeaology :-) Here’s a transcript of
 what I can see:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nv&quot;&gt;DEFINE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;
@@ -3791,14 +3890,14 @@ for some bits, but here are some initial notes:&lt;/p&gt;
 &lt;a href=&quot;http://www.softwarepreservation.org/projects/LISP/book/LISP%201.5%20Programmers%20Manual.pdf&quot;&gt;LISP 1.5 Manual&lt;/a&gt;
 only &lt;code&gt;EQ&lt;/code&gt; or &lt;code&gt;EQUAL&lt;/code&gt; are given, not &lt;code&gt;EQU&lt;/code&gt;. This could be another form
 or alias present in a post-1962 dialect. It could also be a typo ;-)&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;L&lt;/code&gt; - I&amp;#8217;m not familiar with this call. If this function is what it seems,
-a &amp;#8220;string indentation&amp;#8221; function, then I can only assume that &lt;code&gt;(L N)&lt;/code&gt;
-creates a list of spaces of length &lt;code&gt;N&lt;/code&gt;. I couldn&amp;#8217;t find a trace of
+  &lt;li&gt;&lt;code&gt;L&lt;/code&gt; - I’m not familiar with this call. If this function is what it seems,
+a “string indentation” function, then I can only assume that &lt;code&gt;(L N)&lt;/code&gt;
+creates a list of spaces of length &lt;code&gt;N&lt;/code&gt;. I couldn’t find a trace of
 &lt;code&gt;(L ...)&lt;/code&gt; in the LISP 1.5 Manual.&lt;/li&gt;
-  &lt;li&gt;Much of the &lt;code&gt;FETCH&lt;/code&gt; function has been chopped off, but if I&amp;#8217;m not mistaken
+  &lt;li&gt;Much of the &lt;code&gt;FETCH&lt;/code&gt; function has been chopped off, but if I’m not mistaken
 (and oh my, I very well could be!), the first part actually looks like a
 predecessor to the &lt;code&gt;(let ...)&lt;/code&gt; form. Given the function name and the names
-of the defined variables, it&amp;#8217;s pretty clear what&amp;#8217;s going on here :-)&lt;/li&gt;
+of the defined variables, it’s pretty clear what’s going on here :-)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;Update from Rainer Joswig&lt;/strong&gt;: he mentioned that we should be sure to check out
@@ -3819,9 +3918,9 @@ original:&lt;/p&gt;
   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;INDT&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;LAMBDA&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;N&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;STRING&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PRINT&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;APPEND&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;L&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;STRING&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;That&amp;#8217;s the archeology. Let&amp;#8217;s try a reconstruction :-)&lt;/p&gt;
+&lt;p&gt;That’s the archeology. Let’s try a reconstruction :-)&lt;/p&gt;
 
-&lt;p&gt;Here&amp;#8217;s what these functions would look like in a modern Lisp (entered in the
+&lt;p&gt;Here’s what these functions would look like in a modern Lisp (entered in the
 REPL):&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;remblank&lt;/span&gt;
@@ -3835,7 +3934,7 @@ REPL):&lt;/p&gt;
                   &lt;span class=&quot;nb&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;indt&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Now let&amp;#8217;s take them for a spin!&lt;/p&gt;
+&lt;p&gt;Now let’s take them for a spin!&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;remblank&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot; J o hn   M cC a  rt hy &amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;s&quot;&gt;&amp;quot;JohnMcCarthy&amp;quot;&lt;/span&gt;
@@ -3855,10 +3954,10 @@ some additional changes to bring it more in line with Erlang/LFE:&lt;/p&gt;
     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string:copies&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot; &amp;quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;indt&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;That almost feels like cheating &amp;#8230;&lt;/p&gt;
+&lt;p&gt;That almost feels like cheating …&lt;/p&gt;
 
 &lt;p&gt;This is interesting as a port for LFE, since LFE preserves the list-ness of
-strings (thanks to Erlang) as McCarthy&amp;#8217;s Lisp of 1962 did: list functions may
+strings (thanks to Erlang) as McCarthy’s Lisp of 1962 did: list functions may
 be used with strings without problem. As you can see, this is what the original
 &lt;code&gt;REMBLANK&lt;/code&gt; function expects.&lt;/p&gt;
 
@@ -3875,13 +3974,13 @@ using &lt;code&gt;subseq&lt;/code&gt; instead of &lt;code&gt;car&lt;/code&gt; an
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/lutil-leonardo-gears-large.png&quot;&gt;&lt;img class=&quot;right thumb&quot; src=&quot;/assets/images/posts/lutil-leonardo-gears.png&quot; /&gt;&lt;/a&gt;With the
 &lt;a href=&quot;https://github.com/lfex/lutil/releases/tag/0.5.0&quot;&gt;release of lutil 0.5.0&lt;/a&gt;,
-there are new &amp;#8220;compose&amp;#8221; functions accompanying the
+there are new “compose” functions accompanying the
 &lt;a href=&quot;https://github.com/lfex/lutil/commits/master/include/compose-macros.lfe?author=dysinger&quot;&gt;previously-merged&lt;/a&gt;
 thrushing macros as well as a new convenience include file which contains all
-of lutil&amp;#8217;s predicate functions defined for easy use in the REPL or in modules.
+of lutil’s predicate functions defined for easy use in the REPL or in modules.
 Additionally there is a new, experimental include file that is beginning to
-define functions and marcos considered &amp;#8220;core&amp;#8221; to the LFE experience but which
-aren&amp;#8217;t yet (and may never be) included in LFE-proper. Some of these may wrap
+define functions and marcos considered “core” to the LFE experience but which
+aren’t yet (and may never be) included in LFE-proper. Some of these may wrap
 Erlang functions with more options, others may provide new syntax, etc. See
 below for usage examples.&lt;/p&gt;
 
@@ -3892,9 +3991,9 @@ remaining here in perpetuity.&lt;/p&gt;
 
 &lt;p&gt;This is a new include file while is the home for any functions that feel like
 they should be part of the language. They might wrap Erlang functions or
-provide basic functionality that&amp;#8217;s not in Erlang or LFE proper.&lt;/p&gt;
+provide basic functionality that’s not in Erlang or LFE proper.&lt;/p&gt;
 
-&lt;p&gt;For now, it&amp;#8217;s just the following:&lt;/p&gt;
+&lt;p&gt;For now, it’s just the following:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code&gt;seq&lt;/code&gt;&lt;/li&gt;
@@ -3905,26 +4004,26 @@ provide basic functionality that&amp;#8217;s not in Erlang or LFE proper.&lt;/p&
 
 &lt;h3 id=&quot;seq-functions&quot;&gt;&lt;code&gt;seq&lt;/code&gt; Functions&lt;/h3&gt;
 
-&lt;p&gt;Let&amp;#8217;s start with pulling in the &lt;code&gt;core&lt;/code&gt; inlude in the LFE REPL:&lt;/p&gt;
+&lt;p&gt;Let’s start with pulling in the &lt;code&gt;core&lt;/code&gt; inlude in the LFE REPL:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;include-lib&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;lutil/include/core.lfe&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;loaded&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Erlang doesn&amp;#8217;t have a &lt;code&gt;lists:seq/1&lt;/code&gt;, so we made one:&lt;/p&gt;
+&lt;p&gt;Erlang doesn’t have a &lt;code&gt;lists:seq/1&lt;/code&gt;, so we made one:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;seq&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Having done that, we also provided wrappers for Erlang&amp;#8217;s &lt;code&gt;lists:seq/2&lt;/code&gt;
+&lt;p&gt;Having done that, we also provided wrappers for Erlang’s &lt;code&gt;lists:seq/2&lt;/code&gt;
 and &lt;code&gt;lists:seq/3&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;As you can see, we opted for 1 as the default starting element. This follows in
-the tradition of many of Erlang&amp;#8217;s &lt;code&gt;lists&lt;/code&gt; functions. 0-based sequences can
+the tradition of many of Erlang’s &lt;code&gt;lists&lt;/code&gt; functions. 0-based sequences can
 just use &lt;code&gt;seq/2&lt;/code&gt;, e.g. &lt;code&gt;(seq 0 10)&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;range-functions&quot;&gt;&lt;code&gt;range&lt;/code&gt; Functions&lt;/h3&gt;
 
-&lt;p&gt;These functions were inspired by Clojure&amp;#8217;s
+&lt;p&gt;These functions were inspired by Clojure’s
 &lt;a href=&quot;https://github.com/clojure/clojure/blob/clojure-1.6.0/src/clj/clojure/core.clj#L2725&quot;&gt;range&lt;/a&gt;
 function as well as
 &lt;a href=&quot;https://docs.python.org/3/glossary.html#term-generator&quot;&gt;Python generators&lt;/a&gt;.
@@ -3932,11 +4031,11 @@ Our &lt;code&gt;range&lt;/code&gt; provides us with the ability to generate an e
 integers or floating point numbers without using more memory that what is
 required to create a few functions.&lt;/p&gt;
 
-&lt;p&gt;Unlike Python and Clojure, &lt;code&gt;range&lt;/code&gt; is based upon Erlang&amp;#8217;s capacity for its
+&lt;p&gt;Unlike Python and Clojure, &lt;code&gt;range&lt;/code&gt; is based upon Erlang’s capacity for its
 own brand of lazy evaluation as demonstrated in
 &lt;a href=&quot;http://erlangraymondtay.blogspot.com/2009/08/example-of-lazy-evaluation-for.html&quot;&gt;this blog post&lt;/a&gt;.
-In particular, &lt;code&gt;(range)&lt;/code&gt; returns a function (and so is more akin to Python&amp;#8217;s
-generators that Clojure&amp;#8217;s &lt;code&gt;range&lt;/code&gt; function). When called, it will return a
+In particular, &lt;code&gt;(range)&lt;/code&gt; returns a function (and so is more akin to Python’s
+generators that Clojure’s &lt;code&gt;range&lt;/code&gt; function). When called, it will return a
 &lt;code&gt;cons&lt;/code&gt; of:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -3968,7 +4067,7 @@ function in lutil &lt;code&gt;core&lt;/code&gt;. More on that below.&lt;/p&gt;
 &lt;h3 id=&quot;take-functions&quot;&gt;&lt;code&gt;take&lt;/code&gt; Functions&lt;/h3&gt;
 
 &lt;p&gt;For &lt;code&gt;range&lt;/code&gt; to be very useful, we need be able to pull values from it.
-Otherwise, we&amp;#8217;re left with usage like the following:&lt;/p&gt;
+Otherwise, we’re left with usage like the following:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;funcall&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Fun&amp;lt;lfe_eval.23.86468545&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -3981,18 +4080,18 @@ Otherwise, we&amp;#8217;re left with usage like the following:&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;That certainly has its own &lt;em&gt;peculiar&lt;/em&gt; charm, but does not rate too highly in
-convenience. As such, a function like Clojure&amp;#8217;s &lt;code&gt;take&lt;/code&gt; has been added to
+convenience. As such, a function like Clojure’s &lt;code&gt;take&lt;/code&gt; has been added to
 lutil &lt;code&gt;core&lt;/code&gt;. It does just what is says: takes a certain number of elements
 from our infinite series.&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;take&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Hej! That&amp;#8217;s much nicer than the above :-)&lt;/p&gt;
+&lt;p&gt;Hej! That’s much nicer than the above :-)&lt;/p&gt;
 
-&lt;p&gt;Sometimes one&amp;#8217;s code will be using both infinite series as well as definite
+&lt;p&gt;Sometimes one’s code will be using both infinite series as well as definite
 lists and it would be nice to not have to change functions if the source
-of the data changes. As such, we&amp;#8217;ve modified &lt;code&gt;take&lt;/code&gt; to provide a wrapper
+of the data changes. As such, we’ve modified &lt;code&gt;take&lt;/code&gt; to provide a wrapper
 for &lt;code&gt;lists:sublist/2&lt;/code&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;take&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
@@ -4048,7 +4147,7 @@ to provide the increasingly-more-used predicates in include-form (thus
 alleviating developers having to use the full &lt;code&gt;mod:fun&lt;/code&gt; syntax or from
 complicated and hard-to-maintain special imports).&lt;/p&gt;
 
-&lt;p&gt;Here&amp;#8217;s a quick way of seeing which predicates are supported:&lt;/p&gt;
+&lt;p&gt;Here’s a quick way of seeing which predicates are supported:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;before&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;sets:from_list&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lutil:get-env-funcs&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ENV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;48&lt;/span&gt;
@@ -4092,7 +4191,7 @@ brought in from &lt;code&gt;include-lib&lt;/code&gt;:&lt;/p&gt;
 
 &lt;p&gt;All of the 0.5.0 changes detailed above were actually yak-shavings in support of
 the &lt;code&gt;compose&lt;/code&gt; functions. These new functions have been added as companions to
-the threshing macros (see below). These are similar to Clojure&amp;#8217;s &lt;code&gt;compose&lt;/code&gt;
+the threshing macros (see below). These are similar to Clojure’s &lt;code&gt;compose&lt;/code&gt;
 function, but with some syntactic sugar to assist with the fact that LFE is a
 Lisp-2.&lt;/p&gt;
 
@@ -4101,13 +4200,13 @@ Lisp-2.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;include-lib&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;lutil/include/compose.lfe&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;loaded&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Let&amp;#8217;s call &lt;code&gt;compose/2&lt;/code&gt; on two math functions:&lt;/p&gt;
+&lt;p&gt;Let’s call &lt;code&gt;compose/2&lt;/code&gt; on two math functions:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;funcall&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compose&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;#&amp;#39;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;math:sin/1&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;#&amp;#39;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;math:asin/1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
            &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;mf&quot;&gt;0.49999999999999994&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Now let&amp;#8217;s use &lt;code&gt;compose/1&lt;/code&gt; on a list of functions:&lt;/p&gt;
+&lt;p&gt;Now let’s use &lt;code&gt;compose/1&lt;/code&gt; on a list of functions:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;funcall&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compose&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;#&amp;#39;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;math:sin/1&lt;/span&gt;
                       &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;#&amp;#39;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;math:asin/1&lt;/span&gt;
@@ -4123,8 +4222,8 @@ Lisp-2.&lt;/p&gt;
                 &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Unlike schemes and Clojure, when calling &lt;code&gt;compose&lt;/code&gt; directly, we can&amp;#8217;t just
-wrap parens around our function &amp;#8211; we need to call &lt;code&gt;funcall&lt;/code&gt; on it. But we can
+&lt;p&gt;Unlike schemes and Clojure, when calling &lt;code&gt;compose&lt;/code&gt; directly, we can’t just
+wrap parens around our function – we need to call &lt;code&gt;funcall&lt;/code&gt; on it. But we can
 cheat, with a little help from Erlang arities :-)&lt;/p&gt;
 
 &lt;p&gt;The following are provided as conveniences when using compose by itself (in
@@ -4141,13 +4240,13 @@ etc.):&lt;/p&gt;
 
 &lt;h2 id=&quot;thrushing-macros&quot;&gt;Thrushing Macros&lt;/h2&gt;
 
-&lt;p&gt;And now we&amp;#8217;ve reached dessert :-)&lt;/p&gt;
+&lt;p&gt;And now we’ve reached dessert :-)&lt;/p&gt;
 
 &lt;p&gt;The following examples are for functionality that was previously added to
 lutil, authored originally by
 &lt;a href=&quot;https://github.com/dysinger/lfesl/blob/master/include/thread.lfe&quot;&gt;Tim Dysinger&lt;/a&gt;.
 Though not part of this release, these bonus usage examples are provided since
-it&amp;#8217;s such a cool set of macros, inspired by their
+it’s such a cool set of macros, inspired by their
 Clojure analogs &lt;a href=&quot;http://clojuredocs.org/clojure.core/-%3E&quot;&gt;-&amp;gt;&lt;/a&gt;
 and &lt;a href=&quot;http://clojuredocs.org/clojure.core/-%3E%3E&quot;&gt;-&amp;gt; &amp;gt;&lt;/a&gt;.&lt;/p&gt;
 
@@ -4176,7 +4275,7 @@ stacks of nested functions.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;include-lib&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;lutil/include/compose.lfe&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;loaded&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Here&amp;#8217;s how the first thrushing macro can help the previous example:&lt;/p&gt;
+&lt;p&gt;Here’s how the first thrushing macro can help the previous example:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;a b c d e&amp;quot;&lt;/span&gt;
       &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string:to_upper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -4187,21 +4286,21 @@ stacks of nested functions.&lt;/p&gt;
       &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lists:sublist&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;L&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;F&amp;quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;E&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;What&amp;#8217;s happening here is that the output from one function is passed as
+&lt;p&gt;What’s happening here is that the output from one function is passed as
 (inserted, really) the first argument in the next fucntion.&lt;/p&gt;
 
-&lt;p&gt;The next macro does the opposeite &amp;#8230;&lt;/p&gt;
+&lt;p&gt;The next macro does the opposeite …&lt;/p&gt;
 
 &lt;h3 id=&quot;the---macro-1&quot;&gt;The &lt;code&gt;-&amp;gt;&amp;gt;&lt;/code&gt; Macro&lt;/h3&gt;
 
-&lt;p&gt;Let&amp;#8217;s get some includes:&lt;/p&gt;
+&lt;p&gt;Let’s get some includes:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;include-lib&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;lutil/include/predicates.lfe&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;loaded&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;include-lib&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;lutil/include/core.lfe&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;loaded&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Next let&amp;#8217;s make a bunch of nested calls:&lt;/p&gt;
+&lt;p&gt;Next let’s make a bunch of nested calls:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lists:foldl&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;#&amp;#39;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;+/2&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;take&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
@@ -4218,7 +4317,7 @@ stacks of nested functions.&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;include-lib&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;lutil/include/compose.lfe&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;loaded&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;And now let&amp;#8217;s rewrite the nested functions using the &lt;code&gt;-&amp;gt;&amp;gt;&lt;/code&gt; macro:&lt;/p&gt;
+&lt;p&gt;And now let’s rewrite the nested functions using the &lt;code&gt;-&amp;gt;&amp;gt;&lt;/code&gt; macro:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;-&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;seq&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lists:map&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;math:pow&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
@@ -4627,19 +4726,19 @@ amazing tales to share, we want to hear there :-)&lt;/p&gt;
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/screencapture-ierlang_demo.png&quot;&gt;&lt;img class=&quot;left thumb&quot; src=&quot;/assets/images/posts/screencapture-ierlang_demo.png&quot; /&gt;&lt;/a&gt;Back in April, the Erlang community
 was stunned to hear that we had been given an answer to
-&lt;a href=&quot;http://ipython.org/&quot;&gt;IPython&lt;/a&gt;, IHaskell, and IJulia &amp;#8211;
+&lt;a href=&quot;http://ipython.org/&quot;&gt;IPython&lt;/a&gt;, IHaskell, and IJulia –
 &lt;a href=&quot;http://robl.co/ierlang-featured-on-hacker-news/&quot;&gt;IErlang&lt;/a&gt;. However, as
 &lt;a href=&quot;https://twitter.com/lynchrobbie&quot;&gt;Robbie&lt;/a&gt; noted in the list of outstanding
 issues at the end of the IErlang demo notebook, not a lot of time had been set
 aside to develop a more standard project structure. Furthermore, the setup and
 installation of IErlang to get to the point where you could try it out was a
-rather arduous process. All of that has now changed &amp;#8230;&lt;/p&gt;
+rather arduous process. All of that has now changed …&lt;/p&gt;
 
 &lt;h2 id=&quot;running-the-new-demo&quot;&gt;Running the New Demo&lt;/h2&gt;
 
 &lt;p&gt;The IErlang project has a series of
 &lt;a href=&quot;https://github.com/robbielynch/ierlang/pulls&quot;&gt;open PRs&lt;/a&gt; that address several
-of the organizational issues Robbie had lamented, but you don&amp;#8217;t have to wait
+of the organizational issues Robbie had lamented, but you don’t have to wait
 until they get merged; you can
 &lt;a href=&quot;https://github.com/oubiwann/ierlang&quot;&gt;get it now&lt;/a&gt;:&lt;/p&gt;
 
@@ -4647,12 +4746,12 @@ until they get merged; you can
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;ierlang
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make demo&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Yup. That&amp;#8217;s it.&lt;/p&gt;
+&lt;p&gt;Yup. That’s it.&lt;/p&gt;
 
 &lt;p&gt;This will do the following for you:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Set up a Python virtual environment in the project&amp;#8217;s working directory (in
+  &lt;li&gt;Set up a Python virtual environment in the project’s working directory (in
 &lt;code&gt;./.venv-py2&lt;/code&gt;)&lt;/li&gt;
   &lt;li&gt;Install IPython and its dependencies into that virtual environment&lt;/li&gt;
   &lt;li&gt;Patch IPython to support Erlang&lt;/li&gt;
@@ -4677,11 +4776,11 @@ installed in your &lt;code&gt;$PATH&lt;/code&gt;:&lt;/p&gt;
 &lt;h2 id=&quot;outstanding-issues&quot;&gt;Outstanding Issues&lt;/h2&gt;
 
 &lt;p&gt;As you can see at the bottom of the IErlang notebook demo, many of the issues
-that Robbie identified earlier this year still remain. In particular, I&amp;#8217;ve
+that Robbie identified earlier this year still remain. In particular, I’ve
 added another one to that list: high CPU usage for both &lt;code&gt;console&lt;/code&gt; and
 &lt;code&gt;notebook&lt;/code&gt; mode.&lt;/p&gt;
 
-&lt;p&gt;A minor issue I didn&amp;#8217;t add, but which I may take up (being the code janitor
+&lt;p&gt;A minor issue I didn’t add, but which I may take up (being the code janitor
 that I am) is function-level organization in the modules: most functions are
 too long and entail too much logic. They need to be split out (which will
 also make it easier for folks to contribute).&lt;/p&gt;
@@ -4712,20 +4811,20 @@ and others may also be used with IErlang :-)&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/Erlang-Python-Greats.png&quot;&gt;&lt;img class=&quot;right thumb&quot; src=&quot;/assets/images/posts/Erlang-Python-Greats.png&quot; /&gt;&lt;/a&gt;
 A short while ago, I did a
 &lt;a href=&quot;http://blog.lfe.io/tutorials/2014/11/21/1508-erlport-using-python-from-erlang-lfe/&quot;&gt;teaser post&lt;/a&gt;
-about calling Python from LFE. There was only a tiny bit of code&amp;#8230; but! It
-came with one of the best Erlang/Python pictures EVAR. You know which one I&amp;#8217;m
+about calling Python from LFE. There was only a tiny bit of code… but! It
+came with one of the best Erlang/Python pictures EVAR. You know which one I’m
 talking about.&lt;/p&gt;
 
-&lt;p&gt;In this post, we&amp;#8217;re going to venture further into this strange and wonderful
-landscape. We&amp;#8217;ll do this by essentially adapting
-&lt;a href=&quot;https://twitter.com/hdima&quot;&gt;Dmitry Vasiliev&lt;/a&gt;&amp;#8217;s
+&lt;p&gt;In this post, we’re going to venture further into this strange and wonderful
+landscape. We’ll do this by essentially adapting
+&lt;a href=&quot;https://twitter.com/hdima&quot;&gt;Dmitry Vasiliev&lt;/a&gt;’s
 &lt;a href=&quot;http://erlport.org/docs/python.html&quot;&gt;ErlPort Python docs&lt;/a&gt; from Erlang to LFE.
-We won&amp;#8217;t get through all the docs in this post, but we&amp;#8217;ll definitely get
+We won’t get through all the docs in this post, but we’ll definitely get
 further than last time :-)&lt;/p&gt;
 
 &lt;h2 id=&quot;warming-up&quot;&gt;Warming Up&lt;/h2&gt;
 
-&lt;p&gt;We&amp;#8217;re going to re-use the demo repo from the last post. If you didn&amp;#8217;t get
+&lt;p&gt;We’re going to re-use the demo repo from the last post. If you didn’t get
 chance to set it up, you can do that now:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git clone git@github.com:oubiwann/erlport-demo.git
@@ -4735,12 +4834,12 @@ chance to set it up, you can do that now:&lt;/p&gt;
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ../lfe
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make repl&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;If you&amp;#8217;ve already downloaded and run the REPL before, you can skip the build
+&lt;p&gt;If you’ve already downloaded and run the REPL before, you can skip the build
 step with this:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make repl-no-deps&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Let&amp;#8217;s start the walkthrough by creating two separate running Python servers:&lt;/p&gt;
+&lt;p&gt;Let’s start the walkthrough by creating two separate running Python servers:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;`#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pid-1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;python:start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&amp;lt;0.32.0&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -4749,7 +4848,7 @@ step with this:&lt;/p&gt;
 
 &lt;h2 id=&quot;using-operators&quot;&gt;Using Operators&lt;/h2&gt;
 
-&lt;p&gt;Next, let&amp;#8217;s do some basic math:&lt;/p&gt;
+&lt;p&gt;Next, let’s do some basic math:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;python:call&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pid-1&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;operator&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;add&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;21&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;
@@ -4770,7 +4869,7 @@ many othe operators we can call, but this should give you a taste.&lt;/p&gt;
 
 &lt;h2 id=&quot;using-builtins&quot;&gt;Using Builtins&lt;/h2&gt;
 
-&lt;p&gt;Just for fun, we&amp;#8217;ll switch to our other Python server for these examples:&lt;/p&gt;
+&lt;p&gt;Just for fun, we’ll switch to our other Python server for these examples:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;19&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;19&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -4808,9 +4907,9 @@ many othe operators we can call, but this should give you a taste.&lt;/p&gt;
  &lt;span class=&quot;s&quot;&gt;&amp;quot;__setattr__&amp;quot;&lt;/span&gt;
  &lt;span class=&quot;s&quot;&gt;&amp;quot;__sizeof__&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;In Python, if you want to use a module&amp;#8217;s functions, classes, and other obejcts,
+&lt;p&gt;In Python, if you want to use a module’s functions, classes, and other obejcts,
 you need to import them. Some, however, are available as part of the language
-and don&amp;#8217;t require any importing. These are called the &amp;#8220;builtins&amp;#8221;.&lt;/p&gt;
+and don’t require any importing. These are called the “builtins”.&lt;/p&gt;
 
 &lt;p&gt;Here are a couple more examples:&lt;/p&gt;
 
@@ -4828,18 +4927,18 @@ and don&amp;#8217;t require any importing. These are called the &amp;#8220;built
   &lt;li&gt;Python &lt;a href=&quot;https://docs.python.org/3/library/constants.html#built-in-consts&quot;&gt;builtin constants&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;If you&amp;#8217;re wondering how to deal with constants (since there are no constants in
-LFE, and everything is a function), hang tight &amp;#8211; we&amp;#8217;ll cover that below.&lt;/p&gt;
+&lt;p&gt;If you’re wondering how to deal with constants (since there are no constants in
+LFE, and everything is a function), hang tight – we’ll cover that below.&lt;/p&gt;
 
 &lt;h2 id=&quot;python-module-hierarchies&quot;&gt;Python Module Hierarchies&lt;/h2&gt;
 
-&lt;p&gt;We can also call dotted names. Let&amp;#8217;s get the cosine of 2$\pi$:&lt;/p&gt;
+&lt;p&gt;We can also call dotted names. Let’s get the cosine of 2$\pi$:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;python:call&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pid-1&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;math&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;cos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;3.1459&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
 &lt;span class=&quot;mf&quot;&gt;0.9999628937632861&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Note that we&amp;#8217;re executing the multiplication in LFE before sending it to
-Python. But what if we wanted to get Python&amp;#8217;s &lt;code&gt;math.pi&lt;/code&gt; value instead of
+&lt;p&gt;Note that we’re executing the multiplication in LFE before sending it to
+Python. But what if we wanted to get Python’s &lt;code&gt;math.pi&lt;/code&gt; value instead of
 using our own? How do we access Python module constants?&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;python:call&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pid-1&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;math&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;pi&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
@@ -4847,8 +4946,8 @@ using our own? How do we access Python module constants?&lt;/p&gt;
                    &lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;#39;float&amp;#39; object is not callable&amp;quot;&lt;/span&gt;
                    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;No such luck: &lt;code&gt;math.pi&lt;/code&gt; is a &lt;code&gt;float&lt;/code&gt; and we&amp;#8217;re limited to making calls.
-Fortunately, though, we have a way out &amp;#8211; a hack, but a way out: we can call
+&lt;p&gt;No such luck: &lt;code&gt;math.pi&lt;/code&gt; is a &lt;code&gt;float&lt;/code&gt; and we’re limited to making calls.
+Fortunately, though, we have a way out – a hack, but a way out: we can call
 methods on constants!&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;python:call&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pid-1&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;math&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;pi.__float__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
@@ -4858,7 +4957,7 @@ methods on constants!&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;python:call&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pid-1&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;math&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;pi.__str__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
 &lt;span class=&quot;s&quot;&gt;&amp;quot;3.141592653589793&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Yeah, perhaps a bit ugly &amp;#8230; but you &lt;em&gt;knew&lt;/em&gt; this wasn&amp;#8217;t going to be pretty :-)&lt;/p&gt;
+&lt;p&gt;Yeah, perhaps a bit ugly … but you &lt;em&gt;knew&lt;/em&gt; this wasn’t going to be pretty :-)&lt;/p&gt;
 
 &lt;p&gt;Now we can re-do our example, though:&lt;/p&gt;
 
@@ -4867,11 +4966,11 @@ methods on constants!&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;python:call&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pid-1&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;math&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;cos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
 &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;That&amp;#8217;s more like it :-)&lt;/p&gt;
+&lt;p&gt;That’s more like it :-)&lt;/p&gt;
 
 &lt;h2 id=&quot;errors&quot;&gt;Errors&lt;/h2&gt;
 
-&lt;p&gt;Python exceptions are returned in the &lt;code&gt;error&lt;/code&gt; values. Here&amp;#8217;s a function
+&lt;p&gt;Python exceptions are returned in the &lt;code&gt;error&lt;/code&gt; values. Here’s a function
 which prints the error returned from Python as well as the stacktrace in LFE:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;print-error-data&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
@@ -4905,12 +5004,12 @@ which prints the error returned from Python as well as the stacktrace in LFE:&lt
 &lt;p&gt;The Python error is comprised of the following:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;The &lt;code&gt;'python&lt;/code&gt; atom,&lt;/li&gt;
+  &lt;li&gt;The &lt;code&gt;&#39;python&lt;/code&gt; atom,&lt;/li&gt;
   &lt;li&gt;The Python exception class, and&lt;/li&gt;
   &lt;li&gt;The Python traceback from the ErlPort library&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Here&amp;#8217;s a function that just displays those:&lt;/p&gt;
+&lt;p&gt;Here’s a function that just displays those:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;print-python-error&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;try&lt;/span&gt;
@@ -4934,7 +5033,7 @@ which prints the error returned from Python as well as the stacktrace in LFE:&lt
                      &lt;span class=&quot;s&quot;&gt;&amp;quot;function(*args)&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;In the next post we&amp;#8217;ll take a look at ErlPorts opaque Python objects.&lt;/p&gt;
+&lt;p&gt;In the next post we’ll take a look at ErlPorts opaque Python objects.&lt;/p&gt;
 
 </content>
  </entry>
@@ -4952,9 +5051,9 @@ stories, ideas, tutorials, manifestos, sonnets, and novellas about LFE and, in
 fact, any Lisp running on the Erlang VM.&lt;/p&gt;
 
 &lt;p&gt;This was an implicit understanding before, but (to borrow from the
-&lt;a href=&quot;&quot;&gt;Zen of Python&lt;/a&gt;, explicit is better than implicit. There&amp;#8217;s now a link in the
+&lt;a href=&quot;&quot;&gt;Zen of Python&lt;/a&gt;, explicit is better than implicit. There’s now a link in the
 header of the blog where you can &lt;a href=&quot;https://github.com/lfe/blog/fork&quot;&gt;fork&lt;/a&gt; the
-repository. This information is also supplied in the repo&amp;#8217;s
+repository. This information is also supplied in the repo’s
 &lt;a href=&quot;https://github.com/lfe/blog&quot;&gt;README&lt;/a&gt; file.&lt;/p&gt;
 
 &lt;p&gt;We look forward to receiving your PRs :-)&lt;/p&gt;
@@ -4971,7 +5070,7 @@ repository. This information is also supplied in the repo&amp;#8217;s
 &lt;a href=&quot;http://technicae.cogitat.io/2014/11/erlport-using-python-from-erlanglfe.html&quot;&gt;cogitat.io&lt;/a&gt;
 and is being reblogged here as an expeiment. This repost is an adventure into
 github pages as a blogging platform for code-heavy posts. For year, I have found
-Google&amp;#8217;s blogger.com cumbersome as a medium for sharing code. The burden has
+Google’s blogger.com cumbersome as a medium for sharing code. The burden has
 finally grown too great. It makes sense to use the same platform to share the
 prose description of code as that which shares the code itself (i.e.,
 repositories and &lt;code&gt;README&lt;/code&gt; files). I can only imagine this will be much less
@@ -4981,17 +5080,17 @@ bonus, code should now appear in RSS/Atom feeds :-)&lt;/p&gt;
 &lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;/assets/images/posts/Erlang-Python-Greats.png&quot;&gt;&lt;img class=&quot;right thumb&quot; src=&quot;/assets/images/posts/Erlang-Python-Greats.png&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;This blog post is one I&amp;#8217;ve been wanting to get out there ever since
-I ran across &lt;a href=&quot;http://erlport.org/&quot;&gt;the erlport project&lt;/a&gt; a few years ago. I&amp;#8217;m
+&lt;p&gt;This blog post is one I’ve been wanting to get out there ever since
+I ran across &lt;a href=&quot;http://erlport.org/&quot;&gt;the erlport project&lt;/a&gt; a few years ago. I’m
 glad to finally have the chance to sit down and get it out there. I hope that
-more people who need to take advantage of Python&amp;#8217;s strengths from Erlang/LFE
+more people who need to take advantage of Python’s strengths from Erlang/LFE
 find out about this project.&lt;/p&gt;
 
 &lt;h2 id=&quot;strengths-and-weaknesses&quot;&gt;Strengths and Weaknesses&lt;/h2&gt;
 
 &lt;p&gt;Erlang was built for fault-tolerance. It had a goal of unprecedented uptimes,
-and these have been achieved. It powers 40% of our world&amp;#8217;s telecommunications
-traffic. It&amp;#8217;s capable of supporting amazing levels of concurrency
+and these have been achieved. It powers 40% of our world’s telecommunications
+traffic. It’s capable of supporting amazing levels of concurrency
 (remember the &lt;a href=&quot;https://www.sics.se/~joe/apachevsyaws.html&quot;&gt;2007 announcement&lt;/a&gt;
 about the performance of YAWS vs. Apache?).&lt;/p&gt;
 
@@ -4999,13 +5098,13 @@ about the performance of YAWS vs. Apache?).&lt;/p&gt;
 is to think these performance characteristics will be applicable to their own
 particular domain. This has often resulted in failure, disappointment, and the
 unjust blaming of Erlang. If you want to process huge files, do lots of string
-manipulation, or crunch tons of numbers, Erlang&amp;#8217;s not your bag, baby. Try
+manipulation, or crunch tons of numbers, Erlang’s not your bag, baby. Try
 &lt;a href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt; or &lt;a href=&quot;http://julialang.org/&quot;&gt;Julia&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;But then, you may be thinking: I like supervision trees. I have long-running
 processes that I want to be managed per the rules I establish. I want to run
 lots of jobs in parallel on my 64-core box. I want to run jobs in parallel
-over the network on 64 of my 64-core boxes. Python&amp;#8217;s the right tool for the
+over the network on 64 of my 64-core boxes. Python’s the right tool for the
 jobs, but I wish I could manage them with Erlang.&lt;/p&gt;
 
 &lt;p&gt;(There are sooo many other options for the use cases above, many of them
@@ -5014,7 +5113,7 @@ really excellent. But this post is about Erlang/LFE :-)).&lt;/p&gt;
 &lt;h2 id=&quot;erlang-ports&quot;&gt;Erlang Ports&lt;/h2&gt;
 
 &lt;p&gt;Traditionally, if you want to run other languages with Erlang in a reliable
-way that doesn&amp;#8217;t bring your Erlang nodes down with badly behaved code, you
+way that doesn’t bring your Erlang nodes down with badly behaved code, you
 use &lt;a href=&quot;http://erlang.org/doc/reference_manual/ports.html&quot;&gt;Ports&lt;/a&gt;.
 (more info is available in the
 &lt;a href=&quot;http://www.erlang.org/doc/tutorial/overview.html&quot;&gt;Interoperability Guide&lt;/a&gt;).
@@ -5032,10 +5131,10 @@ data types are not that big a deal).&lt;/p&gt;
 &lt;a href=&quot;https://twitter.com/hdima&quot;&gt;Dmitry Vasiliev&lt;/a&gt; in 2009 in an effort to solve just this
 problem, making it easier to use of and integrate between Erlang and more common
 languages like Python and Ruby. The project is maintained, and in fact has just
-received a few updates. Below, we&amp;#8217;ll demonstrate some usage in
+received a few updates. Below, we’ll demonstrate some usage in
 &lt;a href=&quot;http://lfe.io/&quot;&gt;LFE&lt;/a&gt; with &lt;a href=&quot;https://docs.python.org/3/&quot;&gt;Python 3&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;If you want to follow along, there&amp;#8217;s a demo repo you can check out:&lt;/p&gt;
+&lt;p&gt;If you want to follow along, there’s a demo repo you can check out:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git clone git@github.com:oubiwann/erlport-demo.git
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;erlport-demo&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -5061,9 +5160,9 @@ LFE Shell V6.2 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;abort with ^G&lt;sp
 &amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Note that this will first download the necessary dependencies and compile them
-(that&amp;#8217;s what the &lt;code&gt;[snip]&lt;/code&gt; is eliding).&lt;/p&gt;
+(that’s what the &lt;code&gt;[snip]&lt;/code&gt; is eliding).&lt;/p&gt;
 
-&lt;p&gt;Now we&amp;#8217;re ready to take erlport for a quick trip down to the local:&lt;/p&gt;
+&lt;p&gt;Now we’re ready to take erlport for a quick trip down to the local:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-cl&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;`#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;python:start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&amp;lt;0.32.0&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -5071,7 +5170,7 @@ LFE Shell V6.2 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;abort with ^G&lt;sp
 &lt;span class=&quot;s&quot;&gt;&amp;quot;3.4.2 (v3.4.2:ab2c023a9432, Oct  5 2014, 20:42:22) ...&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;And that&amp;#8217;s all there is to it :-)&lt;/p&gt;
+&lt;p&gt;And that’s all there is to it :-)&lt;/p&gt;
 
 &lt;p&gt;Perhaps in a future post we can dive into the internals, showing you more of the
 glory that is erlport. Even better, we could look at more compelling example
@@ -5088,7 +5187,7 @@ usage, approaching some of the functionality offered by such projects as
    <updated>2014-08-31T00:00:00-05:00</updated>
    <id>http://blog.lfe.io//announcements/2014/08/31/2024-lfetool-v12-is-out</id>
    <content type="html">
-&lt;p&gt;We&amp;#8217;ve just pushed out the latest version of lfetool in the v1.x series. This
+&lt;p&gt;We’ve just pushed out the latest version of lfetool in the v1.x series. This
 was done as a result of several bug reports and conversations made on IRC
 (#erlang-lisp, Freenode).&lt;/p&gt;
 
@@ -5112,12 +5211,12 @@ lfetool :-)&lt;/p&gt;
 &lt;p&gt;Most of the bug reports actually boiled down to issues with conflicting
 versions of dependency libraries in project rebar.config files. There was a
 recent switch to lutil (away from lfe-utils) and ltest (away from lfeunit and
-lunit), and older versions of lfetool couldn&amp;#8217;t handle these. Also, some changes
+lunit), and older versions of lfetool couldn’t handle these. Also, some changes
 made to lfeutils and or lfeunit just prior to the switch caused some cyclic
 dependencies in rebar.&lt;/p&gt;
 
-&lt;p&gt;Do keep in mind that there&amp;#8217;s a lot of work going into the v2 rewrite of lfetool
-(code is being converted from Bash to LFE), and this release isn&amp;#8217;t a
+&lt;p&gt;Do keep in mind that there’s a lot of work going into the v2 rewrite of lfetool
+(code is being converted from Bash to LFE), and this release isn’t a
 distraction from this effort, but rather an attempt at an improved user
 experience for current users :-)&lt;/p&gt;
 </content>
@@ -5129,7 +5228,7 @@ experience for current users :-)&lt;/p&gt;
    <updated>2014-07-23T00:00:00-05:00</updated>
    <id>http://blog.lfe.io//conferences/2014/07/23/0849-erlang--oscon-2014</id>
    <content type="html">
-&lt;p&gt;Even though there&amp;#8217;s no Erlang-specific booth (or a booth by an Erlang company),
+&lt;p&gt;Even though there’s no Erlang-specific booth (or a booth by an Erlang company),
 the Erlang OSCON presence has been palpable, albeit in a small-town, gentle
 way.&lt;/p&gt;
 
@@ -5154,14 +5253,14 @@ Reactive Game Stack: Using Erlang, Lua and VoltDB to Enable a Non-Sharded Game W
 &lt;p&gt;Highlights from Day 1:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Francesco passing out 25 &amp;#8220;limited edition&amp;#8221; copies of his and Steve&amp;#8217;s fantastic book:
+  &lt;li&gt;Francesco passing out 25 “limited edition” copies of his and Steve’s fantastic book:
 &lt;a href=&quot;http://shop.oreilly.com/product/0636920024149.do&quot;&gt;Designing
 for Scalability with Erlang/OTP&lt;a&gt;&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Erlang Solutions&amp;#8217; Office Hours at the O&amp;#8217;Reilly area in the Expo Hall, complete with
-Portland&amp;#8217;s famous &lt;a href=&quot;https://twitter.com/oubiwann/statuses/491645680276885504&quot;&gt;Voodoo
+  &lt;li&gt;Erlang Solutions’ Office Hours at the O’Reilly area in the Expo Hall, complete with
+Portland’s famous &lt;a href=&quot;https://twitter.com/oubiwann/statuses/491645680276885504&quot;&gt;Voodoo
 Doughnuts&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;Three &amp;#8220;Erlang&amp;#8221; tables at lunch, full of excellence in conversation.&lt;/li&gt;
-  &lt;li&gt;Garrett Smith&amp;#8217;s talk on &lt;a href=&quot;http://www.oscon.com/oscon2014/public/schedule/detail/34881&quot;&gt;Building
+  &lt;li&gt;Three “Erlang” tables at lunch, full of excellence in conversation.&lt;/li&gt;
+  &lt;li&gt;Garrett Smith’s talk on &lt;a href=&quot;http://www.oscon.com/oscon2014/public/schedule/detail/34881&quot;&gt;Building
 a Massively Scalable Web Server In Erlang&lt;/a&gt;.&lt;/li&gt;
   &lt;li&gt;Evening hang-out time with Erlangers from around the world.&lt;/li&gt;
 &lt;/ul&gt;
@@ -5176,9 +5275,9 @@ a Massively Scalable Web Server In Erlang&lt;/a&gt;.&lt;/li&gt;
    <id>http://blog.lfe.io//update/2014/06/10/0929-lfe-language-summit-review</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;http://www.erlang-factory.com/&quot;&gt;Erlang Factory&lt;/a&gt; was very kind to
-assist Robert Virding in setting up the first &amp;#8220;language summit&amp;#8221; for LFE here at
+assist Robert Virding in setting up the first “language summit” for LFE here at
 &lt;a href=&quot;http://www.erlang-factory.com/euc2014&quot;&gt;Erlang User Conference&lt;/a&gt;
-in Stockholm. (We use the term &amp;#8220;summit&amp;#8221; playfully, since it&amp;#8217;s a very unofficial
+in Stockholm. (We use the term “summit” playfully, since it’s a very unofficial
 affair within a small developer community.)&lt;/p&gt;
 
 &lt;p&gt;We took notes in an
@@ -5197,7 +5296,7 @@ the talk was dedicated to a discussion on maps and changes to the
   &lt;li&gt;Getting to Types in LFE&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Topics we didn&amp;#8217;t get to but will bring up on the mail list:&lt;/p&gt;
+&lt;p&gt;Topics we didn’t get to but will bring up on the mail list:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;An Object System for LFE&lt;/li&gt;
@@ -5206,7 +5305,7 @@ the talk was dedicated to a discussion on maps and changes to the
 
 &lt;p&gt;In general, LFE development is very mellow, done casually in the spare time of
 the contributors, completely for the fun of it. It was nice to see that the design
-session reflected that same demeanor, that the character didn&amp;#8217;t change in a larger
+session reflected that same demeanor, that the character didn’t change in a larger
 group where opinions were being shared. It will be nice to see what the future 
 brings for LFE and how this casual approach scales :-)&lt;/p&gt;
 </content>
@@ -5219,12 +5318,12 @@ brings for LFE and how this casual approach scales :-)&lt;/p&gt;
    <id>http://blog.lfe.io//history/2014/05/28/1516-the-secret-history-of-lfe</id>
    <content type="html">
 &lt;p&gt;When asked recently about the history of LFE on the &lt;a href=&quot;https://groups.google.com/d/msg/lisp-flavoured-erlang/XA5HeLbQQDk/Jdbf0KJV7dUJ&quot;&gt;LFE mail list&lt;/a&gt;,
-Robert replied with some nice information that we couldn&amp;#8217;t resist highlighing/duplicating here:&lt;/p&gt;
+Robert replied with some nice information that we couldn’t resist highlighing/duplicating here:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code&gt;The earliest work is actually from 2007 but this was toying with
 parsing and implementing a lisp and was more a preamble to LFE. The
-real work with LFE didn't start until 2008. The earliest LFE files I
-can find are from March 2008. Originally I wasn't using github, or any
+real work with LFE didn&#39;t start until 2008. The earliest LFE files I
+can find are from March 2008. Originally I wasn&#39;t using github, or any
 other vcs for that matter, and just kept the separate versions as
 copies of the directory tree.
 
@@ -5257,9 +5356,9 @@ There were a number of reasons why I started with LFE:
    <updated>2014-05-25T00:00:00-05:00</updated>
    <id>http://blog.lfe.io//news/2014/05/25/1523-lfe-user-group-meeting-update</id>
    <content type="html">
-&lt;p&gt;As you may have heard, we&amp;#8217;ll be hosting LFE&amp;#8217;s first &amp;#8220;Language Summit&amp;#8221; at the
+&lt;p&gt;As you may have heard, we’ll be hosting LFE’s first “Language Summit” at the
 Erlang User Conference this year in Stockholm. Keep in mind that when we say
-&amp;#8220;Language Summit&amp;#8221;, we are using the time-honored tongue-in-cheek method of
+“Language Summit”, we are using the time-honored tongue-in-cheek method of
 making self-deprecatory remarks.&lt;/p&gt;
 
 &lt;p&gt;Robert has recently sent the mail list an
@@ -5274,7 +5373,7 @@ on the day and time&lt;/a&gt;:&lt;/p&gt;
 &lt;p&gt;The &lt;a href=&quot;http://cogitat.io/2014/05/lfe-design-summit.html&quot;&gt;original announcement&lt;/a&gt;
 has also been updated.&lt;/p&gt;
 
-&lt;p&gt;We&amp;#8217;re still taking topics, if you&amp;#8217;d like to
+&lt;p&gt;We’re still taking topics, if you’d like to
 &lt;a href=&quot;https://docs.google.com/a/cogitat.io/forms/d/1SlQot2mQ8VDcOTfqc9-48CPJpaCX1U1dIkxoEz8fT08/viewform&quot;&gt;submit one&lt;/a&gt;.&lt;/p&gt;
 </content>
  </entry>
@@ -5285,7 +5384,7 @@ has also been updated.&lt;/p&gt;
    <updated>2014-05-25T00:00:00-05:00</updated>
    <id>http://blog.lfe.io//site/2014/05/25/1026-history-of-erlang</id>
    <content type="html">
-&lt;p&gt;For a full understanding of one&amp;#8217;s field, a thorough knowledge of that field&amp;#8217;s
+&lt;p&gt;For a full understanding of one’s field, a thorough knowledge of that field’s
 origins of that field and its tools is necessary. To encourge a deeper
 understanding of Lisp, Erlang, and LFE we have added a new section on the docs
 site main page:&lt;/p&gt;
@@ -5294,7 +5393,7 @@ site main page:&lt;/p&gt;
   &lt;li&gt;&lt;a href=&quot;http://docs.lfe.io/#History&quot;&gt;History&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;The Erlang history is quite rich and worth the reads (and watches &amp;#8211; video is
+&lt;p&gt;The Erlang history is quite rich and worth the reads (and watches – video is
 included!).&lt;/p&gt;
 
 &lt;p&gt;We will add more content here as it is discovered or becomes available.&lt;/p&gt;
@@ -5311,8 +5410,8 @@ included!).&lt;/p&gt;
 it became clear that more interesting material accumulates over the course of a week
 rather than 24 hours.&lt;/p&gt;
 
-&lt;p&gt;As such, we&amp;#8217;ve updated both the release schedule as well as the name: &amp;#8220;LFE Daily&amp;#8221; is now
-named &amp;#8220;LFE Sunday Times&amp;#8221;.&lt;/p&gt;
+&lt;p&gt;As such, we’ve updated both the release schedule as well as the name: “LFE Daily” is now
+named “LFE Sunday Times”.&lt;/p&gt;
 
 &lt;p&gt;You can access the paper at any time &lt;a href=&quot;https://paper.li/ErlangLisp/1397422779&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
@@ -5343,13 +5442,13 @@ then we shall continue on as-is.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;The old front page is completely gone (including the beloved paragraph
-starting with &amp;#8220;Nothing Quite Compares&amp;#8230; &amp;#8230;To the taste of Erlang, aged in
-the oaken barrels of Lisp, served at a temperature of perfect hotness&amp;#8221;&lt;/li&gt;
+starting with “Nothing Quite Compares… …To the taste of Erlang, aged in
+the oaken barrels of Lisp, served at a temperature of perfect hotness”&lt;/li&gt;
   &lt;li&gt;The new front page jumps you right into a view showing all the documentation
 options provided by the site.&lt;/li&gt;
   &lt;li&gt;The community page has been over-hauled, refined, and had dead links removed.&lt;/li&gt;
   &lt;li&gt;There is a new page listing the LFE presentations given over the years.&lt;/li&gt;
-  &lt;li&gt;&amp;#8220;How to Contribute&amp;#8221; has now been moved into its own page with a link in the
+  &lt;li&gt;“How to Contribute” has now been moved into its own page with a link in the
 header.&lt;/li&gt;
   &lt;li&gt;A link is now given in the header for the new main LFE site.&lt;/li&gt;
 &lt;/ul&gt;
@@ -5367,8 +5466,8 @@ the site and allow folks to more quickly find what they are looking for.&lt;/p&g
    <content type="html">
 &lt;p&gt;The LFE micoblog site (powered by Jekyll and Bootsrap) is live and ready to go.&lt;/p&gt;
 
-&lt;p&gt;We&amp;#8217;ll be posting pertinent content and links here on a regular basis, items
-which have some relation &amp;#8211; however tenuous &amp;#8211; with LFE, Lisps, or Erlang.&lt;/p&gt;
+&lt;p&gt;We’ll be posting pertinent content and links here on a regular basis, items
+which have some relation – however tenuous – with LFE, Lisps, or Erlang.&lt;/p&gt;
 </content>
  </entry>
  
@@ -5378,7 +5477,7 @@ which have some relation &amp;#8211; however tenuous &amp;#8211; with LFE, Lisps
    <updated>2014-05-22T00:00:00-05:00</updated>
    <id>http://blog.lfe.io//site/2014/05/22/1849-new-lfe-site</id>
    <content type="html">
-&lt;p&gt;Good news, everyone! Professor Farnsworth nodded off, and we&amp;#8217;ve had some fun
+&lt;p&gt;Good news, everyone! Professor Farnsworth nodded off, and we’ve had some fun
 while he slept.&lt;/p&gt;
 
 &lt;p&gt;LFE has a new main site for the project: &lt;a href=&quot;http://lfe.io/&quot;&gt;lfe.io&lt;/a&gt;.&lt;/p&gt;
@@ -5390,7 +5489,7 @@ organized, now:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Main site: &lt;a href=&quot;http://lfe.io/&quot;&gt;lfe.io&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Dedicated docs site: &lt;a href=&quot;http://docs.lfe.io/&quot;&gt;docs.lfe.io&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;The new microblog you&amp;#8217;re reading: &lt;a href=&quot;http://blog.lfe.io/&quot;&gt;blog.lfe.io&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;The new microblog you’re reading: &lt;a href=&quot;http://blog.lfe.io/&quot;&gt;blog.lfe.io&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
  </entry>

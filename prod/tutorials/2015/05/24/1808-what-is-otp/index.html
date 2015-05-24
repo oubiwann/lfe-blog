@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <title>
       
-        spell1 - LL(1) parser generator -
+        What is OTP? -
       
       LFE Tutorials, News, &amp; Updates
     </title>
-    <meta name="description" content="">
+    <meta name="description" content="A quick examination of OTP">
     <meta name="author" content="LFEuminati | Alien Alliance">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- HTML5 shim, for IE6-8 support of HTML elements -->
@@ -195,7 +195,7 @@
 
 <div class="page-header">
   <h1>
-    spell1 - LL(1) parser generator
+    What is OTP?
     
   </h1>
 </div>
@@ -203,33 +203,97 @@
 <div class="row">
   <div class="span8">
     
-<p><a href="/assets/images/posts/lfe-tooling-leonardo-gears-2.png"><img class="right small" src="/assets/images/posts/lfe-tooling-leonardo-gears-2.png" /></a>I have been working on an LL(1) grammar parser generator for Erlang/LFE. While we have yecc for LALR(1) grammars this isn’t suitable for everything. I think there are 2 main problems:</p>
+<p><a href="/assets/images/posts/LFE-signal.jpg"><img class="left small" src="/assets/images/posts/LFE-signal.jpg" /></a>This post is a prelude to the LFE OTP tutorial series which attempts to clarify the role of OTP as something above and beyond a programming language, a set of libraries, or a framework.</p>
+
+<h2 id="lfe-otp-tutorial-series">LFE OTP Tutorial Series</h2>
 
 <ul>
-  <li>
-    <p>The generated yecc parsers must be given the exact number of tokens, neither too many nor too few. While this is no problem with Erlang code because of the <code>.</code> it is difficult with LFE. This could be fixed by writing a new yecc include file.</p>
-  </li>
-  <li>
-    <p>You tend to need some <em>extra</em> end token, usually written as <code>$</code>, after the ones needed for parsing to drive the actual parsing. This would make giving too many tokens problematic.</p>
-  </li>
+  <li><a href="/tutorials/2015/05/23/1720-new-series-lfe-otp-tutorials/">Introducing the LFE OTP Tutorials</a></li>
+  <li><a href="/tutorials/2015/05/24/1808-what-is-otp/">What is OTP?</a></li>
 </ul>
 
-<p>You don’t have these problems with an LL(1) parser. The current LFE has been handwritten following the same rules as would a parser generator. So now I have taken the final step to finnish a generator I started long-ago.</p>
+<h2 id="pattern-languages">Pattern Languages</h2>
 
-<p>It works but needs a bit of cleaning up to be generally useful. It can now handle the full LFE syntax, which isn’t complex, and is almost a useful tool. While it is written in Erlang it will be easy to fix it so that it uses either Erlang or LFE for both the grammar file and the output file.</p>
+<p>The term <em>pattern language</em> was coined by architect
+<a href="http://en.wikipedia.org/wiki/Christopher_Alexander">Christopher Alexander</a>,
+covered in detail in his 1977 book
+<a href="http://www.amazon.com/dp/0195019199">A Pattern Language</a>,
+where he wove together themes of architecture, urban design, and community
+livability. The idea of a <em>pattern language</em> was applied to software and
+entered the collective consciousness of the programming world the in the book
+<a href="http://www.amazon.com/dp/0201633612">Design Patterns: Elements of Reusable Object-Oriented Software</a>.</p>
 
-<p>The hardest part has been coming up with a good name, suggestions welcome.</p>
+<p>A pattern language is a method of describing good design practices within a
+field of expertise.  What brings a sense of wholeness, spirit, or grace to this
+field? What precise and empirically verifiable generalizations can be made with
+regard to recurring themes in this field? A pattern language is an attempt to
+express the deeper wisdom underlying the answers to these questions through a
+set of interconnected expressions arising from that wisdom.</p>
 
-<p>Robert</p>
+<h2 id="otp-as-a-pattern-language">OTP as a Pattern Language</h2>
+
+<p>In essence, OTP is a pattern language: one for building fault-tolerant,
+distributed systems. That’s easy enough to say, and many languages or
+frameworks say similar things about their own work. But what does this really
+mean? What is <em>wholeness</em> from the perspective of OTP? What is the <em>spirit</em> of
+OTP?  What makes an OTP application <em>graceful</em>? What <em>wisdom</em> has been
+extracted from these? What <em>interconnected expression</em> arose from that wisdom?</p>
+
+<p>Though we could point to various behaviours, ways of managing state, excellent
+uses of pattern matching and LFE records, macros, etc., or share stories of the
+accumulated hard-won experiences of Erlang engineers – all in an effort to
+answer these questions, it would actually be more meaningful for you to
+discover this yourself in the coming posts.</p>
+
+<p>Note that we are not shirking our tutorial responsibilities in making that
+statement. Quite the contrary! In the course of working through these
+tutorials, you will gain the actual joys of OTP’s elegance. By the time you
+have finished these LFE exercises, giving them due time and consideration, you
+will be able to answer all of these questions from your own direct experience.</p>
+
+<p>Lest we leave you adrift in too much poetry and promises, we will say the
+following right now: OTP as a pattern language attempts to provide encoded
+wisdom for the programmer who wishes to create stable, highly-concurrent,
+fault-tolerant distributed systems. The OTP pattern language is a combination
+of such things as:</p>
+
+<ul>
+  <li><strong>Behaviours</strong> - these are the core patterns in the OTP pattern language,
+embodying lessons-learned in building concurrent systems</li>
+  <li><strong>Programming Style</strong> - common idioms shared across a community of
+developers</li>
+  <li><strong>Best practices</strong> - how to connect one or many behaviour implementations in
+one or more deployable applications.</li>
+</ul>
+
+<p>OTP behaviours include the following:</p>
+
+<ul>
+  <li><strong>Workers</strong> (<code>gen_server</code>, <code>gen_fsm</code>, <code>gen_event</code>)</li>
+  <li><strong>Supervisors</strong> (used for building supervision trees)</li>
+  <li><strong>Applications</strong> (collections of supervisors and workers and their
+subsequent supervision trees in combination with the means to effectively
+manage them)</li>
+</ul>
+
+<p>We will cover programming style and best practices in each LFE example we go
+over.</p>
+
+<h2 id="up-next">Up Next</h2>
+
+<p>The next post will start with some example code from the LFE edition of Casting
+SPELs in Lisp, where we wrote a simple looking server which accepted messages.
+We will then convert this to OTP using the <code>gen_server</code>  behaviour.</p>
+
 
     <hr>
     <div class="pagination btn-group">
       
-        <a class="btn prev" href="/tutorials/2015/05/02/1910-evaluating-dynamic-expressions-in-lfe" title="Evaluating dynamic expressions in LFE">&larr; Previous</a>
+        <a class="btn prev" href="/tutorials/2015/05/23/1720-new-series-lfe-otp-tutorials" title="New Series: LFE OTP Tutorials">&larr; Previous</a>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next" href="/tutorials/2015/05/11/2333-lfe-friday---calendariso_week_number1" title="LFE Friday - calendar:iso_week_number/1">Next &rarr;</a>
+        <a class="btn next disabled">Next &rarr;</a>
       
     </div>
     <hr>
@@ -239,11 +303,11 @@
   <div class="span4">
     <section>
       <h4>Author</h4>
-      <div class="author"><span><a href="/authors.html#Robert Virding">Robert Virding</a></span></div>
+      <div class="author"><span><a href="/authors.html#Duncan McGreggor">Duncan McGreggor</a></span></div>
     </section>
     <section>
       <h4>Published</h4>
-      <div class="date"><span>11 May 2015</span></div>
+      <div class="date"><span>24 May 2015</span></div>
     </section>
     
       <section>
@@ -263,11 +327,9 @@
 
   
      
-    	<li><a href="/tags.html#lfe-ref">lfe <span>26</span></a></li>
+    	<li><a href="/tags.html#otp-ref">otp <span>2</span></a></li>
      
     	<li><a href="/tags.html#erlang-ref">erlang <span>28</span></a></li>
-     
-    	<li><a href="/tags.html#tools-ref">tools <span>5</span></a></li>
     
   
 

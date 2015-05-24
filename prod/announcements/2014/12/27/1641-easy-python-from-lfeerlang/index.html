@@ -209,13 +209,13 @@ Erlang/LFE. In particular,
 <a href="http://blog.lfe.io/tutorials/2014/12/03/1828-erlport-and-python-making-more-calls-from-lfe/">two</a>
 posts have gotten a lot of attention. This post introduces a new library for
 LFE and Erlang that builds upon the work demonstrated in those posts, and
-furthermore, points towards a future of distributed Python &#8230; a future that is
+furthermore, points towards a future of distributed Python … a future that is
 just a few days away.</p>
 
 <p>The library is <a href="https://github.com/lfex/py">py</a>. It has an extensive README
-which is, in essence, a tutorial. As such this post won&#8217;t cover all the
-material provided there &#8211; we&#8217;ll take a look at some samples and show some
-new features that haven&#8217;t been added to the README yet :-)</p>
+which is, in essence, a tutorial. As such this post won’t cover all the
+material provided there – we’ll take a look at some samples and show some
+new features that haven’t been added to the README yet :-)</p>
 
 <h2 id="getting-the-code">Getting the Code</h2>
 
@@ -234,7 +234,7 @@ execute some Python.</p>
 
 <h2 id="using-py">Using <code>py</code></h2>
 
-<p>Let&#8217;s start off simple by taking a look at all the versions you have:</p>
+<p>Let’s start off simple by taking a look at all the versions you have:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">py-util:get-versions</span><span class="p">)</span>
 <span class="p">(</span><span class="o">#(</span><span class="nv">erlang</span> <span class="s">&quot;17&quot;</span><span class="p">)</span>
@@ -345,11 +345,11 @@ execute some Python.</p>
 
 <h2 id="erlang">Erlang?</h2>
 
-<p>Yes, all of this is easily available to Erlang too :-) That&#8217;s the beauty of
-LFE &#8211; 100% Erlang Core compatiable :-)</p>
+<p>Yes, all of this is easily available to Erlang too :-) That’s the beauty of
+LFE – 100% Erlang Core compatiable :-)</p>
 
-<p>There is a link in the project&#8217;s README file that points to
-<a href="https://github.com/lfex/py#erlang-">example Erlang usage</a> &#8211; be sure to
+<p>There is a link in the project’s README file that points to
+<a href="https://github.com/lfex/py#erlang-">example Erlang usage</a> – be sure to
 check that out!</p>
 
 <h2 id="the-py-sup-lfe-supervisor">The <code>py-sup</code> LFE Supervisor</h2>
@@ -387,7 +387,7 @@ see this in action with the following:</p>
 <span class="p">(</span><span class="nv">&lt;0.38.0&gt;</span><span class="p">)</span></code></pre></div>
 
 <p>The default restart policy for <code>py</code> is to only restart if the Python server
-hasn&#8217;t crashed more than 3 times in 1 second. This prevents run-away restarts
+hasn’t crashed more than 3 times in 1 second. This prevents run-away restarts
 in the cases of bad code, pathologically configured Python environment, etc.</p>
 
 <p>Try killing the child Python server process rapidly several times in a row:</p>
@@ -406,9 +406,9 @@ in the cases of bad code, pathologically configured Python environment, etc.</p>
     <span class="nv">exited:</span> <span class="nv">shutdown</span>
     <span class="nv">type:</span> <span class="nv">temporary</span></code></pre></div>
 
-<p>Three was okay &#8211; but not four!</p>
+<p>Three was okay – but not four!</p>
 
-<p>Support for a supervision tree is just the beginning, though &#8230;</p>
+<p>Support for a supervision tree is just the beginning, though …</p>
 
 <h2 id="the-future">The Future</h2>
 
@@ -473,7 +473,7 @@ questions, make suggestions, etc.</p>
      
     	<li><a href="/tags.html#ports-ref">ports <span>2</span></a></li>
      
-    	<li><a href="/tags.html#erlang-ref">erlang <span>27</span></a></li>
+    	<li><a href="/tags.html#erlang-ref">erlang <span>28</span></a></li>
      
     	<li><a href="/tags.html#interop-ref">interop <span>3</span></a></li>
      
