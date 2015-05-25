@@ -4,7 +4,7 @@
  <title>LFE Tutorials, News, &amp; Updates</title>
  <link href="http://blog.lfe.io//" rel="self"/>
  <link href="http://blog.lfe.io/"/>
- <updated>2015-05-24T18:29:56-05:00</updated>
+ <updated>2015-05-24T21:27:34-05:00</updated>
  <id>http://blog.lfe.io/</id>
  <author>
    <name>LFEuminati | Alien Alliance</name>
@@ -96,9 +96,11 @@ over.&lt;/p&gt;
 
 &lt;h2 id=&quot;up-next&quot;&gt;Up Next&lt;/h2&gt;
 
-&lt;p&gt;The next post will start with some example code from the LFE edition of Casting
-SPELs in Lisp, where we wrote a simple looking server which accepted messages.
-We will then convert this to OTP using the &lt;code&gt;gen_server&lt;/code&gt;  behaviour.&lt;/p&gt;
+&lt;p&gt;The next post will whet your OTP appetite with some example code some simple
+servers created in the LFE edition of
+&lt;a href=&quot;http://lfe.gitbooks.io/casting-spels/content/book/part7/README.html&quot;&gt;Casting SPELs in Lisp&lt;/a&gt;.
+Each example is cumbersome in its own right and will help motivate finding a
+better way to create long-running processes.&lt;/p&gt;
 
 </content>
  </entry>
