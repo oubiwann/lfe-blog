@@ -4,7 +4,7 @@
  <title>LFE Tutorials, News, &amp; Updates</title>
  <link href="http://blog.lfe.io//" rel="self"/>
  <link href="http://blog.lfe.io/"/>
- <updated>2015-05-25T11:05:15-05:00</updated>
+ <updated>2015-05-25T11:09:12-05:00</updated>
  <id>http://blog.lfe.io/</id>
  <author>
    <name>LFEuminati | Alien Alliance</name>
@@ -215,7 +215,13 @@ take a look at some of the basics of the gen_server behaviour&lt;/p&gt;
       &lt;p&gt;This use of closures can be used to build object-oriented frameworks in Lisp, and in fast, is what gave birth to the Common Lisp Object System. Peter Norvig’s excellent &lt;a href=&quot;http://smile.amazon.com/dp/1558601910&quot;&gt;Paradigms of Artificial Intelligence Programming: Case Studies in Common Lisp&lt;/a&gt; steps through an example of this in Chapter 13. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:4&quot;&gt;
-      &lt;p&gt;For more insight on clsures in LFE, you can review &lt;a href=&quot;https://github.com/rvirding/lfe/blob/develop/examples/internal-state.lfe&quot;&gt;an example&lt;/a&gt; converted from Peter Norvig’s PAIP. Furthermore, you can see another example contrasting closures and processes in the LFE source code: &amp;lt;ul&amp;gt;&amp;lt;li&amp;gt;(objects via closures)[https://github.com/rvirding/lfe/blob/develop/examples/object-via-closure.lfe]&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;(objects via processes)[https://github.com/rvirding/lfe/blob/develop/examples/object-via-process.lfe]&amp;lt;/li&amp;gt;&amp;lt;/ul&amp;gt;. &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;For more insight on closures in LFE, you can review &lt;a href=&quot;https://github.com/rvirding/lfe/blob/develop/examples/internal-state.lfe&quot;&gt;an example&lt;/a&gt; converted from Peter Norvig’s PAIP. Furthermore, you can see another example contrasting closures and processes in the LFE source code: &lt;/p&gt;
+
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;https://github.com/rvirding/lfe/blob/develop/examples/object-via-closure.lfe&quot;&gt;objects via closures&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;https://github.com/rvirding/lfe/blob/develop/examples/object-via-process.lfe&quot;&gt;objects via processes&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;p&gt;&lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;
