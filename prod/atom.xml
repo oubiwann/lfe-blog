@@ -4,7 +4,7 @@
  <title>LFE Tutorials, News, &amp; Updates</title>
  <link href="http://blog.lfe.io//" rel="self"/>
  <link href="http://blog.lfe.io/"/>
- <updated>2015-05-24T21:27:34-05:00</updated>
+ <updated>2015-05-25T09:58:16-05:00</updated>
  <id>http://blog.lfe.io/</id>
  <author>
    <name>LFEuminati | Alien Alliance</name>
@@ -13,19 +13,227 @@
 
  
  <entry>
-   <title>What is OTP?</title>
-   <link href="http://blog.lfe.io//tutorials/2015/05/24/1808-what-is-otp"/>
-   <updated>2015-05-24T00:00:00-05:00</updated>
-   <id>http://blog.lfe.io//tutorials/2015/05/24/1808-what-is-otp</id>
+   <title>Prelude to OTP</title>
+   <link href="http://blog.lfe.io//tutorials/2015/05/25/0929-prelude-to-otp"/>
+   <updated>2015-05-25T00:00:00-05:00</updated>
+   <id>http://blog.lfe.io//tutorials/2015/05/25/0929-prelude-to-otp</id>
    <content type="html">
-&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LFE-signal.jpg&quot;&gt;&lt;img class=&quot;left small&quot; src=&quot;/assets/images/posts/LFE-signal.jpg&quot; /&gt;&lt;/a&gt;This post is a prelude to the LFE OTP tutorial series which attempts to clarify the role of OTP as something above and beyond a programming language, a set of libraries, or a framework.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LFE-signal.jpg&quot;&gt;&lt;img class=&quot;right thumb&quot; src=&quot;/assets/images/posts/LFE-signal.jpg&quot; /&gt;&lt;/a&gt;In this post we take a look at some non-OTP code examples discussed in &lt;a href=&quot;http://lfe.gitbooks.io/casting-spels/&quot;&gt;Casting SPELs in Lisp (LFE Edition)&lt;/a&gt;, examine their differences and similarities, and then briefly descirbe what they are missing which OTP might be able to provide.&lt;/p&gt;
 
 &lt;h2 id=&quot;lfe-otp-tutorial-series&quot;&gt;LFE OTP Tutorial Series&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/23/1720-new-series-lfe-otp-tutorials/&quot;&gt;Introducing the LFE OTP Tutorials&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/24/1808-what-is-otp/&quot;&gt;What is OTP?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/25/0929-prelude-to-otp/&quot;&gt;Prelude to OTP&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;You can leave feedback for the LFE OTP tutorials
+&lt;a href=&quot;https://github.com/lfe/blog/issues/7&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;requirements-and-assumptions&quot;&gt;Requirements and Assumptions&lt;/h2&gt;
+&lt;p&gt;In order to work through the code samples in these tutorials, you will need the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A recent installation of Erlang (R15 and later should work just fine)&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;git&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;rebar&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;The dev version of &lt;code&gt;lfetool&lt;/code&gt; (see &lt;a href=&quot;https://github.com/lfe/lfetool/tree/dev-v1#dev-&quot;&gt;Installing the dev version of lfetool&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These tutorials assume one or more of the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;prior experience with Erlang (see Introducing the LFE OTP Tutorials for excellent Erlang reference material)&lt;/li&gt;
+  &lt;li&gt;prior experience with a Lisp, preferably a Lisp-2 (since LFE is a Lisp-2)&lt;/li&gt;
+  &lt;li&gt;previous exploration of LFE, walking through the &lt;a href=&quot;http://lfe.gitbooks.io/quick-start/&quot;&gt;LFE Quickstart&lt;/a&gt;, reviewing the &lt;a href=&quot;http://lfe.gitbooks.io/reference-guide/&quot;&gt;Reference Manual&lt;/a&gt;, reading &lt;a href=&quot;http://lfe.gitbooks.io/casting-spels/&quot;&gt;Casting SPELs in Lisp&lt;/a&gt;, working through the examples in the &lt;a href=&quot;http://lfe.gitbooks.io/tutorial/&quot;&gt;LFE Tutorial&lt;/a&gt;, or even reading the first chapter of &lt;a href=&quot;http://lfe.gitbooks.io/sicp/&quot;&gt;SICP for LFE&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;getting-the-code&quot;&gt;Getting the Code&lt;/h2&gt;
+
+&lt;p&gt;Before we get started, let’s download the code for these tutorials:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git clone https://github.com/oubiwann/lfe-otp-tutorials.git
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;lfe-otp-tutorials&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;two-rudimentary-servers&quot;&gt;Two Rudimentary Servers&lt;/h2&gt;
+
+&lt;p&gt;One of the most common patterns that was identified in Erlang prior to the
+genesis of OTP was the need to create a generic server: a long running process
+doing something as simple as responding to command messages to a full-blown
+TCP/IP server implementing any number of services. From this need was born the
+&lt;code&gt;gen_server&lt;/code&gt; behaviour. Before we dive into that, though, let’s look at some
+motivating examples.&lt;/p&gt;
+
+&lt;p&gt;In &lt;a href=&quot;http://lfe.gitbooks.io/casting-spels/content/book/part7/README.html&quot;&gt;Chapter 9&lt;/a&gt;
+of the mini-book, Casting SPELs in Lisp (LFE Edition), we tackled the concept
+of a game “server” whose primary purpose was twofold:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;to maintain game state data, and&lt;/li&gt;
+  &lt;li&gt;to provide an API for accessing that data.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We started with a classic Lisp example of using closures &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; to maintain state
+and then substituted LFE processes for lambdas. It is interesting to note that
+there was a similar correlation made in 1972 by Sussman and Steele which
+ultimately led to the birth of Scheme: &lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+“They soon concluded Actors were essentially closures that never return but
+instead invoke a continuation, and thus they decided that the closure and the
+Actor were, for the purposes of their investigation, essentially identical
+concepts. They eliminated what they regarded as redundant code and, at that
+point, discovered that they had written a very small and capable dialect of
+Lisp.”
+&lt;/blockquote&gt;
+
+&lt;p&gt;Our closure-based example server was a function that looked like this: &lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;lambda-state&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;msg&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;#39;add&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lambda-state&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;#39;amount?&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We then converted it to something that looked like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;process-state&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;caller&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;receive&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;#39;add&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;process-state&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;caller&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;#39;amount?&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;caller&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;process-state&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;caller&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can see that the general form remains pretty much the same: instead of a
+lambda expression that takes a message as an argument, we have the LFE receive
+form which does the same. They differ significantly in one respect, however:
+their server loop implementation. In order to maintain state over time after
+changes to that state, the lambda closure version requires that the developer
+re-call the &lt;code&gt;lambda-state&lt;/code&gt; function, passing a new or changed state value as
+an argument.  This is not needed when simply accessing the state data , though,
+since no state has changed, and whatever state data the developer has will
+remain just as valid regardless of how many times the &lt;code&gt;amount?&lt;/code&gt; message is
+sent.&lt;/p&gt;
+
+&lt;p&gt;The process version, however, provides a true loop: every time it receives a
+message it must restart the loop by calling itself again, thus re-listening for
+subsequent messages. To actually get values to the caller (e.g., when the
+&lt;code&gt;amount?&lt;/code&gt; message is received), it must send the values to the calling
+process.&lt;/p&gt;
+
+&lt;p&gt;The similarities of both approaches may be summarized as the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;they provide a mechanism for maintaining state over time&lt;/li&gt;
+  &lt;li&gt;they implement a primitive form of “server loop”&lt;/li&gt;
+  &lt;li&gt;they provide a rudimentary “API” for accessing and modifying state data&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let’s give these a try by starting up the LFE REPL for this code (the last
+shell command entered should have been the one changing directory into the
+newly cloned repository for these tutorials):&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;tut00
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make repl&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;With the lambda version, the following rather awkward usage was required:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;st&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tut00:lambda-state&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Fun&amp;lt;tut00.0.29422318&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;st&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;funcall&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;st&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Fun&amp;lt;tut00.0.29422318&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;st&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;funcall&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;st&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Fun&amp;lt;tut00.0.29422318&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;funcall&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;st&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;amount?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;st&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;funcall&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;st&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Fun&amp;lt;tut00.0.29422318&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;funcall&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;st&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;amount?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;With the LFE process version, usage was much cleaner:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;st&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;spawn&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;tut00&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;process-state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;&amp;lt;0.35.0&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;st&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;add&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;st&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;add&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;st&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;amount?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;amount?&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;c:flush&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;Shell&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;got&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;st&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;add&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;st&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;amount?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;amount?&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;c:flush&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;Shell&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;got&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;In the process version, we don’t have to keep setting our state value, since
+the process we spawn (and which calls itself again after receiving each
+message) does that for us. We also don’t need to &lt;code&gt;funcall&lt;/code&gt; everything, since
+there are no lambda functions being returned. However, we do need a process
+that can receive messages from our spawned “server” when we send the
+&lt;code&gt;amount?&lt;/code&gt; message. The REPL plays that role, but to see the messages that is
+sent to the REPL from our server process, we need to flush the REPL process’
+mailbox. So there’s still some awkwardness.&lt;/p&gt;
+
+&lt;p&gt;We could, of course, create a second process (a “callback” process) which does
+a better job in that role than what the REPL does. If we did, then we’d find
+that once we need to run multiple long-running processes, we’d have to add some
+code to make sure they all came up in the proper order with the necessary
+dependencies managed. We’d eventually need to implement strategies for flapping
+services, hot-code loading, etc. So here’s a better idea: let’s use
+&lt;code&gt;gen_server&lt;/code&gt; instead, and we’ll get all of that for free – even if we don’t
+need to use all of it just yet :-)&lt;/p&gt;
+
+&lt;h2 id=&quot;up-next&quot;&gt;Up Next&lt;/h2&gt;
+
+&lt;p&gt;With the next post we will finally get to write some LFE code for OTP! We’ll take a look at some of the basics of the gen_server behaviour&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;The term “closure” was coined by Peter Landin as part of his work on the SECD virtual machine, the first such to be specifically designed for evaluating lambda calculus expressions. (He also tutored Tony Hoare in Algol.) &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;Taken from &lt;a href=&quot;http://en.wikipedia.org/wiki/History_of_the_Scheme_programming_language#Carl_Hewitt.2C_the_Actor_model.2C_and_the_birth_of_Scheme&quot;&gt;Carl Hewitt, the Actor model, and the birth of Scheme&lt;/a&gt; &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+      &lt;p&gt;This use of closures can be used to build object-oriented frameworks in Lisp, and in fast, is what gave birth to the Common Lisp Object System. Peter Norvig’s excellent &lt;a href=&quot;http://smile.amazon.com/dp/1558601910&quot;&gt;Paradigms of Artificial Intelligence Programming: Case Studies in Common Lisp&lt;/a&gt; steps through an example of this in Chapter 13. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>What is OTP?</title>
+   <link href="http://blog.lfe.io//tutorials/2015/05/24/1808-what-is-otp"/>
+   <updated>2015-05-24T00:00:00-05:00</updated>
+   <id>http://blog.lfe.io//tutorials/2015/05/24/1808-what-is-otp</id>
+   <content type="html">
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LFE-signal.jpg&quot;&gt;&lt;img class=&quot;left thumb&quot; src=&quot;/assets/images/posts/LFE-signal.jpg&quot; /&gt;&lt;/a&gt;This post is a prelude to the LFE OTP tutorial series which attempts to clarify the role of OTP as something above and beyond a programming language, a set of libraries, or a framework.&lt;/p&gt;
+
+&lt;h2 id=&quot;lfe-otp-tutorial-series&quot;&gt;LFE OTP Tutorial Series&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/23/1720-new-series-lfe-otp-tutorials/&quot;&gt;Introducing the LFE OTP Tutorials&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/24/1808-what-is-otp/&quot;&gt;What is OTP?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/25/0929-prelude-to-otp/&quot;&gt;Prelude to OTP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can leave feedback for the LFE OTP tutorials
+&lt;a href=&quot;https://github.com/lfe/blog/issues/7&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;pattern-languages&quot;&gt;Pattern Languages&lt;/h2&gt;
 
@@ -118,6 +326,7 @@ better way to create long-running processes.&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/23/1720-new-series-lfe-otp-tutorials/&quot;&gt;Introducing the LFE OTP Tutorials&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/24/1808-what-is-otp/&quot;&gt;What is OTP?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/25/0929-prelude-to-otp/&quot;&gt;Prelude to OTP&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;There aren’t a lot of OTP tutorials online. One really good one
