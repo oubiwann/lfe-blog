@@ -299,14 +299,14 @@ Lisp.”
 
 <p>You can see that the general form remains pretty much the same: instead of a
 lambda expression that takes a message as an argument, we have the LFE receive
-form which does the same. They differ significantly in one respect, however:
-their server loop implementation. In order to maintain state over time after
-changes to that state, the lambda closure version requires that the developer
-re-call the <code>lambda-state</code> function, passing a new or changed state value as
-an argument.  This is not needed when simply accessing the state data , though,
-since no state has changed, and whatever state data the developer has will
-remain just as valid regardless of how many times the <code>amount?</code> message is
-sent.</p>
+form which does the same. <sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> They differ significantly in one respect,
+however: their server loop implementation. In order to maintain state over time
+after changes to that state, the lambda closure version requires that the
+developer re-call the <code>lambda-state</code> function, passing a new or changed state
+value as an argument.  This is not needed when simply accessing the state data
+, though, since no state has changed, and whatever state data the developer has
+will remain just as valid regardless of how many times the <code>amount?</code> message
+is sent.</p>
 
 <p>The process version, however, provides a true loop: every time it receives a
 message it must restart the loop by calling itself again, thus re-listening for
@@ -385,9 +385,12 @@ need to use all of it just yet :-)</p>
 
 <h2 id="up-next">Up Next</h2>
 
-<p>With the next post we will finally get to write some LFE code for OTP! We’ll take a look at some of the basics of the gen_server behaviour</p>
+<p>With the next post we will finally get to write some LFE code for OTP! We’ll
+take a look at some of the basics of the gen_server behaviour</p>
 
 <hr />
+
+<h3 id="footnotes">Footnotes</h3>
 
 <div class="footnotes">
   <ol>
@@ -399,6 +402,9 @@ need to use all of it just yet :-)</p>
     </li>
     <li id="fn:3">
       <p>This use of closures can be used to build object-oriented frameworks in Lisp, and in fast, is what gave birth to the Common Lisp Object System. Peter Norvig’s excellent <a href="http://smile.amazon.com/dp/1558601910">Paradigms of Artificial Intelligence Programming: Case Studies in Common Lisp</a> steps through an example of this in Chapter 13. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>For more insight on clsures in LFE, you can review <a href="https://github.com/rvirding/lfe/blob/develop/examples/internal-state.lfe">an example</a> converted from Peter Norvig’s PAIP. Furthermore, you can see another example contrasting closures and processes in the LFE source code: &lt;ul&gt;&lt;li&gt;(objects via closures)[https://github.com/rvirding/lfe/blob/develop/examples/object-via-closure.lfe]&lt;/li&gt;&lt;li&gt;(objects via processes)[https://github.com/rvirding/lfe/blob/develop/examples/object-via-process.lfe]&lt;/li&gt;&lt;/ul&gt;. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

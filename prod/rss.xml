@@ -5,8 +5,8 @@
         <description>LFE Tutorials, News, &amp; Updates - LFEuminati | Alien Alliance</description>
         <link>http://blog.lfe.io/</link>
         <link>http://blog.lfe.io/</link>
-        <lastBuildDate>2015-05-25T10:04:33-05:00</lastBuildDate>
-        <pubDate>2015-05-25T10:04:33-05:00</pubDate>
+        <lastBuildDate>2015-05-25T11:05:15-05:00</lastBuildDate>
+        <pubDate>2015-05-25T11:05:15-05:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -105,14 +105,14 @@ Lisp.”
 
 &lt;p&gt;You can see that the general form remains pretty much the same: instead of a
 lambda expression that takes a message as an argument, we have the LFE receive
-form which does the same. They differ significantly in one respect, however:
-their server loop implementation. In order to maintain state over time after
-changes to that state, the lambda closure version requires that the developer
-re-call the &lt;code&gt;lambda-state&lt;/code&gt; function, passing a new or changed state value as
-an argument.  This is not needed when simply accessing the state data , though,
-since no state has changed, and whatever state data the developer has will
-remain just as valid regardless of how many times the &lt;code&gt;amount?&lt;/code&gt; message is
-sent.&lt;/p&gt;
+form which does the same. &lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; They differ significantly in one respect,
+however: their server loop implementation. In order to maintain state over time
+after changes to that state, the lambda closure version requires that the
+developer re-call the &lt;code&gt;lambda-state&lt;/code&gt; function, passing a new or changed state
+value as an argument.  This is not needed when simply accessing the state data
+, though, since no state has changed, and whatever state data the developer has
+will remain just as valid regardless of how many times the &lt;code&gt;amount?&lt;/code&gt; message
+is sent.&lt;/p&gt;
 
 &lt;p&gt;The process version, however, provides a true loop: every time it receives a
 message it must restart the loop by calling itself again, thus re-listening for
@@ -191,9 +191,12 @@ need to use all of it just yet :-)&lt;/p&gt;
 
 &lt;h2 id=&quot;up-next&quot;&gt;Up Next&lt;/h2&gt;
 
-&lt;p&gt;With the next post we will finally get to write some LFE code for OTP! We’ll take a look at some of the basics of the gen_server behaviour&lt;/p&gt;
+&lt;p&gt;With the next post we will finally get to write some LFE code for OTP! We’ll
+take a look at some of the basics of the gen_server behaviour&lt;/p&gt;
 
 &lt;hr /&gt;
+
+&lt;h3 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h3&gt;
 
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
@@ -205,6 +208,9 @@ need to use all of it just yet :-)&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:3&quot;&gt;
       &lt;p&gt;This use of closures can be used to build object-oriented frameworks in Lisp, and in fast, is what gave birth to the Common Lisp Object System. Peter Norvig’s excellent &lt;a href=&quot;http://smile.amazon.com/dp/1558601910&quot;&gt;Paradigms of Artificial Intelligence Programming: Case Studies in Common Lisp&lt;/a&gt; steps through an example of this in Chapter 13. &lt;a href=&quot;#fnref:3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:4&quot;&gt;
+      &lt;p&gt;For more insight on clsures in LFE, you can review &lt;a href=&quot;https://github.com/rvirding/lfe/blob/develop/examples/internal-state.lfe&quot;&gt;an example&lt;/a&gt; converted from Peter Norvig’s PAIP. Furthermore, you can see another example contrasting closures and processes in the LFE source code: &amp;lt;ul&amp;gt;&amp;lt;li&amp;gt;(objects via closures)[https://github.com/rvirding/lfe/blob/develop/examples/object-via-closure.lfe]&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;(objects via processes)[https://github.com/rvirding/lfe/blob/develop/examples/object-via-process.lfe]&amp;lt;/li&amp;gt;&amp;lt;/ul&amp;gt;. &lt;a href=&quot;#fnref:4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;
