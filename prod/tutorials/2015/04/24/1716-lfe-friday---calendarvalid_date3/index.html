@@ -207,12 +207,12 @@
 <div class="row">
   <div class="span8">
     
-<p><a href="/assets/images/posts/LispFlavoredErlang-medium-square.png"><img class="left tiny" src="/assets/images/posts/LispFlavoredErlang-medium-square.png" /></a>This week’s LFE Friday was translated with permission from the
+<p><a href="/assets/images/posts/LispFlavoredErlang-medium-square.png"><img class="left tiny" src="/assets/images/posts/LispFlavoredErlang-medium-square.png" /></a>This week's LFE Friday was translated with permission from the
 <a href="http://www.proctor-it.com/category/erlang/erlang-thursday/">Erlang Thursday</a>
 series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
-<em>This week’s translator</em>: Robert Virding.</p>
+<em>This week's translator</em>: Robert Virding.</p>
 
-<p>Today’s LFE Friday is <a href="http://www.erlang.org/doc/man/calendar.html#valid_date-3">calendar:valid_date/3</a>.</p>
+<p>Today's LFE Friday is <a href="http://www.erlang.org/doc/man/calendar.html#valid_date-3">calendar:valid_date/3</a>.</p>
 
 <p>Originally, I was thinking it was going to be <code>calendar:time_difference/3</code>, but then I looked into the Erlang documentation for the <a href="http://www.erlang.org/doc/man/calendar.html">calendar module</a> and saw that it was marked as obsolete, so today I present <code>calendar:valid_date/3</code>.</p>
 
@@ -238,7 +238,7 @@ series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
 <div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:valid_date</span> <span class="mi">2015</span> <span class="mi">04</span> <span class="mi">24</span><span class="p">)</span>
 <span class="nv">true</span></code></pre></div>
 
-<p>Now let’s try to break this a bit and test to see how it can handle <code>0</code>’s and negative integer values.</p>
+<p>Now let's try to break this a bit and test to see how it can handle <code>0</code>'s and negative integer values.</p>
 
 <div class="highlight"><pre><code class="language-lisp"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">calendar:valid_date</span> <span class="mi">-1</span> <span class="mi">04</span> <span class="mi">24</span><span class="p">)</span>  
 <span class="nv">false</span>

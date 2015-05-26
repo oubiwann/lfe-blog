@@ -368,12 +368,12 @@ arguments:</p>
 
 <ol>
   <li>The <code>start/4</code> function takes a name with which the server will be
-  registered. <sup id="fnref:start-name"><a href="#fn:start-name" class="footnote">3</a></sup> The name is a tuple with the first element being
-  either <code>local</code> or <code>global</code> and the second being the actual name for the
-  process. <sup id="fnref:via-name"><a href="#fn:via-name" class="footnote">4</a></sup></li>
-  <li>The second argument is the callback module associated with this server
-  (that’s what we created in the previous section … it’s where all our logic
-  lives).</li>
+registered. <sup id="fnref:start-name"><a href="#fn:start-name" class="footnote">3</a></sup> The name is a tuple with the first element being
+either <code>local</code> or <code>global</code> and the second being the actual name for the
+process. <sup id="fnref:via-name"><a href="#fn:via-name" class="footnote">4</a></sup></li>
+  <li>The second argument is the callback module associated with this server.
+That’s what we created in the previous section; it’s where all our logic
+lives.</li>
   <li>In our case, the next argument is the initial state for our server loop, but
 more generally, it is the list of arguments (can be an empty list) that will
 be passed to the <code>init</code> function in a <code>gen_server</code>’s callback module.</li>
@@ -650,14 +650,14 @@ generic servers: running our code on multiple cores and multiple machines.</p>
     <li id="fn:start-name">
       <p>In general, this is optional – you could use <code>start/3</code> which
            doesn’t take a name. In our case, however, we need it so that we
-           can easily make calls to the <code>gen_server</code> process (and for
+           can easily make calls to the <code>gen_server</code> process. For
            that we need to register a name so the process can be looked up;
            if we didn’t do this, we’d need to keep track of the process id
-           for our server). <a href="#fnref:start-name" class="reversefootnote">&#8617;</a></p>
+           for our server. <a href="#fnref:start-name" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:via-name">
       <p>A third alternative is more rarely used in the cases where one
-         need to implement a custom global registry. In that event, you
+         needs to implement a custom global registry. In that event, you
          create a 3-tuple where the second element is the name of the
          module which implements the registry functions. <a href="#fnref:via-name" class="reversefootnote">&#8617;</a></p>
     </li>

@@ -211,7 +211,7 @@
 is from
 <a href="https://twitter.com/DynamicWebPaige/status/544609553422106625">a tweet</a>
 by Paige Bailey (<a href="https://twitter.com/DynamicWebPaige">@DynamicWebPaige</a>).
-It’s from the August 1979 issue of Byte which was focused on Lisp.
+It's from the August 1979 issue of Byte which was focused on Lisp.
 The table of contents is
 <a href="http://pichon.emmanuel.perso.neuf.fr/revues/byte/byte_1979.php">here</a> and includes such artciles as:</p>
 
@@ -220,7 +220,7 @@ The table of contents is
   <li>LISP APPLICATIONS IN BOOLEAN LOGIC</li>
   <li>AN OVERVIEW OF LISP</li>
   <li>LISP BASED SYSTEMS FOR EDUCATION</li>
-  <li>A MATHEMATICIAN’S VIEW OF LISP</li>
+  <li>A MATHEMATICIAN'S VIEW OF LISP</li>
   <li>LISP BASED SYMBOLIC MATH SYSTEMS</li>
 </ul>
 
@@ -229,7 +229,7 @@ The table of contents is
 
 <p>After finding a
 <a href="http://pichon.emmanuel.perso.neuf.fr/revues/byte/grand/1979/byte_1979_08.jpg">larger resolution image</a>,
-I couldn’t resist doing a little Lisp archeaology :-) Here’s a transcript of
+I couldn't resist doing a little Lisp archeaology :-) Here's a transcript of
 what I can see:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nv">DEFINE</span> <span class="p">((</span>
@@ -263,14 +263,14 @@ for some bits, but here are some initial notes:</p>
 <a href="http://www.softwarepreservation.org/projects/LISP/book/LISP%201.5%20Programmers%20Manual.pdf">LISP 1.5 Manual</a>
 only <code>EQ</code> or <code>EQUAL</code> are given, not <code>EQU</code>. This could be another form
 or alias present in a post-1962 dialect. It could also be a typo ;-)</li>
-  <li><code>L</code> - I’m not familiar with this call. If this function is what it seems,
-a “string indentation” function, then I can only assume that <code>(L N)</code>
-creates a list of spaces of length <code>N</code>. I couldn’t find a trace of
+  <li><code>L</code> - I'm not familiar with this call. If this function is what it seems,
+a "string indentation" function, then I can only assume that <code>(L N)</code>
+creates a list of spaces of length <code>N</code>. I couldn't find a trace of
 <code>(L ...)</code> in the LISP 1.5 Manual.</li>
-  <li>Much of the <code>FETCH</code> function has been chopped off, but if I’m not mistaken
+  <li>Much of the <code>FETCH</code> function has been chopped off, but if I'm not mistaken
 (and oh my, I very well could be!), the first part actually looks like a
 predecessor to the <code>(let ...)</code> form. Given the function name and the names
-of the defined variables, it’s pretty clear what’s going on here :-)</li>
+of the defined variables, it's pretty clear what's going on here :-)</li>
 </ul>
 
 <p><strong>Update from Rainer Joswig</strong>: he mentioned that we should be sure to check out
@@ -291,9 +291,9 @@ original:</p>
   <span class="p">(</span><span class="nv">INDT</span> <span class="p">(</span><span class="nv">LAMBDA</span> <span class="p">(</span><span class="nv">N</span> <span class="nv">STRING</span><span class="p">)</span>
     <span class="p">(</span><span class="nv">PRINT</span> <span class="p">(</span><span class="nv">APPEND</span> <span class="p">(</span><span class="nv">L</span> <span class="nv">N</span><span class="p">)</span> <span class="nv">STRING</span><span class="p">))))))</span></code></pre></div>
 
-<p>That’s the archeology. Let’s try a reconstruction :-)</p>
+<p>That's the archeology. Let's try a reconstruction :-)</p>
 
-<p>Here’s what these functions would look like in a modern Lisp (entered in the
+<p>Here's what these functions would look like in a modern Lisp (entered in the
 REPL):</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">defun</span> <span class="nv">remblank</span>
@@ -307,7 +307,7 @@ REPL):</p>
                   <span class="nb">string</span><span class="p">))</span>
 <span class="nv">indt</span></code></pre></div>
 
-<p>Now let’s take them for a spin!</p>
+<p>Now let's take them for a spin!</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">remblank</span> <span class="s">&quot; J o hn   M cC a  rt hy &quot;</span><span class="p">)</span>
 <span class="s">&quot;JohnMcCarthy&quot;</span>
@@ -327,10 +327,10 @@ some additional changes to bring it more in line with Erlang/LFE:</p>
     <span class="p">(</span><span class="nv">++</span> <span class="p">(</span><span class="nv">string:copies</span> <span class="s">&quot; &quot;</span> <span class="nv">n</span><span class="p">)</span> <span class="nb">string</span><span class="p">))</span>
 <span class="nv">indt</span></code></pre></div>
 
-<p>That almost feels like cheating …</p>
+<p>That almost feels like cheating ...</p>
 
 <p>This is interesting as a port for LFE, since LFE preserves the list-ness of
-strings (thanks to Erlang) as McCarthy’s Lisp of 1962 did: list functions may
+strings (thanks to Erlang) as McCarthy's Lisp of 1962 did: list functions may
 be used with strings without problem. As you can see, this is what the original
 <code>REMBLANK</code> function expects.</p>
 
