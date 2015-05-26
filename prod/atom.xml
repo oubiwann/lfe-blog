@@ -4,7 +4,7 @@
  <title>LFE Tutorials, News, &amp; Updates</title>
  <link href="http://blog.lfe.io//" rel="self"/>
  <link href="http://blog.lfe.io/"/>
- <updated>2015-05-26T13:32:52-05:00</updated>
+ <updated>2015-05-26T14:13:46-05:00</updated>
  <id>http://blog.lfe.io/</id>
  <author>
    <name>LFEuminati | Alien Alliance</name>
@@ -96,7 +96,7 @@ order to make the delineation of responsibilities as clear as possible.&lt;/p&gt
 
 &lt;p&gt;If we want to port our previous closure or process example servers to use OTP,
 it might made the most sense to start with the callback module, since this is
-where most of the logic lives:&lt;/p&gt;
+where most of the logic lives: &lt;sup id=&quot;fnref:separate-callback-server&quot;&gt;&lt;a href=&quot;#fn:separate-callback-server&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;handle_cast&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;#39;add&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -139,12 +139,12 @@ wanted to be sent back to the caller in the second element of the tuple.&lt;/p&g
 &lt;p&gt;Note the reply of &lt;code&gt;(unknown-command)&lt;/code&gt; in the catch-all function head pattern
 for &lt;code&gt;handle_call&lt;/code&gt;. This is used here for demonstration purposes only. In a
 later post, we will cover error handling and how to best deal with unexpected
-messages in an OTP application. &lt;sup id=&quot;fnref:handle-info&quot;&gt;&lt;a href=&quot;#fn:handle-info&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+messages in an OTP application. &lt;sup id=&quot;fnref:handle-info&quot;&gt;&lt;a href=&quot;#fn:handle-info&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;p&gt;The &lt;code&gt;handle_cast&lt;/code&gt; function is used for making asynchronous calls, often
 convenient when you want to execute a function and don’t care about returning
 data to the caller. This is exactly what we’re using it for: we just want our
-state data to get incremented; we don’t want a result. &lt;sup id=&quot;fnref:delayed-result&quot;&gt;&lt;a href=&quot;#fn:delayed-result&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+state data to get incremented; we don’t want a result. &lt;sup id=&quot;fnref:delayed-result&quot;&gt;&lt;a href=&quot;#fn:delayed-result&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;p&gt;Both functions expect a message (any Erlang term) and the state data for our
 &lt;code&gt;gen_server&lt;/code&gt; loop. Additionally, the &lt;code&gt;handle_call&lt;/code&gt; function takes a
@@ -179,9 +179,9 @@ arguments:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;The &lt;code&gt;start/4&lt;/code&gt; function takes a name with which the server will be
-registered. &lt;sup id=&quot;fnref:start-name&quot;&gt;&lt;a href=&quot;#fn:start-name&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; The name is a tuple with the first element being
+registered. &lt;sup id=&quot;fnref:start-name&quot;&gt;&lt;a href=&quot;#fn:start-name&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; The name is a tuple with the first element being
 either &lt;code&gt;local&lt;/code&gt; or &lt;code&gt;global&lt;/code&gt; and the second being the actual name for the
-process. &lt;sup id=&quot;fnref:via-name&quot;&gt;&lt;a href=&quot;#fn:via-name&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+process. &lt;sup id=&quot;fnref:via-name&quot;&gt;&lt;a href=&quot;#fn:via-name&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
   &lt;li&gt;The second argument is the callback module associated with this server.
 That&#39;s what we created in the previous section; it&#39;s where all our logic
 lives.&lt;/li&gt;
@@ -191,13 +191,13 @@ be passed to the &lt;code&gt;init&lt;/code&gt; function in a &lt;code&gt;gen_ser
   &lt;li&gt;Finally, if we want to pass any options to the &lt;code&gt;gen_server&lt;/code&gt; process
 itself, we can do that here. At the beginning of the module where this code
 lives, we&#39;ve defined &lt;code&gt;(genserver-opts)&lt;/code&gt; to be an empty list, since we
-don’t need to do anything special here. &lt;sup id=&quot;fnref:genserver-opts&quot;&gt;&lt;a href=&quot;#fn:genserver-opts&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+don’t need to do anything special here. &lt;sup id=&quot;fnref:genserver-opts&quot;&gt;&lt;a href=&quot;#fn:genserver-opts&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;As you can see, there are a series of functions being called that we haven’t
 defined above – these are all defined in the tutorial server module
 &lt;code&gt;tut01.lfe&lt;/code&gt; (the full listing of which is at the end of this post). These
-hold all the data which is getting passed. &lt;sup id=&quot;fnref:genserver-args&quot;&gt;&lt;a href=&quot;#fn:genserver-args&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+hold all the data which is getting passed. &lt;sup id=&quot;fnref:genserver-args&quot;&gt;&lt;a href=&quot;#fn:genserver-args&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;creating-an-api&quot;&gt;Creating An API&lt;/h2&gt;
 
@@ -434,6 +434,17 @@ generic servers: running our code on multiple cores and multiple machines.&lt;/p
 
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
+    &lt;li id=&quot;fn:separate-callback-server&quot;&gt;
+      &lt;p&gt;As noted in the introduction of this post, in
+            standard Erlang libraries and applications the callback module
+            and the server module are in the same file. We are introducing
+            OTP in a new way, hopefully in a way that is less confusing.
+            You will find, however, that in order to do this, we sometimes
+            abandon Erlang conventions for the sake of clarity. A final
+            post in this series will provide a list of all the non-standard
+            approaches we have taken for pedagogical purposes and then
+            provide notes on how to do them the &quot;standard way&quot;. &lt;a href=&quot;#fnref:separate-callback-server&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
     &lt;li id=&quot;fn:handle-info&quot;&gt;
       &lt;p&gt;If you&#39;re curious now and want to do this the right way before
             we get around to creating a blog post for error handling and
