@@ -16,6 +16,7 @@ http://blog.lfe.io//page5/index.html
 http://blog.lfe.io//page6/index.html
 http://blog.lfe.io//page7/index.html
 
+http://blog.lfe.io//tutorials/2015/05/26/1112-creating-servers-with-the-gen_server-behaviour
 http://blog.lfe.io//tutorials/2015/05/25/0929-prelude-to-otp
 http://blog.lfe.io//tutorials/2015/05/24/1808-what-is-otp
 http://blog.lfe.io//tutorials/2015/05/23/1720-new-series-lfe-otp-tutorials

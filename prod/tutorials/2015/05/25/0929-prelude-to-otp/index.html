@@ -215,12 +215,24 @@
   <li><a href="/tutorials/2015/05/23/1720-new-series-lfe-otp-tutorials/">Introducing the LFE OTP Tutorials</a></li>
   <li><a href="/tutorials/2015/05/24/1808-what-is-otp/">What is OTP?</a></li>
   <li><a href="/tutorials/2015/05/25/0929-prelude-to-otp/">Prelude to OTP</a></li>
+  <li><a href="/tutorials/2015/05/26/1112-creating-servers-with-the-gen_server-behaviour/">Creating Servers with the gen_server Behaviour</a></li>
 </ul>
 
 <p>You can leave feedback for the LFE OTP tutorials
 <a href="https://github.com/lfe/blog/issues/7">here</a>.</p>
 
+<h2 id="in-this-post">In This Post</h2>
+
+<ul>
+  <li>Requirements and Assumptions</li>
+  <li>Getting the Code</li>
+  <li>Two Rudimentary Servers</li>
+  <li>Up Next</li>
+  <li>Footnotes</li>
+</ul>
+
 <h2 id="requirements-and-assumptions">Requirements and Assumptions</h2>
+
 <p>In order to work through the code samples in these tutorials, you will need the following:</p>
 
 <ul>
@@ -298,15 +310,15 @@ Lisp.”
         <span class="p">(</span><span class="nv">process-state</span> <span class="nv">caller</span> <span class="nv">state-data</span><span class="p">))))</span></code></pre></div>
 
 <p>You can see that the general form remains pretty much the same: instead of a
-lambda expression that takes a message as an argument, we have the LFE receive
-form which does the same. <sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> They differ significantly in one respect,
-however: their server loop implementation. In order to maintain state over time
-after changes to that state, the lambda closure version requires that the
-developer re-call the <code>lambda-state</code> function, passing a new or changed state
-value as an argument.  This is not needed when simply accessing the state data
-, though, since no state has changed, and whatever state data the developer has
-will remain just as valid regardless of how many times the <code>amount?</code> message
-is sent.</p>
+lambda expression that takes a message as an argument, we have the LFE
+<code>receive</code> form which does the same. <sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> They differ significantly in one
+respect, however: their server loop implementation. In order to maintain state
+over time after changes to that state, the lambda closure version requires that
+the developer re-call the <code>lambda-state</code> function, passing a new or changed
+state value as an argument.  This is not needed when simply accessing the state
+data , though, since no state has changed, and whatever state data the
+developer has will remain just as valid regardless of how many times the
+<code>amount?</code> message is sent.</p>
 
 <p>The process version, however, provides a true loop: every time it receives a
 message it must restart the loop by calling itself again, thus re-listening for
@@ -386,7 +398,8 @@ need to use all of it just yet :-)</p>
 <h2 id="up-next">Up Next</h2>
 
 <p>With the next post we will finally get to write some LFE code for OTP! We’ll
-take a look at some of the basics of the gen_server behaviour</p>
+take a look at some of the basics of the <code>gen_server</code> behaviour and how it
+helps us maintain state more easily and allows for a cleaner API.</p>
 
 <hr />
 
@@ -422,7 +435,7 @@ take a look at some of the basics of the gen_server behaviour</p>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next disabled">Next &rarr;</a>
+        <a class="btn next" href="/tutorials/2015/05/26/1112-creating-servers-with-the-gen_server-behaviour" title="LFE OTP: Creating Servers with the gen_server Behaviour">Next &rarr;</a>
       
     </div>
     <hr>
@@ -456,9 +469,9 @@ take a look at some of the basics of the gen_server behaviour</p>
 
   
      
-    	<li><a href="/tags.html#otp-ref">otp <span>3</span></a></li>
+    	<li><a href="/tags.html#otp-ref">otp <span>4</span></a></li>
      
-    	<li><a href="/tags.html#erlang-ref">erlang <span>29</span></a></li>
+    	<li><a href="/tags.html#erlang-ref">erlang <span>30</span></a></li>
      
     	<li><a href="/tags.html#closures-ref">closures <span>1</span></a></li>
      

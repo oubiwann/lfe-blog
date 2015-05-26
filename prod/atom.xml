@@ -4,13 +4,490 @@
  <title>LFE Tutorials, News, &amp; Updates</title>
  <link href="http://blog.lfe.io//" rel="self"/>
  <link href="http://blog.lfe.io/"/>
- <updated>2015-05-25T11:09:12-05:00</updated>
+ <updated>2015-05-26T08:49:28-05:00</updated>
  <id>http://blog.lfe.io/</id>
  <author>
    <name>LFEuminati | Alien Alliance</name>
    <email>lisp-flavored-erlang@googlegroups.com</email>
  </author>
 
+ 
+ <entry>
+   <title>LFE OTP: Creating Servers with the gen_server Behaviour</title>
+   <link href="http://blog.lfe.io//tutorials/2015/05/26/1112-creating-servers-with-the-gen_server-behaviour"/>
+   <updated>2015-05-26T00:00:00-05:00</updated>
+   <id>http://blog.lfe.io//tutorials/2015/05/26/1112-creating-servers-with-the-gen_server-behaviour</id>
+   <content type="html">
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LFE-signal.jpg&quot;&gt;&lt;img class=&quot;right thumb&quot; src=&quot;/assets/images/posts/LFE-signal.jpg&quot; /&gt;&lt;/a&gt;As mentioned in the previous
+post, one of the most common patterns that was identified in Erlang was the
+need to create a generic, long running process. This pattern has been codified
+in the gen_server behaviour, and it is now time that we got our hands dirty by
+creating a few :-)&lt;/p&gt;
+
+&lt;h2 id=&quot;lfe-otp-tutorial-series&quot;&gt;LFE OTP Tutorial Series&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/23/1720-new-series-lfe-otp-tutorials/&quot;&gt;Introducing the LFE OTP Tutorials&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/24/1808-what-is-otp/&quot;&gt;What is OTP?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/25/0929-prelude-to-otp/&quot;&gt;Prelude to OTP&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/26/1112-creating-servers-with-the-gen_server-behaviour/&quot;&gt;Creating Servers with the gen_server Behaviour&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can leave feedback for the LFE OTP tutorials
+&lt;a href=&quot;https://github.com/lfe/blog/issues/7&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;in-this-post&quot;&gt;In This Post&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Requirements, Assumptions, and Code&lt;/li&gt;
+  &lt;li&gt;Introductory Notes on &lt;code&gt;gen_server&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Creating a Callback Module&lt;/li&gt;
+  &lt;li&gt;Creating a Server Module&lt;/li&gt;
+  &lt;li&gt;Creating An API&lt;/li&gt;
+  &lt;li&gt;Updating An API&lt;/li&gt;
+  &lt;li&gt;Full Source Code&lt;/li&gt;
+  &lt;li&gt;Learning More About gen_server&lt;/li&gt;
+  &lt;li&gt;Up Next&lt;/li&gt;
+  &lt;li&gt;Footnotes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;requirements-assumptions-and-code&quot;&gt;Requirements, Assumptions, and Code&lt;/h2&gt;
+
+&lt;p&gt;Before reading this tutorial, be sure you should have read the ones preceding
+it in this series. For a list of what you need to have installed before working
+through the examples as well as getting the source code for these tutorials,
+please see the post &lt;a href=&quot;/tutorials/2015-05-25-0929-prelude-to-otp/&quot;&gt;Prelude to OTP&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;introductory-notes-on-genserver&quot;&gt;Introductory Notes on gen_server&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code&gt;gen_server&lt;/code&gt; behaviour defines a contract between the programmer and the
+world of OTP, expecting you to do the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Define a module which implements &lt;code&gt;gen_server&lt;/code&gt; functions&lt;/li&gt;
+  &lt;li&gt;Define a callback module which implements the required message-passing (and
+callback-related) functions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you have ever looked at Erlang code for &lt;code&gt;gen_server&lt;/code&gt;s, you will have
+noticed that setting up a &lt;code&gt;gen_server&lt;/code&gt; involves some boilerplate Erlang data
+structures.  This sort of setup is a common idiom in Erlang, however, the
+approach is a bit atypical for a Lisp. It’s more common to see keyword
+arguments (a la &lt;code&gt;&amp;amp;key&lt;/code&gt;) or even property lists in Common Lisp. In Clojure,
+hash maps are used to the same effect.&lt;/p&gt;
+
+&lt;p&gt;When creating new functions in LFE, you have the option of providing a better
+developer experience by simulating keyword arguments using such things as the
+new map data type, property lists, or records. Since we are using functions
+which already exist in OTP, we don’t have that option (unless we create
+wrappers or define an OTP DSL … but that’s out of scope for this series!).
+Instead, we’ll simply take extra measures for clarity, defining variables with
+names that give strong hints as to how they will be used by the &lt;code&gt;gen_server&lt;/code&gt;
+code.&lt;/p&gt;
+
+&lt;p&gt;Furthermore, it is a very common practice in Erlang for developers to implement
+a behaviour module and a callback module in the same file. This has a tendency
+to confuse newcomers, so we have opted for an explicit separation of the two in
+order to make the delineation of responsibilities as clear as possible.&lt;/p&gt;
+
+&lt;p&gt;That said, we’re ready for some code!&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-a-callback-module&quot;&gt;Creating a Callback Module&lt;/h2&gt;
+
+&lt;p&gt;If we want to port our previous closure or process example servers to use OTP,
+it might made the most sense to start with the callback module, since this is
+where most of the logic lives:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;handle_cast&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;#39;add&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;`#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;noreply&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;handle_call&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;#39;amount&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;_caller&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;`#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;reply&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;_caller&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;`#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;reply&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;unknown-command&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If we compare this to the process server from the previous post, we can see
+that things have started to change rather significantly:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;process-state&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;caller&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;receive&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;#39;add&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;process-state&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;caller&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;#39;amount?&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;caller&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;process-state&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;caller&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;First of all, our callback module has two functions instead of just one:
+&lt;code&gt;handle_cast&lt;/code&gt; and &lt;code&gt;handle_call&lt;/code&gt;. These functions are not used by developers
+or users of the OTP software we write; they are defined in a callback module
+for use by our &lt;code&gt;gen_server&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;handle_call&lt;/code&gt; function is used for making synchronous calls, usually
+where a result is expected. This is why we return the &lt;code&gt;#(reply ...)&lt;/code&gt; tuple:
+we’re letting OTP know that whatever made this call should get the second
+element of the tuple sent to it. The third element of the tuple is used
+internally by &lt;code&gt;gen_server&lt;/code&gt; as the state data which restarts the loop after
+this call (all under the hood and away from view). We did something almost
+identical in our process example in the last post. In this simple example, our
+return value and our state data are one and the same; in a more complicated
+example, one might extract the result from the state data or perform some
+operations on the state data. Whatever you did, you would put the result you
+wanted to be sent back to the caller in the second element of the tuple.&lt;/p&gt;
+
+&lt;p&gt;Note the reply of &lt;code&gt;(unknown-command)&lt;/code&gt; in the catch-all function head pattern
+for &lt;code&gt;handle_call&lt;/code&gt;. This is used here for demonstration purposes only. In a
+later post, we will cover error handling and how to best deal with unexpected
+messages in an OTP application. &lt;sup id=&quot;fnref:handle-info&quot;&gt;&lt;a href=&quot;#fn:handle-info&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;handle_cast&lt;/code&gt; function is used for making asynchronous calls, often
+convenient when you want to execute a function and don’t care about returning
+data to the caller. This is exactly what we’re using it for: we just want our
+state data to get incremented; we don’t want a result. &lt;sup id=&quot;fnref:delayed-result&quot;&gt;&lt;a href=&quot;#fn:delayed-result&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;Both functions expect a message (any Erlang term) and the state data for our
+&lt;code&gt;gen_server&lt;/code&gt; loop. Additionally, the &lt;code&gt;handle_call&lt;/code&gt; function takes a
+parameter for the calling function so that it can send results back to it. When
+we look at the the API code in our server module, we’ll see where this code
+gets called.  First, though, let’s finish looking at our callback module:&lt;/p&gt;
+
+&lt;p&gt;The other thing our callback module needs to define is an &lt;code&gt;init&lt;/code&gt; function.
+This is used to “prime the pump”, as it were, for the the &lt;code&gt;gen_server&lt;/code&gt; loop.
+In other words, this is what initializes the state that gets passed to the
+various &lt;code&gt;handle_*&lt;/code&gt; functions. Note that for our example, our state data is
+extremely simple: it’s just an integer. But it could be any LFE data structure,
+including records (which is very often what the state data is in Erlang and LFE
+applications).&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-a-server-module&quot;&gt;Creating a Server Module&lt;/h2&gt;
+
+&lt;p&gt;Okay, so we know how our logic gets converted from the non-OTP server loops to
+the callback code … but what calls the callback? If we’re creating a server
+in this post then where is the server code? Thanks to OTP (which takes care of
+so many of the details), our server code is very simple:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;gen_server:start&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;register-name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;callback-module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;initial-state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;genserver-opts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;As promised above, instead of archane data structures, we have very clearly
+defined the variables which are being used as the &lt;code&gt;gen_server:start&lt;/code&gt;
+arguments:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The &lt;code&gt;start/4&lt;/code&gt; function takes a name with which the server will be
+  registered. &lt;sup id=&quot;fnref:start-name&quot;&gt;&lt;a href=&quot;#fn:start-name&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; The name is a tuple with the first element being
+  either &lt;code&gt;local&lt;/code&gt; or &lt;code&gt;global&lt;/code&gt; and the second being the actual name for the
+  process. &lt;sup id=&quot;fnref:via-name&quot;&gt;&lt;a href=&quot;#fn:via-name&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+  &lt;li&gt;The second argument is the callback module associated with this server
+  (that’s what we created in the previous section … it’s where all our logic
+  lives).&lt;/li&gt;
+  &lt;li&gt;In our case, the next argument is the initial state for our server loop, but
+more generally, it is the list of arguments (can be an empty list) that will
+be passed to the &lt;code&gt;init&lt;/code&gt; function in a &lt;code&gt;gen_server&lt;/code&gt;’s callback module.&lt;/li&gt;
+  &lt;li&gt;Finally, if we want to pass any options to the &lt;code&gt;gen_server&lt;/code&gt; process
+itself, we can do that here. At the beginning of the module where this code
+lives, we’ve defined &lt;code&gt;(genserver-opts)&lt;/code&gt; to be an empty list, since we
+don’t need to do anything special here. &lt;sup id=&quot;fnref:genserver-opts&quot;&gt;&lt;a href=&quot;#fn:genserver-opts&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;As you can see, there are a series of functions being called that we haven’t
+defined above – these are all defined in the tutorial server module
+&lt;code&gt;tut01.lfe&lt;/code&gt; (the full listing of which is at the end of this post). These
+hold all the data which is getting passed. &lt;sup id=&quot;fnref:genserver-args&quot;&gt;&lt;a href=&quot;#fn:genserver-args&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-an-api&quot;&gt;Creating An API&lt;/h2&gt;
+
+&lt;p&gt;Next, we can look at our API. As you recall from the last post, our “APIs” were
+hardly that. They consisted of making &lt;code&gt;funcall&lt;/code&gt;s in one case, and in the
+other, sending messages to the server process via the &lt;code&gt;(! ...)&lt;/code&gt; form. That
+changes now :-)&lt;/p&gt;
+
+&lt;p&gt;Whenever you have created an implementation of the &lt;code&gt;gen_server&lt;/code&gt; behaviour and
+a callback module for it, the way you execute the callback code is by sending
+messages to your server via &lt;code&gt;(gen_server:call ...)&lt;/code&gt; and &lt;code&gt;(gen_server:cast
+...)&lt;/code&gt;. We will use these to define a nicely usable API for our server:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;gen_server:cast&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;server-name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;amount?&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;gen_server:call&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;server-name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;amount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can imagine that for a large server module, there would be a great many API
+functions defined here. At this point, the mystery of what calls
+our &lt;code&gt;handle_cast&lt;/code&gt; and &lt;code&gt;handle_call&lt;/code&gt; functions in the callback module is
+solved :-)&lt;/p&gt;
+
+&lt;p&gt;OTP helps us to also keep our API definitions very simple. Essentially we’re
+saying “Hey, gen_server!  You know that server we defined called
+&lt;code&gt;(server-name)&lt;/code&gt;? Well, we’d like to send a &lt;code&gt;cast&lt;/code&gt; message to it. Can you do
+that please?” OTP then takes care of the rest of it for us, by looking up the
+server, finding the callback module that was defined for it, and then calling
+the &lt;code&gt;handle_cast&lt;/code&gt; function with the appropriate arguments.&lt;/p&gt;
+
+&lt;p&gt;Let’s try it out:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ../tut01
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make repl&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tut01:start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&amp;lt;0.35.0&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tut01:add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tut01:add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tut01:amount?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tut01:add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tut01:amount?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;gen_server:call&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tut01:server-name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;bingo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Unknown command.&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;How’s &lt;em&gt;that&lt;/em&gt; for clean! That’s what a good developer experience should look
+like :-) None of this crazy you-gotta-make-&lt;code&gt;funcall&lt;/code&gt;s-and-then-save-state
+business.&lt;/p&gt;
+
+&lt;p&gt;Let’s review what happened above:
+We started up our server which initialized the loop with the data we
+configured for it in our server module (just the integer &lt;code&gt;0&lt;/code&gt; in our case).
+Next, we made some API calls which were passed on to our callback module by the
+underlying OTP infrastructure. We got results for our API functions which made
+&lt;code&gt;call&lt;/code&gt;s, and for the &lt;code&gt;cast&lt;/code&gt;s we got a simple and reassuring &lt;code&gt;ok&lt;/code&gt;.  When
+skipping the API functions and making calls directly via &lt;code&gt;gen_server:call&lt;/code&gt;,
+we got the expected error message for messages which don’t match the ones that
+have been defined in our callback module.&lt;/p&gt;
+
+&lt;h2 id=&quot;updating-an-api&quot;&gt;Updating An API&lt;/h2&gt;
+
+&lt;p&gt;What if we needed to make a change to our API? Asked another way, what does one
+need to do in order to add new functionality to a server API? Let’s answer this
+by looking at a special case: adding the ability to stop our server. We’ll
+start with the new API function:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;stop&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;gen_server:call&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;server-name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;That’s the easy bit. Now let’s add support for this new &lt;code&gt;stop&lt;/code&gt; message to our
+&lt;code&gt;handle_call&lt;/code&gt; callback function:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;handle_call&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;#39;amount&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;_caller&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;`#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;reply&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;#39;stop&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;_caller&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;`#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;stop&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;shutdown&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;_caller&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;`#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;reply&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;unknown-command&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If we now try to run our server with just this change to the callback, we’d get
+an error after calling our new &lt;code&gt;(tut01:stop)&lt;/code&gt; API function that would look
+something like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-erlang&quot;&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ERROR&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;REPORT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;====&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;May&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2015&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;19&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Generic&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tut01&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;terminating&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Last&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;was&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stop&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;When&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Server&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;&amp;#39;state-data&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Reason&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;termination&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;&amp;#39;function not exported&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;&amp;#39;tut01-callback&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;terminate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,...},&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gen_server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;try_terminate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,...},&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gen_server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;terminate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,...},&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gen_server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;handle_msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,...},&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;proc_lib&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init_p_do_apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,...}]}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You will see that error message when you haven’t defined the &lt;code&gt;terminate&lt;/code&gt;
+callback function. Here’s a quick one:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;terminate&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_reason&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;_state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;&amp;#39;ok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now when we stop our server using our new API, we have success:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tut01:start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&amp;lt;0.35.0&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tut01:stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And we can demonstrate that it’s really stopped by trying to call our
+&lt;code&gt;amount?&lt;/code&gt; API function:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tut01:amount?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;exception&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;exit:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;noproc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;gen_server&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;call&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tut01&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;gen_server:call/2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;gen_server.erl,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;182&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This was a special case; most times you will add API functions, there will be
+no implicit execution of callback functions (which need to be defined in order
+to prevent errors from being generated). Usually all you’ll have to do is
+define your API function and then implement the logic that will get executed by
+the callback module.&lt;/p&gt;
+
+&lt;h2 id=&quot;full-source-code&quot;&gt;Full Source Code&lt;/h2&gt;
+
+&lt;p&gt;Though we have this code defined in modules for this post’s tutorial in the
+repository, it can be nice to see it on the page in the same context as the
+blog post.&lt;/p&gt;
+
+&lt;p&gt;Here is the server module:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;tut01&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;behaviour&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;gen_server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;;;; config functions&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;server-name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;MODULE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;callback-module&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;tut01-callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;initial-state&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;genserver-opts&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;register-name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;`#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;local&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;server-name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;;;; gen_server implementation&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;gen_server:start&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;register-name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;callback-module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;initial-state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;genserver-opts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;;;; our server API&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;gen_server:cast&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;server-name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;amount?&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;gen_server:call&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;server-name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;amount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;stop&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;gen_server:call&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;server-name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&amp;#39;stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And here’s the callback module code:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lisp&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;tut01-callback&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;;;; config functions&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;unknown-command&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Unknown command.&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;;;; callback implementation&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;init&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;initial-state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;`#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;initial-state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;handle_cast&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;#39;add&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;`#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;noreply&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;handle_call&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;#39;amount&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;_caller&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;`#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;reply&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;&amp;#39;stop&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;_caller&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;`#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;stop&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;shutdown&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;_caller&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;`#(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;reply&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;unknown-command&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;terminate&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_reason&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;_state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;&amp;#39;ok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that our callback module doesn’t implement all the callbacks it would need
+as part of a full-blown OTP application; we’ll do that in a future post.&lt;/p&gt;
+
+&lt;h2 id=&quot;learning-more-about-genserver&quot;&gt;Learning More About gen_server&lt;/h2&gt;
+
+&lt;p&gt;There’s a lot of information we didn’t cover in this tutorial, however it’s
+enough to get started writing simple OTP servers in LFE. If you’d like to learn
+more, one of the newest books out there on the topic has been recently
+published by O’Reilly:
+&lt;a href=&quot;http://shop.oreilly.com/product/0636920024149.do&quot;&gt;Designing for Scalability with Erlang/OTP&lt;/a&gt;.
+The chapter on &lt;code&gt;gen_server&lt;/code&gt; covers this material in much more detail,
+including timeouts, deadlocks, hibernating, and custom global registries.&lt;/p&gt;
+
+&lt;p&gt;Another good resource, once you get up to speed, is the
+&lt;a href=&quot;http://www.erlang.org/doc/man/gen_server.html&quot;&gt;Erlang documentation&lt;/a&gt; (and
+&lt;a href=&quot;http://www.erlang.org/doc/design_principles/gen_server_concepts.html&quot;&gt;here&lt;/a&gt;).
+Often overlooked, it’s actually really good and will be a constant companion
+for you any time you need to do something with OTP that you haven’t tried
+before.&lt;/p&gt;
+
+&lt;p&gt;In future posts in this series, we will be covering bits we’ve left out of this
+tutorial, namely:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;handle_info&lt;/code&gt; - managing unepxected messages and different error states&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;code_change&lt;/code&gt; - supporting hot-loading of code in a running system&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;format_status&lt;/code&gt; - providing custom status data for a running server&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;up-next&quot;&gt;Up Next&lt;/h2&gt;
+
+&lt;p&gt;Before we tackle any other behaviours, we’re going to explore distributed
+generic servers: running our code on multiple cores and multiple machines.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h3&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:handle-info&quot;&gt;
+      &lt;p&gt;If you’re curious now and want to do this the right way before
+            we get around to creating a blog post for error handling and
+            unexpected messages, look info the &lt;code&gt;handle_info&lt;/code&gt; callback
+            function for &lt;code&gt;gen_server&lt;/code&gt;. A minimal use of &lt;code&gt;handle_info&lt;/code&gt;
+            to deal with unexpected messages would involve adding three
+            pattern-matching function heads: 1) match for a normal exit
+            and return your state data as &lt;code&gt;noreply&lt;/code&gt;, 2) match for any
+            other type of exit, log the exit reason, and return your state
+            data as &lt;code&gt;noreply&lt;/code&gt;, and 3) have a catch-all pattern that
+            simply returns your state data as &lt;code&gt;noreply&lt;/code&gt;. &lt;a href=&quot;#fnref:handle-info&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:delayed-result&quot;&gt;
+      &lt;p&gt;Another way to do this would be to use &lt;code&gt;call&lt;/code&gt; instead of
+               &lt;code&gt;cast&lt;/code&gt; and in our &lt;code&gt;add&lt;/code&gt; callback function, return
+               &lt;code&gt;(gen_server:reply from `#(reply ,state-data)) `#(noreply ,(+ 1 state-data))&lt;/code&gt;
+               This does two things: 1) sends an immediate response back to
+               the caller (which which is the API function &lt;code&gt;add&lt;/code&gt; in this
+               case), satisfying its need for a response from the server,
+               and 2) passes the new state to the next loop of the server.
+               We chose to use the &lt;code&gt;cast&lt;/code&gt; approach not only for
+               simplicity of implementation, but to introduce the async
+               capabilities of a &lt;code&gt;gen_server&lt;/code&gt; implementation. &lt;a href=&quot;#fnref:delayed-result&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:start-name&quot;&gt;
+      &lt;p&gt;In general, this is optional – you could use &lt;code&gt;start/3&lt;/code&gt; which
+           doesn’t take a name. In our case, however, we need it so that we
+           can easily make calls to the &lt;code&gt;gen_server&lt;/code&gt; process (and for
+           that we need to register a name so the process can be looked up;
+           if we didn’t do this, we’d need to keep track of the process id
+           for our server). &lt;a href=&quot;#fnref:start-name&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:via-name&quot;&gt;
+      &lt;p&gt;A third alternative is more rarely used in the cases where one
+         need to implement a custom global registry. In that event, you
+         create a 3-tuple where the second element is the name of the
+         module which implements the registry functions. &lt;a href=&quot;#fnref:via-name&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:genserver-opts&quot;&gt;
+      &lt;p&gt;For a list of available options, see the &lt;a href=&quot;http://www.erlang.org/doc/man/gen_server.html#start-4&quot;&gt;gen_server:start docs&lt;/a&gt;. &lt;a href=&quot;#fnref:genserver-opts&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:genserver-args&quot;&gt;
+      &lt;p&gt;There is no defined convention in LFE for how one defines
+               module-level configuration variables or where these might
+               go: you can put the data for the argument values anywhere it
+               makes sense to you.  You don’t even have to define any –
+               you can just pass the data as-is in the function arguments.
+               However, there is a lot to be said for the readability of
+               the example above :-) &lt;a href=&quot;#fnref:genserver-args&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Prelude to OTP</title>
@@ -26,12 +503,24 @@
   &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/23/1720-new-series-lfe-otp-tutorials/&quot;&gt;Introducing the LFE OTP Tutorials&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/24/1808-what-is-otp/&quot;&gt;What is OTP?&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/25/0929-prelude-to-otp/&quot;&gt;Prelude to OTP&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/26/1112-creating-servers-with-the-gen_server-behaviour/&quot;&gt;Creating Servers with the gen_server Behaviour&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;You can leave feedback for the LFE OTP tutorials
 &lt;a href=&quot;https://github.com/lfe/blog/issues/7&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
+&lt;h2 id=&quot;in-this-post&quot;&gt;In This Post&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Requirements and Assumptions&lt;/li&gt;
+  &lt;li&gt;Getting the Code&lt;/li&gt;
+  &lt;li&gt;Two Rudimentary Servers&lt;/li&gt;
+  &lt;li&gt;Up Next&lt;/li&gt;
+  &lt;li&gt;Footnotes&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&quot;requirements-and-assumptions&quot;&gt;Requirements and Assumptions&lt;/h2&gt;
+
 &lt;p&gt;In order to work through the code samples in these tutorials, you will need the following:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -109,15 +598,15 @@ Lisp.”
         &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;process-state&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;caller&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state-data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;You can see that the general form remains pretty much the same: instead of a
-lambda expression that takes a message as an argument, we have the LFE receive
-form which does the same. &lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; They differ significantly in one respect,
-however: their server loop implementation. In order to maintain state over time
-after changes to that state, the lambda closure version requires that the
-developer re-call the &lt;code&gt;lambda-state&lt;/code&gt; function, passing a new or changed state
-value as an argument.  This is not needed when simply accessing the state data
-, though, since no state has changed, and whatever state data the developer has
-will remain just as valid regardless of how many times the &lt;code&gt;amount?&lt;/code&gt; message
-is sent.&lt;/p&gt;
+lambda expression that takes a message as an argument, we have the LFE
+&lt;code&gt;receive&lt;/code&gt; form which does the same. &lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; They differ significantly in one
+respect, however: their server loop implementation. In order to maintain state
+over time after changes to that state, the lambda closure version requires that
+the developer re-call the &lt;code&gt;lambda-state&lt;/code&gt; function, passing a new or changed
+state value as an argument.  This is not needed when simply accessing the state
+data , though, since no state has changed, and whatever state data the
+developer has will remain just as valid regardless of how many times the
+&lt;code&gt;amount?&lt;/code&gt; message is sent.&lt;/p&gt;
 
 &lt;p&gt;The process version, however, provides a true loop: every time it receives a
 message it must restart the loop by calling itself again, thus re-listening for
@@ -197,7 +686,8 @@ need to use all of it just yet :-)&lt;/p&gt;
 &lt;h2 id=&quot;up-next&quot;&gt;Up Next&lt;/h2&gt;
 
 &lt;p&gt;With the next post we will finally get to write some LFE code for OTP! We’ll
-take a look at some of the basics of the gen_server behaviour&lt;/p&gt;
+take a look at some of the basics of the &lt;code&gt;gen_server&lt;/code&gt; behaviour and how it
+helps us maintain state more easily and allows for a cleaner API.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -234,7 +724,7 @@ take a look at some of the basics of the gen_server behaviour&lt;/p&gt;
    <updated>2015-05-24T00:00:00-05:00</updated>
    <id>http://blog.lfe.io//tutorials/2015/05/24/1808-what-is-otp</id>
    <content type="html">
-&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LFE-signal.jpg&quot;&gt;&lt;img class=&quot;left thumb&quot; src=&quot;/assets/images/posts/LFE-signal.jpg&quot; /&gt;&lt;/a&gt;This post is a prelude to the LFE OTP tutorial series which attempts to clarify the role of OTP as something above and beyond a programming language, a set of libraries, or a framework.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/assets/images/posts/LFE-signal.jpg&quot;&gt;&lt;img class=&quot;right thumb&quot; src=&quot;/assets/images/posts/LFE-signal.jpg&quot; /&gt;&lt;/a&gt;This post is a prelude to the LFE OTP tutorial series which attempts to clarify the role of OTP as something above and beyond a programming language, a set of libraries, or a framework.&lt;/p&gt;
 
 &lt;h2 id=&quot;lfe-otp-tutorial-series&quot;&gt;LFE OTP Tutorial Series&lt;/h2&gt;
 
@@ -242,6 +732,7 @@ take a look at some of the basics of the gen_server behaviour&lt;/p&gt;
   &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/23/1720-new-series-lfe-otp-tutorials/&quot;&gt;Introducing the LFE OTP Tutorials&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/24/1808-what-is-otp/&quot;&gt;What is OTP?&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/25/0929-prelude-to-otp/&quot;&gt;Prelude to OTP&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/26/1112-creating-servers-with-the-gen_server-behaviour/&quot;&gt;Creating Servers with the gen_server Behaviour&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;You can leave feedback for the LFE OTP tutorials
@@ -339,6 +830,7 @@ better way to create long-running processes.&lt;/p&gt;
   &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/23/1720-new-series-lfe-otp-tutorials/&quot;&gt;Introducing the LFE OTP Tutorials&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/24/1808-what-is-otp/&quot;&gt;What is OTP?&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/25/0929-prelude-to-otp/&quot;&gt;Prelude to OTP&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/tutorials/2015/05/26/1112-creating-servers-with-the-gen_server-behaviour/&quot;&gt;Creating Servers with the gen_server Behaviour&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;There aren’t a lot of OTP tutorials online. One really good one
