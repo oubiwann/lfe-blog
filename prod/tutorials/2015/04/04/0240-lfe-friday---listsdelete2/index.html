@@ -207,10 +207,10 @@
 <div class="row">
   <div class="span8">
     
-<p><a href="/assets/images/posts/LispFlavoredErlang-medium-square.png"><img class="left tiny" src="/assets/images/posts/LispFlavoredErlang-medium-square.png" /></a>This week’s LFE Friday was translated with permission from the
+<p><a href="/assets/images/posts/LispFlavoredErlang-medium-square.png"><img class="left tiny" src="/assets/images/posts/LispFlavoredErlang-medium-square.png" /></a>This week's LFE Friday was translated with permission from the
 <a href="http://www.proctor-it.com/category/erlang/erlang-thursday/">Erlang Thursday</a>
 series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
-<em>This week’s translator</em>: Robert Virding.</p>
+<em>This week's translator</em>: Robert Virding.</p>
 
 <p>Today’s LFE Friday is about <a href="http://www.erlang.org/doc/man/lists.html#delete-2">lists:delete/2</a>.</p>
 
@@ -272,7 +272,7 @@ showing a how you might write a very naive<sup id="fnref:1"><a href="#fn:1" clas
 <div class="highlight"><pre><code class="language-cl">  <span class="p">((</span><span class="nv">item</span> <span class="p">(</span><span class="nb">cons</span> <span class="nv">head</span> <span class="nb">rest</span><span class="p">)</span> <span class="nv">checked</span><span class="p">)</span> <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nv">=:=</span> <span class="nv">item</span> <span class="nv">head</span><span class="p">))</span>
    <span class="p">(</span><span class="nv">++</span> <span class="p">(</span><span class="nv">lists:reverse</span> <span class="nv">checked</span><span class="p">)</span> <span class="nb">rest</span><span class="p">))</span></code></pre></div>
 
-<p>The second clause “knows” that the item we are wanting to delete and the first item in the rest of the list don’t match. How does it “know”? Because if they did match, the first clause would have matched and this clause would not have been evaluated. As we haven’t found the item to remove, we add the item held by <code>head</code> to the list of <code>checked</code> items, and then continue calling <code>delete/3</code>. The fact that we are passing a new list of the checked items by prepending <code>head</code> to the list in <code>checked</code> is why we need to reverse <code>checked</code> in the first and third function clauses.</p>
+<p>The second clause "knows" that the item we are wanting to delete and the first item in the rest of the list don't match. How does it "know"? Because if they did match, the first clause would have matched and this clause would not have been evaluated. As we haven't found the item to remove, we add the item held by <code>head</code> to the list of <code>checked</code> items, and then continue calling <code>delete/3</code>. The fact that we are passing a new list of the checked items by prepending <code>head</code> to the list in <code>checked</code> is why we need to reverse <code>checked</code> in the first and third function clauses.</p>
 
 <div class="highlight"><pre><code class="language-cl">  <span class="p">((</span><span class="nv">item</span> <span class="p">(</span><span class="nb">cons</span> <span class="nv">head</span> <span class="nb">rest</span><span class="p">)</span> <span class="nv">checked</span><span class="p">)</span>
    <span class="p">(</span><span class="nb">delete</span> <span class="nv">item</span> <span class="nb">rest</span> <span class="p">(</span><span class="nb">cons</span> <span class="nv">head</span> <span class="nv">checked</span><span class="p">)))</span></code></pre></div>

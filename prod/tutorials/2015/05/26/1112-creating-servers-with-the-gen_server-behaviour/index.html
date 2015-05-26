@@ -268,8 +268,8 @@ hash maps are used to the same effect.</p>
 <p>When creating new functions in LFE, you have the option of providing a better
 developer experience by simulating keyword arguments using such things as the
 new map data type, property lists, or records. Since we are using functions
-which already exist in OTP, we don’t have that option (unless we create
-wrappers or define an OTP DSL … but that’s out of scope for this series!).
+which already exist in OTP, we don't have that option (unless we create
+wrappers or define an OTP DSL … but that's out of scope for this series!).
 Instead, we’ll simply take extra measures for clarity, defining variables with
 names that give strong hints as to how they will be used by the <code>gen_server</code>
 code.</p>
@@ -279,7 +279,7 @@ a behaviour module and a callback module in the same file. This has a tendency
 to confuse newcomers, so we have opted for an explicit separation of the two in
 order to make the delineation of responsibilities as clear as possible.</p>
 
-<p>That said, we’re ready for some code!</p>
+<p>That said, we're ready for some code!</p>
 
 <h2 id="creating-a-callback-module">Creating a Callback Module</h2>
 
@@ -372,14 +372,14 @@ registered. <sup id="fnref:start-name"><a href="#fn:start-name" class="footnote"
 either <code>local</code> or <code>global</code> and the second being the actual name for the
 process. <sup id="fnref:via-name"><a href="#fn:via-name" class="footnote">4</a></sup></li>
   <li>The second argument is the callback module associated with this server.
-That’s what we created in the previous section; it’s where all our logic
+That's what we created in the previous section; it's where all our logic
 lives.</li>
   <li>In our case, the next argument is the initial state for our server loop, but
 more generally, it is the list of arguments (can be an empty list) that will
-be passed to the <code>init</code> function in a <code>gen_server</code>’s callback module.</li>
+be passed to the <code>init</code> function in a <code>gen_server</code>'s callback module.</li>
   <li>Finally, if we want to pass any options to the <code>gen_server</code> process
 itself, we can do that here. At the beginning of the module where this code
-lives, we’ve defined <code>(genserver-opts)</code> to be an empty list, since we
+lives, we've defined <code>(genserver-opts)</code> to be an empty list, since we
 don’t need to do anything special here. <sup id="fnref:genserver-opts"><a href="#fn:genserver-opts" class="footnote">5</a></sup></li>
 </ol>
 
@@ -442,21 +442,21 @@ the <code>handle_cast</code> function with the appropriate arguments.</p>
 like :-) None of this crazy you-gotta-make-<code>funcall</code>s-and-then-save-state
 business.</p>
 
-<p>Let’s review what happened above:
+<p>Let's review what happened above:
 We started up our server which initialized the loop with the data we
 configured for it in our server module (just the integer <code>0</code> in our case).
 Next, we made some API calls which were passed on to our callback module by the
 underlying OTP infrastructure. We got results for our API functions which made
 <code>call</code>s, and for the <code>cast</code>s we got a simple and reassuring <code>ok</code>.  When
 skipping the API functions and making calls directly via <code>gen_server:call</code>,
-we got the expected error message for messages which don’t match the ones that
+we got the expected error message for messages which don't match the ones that
 have been defined in our callback module.</p>
 
 <h2 id="updating-an-api">Updating An API</h2>
 
 <p>What if we needed to make a change to our API? Asked another way, what does one
 need to do in order to add new functionality to a server API? Let’s answer this
-by looking at a special case: adding the ability to stop our server. We’ll
+by looking at a special case: adding the ability to stop our server. We'll
 start with the new API function:</p>
 
 <div class="highlight"><pre><code class="language-lisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">stop</span> <span class="p">()</span>
@@ -511,7 +511,7 @@ callback function. Here’s a quick one:</p>
 
 <p>This was a special case; most times you will add API functions, there will be
 no implicit execution of callback functions (which need to be defined in order
-to prevent errors from being generated). Usually all you’ll have to do is
+to prevent errors from being generated). Usually all you'll have to do is
 define your API function and then implement the logic that will get executed by
 the callback module.</p>
 
@@ -599,11 +599,11 @@ including timeouts, deadlocks, hibernating, and custom global registries.</p>
 <p>Another good resource, once you get up to speed, is the
 <a href="http://www.erlang.org/doc/man/gen_server.html">Erlang documentation</a> (and
 <a href="http://www.erlang.org/doc/design_principles/gen_server_concepts.html">here</a>).
-Often overlooked, it’s actually really good and will be a constant companion
-for you any time you need to do something with OTP that you haven’t tried
+Often overlooked, it's actually really good and will be a constant companion
+for you any time you need to do something with OTP that you haven't tried
 before.</p>
 
-<p>In future posts in this series, we will be covering bits we’ve left out of this
+<p>In future posts in this series, we will be covering bits we've left out of this
 tutorial, namely:</p>
 
 <ul>
@@ -624,7 +624,7 @@ generic servers: running our code on multiple cores and multiple machines.</p>
 <div class="footnotes">
   <ol>
     <li id="fn:handle-info">
-      <p>If you’re curious now and want to do this the right way before
+      <p>If you're curious now and want to do this the right way before
             we get around to creating a blog post for error handling and
             unexpected messages, look info the <code>handle_info</code> callback
             function for <code>gen_server</code>. A minimal use of <code>handle_info</code>
@@ -649,7 +649,7 @@ generic servers: running our code on multiple cores and multiple machines.</p>
     </li>
     <li id="fn:start-name">
       <p>In general, this is optional – you could use <code>start/3</code> which
-           doesn’t take a name. In our case, however, we need it so that we
+           doesn't take a name. In our case, however, we need it so that we
            can easily make calls to the <code>gen_server</code> process. For
            that we need to register a name so the process can be looked up;
            if we didn’t do this, we’d need to keep track of the process id
@@ -668,7 +668,7 @@ generic servers: running our code on multiple cores and multiple machines.</p>
       <p>There is no defined convention in LFE for how one defines
                module-level configuration variables or where these might
                go: you can put the data for the argument values anywhere it
-               makes sense to you.  You don’t even have to define any –
+               makes sense to you.  You don't even have to define any –
                you can just pass the data as-is in the function arguments.
                However, there is a lot to be said for the readability of
                the example above :-) <a href="#fnref:genserver-args" class="reversefootnote">&#8617;</a></p>

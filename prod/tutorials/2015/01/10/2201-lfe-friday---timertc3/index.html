@@ -207,10 +207,10 @@
 <div class="row">
   <div class="span8">
     
-<p><a href="/assets/images/posts/LispFlavoredErlang-medium-square.png"><img class="left tiny" src="/assets/images/posts/LispFlavoredErlang-medium-square.png" /></a>This week’s LFE Friday was translated with permission from the
+<p><a href="/assets/images/posts/LispFlavoredErlang-medium-square.png"><img class="left tiny" src="/assets/images/posts/LispFlavoredErlang-medium-square.png" /></a>This week's LFE Friday was translated with permission from the
 <a href="http://www.proctor-it.com/category/erlang/erlang-thursday/">Erlang Thursday</a>
 series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
-<em>This week’s translator</em>: Robert Virding.</p>
+<em>This week's translator</em>: Robert Virding.</p>
 
 <p>Today’s LFE Friday is on <a href="http://www.erlang.org/doc/man/timer.html#tc-3">timer:tc/3</a>.</p>
 
@@ -227,7 +227,7 @@ series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
 
 <p>Note that we have to use <a href="http://www.erlang.org/doc/man/timer.html#now_diff-2">timer:now_diff/2</a>, since the <code>now/0</code> function returns the timestamp as a tuple, and we can’t just do normal subtraction on that tuple like we might be able to in other languages.</p>
 
-<p>Of course as good “engineers”, we know that since we need to do timings in various places of the app we can just create our own function to do that, and have that live in just one place.</p>
+<p>Of course as good "engineers", we know that since we need to do timings in various places of the app we can just create our own function to do that, and have that live in just one place.</p>
 
 <p>The downside is: the wise people on the Erlang language team have done that for us already and provided it in the form of <code>timer:tc/3</code>.</p>
 

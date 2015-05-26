@@ -207,12 +207,12 @@
 <div class="row">
   <div class="span8">
     
-<p><a href="/assets/images/posts/LispFlavoredErlang-medium-square.png"><img class="left tiny" src="/assets/images/posts/LispFlavoredErlang-medium-square.png" /></a>This week’s LFE Friday was translated with permission from the
+<p><a href="/assets/images/posts/LispFlavoredErlang-medium-square.png"><img class="left tiny" src="/assets/images/posts/LispFlavoredErlang-medium-square.png" /></a>This week's LFE Friday was translated with permission from the
 <a href="http://www.proctor-it.com/category/erlang/erlang-thursday/">Erlang Thursday</a>
 series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
-<em>This week’s translator</em>: Robert Virding.</p>
+<em>This week's translator</em>: Robert Virding.</p>
 
-<p>Today’s LFE Friday is on <a href="http://www.erlang.org/doc/man/httpc.html#request-1">httpc:request/1</a> and <a href="http://www.erlang.org/doc/man/httpc.html#request-4">httpc:request/4</a>. The httpc module is Erlang’s HTTP 1.1 client, and the <code>request</code> function is a powerful way to make web requests using Erlang.</p>
+<p>Today's LFE Friday is on <a href="http://www.erlang.org/doc/man/httpc.html#request-1">httpc:request/1</a> and <a href="http://www.erlang.org/doc/man/httpc.html#request-4">httpc:request/4</a>. The httpc module is Erlang’s HTTP 1.1 client, and the <code>request</code> function is a powerful way to make web requests using Erlang.</p>
 
 <p>To start using the httpc module, you first have to make sure <code>inets</code> has been started.</p>
 
@@ -255,7 +255,7 @@ series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
      <span class="o">#(</span><span class="s">&quot;x-ec-custom-error&quot;</span> <span class="s">&quot;1&quot;</span><span class="p">))</span>
     <span class="s">&quot;&lt;!doctype html&gt;\n&lt;html&gt;\n&lt;head&gt;\n    &lt;title&gt;Example Domain&lt;/title&gt;\n\n    &lt;meta charset=\&quot;utf-8\&quot; /&gt;\n    &lt;meta http-equiv=\&quot;Content-type\&quot; content=\&quot;text/html; charset=utf-8\&quot; /&gt;\n    &lt;meta name ...&quot;</span><span class="p">))</span></code></pre></div>
 
-<p>You can specify headers as part of your request. For example, say we want to get DuckDuckGo’s page in Swedish in honor of Erlang being created by Ericsson. To do that, we add a tuple of <code>#("Accept-Language" "sv")</code> to the headers list as part of the request.</p>
+<p>You can specify headers as part of your request. For example, say we want to get DuckDuckGo's page in Swedish in honor of Erlang being created by Ericsson. To do that, we add a tuple of <code>#("Accept-Language" "sv")</code> to the headers list as part of the request.</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">httpc:request</span> <span class="ss">&#39;get</span> <span class="o">#(</span><span class="s">&quot;http://duckduckgo.com&quot;</span> <span class="p">(</span><span class="o">#(</span><span class="s">&quot;Accept-language&quot;</span> <span class="s">&quot;sv&quot;</span><span class="p">)))</span> <span class="p">()</span> <span class="p">())</span>
 <span class="o">#(</span><span class="nv">ok</span>
@@ -271,13 +271,13 @@ series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
      <span class="o">#(</span><span class="s">&quot;expires&quot;</span> <span class="s">&quot;Thu, 22 Jan 2015 21:58:15 GMT&quot;</span><span class="p">))</span>
     <span class="s">&quot;&lt;!DOCTYPE html&gt;\n&lt;!--[if IEMobile 7 ]&gt; &lt;html lang=\&quot;sv_SE\&quot; class=\&quot;no-js iem7\&quot;&gt; &lt;![endif]--&gt;\n&lt;!--[if lt IE 7]&gt; &lt;html class=\&quot;ie6 lt-ie10 lt-ie9 lt-ie8 lt-ie7 no-js\&quot; lang=\&quot;sv_SE\&quot;&gt; &lt;![endif]--&gt;\n&lt;!--[if IE 7]&gt;    &lt;html class=\&quot;ie7 lt-ie10 lt-ie9 lt-ie8 no-js\&quot; lang=\&quot;sv_SE\&quot;&gt; &lt;![endif]--&gt;\n&lt;!-- ...&quot;</span><span class="p">))</span></code></pre></div>
 
-<p>The third argument of <code>httpc:request/4</code> is a list of HTTP option tuples. For example, you need to set timeouts on the response in order to avoid waiting on a response from an irresponsive or slow website because if it doesn’t respond in time, the requesting code needs to back off and try again later to avoid triggering the equivalent of a Denial of Service attack. In this case, I am specifying a timeout of 0, expressed in milliseconds, to ensure a timeout happens for illustrative purposes.</p>
+<p>The third argument of <code>httpc:request/4</code> is a list of HTTP option tuples. For example, you need to set timeouts on the response in order to avoid waiting on a response from an irresponsive or slow website because if it doesn't respond in time, the requesting code needs to back off and try again later to avoid triggering the equivalent of a Denial of Service attack. In this case, I am specifying a timeout of 0, expressed in milliseconds, to ensure a timeout happens for illustrative purposes.</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">httpc:request</span> <span class="ss">&#39;get</span> <span class="o">#(</span><span class="s">&quot;http://erlang.org&quot;</span> <span class="p">())</span> <span class="o">&#39;</span><span class="p">(</span><span class="o">#(</span><span class="nv">timeout</span> <span class="mi">0</span><span class="p">))</span> <span class="p">())</span>
 <span class="o">#(</span><span class="nb">error</span>
   <span class="o">#(</span><span class="nv">failed_connect</span> <span class="p">(</span><span class="o">#(</span><span class="nv">to_address</span> <span class="o">#(</span><span class="s">&quot;erlang.org&quot;</span> <span class="mi">80</span><span class="p">))</span> <span class="o">#(</span><span class="nv">inet</span> <span class="p">(</span><span class="nv">inet</span><span class="p">)</span> <span class="nv">timeout</span><span class="p">))))</span></code></pre></div>
 
-<p>As it’s final argument, <code>httpc:request/4</code> takes a list of other options, these options are for how the Erlang side of things should work. Maybe you want to make a request asynchronously, and want to receive a message when it is complete. To do that you can specify an option tuple of <code>#(sync false)</code>.</p>
+<p>As it's final argument, <code>httpc:request/4</code> takes a list of other options, these options are for how the Erlang side of things should work. Maybe you want to make a request asynchronously, and want to receive a message when it is complete. To do that you can specify an option tuple of <code>#(sync false)</code>.</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="o">`#(</span><span class="nv">ok</span> <span class="o">,</span><span class="nv">requestid</span><span class="p">)</span> <span class="p">(</span><span class="nv">httpc:request</span> <span class="ss">&#39;get</span> <span class="o">&#39;#(</span><span class="s">&quot;http://example.com&quot;</span> <span class="p">())</span> <span class="p">()</span> <span class="o">&#39;</span><span class="p">(</span><span class="o">#(</span><span class="nv">sync</span> <span class="nv">false</span><span class="p">))))</span>
 <span class="o">#(</span><span class="nv">ok</span> <span class="err">#</span><span class="nv">Ref&lt;0.0.0.87&gt;</span><span class="p">)</span>
@@ -314,7 +314,7 @@ series by <a href="https://twitter.com/stevenproctor">Steven Proctor</a>.
      <span class="o">#(</span><span class="s">&quot;x-ec-custom-error&quot;</span> <span class="s">&quot;1&quot;</span><span class="p">))</span>
     <span class="err">#</span><span class="nv">B</span><span class="p">(</span><span class="s">&quot;&lt;!doctype html&gt;\n&lt;html&gt;\n&lt;head&gt;\n    &lt;title&gt;Example Domain&lt;/title&gt;\n\n    &lt;meta &quot;</span><span class="o">...</span><span class="p">)))</span></code></pre></div>
 
-<p>This post just scratches the surface of what you can do with <code>httpc:request/4</code>, and I highly recommend checking out the Erlang documentation for the <a href="http://www.erlang.org/doc/man/httpc.html">httpc module</a>. For more examples and information, also check out the <a href="http://www.erlang.org/doc/apps/inets/users_guide.html">Erlang inets User Guide</a>, and the chapter <a href="http://www.erlang.org/doc/apps/inets/http_client.html">“HTTP Client”</a>.</p>
+<p>This post just scratches the surface of what you can do with <code>httpc:request/4</code>, and I highly recommend checking out the Erlang documentation for the <a href="http://www.erlang.org/doc/man/httpc.html">httpc module</a>. For more examples and information, also check out the <a href="http://www.erlang.org/doc/apps/inets/users_guide.html">Erlang inets User Guide</a>, and the chapter <a href="http://www.erlang.org/doc/apps/inets/http_client.html">"HTTP Client"</a>.</p>
 
 <p>–Proctor, Robert</p>
 

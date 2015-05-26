@@ -214,19 +214,19 @@
 <a href="https://cloud.google.com/appengine/docs/managed-vms/custom-runtimes">Google</a> and
 <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.html">AWS</a>,
 it is increasingly more crucial that open source projects support their users
-by offering images which make deploying their apps even easier. We’ve only
+by offering images which make deploying their apps even easier. We've only
 <a href="https://registry.hub.docker.com/u/lfex/lfe/">just</a>
 <a href="https://github.com/rvirding/lfe/issues/97">started</a>
 doing this in the <a href="http://lfe.io/">LFE</a> community, but are already quite
-excited by the possibilies and the early successes we’ve seen.</p>
+excited by the possibilies and the early successes we've seen.</p>
 
-<p>We’re currently working on an official LFE image for Docker, but in the mean
-time, we will demonstrate functionality with an image we’ve made available on
+<p>We're currently working on an official LFE image for Docker, but in the mean
+time, we will demonstrate functionality with an image we've made available on
 the <a href="https://registry.hub.docker.com/u/lfex/lfe/">LFE Exchange in Docker Hub</a>.</p>
 
 <h2 id="background-info">Background Info</h2>
 
-<p>For a wonderful intro to Docker, see last year’s OpenShift blog post
+<p>For a wonderful intro to Docker, see last year's OpenShift blog post
 <a href="https://blog.openshift.com/day-21-docker-the-missing-tutorial/">Day 21: Docker–The Missing Tutorial</a>
 by <a href="https://twitter.com/shekhargulati">Shekhar Gulati</a>. Another <em>fantastic</em>
 resource is the
@@ -257,7 +257,7 @@ Ubuntu. Nice work, <a href="https://twitter.com/true_droid">Alexei Sholik</a>!</
   <li>You have <a href="https://www.docker.com/">Docker</a> installed on a host machine</li>
   <li>Both are up and running</li>
   <li>You have exported the Docker environment variables in all the terminal
-windows you’ll be using (2 to 3 is probably all you need)</li>
+windows you'll be using (2 to 3 is probably all you need)</li>
 </ul>
 
 <p>In order to connect to your containers on your LAN when running boot2docker,
@@ -265,8 +265,8 @@ you will need to do something like the following:</p>
 
 <div class="highlight"><pre><code class="language-bash"><span class="nv">$ </span>boot2docker ssh -L &lt;HOSTMACHINE&gt;:5099:127.0.0.1:5099</code></pre></div>
 
-<p>The server on my LAN that’s running <code>boot2docker</code> and VirtualBox is
-172.16.4.64. So here’s the SSH port forwarding setup I ran on 172.16.4.64
+<p>The server on my LAN that's running <code>boot2docker</code> and VirtualBox is
+172.16.4.64. So here's the SSH port forwarding setup I ran on 172.16.4.64
 in order to have access to my containers from a laptop on the LAN:</p>
 
 <div class="highlight"><pre><code class="language-text">$ boot2docker ssh -L 172.16.4.64:5099:127.0.0.1:5099
@@ -287,26 +287,26 @@ Boot2Docker version 1.3.2, build master : 495c19a - Mon Nov 24 20:40:58 UTC 2014
 Docker version 1.3.2, build 39fa2fa
 docker@boot2docker:~$</code></pre></div>
 
-<p>You’ll want to leave that window open :-)</p>
+<p>You'll want to leave that window open :-)</p>
 
-<p>And why wouldn’t you? Just <em>look</em> at that whale!</p>
+<p>And why wouldn't you? Just <em>look</em> at that whale!</p>
 
 <h2 id="getting-the-lfe-exchange-docker-image">Getting the LFE Exchange Docker Image</h2>
 
 <p>Assuming you have everything instatlled and your forwarding is ready to go,
-let’s continue by getting the LFE Docker image:</p>
+let's continue by getting the LFE Docker image:</p>
 
 <div class="highlight"><pre><code class="language-bash"><span class="nv">$ </span>docker pull lfex/lfe</code></pre></div>
 
-<p>Once it’s finished downloading, you can make sure everything’s working by
+<p>Once it's finished downloading, you can make sure everything's working by
 running the default command:</p>
 
 <div class="highlight"><pre><code class="language-bash"><span class="nv">$ </span>docker run lfex/lfe
 42</code></pre></div>
 
-<p>This image is dead-simple: it’s based on <code>debian:jessie</code> with the
+<p>This image is dead-simple: it's based on <code>debian:jessie</code> with the
 standard Erlang package from Debian installed on it (as well as the others
-needed to support <code>git</code> and <code>rebar</code>). We’re working on support for CentOS,
+needed to support <code>git</code> and <code>rebar</code>). We're working on support for CentOS,
 Ubuntu, and OpenSUSE as well.</p>
 
 <h2 id="the-lfe-repl">The LFE REPL</h2>
@@ -319,7 +319,7 @@ container, such as <code>bash</code>:</p>
 
 <div class="highlight"><pre><code class="language-bash">root@95bc1d88e581:/#</code></pre></div>
 
-<p>Hey, I’ve got an idea …</p>
+<p>Hey, I've got an idea …</p>
 
 <div class="highlight"><pre><code class="language-bash">root@95bc1d88e581:/# lfe</code></pre></div>
 
@@ -329,7 +329,7 @@ container, such as <code>bash</code>:</p>
 <span class="nb">&gt;</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="p">(</span><span class="nv">lists:foldl</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">n</span> <span class="nv">acc</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="nv">n</span> <span class="nv">acc</span><span class="p">))</span> <span class="mi">0</span> <span class="p">(</span><span class="nv">lists:seq</span> <span class="mi">1</span> <span class="mi">6</span><span class="p">)))</span>
 <span class="mi">42</span></code></pre></div>
 
-<p>While we’re in here, let’s check out some basic version info:</p>
+<p>While we're in here, let's check out some basic version info:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">erlang:system_info</span> <span class="ss">&#39;otp_release</span><span class="p">)</span>
 <span class="s">&quot;17&quot;</span>
@@ -338,7 +338,7 @@ container, such as <code>bash</code>:</p>
 <span class="nb">&gt;</span> <span class="p">(</span><span class="nv">erlang:system_info</span> <span class="ss">&#39;driver_version</span><span class="p">)</span>
 <span class="s">&quot;3.1&quot;</span></code></pre></div>
 
-<p>Let’s quit out:</p>
+<p>Let's quit out:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="nv">^g</span>
 <span class="nv">User</span> <span class="nv">switch</span> <span class="nv">command</span>
@@ -347,7 +347,7 @@ container, such as <code>bash</code>:</p>
 <div class="highlight"><pre><code class="language-bash">root@c384176355bd:/# <span class="nb">exit</span>
 <span class="nb">exit</span></code></pre></div>
 
-<p>We’re no longer running that container, but it still exists:</p>
+<p>We're no longer running that container, but it still exists:</p>
 
 <div class="highlight"><pre><code class="language-bash"><span class="nv">$ </span>docker ps -a
 CONTAINER ID   IMAGE         COMMAND       CREATED    STATUS
@@ -377,12 +377,12 @@ into our favourite REPL :-)</p>
 
 <ul>
   <li>We have obtained the LFE image from Docker Hub on our local machine</li>
-  <li>We’ve run it with the default <code>CMD</code></li>
-  <li>We’ve run it with some custom commands</li>
+  <li>We've run it with the default <code>CMD</code></li>
+  <li>We've run it with some custom commands</li>
 </ul>
 
 <p>Now we should be comfortable enough using this image to create our own
-variation, based on it. We’ll start simple, thought, with a single change
+variation, based on it. We'll start simple, thought, with a single change
 to <code>CMD</code>.</p>
 
 <div class="highlight"><pre><code class="language-bash"><span class="nv">$ </span>mkdir /tmp/lfe
@@ -408,7 +408,7 @@ Removing intermediate container 73cea1afcab1
 Successfully built 46957afffb2c</code></pre></div>
 
 <p>Looking in the output of that last command, we can see that our new image
-has an ID of <code>46957afffb2c</code>. Let’s tag it (using your own image, of course):</p>
+has an ID of <code>46957afffb2c</code>. Let's tag it (using your own image, of course):</p>
 
 <div class="highlight"><pre><code class="language-bash"><span class="nv">$ </span>docker tag 46957afffb2c crazy42</code></pre></div>
 
@@ -417,9 +417,9 @@ has an ID of <code>46957afffb2c</code>. Let’s tag it (using your own image, of
 <div class="highlight"><pre><code class="language-bash"><span class="nv">$ </span>docker run crazy42
 1806</code></pre></div>
 
-<p>Excellent – that’s the right answer :-)</p>
+<p>Excellent – that's the right answer :-)</p>
 
-<p>Let’s take a look at our images so far:</p>
+<p>Let's take a look at our images so far:</p>
 
 <div class="highlight"><pre><code class="language-bash"><span class="nv">$ </span>docker images
 REPOSITORY      TAG          IMAGE ID          CREATED             VIRTUAL SIZE
@@ -432,7 +432,7 @@ debian          jessie       aaabd2b41e22      <span class="m">4</span> weeks ag
 
 <h2 id="a-simple-lfeyaws-web-app-image">A Simple LFE/YAWS Web App Image</h2>
 
-<p>Let’s go nuts!</p>
+<p>Let's go nuts!</p>
 
 <div class="highlight"><pre><code class="language-bash"><span class="nv">$ </span>mkdir /tmp/sample-app
 <span class="nv">$ </span><span class="nb">cd</span> /tmp/sample-app
@@ -475,7 +475,7 @@ Successfully built 1904cb1d856b</code></pre></div>
 <div class="highlight"><pre><code class="language-bash"><span class="nv">$ </span>docker run -d -p 5099:5099 sample-app
 1b21f79c42ec84cec841b25ff17e921b4d4ce8ee247c5293d5c0d73766a4c713</code></pre></div>
 
-<p>Let’s make sure that it’s running and that our port is exposed:</p>
+<p>Let's make sure that it's running and that our port is exposed:</p>
 
 <div class="highlight"><pre><code class="language-bash"><span class="nv">$ </span>docker ps
 CONTAINER ID   IMAGE               COMMAND                STATUS         PORTS
@@ -487,11 +487,11 @@ should be greeted with someething that looks like this:</p>
 
 <p><img src="/assets/images/posts/docker-lfe-sample-app-main-page.png" /></p>
 
-<p>And that’s all there is to it!</p>
+<p>And that's all there is to it!</p>
 
 <h2 id="an-lfe-web-app-aside">An LFE Web App Aside</h2>
 
-<p>If you’d like to look at the source code for this sample app, it has been
+<p>If you'd like to look at the source code for this sample app, it has been
 made available here:</p>
 
 <ul>
@@ -545,7 +545,7 @@ LFE-native s-expressions</li>
 
 <h2 id="closing">Closing</h2>
 
-<p>There are soooo many more examples and use cases to explore. Hopefully we’ll
+<p>There are soooo many more examples and use cases to explore. Hopefully we'll
 be putting some of those up on this blog for the benefit and interest of our
 kind readers.</p>
 

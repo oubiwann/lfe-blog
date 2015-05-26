@@ -211,7 +211,7 @@
 
 <p><a href="/assets/images/posts/lsci-erlang-ecosystem.png"><img class="right thumb" src="/assets/images/posts/lsci-erlang-ecosystem.png" /></a>This tutorial brings in the New Year by introducing the Erlang/LFE
 scientific computing library <a href="https://github.com/lfex/lsci">lsci</a>
--- a ports wrapper of NumPy and SciPy (among others) for the Erlang ecosystem.
+– a ports wrapper of NumPy and SciPy (among others) for the Erlang ecosystem.
 The topic of the tutorial is polynomial curve-fitting for a given data set.
 Additionally, this post further demonstrates <a href="https://github.com/lfex/py/">py</a>
 usage, the
@@ -451,7 +451,7 @@ provided a polynomial describing this data:</p>
 <p>Or, if you prefer LaTeX:</p>
 
 <p>\begin{equation}
-y = B_0 + B_1{x} + B_2{x^2} + ... + B_9{x^9} + B_{10}{x^{10}} + e
+y = B_0 + B_1{x} + B_2{x^2} + … + B_9{x^9} + B_{10}{x^{10}} + e
 \end{equation}</p>
 
 <p>Using NumPy, we can easily fit a 10th-degree polynomial curve to this data.
@@ -525,7 +525,7 @@ out:</p>
 <p>Next let's see if our linear model matches up with what NIST provided. We're
 going to need to calculate the
 <a href="http://en.wikipedia.org/wiki/Coefficient_of_determination">coefficient of determination</a>,
-or <script type="math/tex">R^2</script> -- a value that indicates how well a statistical model fits with
+or <script type="math/tex">R^2</script> – a value that indicates how well a statistical model fits with
 measured data. We'll start by feeding our <script type="math/tex">x</script> values into our model:</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">set</span> <span class="nv">y-predicted</span> <span class="p">(</span><span class="nv">py:func</span> <span class="nv">model</span> <span class="o">`</span><span class="p">(</span><span class="o">,</span><span class="nv">xs</span><span class="p">)))</span>
@@ -626,7 +626,7 @@ prefer, e.g.:</p>
 
 <p>The linear model code above is a bit cumbersome; it would be much more
 convenient for multiple-use if there was a Python class that did all the
-arithmetic for us, and we could just get attribute values ... So that's
+arithmetic for us, and we could just get attribute values … So that's
 what we created:</p>
 
 <div class="highlight"><pre><code class="language-python"><span class="k">class</span> <span class="nc">PolynomialLinearModel</span><span class="p">:</span>

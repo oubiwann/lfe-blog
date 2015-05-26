@@ -210,7 +210,7 @@
 <p><a href="/assets/images/posts/Erlang-Python-Greats.png"><img class="right thumb" src="/assets/images/posts/Erlang-Python-Greats.png" /></a>
 A short while ago, I did a
 <a href="http://blog.lfe.io/tutorials/2014/11/21/1508-erlport-using-python-from-erlang-lfe/">teaser post</a>
-about calling Python from LFE. There was only a tiny bit of code... but! It
+about calling Python from LFE. There was only a tiny bit of code… but! It
 came with one of the best Erlang/Python pictures EVAR. You know which one I'm
 talking about.</p>
 
@@ -327,7 +327,7 @@ and don't require any importing. These are called the "builtins".</p>
 </ul>
 
 <p>If you're wondering how to deal with constants (since there are no constants in
-LFE, and everything is a function), hang tight -- we'll cover that below.</p>
+LFE, and everything is a function), hang tight – we'll cover that below.</p>
 
 <h2 id="python-module-hierarchies">Python Module Hierarchies</h2>
 
@@ -346,7 +346,7 @@ using our own? How do we access Python module constants?</p>
                    <span class="o">...</span><span class="p">)</span></code></pre></div>
 
 <p>No such luck: <code>math.pi</code> is a <code>float</code> and we're limited to making calls.
-Fortunately, though, we have a way out -- a hack, but a way out: we can call
+Fortunately, though, we have a way out – a hack, but a way out: we can call
 methods on constants!</p>
 
 <div class="highlight"><pre><code class="language-cl"><span class="nb">&gt;</span> <span class="p">(</span><span class="nv">python:call</span> <span class="nv">pid-1</span> <span class="ss">&#39;math</span> <span class="ss">&#39;pi.__float__</span> <span class="o">&#39;</span><span class="p">())</span>
@@ -356,7 +356,7 @@ methods on constants!</p>
 <span class="nb">&gt;</span> <span class="p">(</span><span class="nv">python:call</span> <span class="nv">pid-1</span> <span class="ss">&#39;math</span> <span class="ss">&#39;pi.__str__</span> <span class="o">&#39;</span><span class="p">())</span>
 <span class="s">&quot;3.141592653589793&quot;</span></code></pre></div>
 
-<p>Yeah, perhaps a bit ugly ... but you <em>knew</em> this wasn't going to be pretty :-)</p>
+<p>Yeah, perhaps a bit ugly … but you <em>knew</em> this wasn't going to be pretty :-)</p>
 
 <p>Now we can re-do our example, though:</p>
 
